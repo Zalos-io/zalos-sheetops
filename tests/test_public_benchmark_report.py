@@ -188,3 +188,37 @@ def test_recovered_tool_errors_are_separate_from_task_failures() -> None:
     assert failures[0]["id"] == "tool-contract-misuse"
     assert failures[0]["errorCounts"] == {"invalid_field": 1}
     assert failures[0]["kind"] == "observed tool errors; task may still pass"
+
+
+def test_oracle_coverage_is_separate_from_scored_attempts_and_formula_errors() -> None:
+    from zalos_sheetops.benchmarks.public.report import failure_catalog
+
+    records = [
+        {
+            "task": 1,
+            "arm": "baseline",
+            "repeat": 0,
+            "seconds": 1,
+            "usage": {},
+            "grading": {"status": "oracle_preservation_conflict"},
+        },
+        {
+            "task": 2,
+            "arm": "baseline",
+            "repeat": 0,
+            "seconds": 1,
+            "usage": {},
+            "grading": {
+                "status": "incorrect",
+                "failureCounts": {"values": 1},
+                "valueDifferences": [
+                    {"cell": "A1", "expected": 2, "actual": "#VALUE!"}
+                ],
+            },
+        },
+    ]
+    summary = summarize_agents(records)
+    assert summary["arms"]["baseline"]["scorableAttempts"] == 1
+    assert summary["arms"]["baseline"]["unscorableAttempts"] == 1
+    failures = failure_catalog([], records)
+    assert {r["id"] for r in failures} == {"oracle-coverage", "formula-evaluation"}

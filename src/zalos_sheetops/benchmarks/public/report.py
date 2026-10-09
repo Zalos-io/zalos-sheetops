@@ -9,6 +9,17 @@ from pathlib import Path
 
 from .scoring import summarize
 
+UNSCORABLE = {
+    "oracle_cache_missing",
+    "output_cache_missing",
+    "ambiguous_task_metadata",
+    "oracle_failure",
+    "oracle_preservation_conflict",
+    "recalculation_failure",
+    "source_mutated",
+    "evaluation_unavailable",
+}
+
 
 def read_records(path: Path) -> list[dict]:
     if not path.exists():
@@ -96,6 +107,12 @@ def summarize_agents(records: list[dict]) -> dict:
         )
         arms[arm] = {
             "attempts": len(runs),
+            "scorableAttempts": sum(
+                r["grading"]["status"] not in UNSCORABLE for r in runs
+            ),
+            "unscorableAttempts": sum(
+                r["grading"]["status"] in UNSCORABLE for r in runs
+            ),
             "statusCounts": dict(Counter(r["grading"]["status"] for r in runs)),
             "totalSecondsAllAttempts": sum(r["seconds"] for r in runs),
             "totalMainTokens": sum(r["usage"].get("total_tokens", 0) for r in runs),
@@ -112,10 +129,16 @@ def summarize_agents(records: list[dict]) -> dict:
     correct = [
         p for p in complete if all(r["grading"]["status"] == "pass" for r in p.values())
     ]
+    scorable = [
+        p
+        for p in complete
+        if all(r["grading"]["status"] not in UNSCORABLE for r in p.values())
+    ]
     ratios = [p["baseline"]["seconds"] / p["sheetops"]["seconds"] for p in correct]
     return {
         "attemptCount": len(records),
         "completePairCount": len(complete),
+        "scorablePairCount": len(scorable),
         "correctPairCount": len(correct),
         "arms": arms,
         "medianPairedSpeedup": statistics.median(ratios) if ratios else None,
@@ -225,12 +248,7 @@ def failure_catalog(operations: list[dict], agents: list[dict]) -> list[dict]:
         status = grading["status"]
         if status == "pass":
             continue
-        if status in {
-            "oracle_cache_missing",
-            "ambiguous_task_metadata",
-            "oracle_failure",
-            "recalculation_failure",
-        }:
+        if status in UNSCORABLE:
             kind = "oracle-coverage"
         elif status != "incorrect":
             kind = status
@@ -246,6 +264,15 @@ def failure_catalog(operations: list[dict], agents: list[dict]) -> list[dict]:
             kinds = [
                 name for component, name in categories.items() if counts.get(component)
             ]
+            formula_errors = [
+                d
+                for d in grading.get("valueDifferences", [])
+                if isinstance(d.get("actual"), str) and d["actual"].startswith("#")
+            ]
+            if formula_errors:
+                kinds.append("formula-evaluation")
+                if counts.get("values", 0) == len(formula_errors):
+                    kinds = [k for k in kinds if k != "answer-values"]
             if not kinds:
                 kinds = (
                     ["workbook-preservation"]
@@ -258,14 +285,28 @@ def failure_catalog(operations: list[dict], agents: list[dict]) -> list[dict]:
             continue
         groups.setdefault(kind, []).append(record)
     for kind, records in sorted(groups.items()):
+        titles = {
+            "answer-values": "Validate answer values and string boundaries",
+            "explicit-styles": "Apply the requested visible formatting",
+            "workbook-preservation": "Restrict writes and preserve unrelated cells",
+            "workbook-structure": "Preserve workbook structure",
+            "invalid_output": "Validate XLSX formula serialization in native Excel",
+            "formula-evaluation": "Validate formulas with the target Excel engine",
+            "timeout": "Bound workbook work and surface incomplete results",
+            "oracle-coverage": "Resolve reference conflicts before scoring",
+        }
         catalog.append(
             {
-                "priority": 2 if kind != "oracle-coverage" else 3,
+                "priority": 1
+                if kind in {"workbook-preservation", "invalid_output"}
+                else 3
+                if kind == "oracle-coverage"
+                else 2,
                 "id": kind,
                 "kind": "agent task failure"
                 if kind != "oracle-coverage"
                 else "unscorable dataset/evaluator case",
-                "title": kind.replace("-", " "),
+                "title": titles.get(kind, kind.replace("-", " ")),
                 "failedAttempts": len(records),
                 "taskIds": sorted({str(r["task"]) for r in records}),
                 "arms": dict(Counter(r["arm"] for r in records)),
@@ -282,6 +323,10 @@ def failure_catalog(operations: list[dict], agents: list[dict]) -> list[dict]:
                     "Run agents.py with the recorded task, model, skill hashes and "
                     "images"
                 ),
+                "scope": "Formula errors use each record's evaluation engine; "
+                "native Excel and LibreOffice outcomes are reported separately"
+                if kind == "formula-evaluation"
+                else "recorded task rubric",
             }
         )
     return sorted(catalog, key=lambda r: (r["priority"], -r["failedAttempts"], r["id"]))
@@ -361,6 +406,13 @@ def build_report(root: Path, output: Path, agent_records: Path | None = None) ->
         },
         "agents": summarize_agents(agents),
         "expectedAgentPairs": expected_pairs,
+        "evaluationEngines": sorted(
+            {
+                json.dumps(r["evaluationEngine"], sort_keys=True)
+                for r in agents
+                if "evaluationEngine" in r
+            }
+        ),
         "rankedFailures": failure_catalog(operations, agents),
         "limitations": [
             "Failure groups overlap: one attempt can fail values, styles "
@@ -382,6 +434,16 @@ def build_report(root: Path, output: Path, agent_records: Path | None = None) ->
                 "Agent scores use golden answer-region values, explicit styles "
                 "and preservation checks; not official leaderboard scores"
             ),
+            "Formula evaluation engines are recorded per attempt; native Excel "
+            "caches are audited independently of raw outputs. LibreOffice results "
+            "are a separate interoperability check when native results are available",
+            "Native Excel opens formula-containing evaluation copies; value-only "
+            "outputs are parsed without a native UI open check",
+            "Observed SheetOps commands are inspection and reads; workbook edits "
+            "use agent-authored Python. Output failures do not establish a "
+            "SheetOps write API defect",
+            "The first 24 agent attempts lack per-attempt execution source hashes; "
+            "image, launcher, skill and input hashes remain recorded",
             (
                 "One agent repetition per arm in this initial baseline; "
                 "insufficient for a stable end-to-end speed claim"
@@ -428,13 +490,18 @@ def build_report(root: Path, output: Path, agent_records: Path | None = None) ->
             "",
             f"Completed pairs: {result['agents']['completePairCount']}"
             f"/{expected_pairs}; "
+            f"scorable pairs: {result['agents']['scorablePairCount']}; "
             f"both-correct pairs: {result['agents']['correctPairCount']}.",
+            "Evaluation engines: "
+            f"{', '.join(result['evaluationEngines']) or 'not recorded'}.",
             "",
         ]
     )
     for arm, summary in result["agents"]["arms"].items():
         lines.append(
             f"- {arm}: {summary['attempts']} attempts; "
+            f"{summary['scorableAttempts']} scorable / "
+            f"{summary['unscorableAttempts']} unscorable; "
             f"outcomes {summary['statusCounts']}; inference cost "
             f"{'available' if summary['costAvailable'] else 'unavailable'}."
         )

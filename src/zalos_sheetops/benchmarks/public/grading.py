@@ -10,7 +10,8 @@ from openpyxl import load_workbook
 from openpyxl.utils.cell import range_boundaries
 from openpyxl.utils.exceptions import InvalidFileException
 
-from .scoring import canonical, scalar
+from .rubric import style_matches, values_equal
+from .scoring import scalar
 
 
 def evaluated_blank_caches(path: Path) -> set[tuple[str, str]]:
@@ -116,6 +117,13 @@ def cell_signature(cell: object) -> list:
     ]
 
 
+def table_signature(table: object) -> str:
+    tree = table.to_tree()
+    # Numeric table IDs are workbook-local and are reassigned on normal saves.
+    tree.attrib.pop("id", None)
+    return ET.tostring(tree, encoding="unicode")
+
+
 def structure_differences(expected: object, actual: object) -> list[dict]:
     differences = []
     expected_names = sorted(str(item) for item in expected.defined_names.values())
@@ -137,8 +145,8 @@ def structure_differences(expected: object, actual: object) -> list[dict]:
                 output.sheet_view.showGridLines,
             ),
             "tables": (
-                sorted(str(t) for t in sheet.tables.values()),
-                sorted(str(t) for t in output.tables.values()),
+                sorted(table_signature(t) for t in sheet.tables.values()),
+                sorted(table_signature(t) for t in output.tables.values()),
             ),
             "local_defined_names": (
                 sorted(str(t) for t in sheet.defined_names.values()),
@@ -166,6 +174,8 @@ def grade_workbook(
     evaluation_dir: Path | None = None,
     evaluated: tuple[Path, Path] | None = None,
 ) -> dict:
+    if task.get("oracleIssue"):
+        return task["oracleIssue"].copy()
     if not actual.exists():
         return {"status": "missing_output"}
     cached_golden, cached_actual = (
@@ -191,6 +201,7 @@ def grade_workbook(
             books.append(load_workbook(path, data_only=data_only))
         before, expected_raw, actual_raw, expected, result = books
         known_blanks = evaluated_blank_caches(cached_golden)
+        actual_blanks = evaluated_blank_caches(cached_actual)
         structure = structure_differences(expected_raw, actual_raw)
         try:
             allowed = answer_cells(task, expected_raw.sheetnames)
@@ -198,19 +209,24 @@ def grade_workbook(
             return {"status": "ambiguous_task_metadata"}
         if not allowed:
             return {"status": "ambiguous_task_metadata"}
-        style_requested = any(
-            word in task.get("instruction", "").lower()
-            for word in [
-                "font",
-                "bold",
-                "fill",
-                "color",
-                "border",
-                "alignment",
-                "formatting",
-            ]
+        components = task.get("styleComponents")
+        style_requested = (
+            bool(components)
+            if components is not None
+            else any(
+                word in task.get("instruction", "").lower()
+                for word in [
+                    "font",
+                    "bold",
+                    "fill",
+                    "color",
+                    "border",
+                    "alignment",
+                    "formatting",
+                ]
+            )
         )
-        differences, preservation, caches = [], [], []
+        differences, preservation, caches, missing_actual_caches = [], [], [], []
         counts = {
             "values": 0,
             "styles": 0,
@@ -244,16 +260,25 @@ def grade_workbook(
                     )
                     address = target.coordinate
                     in_answer = (name, address) in allowed
-                    style_changed = (
-                        old is None
-                        or cell_signature(old[address])[1:3]
+                    style_changed = old is None or (
+                        not style_matches(
+                            old[address], raw_expected[address], components
+                        )
+                        if components is not None
+                        else cell_signature(old[address])[1:3]
                         != cell_signature(raw_expected[address])[1:3]
                     )
                     if (
                         style_requested
                         and (in_answer or style_changed)
-                        and cell_signature(raw_expected[address])[1:3]
-                        != cell_signature(raw_actual[address])[1:3]
+                        and (
+                            not style_matches(
+                                raw_expected[address], raw_actual[address], components
+                            )
+                            if components is not None
+                            else cell_signature(raw_expected[address])[1:3]
+                            != cell_signature(raw_actual[address])[1:3]
+                        )
                     ):
                         add_failure(
                             counts,
@@ -281,9 +306,7 @@ def grade_workbook(
                         and (name, address) not in known_blanks
                     ):
                         caches.append({"sheet": name, "cell": address})
-                    elif in_answer and canonical(target.value) != canonical(
-                        output.value
-                    ):
+                    elif in_answer and not values_equal(target.value, output.value):
                         add_failure(
                             counts,
                             differences,
@@ -293,14 +316,26 @@ def grade_workbook(
                                 "cell": address,
                                 "expected": scalar(target.value),
                                 "actual": scalar(output.value),
+                                "actualFormula": cell_signature(raw_actual[address])[0]
+                                if raw_actual[address].data_type == "f"
+                                else None,
                             },
                         )
+                    if (
+                        in_answer
+                        and raw_actual[address].data_type == "f"
+                        and output.value is None
+                        and (name, address) not in actual_blanks
+                    ):
+                        missing_actual_caches.append({"sheet": name, "cell": address})
                     if old is not None and (name, address) not in allowed:
-                        unchanged = cell_signature(old[address]) == cell_signature(
-                            raw_expected[address]
+                        unchanged = values_equal(
+                            cell_signature(old[address]),
+                            cell_signature(raw_expected[address]),
                         )
-                        if unchanged and cell_signature(old[address]) != cell_signature(
-                            raw_actual[address]
+                        if unchanged and not values_equal(
+                            cell_signature(old[address]),
+                            cell_signature(raw_actual[address]),
                         ):
                             add_failure(
                                 counts,
@@ -327,6 +362,11 @@ def grade_workbook(
                             )
         if caches:
             return {"status": "oracle_cache_missing", "cells": caches[:20]}
+        if missing_actual_caches:
+            return {
+                "status": "output_cache_missing",
+                "cells": missing_actual_caches[:20],
+            }
         status = "pass" if not any(counts.values()) else "incorrect"
         return {
             "status": status,
@@ -342,9 +382,11 @@ def grade_workbook(
                 "structure": counts["structure"] == 0,
             },
             "rubric": (
-                "golden answer-region values; explicit style requests; "
-                "names, merges, tables, visibility and unchanged cells preserved"
+                "golden answer-region values at Excel float precision; reviewed "
+                "requested style components where supplied; names, merges, tables, "
+                "visibility and unchanged cells preserved"
             ),
+            "styleComponents": components,
         }
     except (
         ValueError,

@@ -1,6 +1,7 @@
 """Reviewed style requirements for the fixed public task sample, with visible colors."""
 
 import colorsys
+from copy import copy
 from decimal import Decimal, localcontext
 from xml.etree import ElementTree as ET
 
@@ -27,21 +28,45 @@ STYLE_REQUIREMENTS = {
     "343-20": ["alignment"],
     "54638": ["fontName", "fill", "border"],
     "120-24": ["fill"],
+    "510-3": ["numberFormat", "bold"],
+    "398-14": ["fontName", "fontSize", "bold", "fontColor", "alignment"],
+}
+
+ORACLE_ISSUES = {
+    "402-43": {
+        "status": "ambiguous_task_metadata",
+        "reason": "Answer metadata requires new Sheet2, "
+        "which the task instruction does not name",
+    },
+    "395-36": {
+        "status": "ambiguous_task_metadata",
+        "reason": "Answer metadata requires new MyResult, while the instruction "
+        "asks to modify Result what I am getting",
+    },
+    "168-17": {
+        "status": "oracle_preservation_conflict",
+        "reason": "Golden workbook deletes unrelated Final result sheet; "
+        "the instruction only asks to delete preceding rows in Statement",
+    },
 }
 
 
 def reviewed_task(task: dict) -> dict:
     key = str(task["id"])
-    if key not in STYLE_REQUIREMENTS:
-        return task.copy()
-    return {
-        **task,
-        "styleComponents": STYLE_REQUIREMENTS[key],
-        "styleRubric": "reviewed-public-sample-v1",
-    }
+    result = task.copy()
+    if key in STYLE_REQUIREMENTS:
+        result.update(
+            styleComponents=STYLE_REQUIREMENTS[key],
+            styleRubric="reviewed-public-sample-v1",
+        )
+    if key in ORACLE_ISSUES:
+        result["oracleIssue"] = ORACLE_ISSUES[key].copy()
+    return result
 
 
 def values_equal(expected: object, actual: object) -> bool:
+    if expected in (None, "") and actual in (None, ""):
+        return True
     if isinstance(expected, list) and isinstance(actual, list):
         return len(expected) == len(actual) and all(
             values_equal(a, b) for a, b in zip(expected, actual)
@@ -133,8 +158,9 @@ def style_component(cell: Cell, component: str) -> object:
         "fontSize": lambda: cell.font.sz,
         "bold": lambda: bool(cell.font.b),
         "italic": lambda: bool(cell.font.i),
+        "fontColor": lambda: visible_color(cell.font.color, cell),
         "numberFormat": lambda: cell.number_format,
-        "alignment": lambda: cell.alignment,
+        "alignment": lambda: copy(cell.alignment),
     }
     if component not in getters:
         raise ValueError(f"Unknown style component: {component}")

@@ -70,6 +70,38 @@ def test_regrade_cli_keeps_timeout_and_raw_record_and_checks_hashes(tmp_path) ->
     assert graded["grading"]["workbookStatus"] == "pass"
     assert graded["graderSha256"]
     assert raw.read_bytes() == before
+    from zalos_sheetops.benchmarks.public.native import (
+        prepare_native_inputs,
+        verify_native_inputs,
+    )
+
+    native = tmp_path / "native"
+    prepare_native_inputs(dataset, json.loads(tasks.read_text()), root, native, "test")
+    verify_native_inputs(native)
+    native_command = [*command, "--native-evaluation-root", str(native)]
+    result = subprocess.run(native_command, capture_output=True, text=True)
+    assert result.returncode == 0, result.stderr
+    graded = json.loads(destination.read_text())
+    assert graded["evaluationEngine"] == {"name": "Microsoft Excel", "version": "test"}
+    assert graded["grading"]["workbookStatus"] == "pass"
+    audit_path = native / "audit.json"
+    audit = json.loads(audit_path.read_text())
+    actual_entry = next(f for f in audit["files"] if f["role"] == "actual")
+    actual_entry["nativeRejection"] = "Excel offered content recovery; declined"
+    audit_path.write_text(json.dumps(audit))
+    result = subprocess.run(native_command, capture_output=True, text=True)
+    assert result.returncode == 0, result.stderr
+    assert (
+        json.loads(destination.read_text())["grading"]["workbookStatus"]
+        == "invalid_output"
+    )
+    (native / "1/baseline/0/output.xlsx").write_bytes(b"changed after audit")
+    result = subprocess.run(native_command, capture_output=True, text=True)
+    assert result.returncode == 0, result.stderr
+    assert (
+        json.loads(destination.read_text())["grading"]["status"]
+        == "evaluation_unavailable"
+    )
     book.active["A1"] = 99
     book.save(original)
     result = subprocess.run(command, capture_output=True, text=True)

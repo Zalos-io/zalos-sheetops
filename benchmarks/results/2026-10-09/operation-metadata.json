@@ -1,0 +1,314 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-10-09T22:40:20.968549+00:00",
+  "python": "3.14.7 (main, Aug  7 2026, 02:15:30) [Clang 22.1.3 ]",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "versions": {
+    "zalos-sheetops": "0.4.2",
+    "openpyxl": "3.1.5",
+    "fastexcel": "0.21.0",
+    "python-calamine": "0.8.3",
+    "XlsxWriter": "3.2.9",
+    "pyarrow": "25.0.1"
+  },
+  "repeats": 3,
+  "timeoutSeconds": 120,
+  "seed": 20261009,
+  "cases": [
+    {
+      "path": "BENCHMARK_ROOT/data/generated/readbench-25000.xlsx",
+      "sheet": "data",
+      "source": "excel-read-benchmark",
+      "id": "25000-cells-start",
+      "operation": "cells",
+      "range": "A2:L11"
+    },
+    {
+      "path": "BENCHMARK_ROOT/data/generated/readbench-25000.xlsx",
+      "sheet": "data",
+      "source": "excel-read-benchmark",
+      "id": "25000-scalar-cells-start",
+      "operation": "cells",
+      "range": "A2:I11"
+    },
+    {
+      "path": "BENCHMARK_ROOT/data/generated/readbench-25000.xlsx",
+      "sheet": "data",
+      "source": "excel-read-benchmark",
+      "id": "25000-cells-middle",
+      "operation": "cells",
+      "range": "A12501:L12510"
+    },
+    {
+      "path": "BENCHMARK_ROOT/data/generated/readbench-25000.xlsx",
+      "sheet": "data",
+      "source": "excel-read-benchmark",
+      "id": "25000-scalar-cells-middle",
+      "operation": "cells",
+      "range": "A12501:I12510"
+    },
+    {
+      "path": "BENCHMARK_ROOT/data/generated/readbench-25000.xlsx",
+      "sheet": "data",
+      "source": "excel-read-benchmark",
+      "id": "25000-cells-end",
+      "operation": "cells",
+      "range": "A24992:L25001"
+    },
+    {
+      "path": "BENCHMARK_ROOT/data/generated/readbench-25000.xlsx",
+      "sheet": "data",
+      "source": "excel-read-benchmark",
+      "id": "25000-scalar-cells-end",
+      "operation": "cells",
+      "range": "A24992:I25001"
+    },
+    {
+      "path": "BENCHMARK_ROOT/data/generated/readbench-25000.xlsx",
+      "sheet": "data",
+      "source": "excel-read-benchmark",
+      "id": "25000-table",
+      "operation": "table"
+    },
+    {
+      "path": "BENCHMARK_ROOT/data/generated/readbench-100000.xlsx",
+      "sheet": "data",
+      "source": "excel-read-benchmark",
+      "id": "100000-cells-start",
+      "operation": "cells",
+      "range": "A2:L11"
+    },
+    {
+      "path": "BENCHMARK_ROOT/data/generated/readbench-100000.xlsx",
+      "sheet": "data",
+      "source": "excel-read-benchmark",
+      "id": "100000-scalar-cells-start",
+      "operation": "cells",
+      "range": "A2:I11"
+    },
+    {
+      "path": "BENCHMARK_ROOT/data/generated/readbench-100000.xlsx",
+      "sheet": "data",
+      "source": "excel-read-benchmark",
+      "id": "100000-cells-middle",
+      "operation": "cells",
+      "range": "A50001:L50010"
+    },
+    {
+      "path": "BENCHMARK_ROOT/data/generated/readbench-100000.xlsx",
+      "sheet": "data",
+      "source": "excel-read-benchmark",
+      "id": "100000-scalar-cells-middle",
+      "operation": "cells",
+      "range": "A50001:I50010"
+    },
+    {
+      "path": "BENCHMARK_ROOT/data/generated/readbench-100000.xlsx",
+      "sheet": "data",
+      "source": "excel-read-benchmark",
+      "id": "100000-cells-end",
+      "operation": "cells",
+      "range": "A99992:L100001"
+    },
+    {
+      "path": "BENCHMARK_ROOT/data/generated/readbench-100000.xlsx",
+      "sheet": "data",
+      "source": "excel-read-benchmark",
+      "id": "100000-scalar-cells-end",
+      "operation": "cells",
+      "range": "A99992:I100001"
+    },
+    {
+      "path": "BENCHMARK_ROOT/data/generated/readbench-100000.xlsx",
+      "sheet": "data",
+      "source": "excel-read-benchmark",
+      "id": "100000-table",
+      "operation": "table"
+    },
+    {
+      "path": "BENCHMARK_ROOT/data/generated/readbench-400000.xlsx",
+      "sheet": "data",
+      "source": "excel-read-benchmark",
+      "id": "400000-cells-start",
+      "operation": "cells",
+      "range": "A2:L11"
+    },
+    {
+      "path": "BENCHMARK_ROOT/data/generated/readbench-400000.xlsx",
+      "sheet": "data",
+      "source": "excel-read-benchmark",
+      "id": "400000-scalar-cells-start",
+      "operation": "cells",
+      "range": "A2:I11"
+    },
+    {
+      "path": "BENCHMARK_ROOT/data/generated/readbench-400000.xlsx",
+      "sheet": "data",
+      "source": "excel-read-benchmark",
+      "id": "400000-cells-middle",
+      "operation": "cells",
+      "range": "A200001:L200010"
+    },
+    {
+      "path": "BENCHMARK_ROOT/data/generated/readbench-400000.xlsx",
+      "sheet": "data",
+      "source": "excel-read-benchmark",
+      "id": "400000-scalar-cells-middle",
+      "operation": "cells",
+      "range": "A200001:I200010"
+    },
+    {
+      "path": "BENCHMARK_ROOT/data/generated/readbench-400000.xlsx",
+      "sheet": "data",
+      "source": "excel-read-benchmark",
+      "id": "400000-cells-end",
+      "operation": "cells",
+      "range": "A399992:L400001"
+    },
+    {
+      "path": "BENCHMARK_ROOT/data/generated/readbench-400000.xlsx",
+      "sheet": "data",
+      "source": "excel-read-benchmark",
+      "id": "400000-scalar-cells-end",
+      "operation": "cells",
+      "range": "A399992:I400001"
+    },
+    {
+      "path": "BENCHMARK_ROOT/data/generated/readbench-400000.xlsx",
+      "sheet": "data",
+      "source": "excel-read-benchmark",
+      "id": "400000-table",
+      "operation": "table"
+    },
+    {
+      "id": "fidelity-cell_values-cell_values",
+      "path": "BENCHMARK_ROOT/data/excelbench/tier1/01_cell_values.xlsx",
+      "sheet": "cell_values",
+      "source": "ExcelBench",
+      "operation": "cells",
+      "formulas": true,
+      "range": "A1:J19"
+    },
+    {
+      "id": "fidelity-formulas-formulas",
+      "path": "BENCHMARK_ROOT/data/excelbench/tier1/02_formulas.xlsx",
+      "sheet": "formulas",
+      "source": "ExcelBench",
+      "operation": "cells",
+      "formulas": true,
+      "range": "A1:J5"
+    },
+    {
+      "id": "fidelity-formulas-References",
+      "path": "BENCHMARK_ROOT/data/excelbench/tier1/02_formulas.xlsx",
+      "sheet": "References",
+      "source": "ExcelBench",
+      "operation": "cells",
+      "formulas": true,
+      "range": "A1:J2"
+    },
+    {
+      "id": "fidelity-number_formats-number_formats",
+      "path": "BENCHMARK_ROOT/data/excelbench/tier1/05_number_formats.xlsx",
+      "sheet": "number_formats",
+      "source": "ExcelBench",
+      "operation": "cells",
+      "formulas": true,
+      "range": "A1:J6"
+    },
+    {
+      "id": "fidelity-multiple_sheets-Alpha",
+      "path": "BENCHMARK_ROOT/data/excelbench/tier1/09_multiple_sheets.xlsx",
+      "sheet": "Alpha",
+      "source": "ExcelBench",
+      "operation": "cells",
+      "formulas": true,
+      "range": "A1:J3"
+    },
+    {
+      "id": "fidelity-multiple_sheets-Beta",
+      "path": "BENCHMARK_ROOT/data/excelbench/tier1/09_multiple_sheets.xlsx",
+      "sheet": "Beta",
+      "source": "ExcelBench",
+      "operation": "cells",
+      "formulas": true,
+      "range": "A1:J3"
+    },
+    {
+      "id": "fidelity-multiple_sheets-Gamma",
+      "path": "BENCHMARK_ROOT/data/excelbench/tier1/09_multiple_sheets.xlsx",
+      "sheet": "Gamma",
+      "source": "ExcelBench",
+      "operation": "cells",
+      "formulas": true,
+      "range": "A1:J3"
+    },
+    {
+      "id": "fidelity-merged_cells-merged_cells",
+      "path": "BENCHMARK_ROOT/data/excelbench/tier2/10_merged_cells.xlsx",
+      "sheet": "merged_cells",
+      "source": "ExcelBench",
+      "operation": "cells",
+      "formulas": true,
+      "range": "A1:J7"
+    },
+    {
+      "id": "fidelity-hyperlinks-Targets",
+      "path": "BENCHMARK_ROOT/data/excelbench/tier2/13_hyperlinks.xlsx",
+      "sheet": "Targets",
+      "source": "ExcelBench",
+      "operation": "cells",
+      "formulas": true,
+      "range": "A1:J5"
+    },
+    {
+      "id": "fidelity-hyperlinks-hyperlinks",
+      "path": "BENCHMARK_ROOT/data/excelbench/tier2/13_hyperlinks.xlsx",
+      "sheet": "hyperlinks",
+      "source": "ExcelBench",
+      "operation": "cells",
+      "formulas": true,
+      "range": "A1:J5"
+    },
+    {
+      "id": "fidelity-tables-tables",
+      "path": "BENCHMARK_ROOT/data/excelbench/tier3/19_tables.xlsx",
+      "sheet": "tables",
+      "source": "ExcelBench",
+      "operation": "cells",
+      "formulas": true,
+      "range": "A1:J28"
+    }
+  ],
+  "adapters": [
+    "openpyxl",
+    "sheetops-api",
+    "sheetops-cli",
+    "calamine",
+    "fastexcel"
+  ],
+  "harnessSha256": {
+    "runner.py": "e7921a38b97af8c3a40d34a61153606ccfb10659e86f4c9ed1cff07d88f45bb5",
+    "adapters.py": "57dbb41b10c34850f64ce71eacf77f674eeca5fd2f01829b4add2433ff531086",
+    "worker.py": "6d2b60bfcb468785d1bf8c9bc136eb2a2dff8c8824a238e7d4c69367403521ba",
+    "scoring.py": "4c7bc4e8a834a3ba8c7e17e35337207ea18fde63f12e17d065b56079acd80252",
+    "fixtures.py": "115d7a1f608606aae3a1155a65fc20b88d3c15a353825f5dfdfda5572c658d70"
+  },
+  "sourceManifestSha256": "963e6c4c424e6f493e8684fd12fe284d0dd33b948e6da7c57fb23de4844f9c47",
+  "inputSha256": {
+    "BENCHMARK_ROOT/data/generated/readbench-25000.xlsx": "c24eb8323e167b4b8498bdbf291b25f4b0d099e201fb4d6876738cf50cae2210",
+    "BENCHMARK_ROOT/data/generated/readbench-100000.xlsx": "99b4b3331be82e4ce2294cdf1a05c9b2a01e58f389c6af21a57f4d5986e2af5e",
+    "BENCHMARK_ROOT/data/generated/readbench-400000.xlsx": "c9c2dc037ed59142690858714f58c29975a8883b6d1914f4145881eb602fe643",
+    "BENCHMARK_ROOT/data/excelbench/tier1/01_cell_values.xlsx": "7be7af2cef08d1dc7dcec997c85d259d30e08ea3bb2ed2adf09c11e0186aa112",
+    "BENCHMARK_ROOT/data/excelbench/tier1/02_formulas.xlsx": "a1ff1800d1a0e5bd5aeb3320e69a1251b7caa687965f7af28a080fb089b009b8",
+    "BENCHMARK_ROOT/data/excelbench/tier1/05_number_formats.xlsx": "62ef153992ab5377eb9617bba503da90cfff41073666c295b4ec9a21b60315ed",
+    "BENCHMARK_ROOT/data/excelbench/tier1/09_multiple_sheets.xlsx": "30671691d23d24623ec92606926478370823b54df517adcc20e6e42271ded6d6",
+    "BENCHMARK_ROOT/data/excelbench/tier2/10_merged_cells.xlsx": "16125122d12ac8789f9f40c73cfa4efe6cf1cc89706e75fcd34eb4a2664f7214",
+    "BENCHMARK_ROOT/data/excelbench/tier2/13_hyperlinks.xlsx": "7e7d75d38230bea5d27571a62bcba423ea241dbbff4208b410d792907df4ad66",
+    "BENCHMARK_ROOT/data/excelbench/tier3/19_tables.xlsx": "6d8ba8fd4151582f7ef02a4f623ead2fab74e95a0c470c8febdc119400faeee6"
+  },
+  "cachePolicy": "fresh process; OS cache uncontrolled",
+  "memoryMetric": "maximum RSS of any one worker/CLI process; not aggregate RSS",
+  "oracle": "independent openpyxl reads; separate untimed reference per case"
+}

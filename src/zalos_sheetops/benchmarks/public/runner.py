@@ -11,8 +11,9 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from .fixtures import file_sha256, generate_readbench, prepare_public_inputs
+from .rubric import ORACLE_ISSUES
 from .scoring import score_outputs, summarize
-from .tasks import select_tasks
+from .tasks import reviewed_selection, select_tasks
 
 
 def execute(case: dict, adapter: str, timeout: float) -> dict:
@@ -280,11 +281,31 @@ def main() -> None:
         print(json.dumps(result, ensure_ascii=False))
     else:
         dataset = args.data / "verified/spreadsheetbench_verified_400/dataset.json"
-        tasks = select_tasks(json.loads(dataset.read_text(encoding="utf-8")))
+        pool = json.loads(dataset.read_text(encoding="utf-8"))
+        initial = select_tasks(pool)
+        tasks = reviewed_selection(pool, initial)
         args.output.mkdir(parents=True, exist_ok=True)
         (args.output / "tasks.json").write_text(
             json.dumps(tasks, indent=2), encoding="utf-8"
         )
+        selection = {
+            "seed": 20261009,
+            "baseCount": len(initial),
+            "taskCount": len(tasks),
+            "baseTaskIds": [t["id"] for t in initial],
+            "supplementalTaskIds": [t["id"] for t in tasks[len(initial) :]],
+            "oracleIssues": {
+                str(t["id"]): ORACLE_ISSUES[str(t["id"])]
+                for t in initial
+                if str(t["id"]) in ORACLE_ISSUES
+            },
+            "replacementPolicy": "same seed and instruction type; original "
+            "attempts retained; no selection by model performance",
+        }
+        (args.output / "selection.json").write_text(
+            json.dumps(selection, indent=2), encoding="utf-8"
+        )
+        print(json.dumps(selection))
 
 
 if __name__ == "__main__":

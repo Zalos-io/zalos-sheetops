@@ -170,10 +170,8 @@ def external_table(case: dict, adapter: str) -> list[list[object]]:
         sheet = fastexcel.read_excel(case["path"]).load_sheet(
             case["sheet"], header_row=0
         )
-        data = [
-            sheet.to_arrow().column_names,
-            *[list(r.values()) for r in sheet.to_arrow().to_pylist()],
-        ]
+        arrow = sheet.to_arrow()
+        data = [arrow.column_names, *[list(r.values()) for r in arrow.to_pylist()]]
     return [[table_text(v) for v in row] for row in data]
 
 

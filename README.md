@@ -58,6 +58,13 @@ rtk uv run ruff format --check .
 
 ## Public benchmarks
 
+The [October 2026 baseline](benchmarks/results/2026-10-09/baseline.md) includes
+480 reader measurements, 33 paired task attempts with 30 usable pairs, audited
+native Excel grades, and a public archive of failed cases. Both task arms passed
+20/30; this run does not establish an overall app-level speed or accuracy win.
+SheetOps accelerated deep scalar reads, while date-aware extraction, edit scope
+and native formula compatibility remain concrete improvement targets.
+
 The benchmark harness keeps correctness and speed separate. It uses pinned
 public inputs, fresh reader processes, full-output digests, and independent
 OpenPyXL reference reads. Optional reader dependencies stay in the `benchmark`
@@ -78,6 +85,12 @@ Formula cases also require formula text and cached values. Unsupported results
 remain visible; a fast incorrect output never enters the timing comparison.
 The feature checks cover selected metadata, merges, number formats, hyperlinks,
 and exact decimal reconciliation, not every Excel feature.
+
+Task selection keeps the initial seeded 30 tasks and records three reviewed
+reference conflicts. It adds three tasks of the same type from the same seeded
+stream, producing 33 attempted pairs and 30 usable pairs. Pass `--limit 33` to
+the agent runner; its default is 30. The selection manifest explains exclusions
+without removing their original attempts.
 
 Paired Zalos tasks use the installed desktop agent through its headless CLI.
 Build the two images with `agents build-images --dockerfile
@@ -105,11 +118,22 @@ rtk proxy uv run python -m zalos_sheetops.benchmarks.public.report --root /tmp/s
 
 Regrading verifies recorded input/output hashes and preserves raw records.
 Pass `--soffice PATH_TO_LIBREOFFICE` if evaluation copies are not already
-available. Recalculation changes only evaluation copies. Agent scores cover
+available. For native Excel validation, run the `native` module's `prepare`
+action with `--dataset`, `--tasks`, `--runs`, `--output` and `--excel-version`.
+Open each queued copy in Excel, recalculate, save, then close it. Decline any
+content repair and record that rejection in the copy's manifest entry as
+`nativeRejection`. Run `native verify --output EVALUATION_ROOT`, then regrade
+with `--native-evaluation-root EVALUATION_ROOT`. The audit requires intact
+sources and saved formula caches; the grader checks evaluated file hashes.
+Keep LibreOffice scores separately to measure interoperability differences.
+
+Recalculation changes only evaluation copies. Agent scores cover
 answer values, explicit requested styles and preservation; they are not the
 official SpreadsheetBench leaderboard score. This experiment compares the
 package **plus** spreadsheet skill configuration and does not measure Electron
 UI behavior or isolate the package's contribution from the skill's.
+Agent floating-point values use Excel's 15 significant digits; integer IDs,
+strings, reader digests and decimal reconciliation retain exact comparison.
 
 Public sources: [excel-read-benchmark](https://github.com/nazmul284/excel-read-benchmark)
 (MIT; adapted mixed-column generator), [ExcelBench](https://github.com/SynthGL/ExcelBench)
