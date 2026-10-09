@@ -14,6 +14,15 @@ def openpyxl_cells(case: dict) -> list[list[object]]:
     options = dict(
         min_col=bounds[0], min_row=bounds[1], max_col=bounds[2], max_row=bounds[3]
     )
+    if not case.get("formulas"):
+        book = load_workbook(case["path"], read_only=True, data_only=True)
+        try:
+            return [
+                [scalar(value) for value in row]
+                for row in book[case["sheet"]].iter_rows(**options, values_only=True)
+            ]
+        finally:
+            book.close()
     formula = load_workbook(case["path"], read_only=True, data_only=False)
     cached = load_workbook(case["path"], read_only=True, data_only=True)
     try:

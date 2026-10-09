@@ -7,9 +7,10 @@ import random
 import subprocess
 import sys
 import time
+from datetime import datetime, timezone
 from pathlib import Path
 
-from .fixtures import generate_readbench, prepare_public_inputs
+from .fixtures import file_sha256, generate_readbench, prepare_public_inputs
 from .scoring import score_outputs, summarize
 from .tasks import select_tasks
 
@@ -102,6 +103,48 @@ def build_cases(root: Path, sizes: list[int]) -> list[dict]:
     return cases
 
 
+def compare_measurement(reference: dict, measured: dict) -> dict:
+    result = measured.copy()
+    if reference["status"] != "ok":
+        result["status"] = "oracle_failure"
+        result["oracleReason"] = reference
+    elif result["status"] == "ok":
+        matched = result["digest"] == reference["digest"]
+        result["status"] = "pass" if matched else "incorrect"
+        if not matched:
+            result["sampleComparison"] = score_outputs(
+                reference["sample"], result["sample"]
+            )
+            result["expectedDigest"] = reference["digest"]
+    return result
+
+
+def replay_case(
+    root: Path,
+    output: Path,
+    sizes: list[int],
+    case_id: str,
+    adapter: str,
+    timeout: float = 120,
+) -> dict:
+    cases = [case for case in build_cases(root, sizes) if case["id"] == case_id]
+    if len(cases) != 1:
+        return {"status": "case_not_found", "case": case_id}
+    case = cases[0]
+    reference = execute(case, "openpyxl", timeout)
+    measured = compare_measurement(reference, execute(case, adapter, timeout))
+    result = {
+        "case": case_id,
+        "caseDefinition": case,
+        "adapter": adapter,
+        "inputSha256": file_sha256(Path(case["path"])),
+        **measured,
+    }
+    output.mkdir(parents=True, exist_ok=True)
+    (output / "replay.json").write_text(json.dumps(result, indent=2), encoding="utf-8")
+    return result
+
+
 def run_suite(
     root: Path, output: Path, sizes: list[int], repeats: int, timeout: float = 120
 ) -> dict:
@@ -131,6 +174,7 @@ def run_suite(
             versions[name] = None
     metadata = {
         "schemaVersion": 1,
+        "startedAt": datetime.now(timezone.utc).isoformat(),
         "python": sys.version,
         "platform": platform.platform(),
         "machine": platform.machine(),
@@ -139,6 +183,20 @@ def run_suite(
         "timeoutSeconds": timeout,
         "seed": 20261009,
         "cases": cases,
+        "adapters": adapters,
+        "harnessSha256": {
+            name: file_sha256(Path(__file__).with_name(name))
+            for name in [
+                "runner.py",
+                "adapters.py",
+                "worker.py",
+                "scoring.py",
+                "fixtures.py",
+            ]
+        },
+        "sourceManifestSha256": file_sha256(root / "sources.json")
+        if (root / "sources.json").exists()
+        else None,
         "inputSha256": inputs,
         "cachePolicy": "fresh process; OS cache uncontrolled",
         "memoryMetric": "maximum RSS of any one worker/CLI process; not aggregate RSS",
@@ -156,17 +214,7 @@ def run_suite(
                 random.Random(20261009 + repeat).shuffle(order)
                 for adapter in order:
                     measured = execute(case, adapter, timeout)
-                    if reference["status"] != "ok":
-                        measured["status"] = "oracle_failure"
-                        measured["oracleReason"] = reference
-                    elif measured["status"] == "ok":
-                        matched = measured["digest"] == reference["digest"]
-                        measured["status"] = "pass" if matched else "incorrect"
-                        if not matched:
-                            measured["sampleComparison"] = score_outputs(
-                                reference["sample"], measured["sample"]
-                            )
-                            measured["expectedDigest"] = reference["digest"]
+                    measured = compare_measurement(reference, measured)
                     record = {
                         "case": case["id"],
                         "adapter": adapter,
@@ -187,6 +235,9 @@ def run_suite(
         with Path(path).open("rb") as source:
             if hashlib.file_digest(source, "sha256").hexdigest() != expected:
                 raise RuntimeError(f"Input mutated during benchmark: {path}")
+    for name, expected in metadata["harnessSha256"].items():
+        if file_sha256(Path(__file__).with_name(name)) != expected:
+            raise RuntimeError(f"Benchmark source changed during measurements: {name}")
     result = {"summaries": summarize(records), "recordCount": len(records)}
     (output / "summary.json").write_text(json.dumps(result, indent=2), encoding="utf-8")
     return result
@@ -194,12 +245,20 @@ def run_suite(
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Public spreadsheet benchmark runner")
-    parser.add_argument("action", choices=["prepare", "operations", "select-tasks"])
+    parser.add_argument(
+        "action", choices=["prepare", "operations", "select-tasks", "replay"]
+    )
     parser.add_argument("--data", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--archive", type=Path)
     parser.add_argument("--sizes", default="25000,100000,400000")
     parser.add_argument("--repeats", type=int, default=3)
+    parser.add_argument("--case")
+    parser.add_argument(
+        "--adapter",
+        choices=["openpyxl", "sheetops-api", "sheetops-cli", "calamine", "fastexcel"],
+        default="sheetops-cli",
+    )
     args = parser.parse_args()
     if args.action == "prepare":
         prepare_public_inputs(args.data, args.archive)
@@ -210,6 +269,15 @@ def main() -> None:
             [int(n) for n in args.sizes.split(",")],
             args.repeats,
         )
+    elif args.action == "replay":
+        result = replay_case(
+            args.data,
+            args.output,
+            [int(n) for n in args.sizes.split(",")],
+            args.case,
+            args.adapter,
+        )
+        print(json.dumps(result, ensure_ascii=False))
     else:
         dataset = args.data / "verified/spreadsheetbench_verified_400/dataset.json"
         tasks = select_tasks(json.loads(dataset.read_text(encoding="utf-8")))

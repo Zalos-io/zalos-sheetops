@@ -8,6 +8,8 @@ import signal
 import sqlite3
 import subprocess
 import time
+from collections import Counter
+from datetime import datetime, timezone
 from pathlib import Path
 
 from .fixtures import file_sha256
@@ -76,6 +78,40 @@ def call_agent(command: list[str], env: dict[str, str], timeout: float) -> dict:
     }
 
 
+def sheetops_tool_metrics(contents: list[str]) -> dict:
+    commands, errors = Counter(), Counter()
+    success, failure = 0, 0
+    for content in contents:
+        try:
+            tool = json.loads(content)
+        except (ValueError, TypeError):
+            continue
+        if not isinstance(tool, dict) or not isinstance(tool.get("output"), str):
+            continue
+        for line in tool["output"].splitlines():
+            try:
+                response = json.loads(line)
+            except ValueError:
+                continue
+            if not isinstance(response, dict) or type(response.get("ok")) is not bool:
+                continue
+            command = response.get("command")
+            if not isinstance(command, str):
+                continue
+            commands[command] += 1
+            if response["ok"]:
+                success += 1
+            else:
+                failure += 1
+                errors[str(response.get("errorCode", "unknown"))] += 1
+    return {
+        "sheetopsSuccessfulResponses": success,
+        "sheetopsFailedResponses": failure,
+        "sheetopsCommandCounts": dict(commands),
+        "sheetopsErrorCounts": dict(errors),
+    }
+
+
 def extract_usage(home: Path, usage_path: Path) -> dict:
     allowed = {
         "model",
@@ -108,6 +144,13 @@ def extract_usage(home: Path, usage_path: Path) -> dict:
             result["observedToolCalls"] = database.execute(
                 "SELECT count(*) FROM messages WHERE role='tool'"
             ).fetchone()[0]
+            contents = [
+                row[0]
+                for row in database.execute(
+                    "SELECT content FROM messages WHERE role='tool'"
+                )
+            ]
+            result.update(sheetops_tool_metrics(contents))
     return result
 
 
@@ -322,6 +365,11 @@ def run_tasks(
                         "--usage-file",
                         str(usage_path),
                     ]
+                    started_at = datetime.now(timezone.utc).isoformat()
+                    source_hashes = {
+                        name: file_sha256(Path(__file__).with_name(name))
+                        for name in ["agents.py", "grading.py", "scoring.py"]
+                    }
                     measured = call_agent(command, env, timeout)
                     cleanup_workspace(workspace)
                     (root / "response.txt").write_text(
@@ -342,11 +390,16 @@ def run_tasks(
                         "arm": arm,
                         "repeat": repeat,
                         "instructionType": task["instruction_type"],
+                        "startedAt": started_at,
+                        "executionSourceSha256": source_hashes,
                         **measured,
                         "grading": grading,
                         "usage": extract_usage(home, usage_path),
                         "inputSha256": file_sha256(original),
                         "goldenSha256": file_sha256(golden),
+                        "outputSha256": file_sha256(workspace / "output.xlsx")
+                        if (workspace / "output.xlsx").exists()
+                        else None,
                     }
                     records.append(record)
                     destination.write(json.dumps(record, ensure_ascii=False) + "\n")

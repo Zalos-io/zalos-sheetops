@@ -2,7 +2,9 @@
 
 import hashlib
 import json
+import os
 import tarfile
+import tempfile
 import urllib.request
 from datetime import date, timedelta
 from pathlib import Path
@@ -11,6 +13,7 @@ from random import Random
 EXCELBENCH_REV = "5f71713413c43f3733e303ba8a4eed6a756760cd"
 READBENCH_REV = "d8ddc2b5cfab51d53e196015d7037b1d5f463a8a"
 VERIFIED_REV = "ab0b742b0fc95b946f212d80ac7771b5531272e4"
+VERIFIED_SHA256 = "10ef893dd29cb13ab97143ea787e68cdc9574a13873ab9a54e50b31dc03fc949"
 HEADERS = [
     "id",
     "sku",
@@ -32,13 +35,24 @@ def file_sha256(path: Path) -> str:
         return hashlib.file_digest(source, "sha256").hexdigest()
 
 
+def verify_archive(path: Path, expected_sha256: str = VERIFIED_SHA256) -> None:
+    if file_sha256(path) != expected_sha256:
+        raise ValueError("Archive SHA256 does not match the pinned dataset")
+
+
 def download(url: str, destination: Path) -> dict:
     destination.parent.mkdir(parents=True, exist_ok=True)
     if not destination.exists():
-        with urllib.request.urlopen(url, timeout=60) as source:
-            with destination.open("wb") as target:
-                while block := source.read(1024 * 1024):
-                    target.write(block)
+        handle, name = tempfile.mkstemp(dir=destination.parent, prefix=destination.name)
+        temporary = Path(name)
+        try:
+            with os.fdopen(handle, "wb") as target:
+                with urllib.request.urlopen(url, timeout=60) as source:
+                    while block := source.read(1024 * 1024):
+                        target.write(block)
+            temporary.replace(destination)
+        finally:
+            temporary.unlink(missing_ok=True)
     return {
         "path": str(destination),
         "url": url,
@@ -92,6 +106,7 @@ def prepare_public_inputs(root: Path, archive: Path | None = None) -> dict:
                     "revision": VERIFIED_REV,
                 }
             )
+    verify_archive(archive)
     with tarfile.open(archive) as source:
         source.extractall(root / "verified", filter="data")
     result = {

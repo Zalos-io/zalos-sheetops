@@ -176,3 +176,32 @@ def test_formula_request_cannot_pass_with_only_computed_values(tmp_path: Path) -
     )
     assert result["status"] == "incorrect"
     assert any(d.get("kind") == "missing_formula" for d in result["valueDifferences"])
+
+
+def test_checks_count_failures_beyond_diagnostic_sample_limit(tmp_path: Path) -> None:
+    from openpyxl.styles import PatternFill
+
+    initial, golden, actual = [
+        tmp_path / name for name in ("input.xlsx", "golden.xlsx", "output.xlsx")
+    ]
+    book = Workbook()
+    for row in range(1, 51):
+        book.active.cell(row, 1).value = row
+    book.save(initial)
+    book.save(actual)
+    for row in range(1, 51):
+        book.active.cell(row, 1).fill = PatternFill("solid", fgColor="00FF00")
+    book.save(golden)
+    book = load_workbook(actual)
+    book.active["A50"] = 999
+    book.save(actual)
+    result = grade_workbook(
+        initial,
+        golden,
+        actual,
+        {"answer_position": "A1:A50", "instruction": "Fill all answer cells green"},
+    )
+    assert result["checks"]["answerValues"] is False
+    assert result["failureCounts"]["values"] == 1
+    assert result["failureCounts"]["styles"] == 50
+    assert len(result["valueDifferences"]) <= 20

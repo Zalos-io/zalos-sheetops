@@ -16,6 +16,72 @@ def read_records(path: Path) -> list[dict]:
     return [json.loads(line) for line in path.read_text().splitlines() if line]
 
 
+def coverage(records: list[dict], expected: set[tuple], keys: tuple[str, ...]) -> dict:
+    observed = Counter(tuple(str(r[k]) for k in keys) for r in records)
+    wanted = {tuple(str(value) for value in key) for key in expected}
+    return {
+        "complete": set(observed) == wanted and all(n == 1 for n in observed.values()),
+        "missing": len(wanted - set(observed)),
+        "unexpected": len(set(observed) - wanted),
+        "duplicates": sum(n - 1 for n in observed.values()),
+    }
+
+
+def adoption(runs: list[dict]) -> dict:
+    commands, errors = Counter(), Counter()
+    for run in runs:
+        commands.update(run["usage"].get("sheetopsCommandCounts", {}))
+        errors.update(run["usage"].get("sheetopsErrorCounts", {}))
+    return {
+        "tasksWithResponses": sum(
+            bool(r["usage"].get("sheetopsCommandCounts")) for r in runs
+        ),
+        "successfulResponses": sum(
+            r["usage"].get("sheetopsSuccessfulResponses", 0) for r in runs
+        ),
+        "failedResponses": sum(
+            r["usage"].get("sheetopsFailedResponses", 0) for r in runs
+        ),
+        "commandCounts": dict(commands),
+        "errorCounts": dict(errors),
+        "scope": "observed JSON command responses; Python API use is not counted",
+    }
+
+
+def operation_table(records: list[dict]) -> list[str]:
+    adapters = sorted({r["adapter"] for r in records})
+    groups = {}
+    for record in records:
+        groups.setdefault((record["case"], record["adapter"]), []).append(record)
+    summaries = {(r["case"], r["adapter"]): r for r in summarize(records)}
+    lines = [
+        "| Case | " + " | ".join(adapters) + " |",
+        "|---|" + "---:|" * len(adapters),
+    ]
+    for case in sorted({r["case"] for r in records}):
+        cells = []
+        for adapter in adapters:
+            runs = groups.get((case, adapter), [])
+            summary = summaries.get((case, adapter), {})
+            seconds = summary.get("medianSeconds")
+            if seconds is None:
+                counts = Counter(r["status"] for r in runs)
+                cells.append(
+                    ", ".join(f"{k} ({v})" for k, v in sorted(counts.items()))
+                    or "pending"
+                )
+            else:
+                rss = [
+                    r["peakProcessRssBytes"] / 1048576
+                    for r in runs
+                    if "peakProcessRssBytes" in r
+                ]
+                memory = f" / {statistics.median(rss):.1f} MiB" if rss else ""
+                cells.append(f"{seconds:.3f}s{memory}")
+        lines.append(f"| {case} | " + " | ".join(cells) + " |")
+    return lines
+
+
 def summarize_agents(records: list[dict]) -> dict:
     arms = {}
     pairs = {}
@@ -36,6 +102,7 @@ def summarize_agents(records: list[dict]) -> dict:
             "totalObservedToolCalls": sum(
                 r["usage"].get("observedToolCalls", 0) for r in runs
             ),
+            "sheetopsAdoption": adoption(runs),
             "costAvailable": costs_available,
             "estimatedCostUsd": sum(r["usage"]["estimated_cost_usd"] for r in runs)
             if costs_available
@@ -95,9 +162,21 @@ def failure_catalog(operations: list[dict], agents: list[dict]) -> list[dict]:
                 "failedAttempts": len(date_failures),
                 "caseIds": sorted({r["case"] for r in date_failures}),
                 "reproduce": (
-                    "Use recorded metadata case with the public worker for "
-                    "sheetops-api and openpyxl"
+                    "uv run python -m zalos_sheetops.benchmarks.public.runner replay "
+                    "--data DATA --output REPLAY --case "
+                    + sorted({r["case"] for r in date_failures})[0]
+                    + " --adapter sheetops-cli"
                 ),
+                "examples": [
+                    {
+                        "case": r["case"],
+                        "adapter": r["adapter"],
+                        "differences": r.get("sampleComparison", {}).get(
+                            "firstDifferences", []
+                        )[:2],
+                    }
+                    for r in date_failures[:2]
+                ],
             }
         )
     if other_failures:
@@ -126,10 +205,28 @@ def failure_catalog(operations: list[dict], agents: list[dict]) -> list[dict]:
             kind = "oracle-coverage"
         elif status != "incorrect":
             kind = status
-        elif grading.get("preservationFailures") or grading.get("structureDifferences"):
-            kind = "workbook-preservation"
         else:
-            kind = "golden-values-or-styles"
+            counts = grading.get("failureCounts", {})
+            categories = {
+                "values": "answer-values",
+                "styles": "explicit-styles",
+                "formulas": "formula-requirement",
+                "preservation": "workbook-preservation",
+                "structure": "workbook-structure",
+            }
+            kinds = [
+                name for component, name in categories.items() if counts.get(component)
+            ]
+            if not kinds:
+                kinds = (
+                    ["workbook-preservation"]
+                    if grading.get("preservationFailures")
+                    or grading.get("structureDifferences")
+                    else ["golden-values-or-styles"]
+                )
+            for kind in kinds:
+                groups.setdefault(kind, []).append(record)
+            continue
         groups.setdefault(kind, []).append(record)
     for kind, records in sorted(groups.items()):
         catalog.append(
@@ -143,6 +240,15 @@ def failure_catalog(operations: list[dict], agents: list[dict]) -> list[dict]:
                 "failedAttempts": len(records),
                 "taskIds": sorted({str(r["task"]) for r in records}),
                 "arms": dict(Counter(r["arm"] for r in records)),
+                "examples": [
+                    {
+                        "task": str(r["task"]),
+                        "arm": r["arm"],
+                        "repeat": r["repeat"],
+                        "grading": r["grading"],
+                    }
+                    for r in records[:3]
+                ],
                 "reproduce": (
                     "Run agents.py with the recorded task, model, skill hashes and "
                     "images"
@@ -170,6 +276,29 @@ def build_report(root: Path, output: Path, agent_records: Path | None = None) ->
     metadata_path = root / "agents/agent-metadata.json"
     metadata = json.loads(metadata_path.read_text()) if metadata_path.exists() else {}
     expected_pairs = len(metadata.get("taskIds", [])) * metadata.get("repeats", 1)
+    operation_coverage = coverage(
+        operations,
+        {
+            (case["id"], adapter, repeat)
+            for case in operation_metadata.get("cases", [])
+            for adapter in operation_metadata.get(
+                "adapters",
+                ["openpyxl", "sheetops-api", "sheetops-cli", "calamine", "fastexcel"],
+            )
+            for repeat in range(operation_metadata.get("repeats", 1))
+        },
+        ("case", "adapter", "repeat"),
+    )
+    agent_coverage = coverage(
+        agents,
+        {
+            (task, arm, repeat)
+            for task in metadata.get("taskIds", [])
+            for arm in ["baseline", "sheetops"]
+            for repeat in range(metadata.get("repeats", 1))
+        },
+        ("task", "arm", "repeat"),
+    )
     result = {
         "schemaVersion": 1,
         "status": "complete"
@@ -179,9 +308,12 @@ def build_report(root: Path, output: Path, agent_records: Path | None = None) ->
             and expected_operations
             and len(operations) == expected_operations
             and contracts
+            and operation_coverage["complete"]
+            and agent_coverage["complete"]
         )
         else "in_progress",
         "operationMeasurements": len(operations),
+        "coverage": {"operations": operation_coverage, "agents": agent_coverage},
         "expectedOperationMeasurements": expected_operations,
         "agentRecordSource": str(agent_records or root / "agents/agents.jsonl"),
         "operationSummaries": summarize(operations),
@@ -202,6 +334,8 @@ def build_report(root: Path, output: Path, agent_records: Path | None = None) ->
         "expectedAgentPairs": expected_pairs,
         "rankedFailures": failure_catalog(operations, agents),
         "limitations": [
+            "Failure groups overlap: one attempt can fail values, styles "
+            "and preservation",
             (
                 "Fresh processes, uncontrolled OS file cache; one host; three "
                 "operation repetitions"
@@ -251,6 +385,16 @@ def build_report(root: Path, output: Path, agent_records: Path | None = None) ->
     lines.extend(
         [
             "",
+            "Reader timing and memory",
+            "",
+            "Cells show median wall time including worker startup / "
+            "median peak single-process RSS. "
+            "Timings appear only when every recorded repetition passes. "
+            "Date-containing ranges use a typed-value contract; "
+            "scalar ranges exclude the date column.",
+            "",
+            *operation_table(operations),
+            "",
             "Paired agent tasks",
             "",
             f"Completed pairs: {result['agents']['completePairCount']}"
@@ -265,6 +409,13 @@ def build_report(root: Path, output: Path, agent_records: Path | None = None) ->
             f"outcomes {summary['statusCounts']}; inference cost "
             f"{'available' if summary['costAvailable'] else 'unavailable'}."
         )
+        usage = summary["sheetopsAdoption"]
+        lines.append(
+            f"  Observed SheetOps JSON responses: {usage['tasksWithResponses']} tasks, "
+            f"{usage['successfulResponses']} successful / "
+            f"{usage['failedResponses']} failed; "
+            f"commands {usage['commandCounts']}; errors {usage['errorCounts']}."
+        )
     lines.extend(["", "Ranked follow-ups", ""])
     for failure in result["rankedFailures"]:
         ids = failure.get("taskIds", failure.get("caseIds", []))
@@ -273,12 +424,32 @@ def build_report(root: Path, output: Path, agent_records: Path | None = None) ->
             f"{failure['failedAttempts']} failed/unscorable attempts. "
             f"Reproduction IDs: {', '.join(ids)}."
         )
+        if failure.get("reproduce"):
+            lines.extend(["", f"  Reproduce: `{failure['reproduce']}`", ""])
     lines.extend(
         [
             "",
             "Measurement limits",
             "",
             *[f"- {item}" for item in result["limitations"]],
+            "",
+            "Source attribution",
+            "",
+            "- Mixed-column generator adapted from nazmul284/excel-read-benchmark "
+            "(MIT), revision d8ddc2b5cfab51d53e196015d7037b1d5f463a8a. "
+            "https://github.com/nazmul284/excel-read-benchmark/tree/d8ddc2b5cfab51d53e196015d7037b1d5f463a8a",
+            "- Selected feature workbooks from SynthGL/ExcelBench (MIT), revision "
+            "5f71713413c43f3733e303ba8a4eed6a756760cd. "
+            "https://github.com/SynthGL/ExcelBench/tree/5f71713413c43f3733e303ba8a4eed6a756760cd",
+            "- Selected Verified-400 tasks from KAKA22/SpreadsheetBench "
+            "(CC-BY-SA-4.0), "
+            "revision ab0b742b0fc95b946f212d80ac7771b5531272e4. "
+            "https://huggingface.co/datasets/KAKA22/SpreadsheetBench/tree/ab0b742b0fc95b946f212d80ac7771b5531272e4",
+            "",
+            "These are our measurements and scoped checks, not the upstream "
+            "projects' published results or leaderboard scores. "
+            "Source URLs and content hashes are recorded in sources.json; "
+            "runtime versions, input hashes and code hashes are in run metadata.",
             "",
         ]
     )

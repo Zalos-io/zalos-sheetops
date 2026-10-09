@@ -53,3 +53,36 @@ def test_cleanup_selects_only_own_workspace_container(tmp_path: Path) -> None:
         ],
         own,
     ) == ["own"]
+
+
+def test_usage_counts_sheetops_responses_without_exporting_payloads(
+    tmp_path: Path,
+) -> None:
+    import sqlite3
+
+    responses = [
+        {"ok": True, "command": "inspect", "data": {"private_payload": "exclude"}},
+        {
+            "ok": False,
+            "command": "cells read",
+            "errorCode": "invalid_field",
+            "message": "exclude",
+        },
+    ]
+    with sqlite3.connect(tmp_path / "state.db") as db:
+        db.execute("CREATE TABLE messages(role TEXT, content TEXT)")
+        output = "\n".join(json.dumps(r) for r in responses)
+        db.execute(
+            "INSERT INTO messages VALUES('tool', ?)", (json.dumps({"output": output}),)
+        )
+        db.execute(
+            "INSERT INTO messages VALUES('tool', ?)",
+            (json.dumps({"output": "ordinary output"}),),
+        )
+    result = extract_usage(tmp_path, tmp_path / "absent.json")
+    assert result["observedToolCalls"] == 2
+    assert result["sheetopsSuccessfulResponses"] == 1
+    assert result["sheetopsFailedResponses"] == 1
+    assert result["sheetopsErrorCounts"] == {"invalid_field": 1}
+    assert result["sheetopsCommandCounts"] == {"inspect": 1, "cells read": 1}
+    assert "exclude" not in json.dumps(result)

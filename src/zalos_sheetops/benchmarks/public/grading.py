@@ -151,6 +151,12 @@ def structure_differences(expected: object, actual: object) -> list[dict]:
     return differences
 
 
+def add_failure(counts: dict, samples: list[dict], kind: str, detail: dict) -> None:
+    counts[kind] += 1
+    if len(samples) < 20:
+        samples.append(detail)
+
+
 def grade_workbook(
     initial: Path,
     golden: Path,
@@ -205,7 +211,15 @@ def grade_workbook(
             ]
         )
         differences, preservation, caches = [], [], []
+        counts = {
+            "values": 0,
+            "styles": 0,
+            "formulas": 0,
+            "preservation": 0,
+            "structure": len(structure),
+        }
         if expected.sheetnames != result.sheetnames:
+            counts["structure"] += 1
             differences.append(
                 {
                     "kind": "sheet_names",
@@ -240,10 +254,12 @@ def grade_workbook(
                         and (in_answer or style_changed)
                         and cell_signature(raw_expected[address])[1:3]
                         != cell_signature(raw_actual[address])[1:3]
-                        and len(differences) < 20
                     ):
-                        differences.append(
-                            {"sheet": name, "cell": address, "kind": "required_style"}
+                        add_failure(
+                            counts,
+                            differences,
+                            "styles",
+                            {"sheet": name, "cell": address, "kind": "required_style"},
                         )
                     expected_formula = raw_expected[address].data_type == "f"
                     if (
@@ -251,10 +267,12 @@ def grade_workbook(
                         and expected_formula
                         and "formula" in task.get("instruction", "").lower()
                         and raw_actual[address].data_type != "f"
-                        and len(differences) < 20
                     ):
-                        differences.append(
-                            {"sheet": name, "cell": address, "kind": "missing_formula"}
+                        add_failure(
+                            counts,
+                            differences,
+                            "formulas",
+                            {"sheet": name, "cell": address, "kind": "missing_formula"},
                         )
                     if (
                         in_answer
@@ -266,15 +284,17 @@ def grade_workbook(
                     elif in_answer and canonical(target.value) != canonical(
                         output.value
                     ):
-                        if len(differences) < 20:
-                            differences.append(
-                                {
-                                    "sheet": name,
-                                    "cell": address,
-                                    "expected": scalar(target.value),
-                                    "actual": scalar(output.value),
-                                }
-                            )
+                        add_failure(
+                            counts,
+                            differences,
+                            "values",
+                            {
+                                "sheet": name,
+                                "cell": address,
+                                "expected": scalar(target.value),
+                                "actual": scalar(output.value),
+                            },
+                        )
                     if old is not None and (name, address) not in allowed:
                         unchanged = cell_signature(old[address]) == cell_signature(
                             raw_expected[address]
@@ -282,8 +302,12 @@ def grade_workbook(
                         if unchanged and cell_signature(old[address]) != cell_signature(
                             raw_actual[address]
                         ):
-                            if len(preservation) < 20:
-                                preservation.append({"sheet": name, "cell": address})
+                            add_failure(
+                                counts,
+                                preservation,
+                                "preservation",
+                                {"sheet": name, "cell": address},
+                            )
             if "calibri" in task.get("instruction", "").lower():
                 for row in raw_expected:
                     for cell in row:
@@ -291,26 +315,32 @@ def grade_workbook(
                             cell.has_style
                             and raw_actual[cell.coordinate].font.name != cell.font.name
                         ):
-                            if len(differences) < 20:
-                                differences.append(
-                                    {
-                                        "sheet": name,
-                                        "cell": cell.coordinate,
-                                        "kind": "required_font",
-                                    }
-                                )
+                            add_failure(
+                                counts,
+                                differences,
+                                "styles",
+                                {
+                                    "sheet": name,
+                                    "cell": cell.coordinate,
+                                    "kind": "required_font",
+                                },
+                            )
         if caches:
             return {"status": "oracle_cache_missing", "cells": caches[:20]}
-        status = (
-            "pass"
-            if not differences and not preservation and not structure
-            else "incorrect"
-        )
+        status = "pass" if not any(counts.values()) else "incorrect"
         return {
             "status": status,
             "valueDifferences": differences,
             "preservationFailures": preservation,
             "structureDifferences": structure,
+            "failureCounts": counts,
+            "checks": {
+                "answerValues": counts["values"] == 0,
+                "explicitStyles": counts["styles"] == 0,
+                "formulaRequirement": counts["formulas"] == 0,
+                "preservation": counts["preservation"] == 0,
+                "structure": counts["structure"] == 0,
+            },
             "rubric": (
                 "golden answer-region values; explicit style requests; "
                 "names, merges, tables, visibility and unchanged cells preserved"
