@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+case "$(uname -s)" in
+  Darwin)
+    echo "Install LibreOffice with:"
+    echo "  brew install --cask libreoffice"
+    ;;
+  Linux)
+    if [ -f /etc/os-release ]; then
+      . /etc/os-release
+      case "${ID:-}" in
+        ubuntu|debian)
+          echo "Install LibreOffice with:"
+          echo "  sudo apt-get update && sudo apt-get install -y libreoffice libreoffice-calc"
+          ;;
+        fedora|rhel|centos|amzn|amazon)
+          echo "Install LibreOffice with:"
+          echo "  sudo dnf install -y libreoffice libreoffice-calc"
+          ;;
+        alpine)
+          echo "Install LibreOffice with:"
+          echo "  apk add --no-cache libreoffice"
+          ;;
+        *)
+          echo "Install LibreOffice using your Linux distribution package manager."
+          ;;
+      esac
+    else
+      echo "Install LibreOffice using your Linux distribution package manager."
+    fi
+    ;;
+  *)
+    echo "Install LibreOffice and ensure soffice is on PATH."
+    ;;
+esac
+
+echo
+echo "After installing, verify with:"
+echo "  sheetops doctor libreoffice --raw-output"

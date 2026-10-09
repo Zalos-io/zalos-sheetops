@@ -1,0 +1,232 @@
+[
+  {
+    "fixtureId": "fastexcel-changing-header-location",
+    "sourceRepo": "ToucanToco/fastexcel",
+    "commit": "0efe1ed",
+    "sourcePath": "tests/fixtures/fixture-changing-header-location.xlsx",
+    "license": "MIT",
+    "destination": "tests/fixtures/upstream/fastexcel/fixture-changing-header-location.xlsx",
+    "sha256": "9d2cc3a176ea8c865b3175bac846be41142245b37eb47da523a1ba02484ef104",
+    "behavior": "table reading must handle header rows that do not start at row 1"
+  },
+  {
+    "fixtureId": "fastexcel-table-offset",
+    "sourceRepo": "ToucanToco/fastexcel",
+    "commit": "0efe1ed",
+    "sourcePath": "tests/fixtures/sheet-and-table-with-offset.xlsx",
+    "license": "MIT",
+    "destination": "tests/fixtures/upstream/fastexcel/sheet-and-table-with-offset.xlsx",
+    "sha256": "66b2b8d85105446513df34e1fc7c916fbc8329feee8fdc1b57d01abe7a46df53",
+    "behavior": "table reading must handle tables offset from A1"
+  },
+  {
+    "fixtureId": "fastexcel-table-whitespace",
+    "sourceRepo": "ToucanToco/fastexcel",
+    "commit": "0efe1ed",
+    "sourcePath": "tests/fixtures/sheet-and-table-with-whitespace.xlsx",
+    "license": "MIT",
+    "destination": "tests/fixtures/upstream/fastexcel/sheet-and-table-with-whitespace.xlsx",
+    "sha256": "0173dcd23ee664bf3a110a4fd3fb7d8727d5da205f457efd94e80e865743b235",
+    "behavior": "table reading must detect meaningful data around whitespace"
+  },
+  {
+    "fixtureId": "fastexcel-duplicated-columns",
+    "sourceRepo": "ToucanToco/fastexcel",
+    "commit": "0efe1ed",
+    "sourcePath": "tests/fixtures/fixture-single-sheet-duplicated-columns.xlsx",
+    "license": "MIT",
+    "destination": "tests/fixtures/upstream/fastexcel/fixture-single-sheet-duplicated-columns.xlsx",
+    "sha256": "10dbbf728d2b151a1ca230bf774ed58ecdc1e4b70cbc3f1e649eae1a11ca9806",
+    "behavior": "header validation must surface duplicate columns explicitly"
+  },
+  {
+    "fixtureId": "fastexcel-sheet-visibilities",
+    "sourceRepo": "ToucanToco/fastexcel",
+    "commit": "0efe1ed",
+    "sourcePath": "tests/fixtures/fixture-sheets-different-visibilities.xlsx",
+    "license": "MIT",
+    "destination": "tests/fixtures/upstream/fastexcel/fixture-sheets-different-visibilities.xlsx",
+    "sha256": "43d30785399f55ff92d09c11dbd4b139a3fd58a402f219ac835c47960bc3b95f",
+    "behavior": "workbook inspection must report visible and hidden sheet states"
+  },
+  {
+    "fixtureId": "fastexcel-div0",
+    "sourceRepo": "ToucanToco/fastexcel",
+    "commit": "0efe1ed",
+    "sourcePath": "tests/fixtures/div0.xlsx",
+    "license": "MIT",
+    "destination": "tests/fixtures/upstream/fastexcel/div0.xlsx",
+    "sha256": "9c042f4cdb806654a5711d9e8a31f0199feb8a33a5716025a5d98ce1e7229d18",
+    "behavior": "formula scanning must surface division-by-zero error tokens"
+  },
+  {
+    "fixtureId": "calamine-formula-issue",
+    "sourceRepo": "tafia/calamine",
+    "commit": "5d84fbf",
+    "sourcePath": "tests/formula.issue.xlsx",
+    "license": "MIT",
+    "destination": "tests/fixtures/upstream/calamine/formula.issue.xlsx",
+    "sha256": "6df6d17418d03256c8df2aedb3f066ac00c0cdd65fa235ab21d5dbc5471ab053",
+    "behavior": "formula scanning must handle workbooks that previously exposed formula parser edge cases"
+  },
+  {
+    "fixtureId": "calamine-shared-formula-simple",
+    "sourceRepo": "tafia/calamine",
+    "commit": "5d84fbf",
+    "sourcePath": "tests/shared_formula_simple.xlsx",
+    "license": "MIT",
+    "destination": "tests/fixtures/upstream/calamine/shared_formula_simple.xlsx",
+    "sha256": "aa951fd8c55f7a9104515736e497e2dd393daec1077cf9401162070555ee6fe4",
+    "behavior": "formula scanning must expand shared formula cells into concrete formula entries"
+  },
+  {
+    "fixtureId": "calamine-shared-formula-bench",
+    "sourceRepo": "tafia/calamine",
+    "commit": "5d84fbf",
+    "sourcePath": "tests/shared_formula_bench.xlsx",
+    "license": "MIT",
+    "destination": "tests/fixtures/upstream/calamine/shared_formula_bench.xlsx",
+    "sha256": "fe5953d4508fdf3d8c2e8697aa073f1d5d931d11c6706cd22bd04b316e7d2a99",
+    "behavior": "formula scanning must remain bounded when shared formulas appear across larger ranges"
+  },
+  {
+    "fixtureId": "openpyxl-hidden-sheets",
+    "sourceRepo": "quintagroup/openpyxl",
+    "commit": "11c962d",
+    "sourcePath": "openpyxl/reader/tests/data/hidden_sheets.xlsx",
+    "license": "MIT",
+    "destination": "tests/fixtures/upstream/openpyxl/hidden_sheets.xlsx",
+    "sha256": "56e4834a87be652d2b81079e0fc55ef8d9e2e140107355a832d05cc1aa3caf6c",
+    "behavior": "workbook inspection must report hidden sheets"
+  },
+  {
+    "fixtureId": "openpyxl-reader-sample",
+    "sourceRepo": "quintagroup/openpyxl",
+    "commit": "11c962d",
+    "sourcePath": "openpyxl/reader/tests/data/sample.xlsx",
+    "license": "MIT",
+    "destination": "tests/fixtures/upstream/openpyxl/sample.xlsx",
+    "sha256": "91e241968493ba1b61b191a5d5d39d257ec966bc389c4805f6215003045d41f8",
+    "behavior": "workbook inspection and style assertions must handle a normal multi-feature workbook with bold cells"
+  },
+  {
+    "fixtureId": "openpyxl-empty-with-styles",
+    "sourceRepo": "quintagroup/openpyxl",
+    "commit": "11c962d",
+    "sourcePath": "openpyxl/tests/data/genuine/empty-with-styles.xlsx",
+    "license": "MIT",
+    "destination": "tests/fixtures/upstream/openpyxl/empty-with-styles.xlsx",
+    "sha256": "e4fb8aba591b5ba400a27af5cc83e54daacb4f2bac128438a7156a1be1b37c1b",
+    "behavior": "cell range reads must keep styled workbook values serializable"
+  },
+  {
+    "fixtureId": "xlsx2csv-datetime-xlsx",
+    "sourceRepo": "dilshod/xlsx2csv",
+    "commit": "9b1fa03",
+    "sourcePath": "test/datetime.xlsx",
+    "license": "MIT",
+    "destination": "tests/fixtures/upstream/xlsx2csv/datetime.xlsx",
+    "sha256": "76dc7c9f53e9c0a6d267e67eea9f5d833dd746619637b56aacae645cb959e714",
+    "behavior": "table extraction must preserve date-like spreadsheet values predictably"
+  },
+  {
+    "fixtureId": "xlsx2csv-datetime-csv",
+    "sourceRepo": "dilshod/xlsx2csv",
+    "commit": "9b1fa03",
+    "sourcePath": "test/datetime.csv",
+    "license": "MIT",
+    "destination": "tests/fixtures/upstream/xlsx2csv/datetime.csv",
+    "sha256": "ab0d0c17cbc3bfbcc9e8f472b8be125c5e4b81c72fc45b912d3be978e0fa43c7",
+    "behavior": "CSV baselines can anchor expected date extraction output"
+  },
+  {
+    "fixtureId": "xlsx2csv-empty-row-xlsx",
+    "sourceRepo": "dilshod/xlsx2csv",
+    "commit": "9b1fa03",
+    "sourcePath": "test/empty_row.xlsx",
+    "license": "MIT",
+    "destination": "tests/fixtures/upstream/xlsx2csv/empty_row.xlsx",
+    "sha256": "911b23147fd518ceb9b664f4425cfc81e583ebec600cd70e495d300e72a56f7f",
+    "behavior": "table extraction must handle empty rows without shifting data"
+  },
+  {
+    "fixtureId": "xlsx2csv-empty-row-csv",
+    "sourceRepo": "dilshod/xlsx2csv",
+    "commit": "9b1fa03",
+    "sourcePath": "test/empty_row.csv",
+    "license": "MIT",
+    "destination": "tests/fixtures/upstream/xlsx2csv/empty_row.csv",
+    "sha256": "383c66042ff184e59930973af9c3ed88a4014f646f254ac2875b40a487d92f36",
+    "behavior": "CSV baselines can anchor expected empty-row extraction output"
+  },
+  {
+    "fixtureId": "xlsx2csv-utf8-xlsx",
+    "sourceRepo": "dilshod/xlsx2csv",
+    "commit": "9b1fa03",
+    "sourcePath": "test/utf8.xlsx",
+    "license": "MIT",
+    "destination": "tests/fixtures/upstream/xlsx2csv/utf8.xlsx",
+    "sha256": "9bbd01186b166ed412d883f471e45ddcc1857a84bb9bb5cc321058d22f6074b7",
+    "behavior": "table extraction must preserve UTF-8 text"
+  },
+  {
+    "fixtureId": "xlsx2csv-utf8-csv",
+    "sourceRepo": "dilshod/xlsx2csv",
+    "commit": "9b1fa03",
+    "sourcePath": "test/utf8.csv",
+    "license": "MIT",
+    "destination": "tests/fixtures/upstream/xlsx2csv/utf8.csv",
+    "sha256": "a2a0f13c4819d450925b0b9d1d5ce42d0df57ef45905a6b4646124648e3648ad",
+    "behavior": "CSV baselines can anchor expected UTF-8 extraction output"
+  },
+  {
+    "fixtureId": "xlsx2csv-last-column-empty",
+    "sourceRepo": "dilshod/xlsx2csv",
+    "commit": "9b1fa03",
+    "sourcePath": "test/last-column-empty.xlsx",
+    "license": "MIT",
+    "destination": "tests/fixtures/upstream/xlsx2csv/last-column-empty.xlsx",
+    "sha256": "3849780d3e4ff3881ebec240f665b06af059c984574cab9736c2733e2aab7733",
+    "behavior": "cell range reads must preserve explicitly requested trailing blank cells"
+  },
+  {
+    "fixtureId": "xlsxwriter-formula-results",
+    "sourceRepo": "jmcnamara/XlsxWriter",
+    "commit": "a252844",
+    "sourcePath": "xlsxwriter/test/comparison/xlsx_files/formula_results01.xlsx",
+    "license": "BSD-2-Clause",
+    "destination": "tests/fixtures/upstream/xlsxwriter/formula_results01.xlsx",
+    "sha256": "e546faf310a765e7b4dd7bdb28c20846f9dd3123e109b2e287229e2f00315381",
+    "behavior": "formula inspection must handle workbooks with formula result caches"
+  },
+  {
+    "fixtureId": "xlsxwriter-hyperlink",
+    "sourceRepo": "jmcnamara/XlsxWriter",
+    "commit": "a252844",
+    "sourcePath": "xlsxwriter/test/comparison/xlsx_files/hyperlink01.xlsx",
+    "license": "BSD-2-Clause",
+    "destination": "tests/fixtures/upstream/xlsxwriter/hyperlink01.xlsx",
+    "sha256": "cbaa9070eb0ff0f580474eeef96e69881e1a02e5d71a4c51364f28c812c7f5c7",
+    "behavior": "workbook inspection must count hyperlinks and hyperlink assertions must validate relationship targets"
+  },
+  {
+    "fixtureId": "xlsxwriter-autofit-basic",
+    "sourceRepo": "jmcnamara/XlsxWriter",
+    "commit": "a252844",
+    "sourcePath": "xlsxwriter/test/comparison/xlsx_files/autofit01.xlsx",
+    "license": "BSD-2-Clause",
+    "destination": "tests/fixtures/upstream/xlsxwriter/autofit01.xlsx",
+    "sha256": "61b2e5f287de1a8e2618cce4554b1905a70efc4277d5ebbfa8554e4a36a658d7",
+    "behavior": "display scanning can use upstream autofit width fixtures as calibration inputs"
+  },
+  {
+    "fixtureId": "openpyxl-complex-styles",
+    "sourceRepo": "quintagroup/openpyxl",
+    "commit": "11c962d",
+    "sourcePath": "openpyxl/reader/tests/data/complex-styles.xlsx",
+    "license": "MIT",
+    "destination": "tests/fixtures/upstream/openpyxl/complex-styles.xlsx",
+    "sha256": "220c4c8a51a199e291cd2d4d6d3bc696a2a3734528c1ea56f369d9345ab3057d",
+    "behavior": "style extraction must read font, fill, number format, and alignment metadata"
+  }
+]
