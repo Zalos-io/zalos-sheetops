@@ -152,19 +152,38 @@ def failure_catalog(operations: list[dict], agents: list[dict]) -> list[dict]:
     return sorted(catalog, key=lambda r: (r["priority"], -r["failedAttempts"], r["id"]))
 
 
-def build_report(root: Path, output: Path) -> dict:
+def build_report(root: Path, output: Path, agent_records: Path | None = None) -> dict:
     operations = read_records(root / "baseline/operations.jsonl")
     contracts = read_records(root / "contracts/contracts.jsonl")
-    agents = read_records(root / "agents/agents.jsonl")
+    agents = read_records(agent_records or root / "agents/agents.jsonl")
+    operation_metadata_path = root / "baseline/metadata.json"
+    operation_metadata = (
+        json.loads(operation_metadata_path.read_text())
+        if operation_metadata_path.exists()
+        else {}
+    )
+    expected_operations = (
+        len(operation_metadata.get("cases", []))
+        * operation_metadata.get("repeats", 1)
+        * 5
+    )
     metadata_path = root / "agents/agent-metadata.json"
     metadata = json.loads(metadata_path.read_text()) if metadata_path.exists() else {}
     expected_pairs = len(metadata.get("taskIds", [])) * metadata.get("repeats", 1)
     result = {
         "schemaVersion": 1,
         "status": "complete"
-        if len(agents) == 2 * expected_pairs and expected_pairs
+        if (
+            len(agents) == 2 * expected_pairs
+            and expected_pairs
+            and expected_operations
+            and len(operations) == expected_operations
+            and contracts
+        )
         else "in_progress",
         "operationMeasurements": len(operations),
+        "expectedOperationMeasurements": expected_operations,
+        "agentRecordSource": str(agent_records or root / "agents/agents.jsonl"),
         "operationSummaries": summarize(operations),
         "operationStatusCounts": {
             adapter: dict(
@@ -197,9 +216,8 @@ def build_report(root: Path, output: Path) -> dict:
                 "formats, hyperlinks and decimal reconciliation"
             ),
             (
-                "Agent task scores use strict whole-workbook golden "
-                "values/styles plus unchanged-cell preservation; not official "
-                "leaderboard scores"
+                "Agent scores use golden answer-region values, explicit styles "
+                "and preservation checks; not official leaderboard scores"
             ),
             (
                 "One agent repetition per arm in this initial baseline; "
@@ -272,8 +290,9 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--agent-records", type=Path)
     args = parser.parse_args()
-    result = build_report(args.root, args.output)
+    result = build_report(args.root, args.output, args.agent_records)
     print(
         result["status"],
         result["operationMeasurements"],

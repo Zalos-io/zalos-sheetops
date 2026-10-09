@@ -96,7 +96,12 @@ def answer_cells(task: dict, sheetnames: list[str]) -> set[tuple[str, str]]:
 
 def cell_signature(cell: object) -> list:
     value = getattr(cell, "value", None)
-    style = getattr(cell, "_style", None)
+    if getattr(cell, "data_type", None) == "f" and not isinstance(value, str):
+        value = {
+            "type": type(value).__name__,
+            "attributes": dict(value),
+            "text": getattr(value, "text", None),
+        }
     # Style ids are workbook-local: compare authored properties, never ids.
     properties = []
     for name in ["font", "fill", "alignment", "border", "protection"]:
@@ -105,7 +110,7 @@ def cell_signature(cell: object) -> list:
     return [
         scalar(value),
         getattr(cell, "number_format", None),
-        properties if style is not None else None,
+        properties,
         str(getattr(cell, "hyperlink", None)),
         str(getattr(cell, "comment", None)),
     ]
@@ -185,6 +190,20 @@ def grade_workbook(
             allowed = answer_cells(task, expected_raw.sheetnames)
         except (ValueError, TypeError):
             return {"status": "ambiguous_task_metadata"}
+        if not allowed:
+            return {"status": "ambiguous_task_metadata"}
+        style_requested = any(
+            word in task.get("instruction", "").lower()
+            for word in [
+                "font",
+                "bold",
+                "fill",
+                "color",
+                "border",
+                "alignment",
+                "formatting",
+            ]
+        )
         differences, preservation, caches = [], [], []
         if expected.sheetnames != result.sheetnames:
             differences.append(
@@ -210,8 +229,16 @@ def grade_workbook(
                         out_sheet.cell(row, column),
                     )
                     address = target.coordinate
+                    in_answer = (name, address) in allowed
+                    style_changed = (
+                        old is None
+                        or cell_signature(old[address])[1:3]
+                        != cell_signature(raw_expected[address])[1:3]
+                    )
                     if (
-                        cell_signature(raw_expected[address])[1:3]
+                        style_requested
+                        and (in_answer or style_changed)
+                        and cell_signature(raw_expected[address])[1:3]
                         != cell_signature(raw_actual[address])[1:3]
                         and len(differences) < 20
                     ):
@@ -220,12 +247,25 @@ def grade_workbook(
                         )
                     expected_formula = raw_expected[address].data_type == "f"
                     if (
-                        expected_formula
+                        in_answer
+                        and expected_formula
+                        and "formula" in task.get("instruction", "").lower()
+                        and raw_actual[address].data_type != "f"
+                        and len(differences) < 20
+                    ):
+                        differences.append(
+                            {"sheet": name, "cell": address, "kind": "missing_formula"}
+                        )
+                    if (
+                        in_answer
+                        and expected_formula
                         and target.value is None
                         and (name, address) not in known_blanks
                     ):
                         caches.append({"sheet": name, "cell": address})
-                    elif canonical(target.value) != canonical(output.value):
+                    elif in_answer and canonical(target.value) != canonical(
+                        output.value
+                    ):
                         if len(differences) < 20:
                             differences.append(
                                 {
@@ -272,8 +312,8 @@ def grade_workbook(
             "preservationFailures": preservation,
             "structureDifferences": structure,
             "rubric": (
-                "golden values and styles; names, merges, tables, visibility; "
-                "unchanged cells preserved"
+                "golden answer-region values; explicit style requests; "
+                "names, merges, tables, visibility and unchanged cells preserved"
             ),
         }
     except (
