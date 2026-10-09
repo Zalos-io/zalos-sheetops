@@ -141,6 +141,35 @@ def has_date_gap(record: dict) -> bool:
 
 def failure_catalog(operations: list[dict], agents: list[dict]) -> list[dict]:
     catalog = []
+    tool_errors = [
+        r for r in agents if r.get("usage", {}).get("sheetopsFailedResponses")
+    ]
+    if tool_errors:
+        errors = Counter()
+        for record in tool_errors:
+            errors.update(record["usage"].get("sheetopsErrorCounts", {}))
+        catalog.append(
+            {
+                "priority": 3,
+                "id": "tool-contract-misuse",
+                "kind": "observed tool errors; task may still pass",
+                "title": "Reduce invalid SheetOps calls in the spreadsheet skill",
+                "failedAttempts": len(tool_errors),
+                "errorCounts": dict(errors),
+                "taskIds": sorted({str(r["task"]) for r in tool_errors}),
+                "evidence": "Command JSON returned a stable error; inspect the "
+                "task transcript before attributing a package defect",
+                "examples": [
+                    {
+                        "task": str(r["task"]),
+                        "arm": r["arm"],
+                        "repeat": r["repeat"],
+                        "errors": r["usage"]["sheetopsErrorCounts"],
+                    }
+                    for r in tool_errors[:3]
+                ],
+            }
+        )
     failed_ops = [
         r
         for r in operations
@@ -421,7 +450,7 @@ def build_report(root: Path, output: Path, agent_records: Path | None = None) ->
         ids = failure.get("taskIds", failure.get("caseIds", []))
         lines.append(
             f"- P{failure['priority']} {failure['title']}: "
-            f"{failure['failedAttempts']} failed/unscorable attempts. "
+            f"{failure['failedAttempts']} affected attempts. "
             f"Reproduction IDs: {', '.join(ids)}."
         )
         if failure.get("reproduce"):

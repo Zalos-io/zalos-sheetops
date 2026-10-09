@@ -56,6 +56,72 @@ rtk uv run ruff check .
 rtk uv run ruff format --check .
 ```
 
+## Public benchmarks
+
+The benchmark harness keeps correctness and speed separate. It uses pinned
+public inputs, fresh reader processes, full-output digests, and independent
+OpenPyXL reference reads. Optional reader dependencies stay in the `benchmark`
+dependency group; normal package installation does not install them.
+
+```bash
+rtk proxy uv sync --group benchmark --group dev
+rtk proxy uv run python -m zalos_sheetops.benchmarks.public.runner prepare --data /tmp/sheetops-bench/data --output /tmp/sheetops-bench/results
+rtk proxy uv run python -m zalos_sheetops.benchmarks.public.runner select-tasks --data /tmp/sheetops-bench/data --output /tmp/sheetops-bench/results
+rtk proxy uv run python -m zalos_sheetops.benchmarks.public.runner operations --data /tmp/sheetops-bench/data --output /tmp/sheetops-bench/baseline --sizes 25000,100000,400000 --repeats 3
+rtk proxy uv run python -m zalos_sheetops.benchmarks.public.contracts --data /tmp/sheetops-bench/data --output /tmp/sheetops-bench/contracts
+rtk proxy uv run python -m zalos_sheetops.benchmarks.public.runner replay --data /tmp/sheetops-bench/data --output /tmp/sheetops-bench/replay --case 25000-cells-start --adapter sheetops-cli
+```
+
+The range benchmark includes both typed ranges containing dates and scalar
+ranges without the date column, at the beginning, middle and end of each sheet.
+Formula cases also require formula text and cached values. Unsupported results
+remain visible; a fast incorrect output never enters the timing comparison.
+The feature checks cover selected metadata, merges, number formats, hyperlinks,
+and exact decimal reconciliation, not every Excel feature.
+
+Paired Zalos tasks use the installed desktop agent through its headless CLI.
+Build the two images with `agents build-images --dockerfile
+scripts/benchmarks/Dockerfile --skill-root PATH_TO_BASELINE_XLSX_SKILL --output
+RUN_DIRECTORY`. The image builder expects the existing skill's helper scripts.
+Then run `agents run` with `--output RUN_DIRECTORY`, `--dataset` pointing to
+`data/verified/spreadsheetbench_verified_400`, `--tasks results/tasks.json`,
+`--launcher`, `--env-file`, `--baseline-skill`, `--sheetops-skill`, and
+`--soffice`. Both commands use the module
+`zalos_sheetops.benchmarks.public.agents`. The environment file provides the
+AI Gateway credential only to inference, never to the Docker terminal.
+
+The runner fixes model, provider, reasoning, task order and sandbox limits;
+records image IDs, input and skill hashes; alternates arm order; and resumes
+only matching configurations. Each arm gets a new workspace and home. Only
+the input workbook is mounted, and golden workbooks stay outside the agent's
+sandbox. A timeout is retained as a measured outcome.
+
+Regrade saved outputs without another model run:
+
+```bash
+rtk proxy uv run python -m zalos_sheetops.benchmarks.public.regrade --dataset /tmp/sheetops-bench/data/verified/spreadsheetbench_verified_400 --tasks /tmp/sheetops-bench/results/tasks.json --runs /tmp/sheetops-bench/agents --output /tmp/sheetops-bench/agents/agents-graded.jsonl
+rtk proxy uv run python -m zalos_sheetops.benchmarks.public.report --root /tmp/sheetops-bench --output /tmp/sheetops-bench/report --agent-records /tmp/sheetops-bench/agents/agents-graded.jsonl
+```
+
+Regrading verifies recorded input/output hashes and preserves raw records.
+Pass `--soffice PATH_TO_LIBREOFFICE` if evaluation copies are not already
+available. Recalculation changes only evaluation copies. Agent scores cover
+answer values, explicit requested styles and preservation; they are not the
+official SpreadsheetBench leaderboard score. This experiment compares the
+package **plus** spreadsheet skill configuration and does not measure Electron
+UI behavior or isolate the package's contribution from the skill's.
+
+Public sources: [excel-read-benchmark](https://github.com/nazmul284/excel-read-benchmark)
+(MIT; adapted mixed-column generator), [ExcelBench](https://github.com/SynthGL/ExcelBench)
+(MIT; selected feature fixtures), and
+[SpreadsheetBench Verified-400](https://huggingface.co/datasets/KAKA22/SpreadsheetBench)
+(CC-BY-SA-4.0; selected tasks). Exact revisions, URLs and SHA256 hashes are in
+`data/sources.json`; the Verified-400 archive is checked against its pinned
+SHA256 before extraction. Upstream inputs retain their own licenses. Redistributed
+SpreadsheetBench workbooks, task text and adapted dataset content must retain
+CC-BY-SA-4.0 attribution and licensing; they are not relicensed under this
+package's MIT license.
+
 ## Releases
 
 `v0.4.2` is the first public release, with MIT licensing and public package metadata.

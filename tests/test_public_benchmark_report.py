@@ -136,6 +136,7 @@ def test_all_failure_components_survive_diagnostic_cap_and_report_adoption() -> 
         "answer-values",
         "explicit-styles",
         "workbook-preservation",
+        "tool-contract-misuse",
     }
     assert all(r["examples"][0]["task"] == "123" for r in failures)
     summary = summarize_agents(records)["arms"]["sheetops"]
@@ -167,3 +168,23 @@ def test_operation_table_never_displays_incorrect_output_timing() -> None:
     assert "2.000" in "\n".join(lines)
     assert "incorrect" in "\n".join(lines)
     assert "0.001" not in "\n".join(lines)
+
+
+def test_recovered_tool_errors_are_separate_from_task_failures() -> None:
+    from zalos_sheetops.benchmarks.public.report import failure_catalog
+
+    record = {
+        "task": 1,
+        "arm": "sheetops",
+        "repeat": 0,
+        "grading": {"status": "pass"},
+        "usage": {
+            "sheetopsFailedResponses": 1,
+            "sheetopsErrorCounts": {"invalid_field": 1},
+        },
+    }
+    failures = failure_catalog([], [record])
+    assert len(failures) == 1
+    assert failures[0]["id"] == "tool-contract-misuse"
+    assert failures[0]["errorCounts"] == {"invalid_field": 1}
+    assert failures[0]["kind"] == "observed tool errors; task may still pass"
