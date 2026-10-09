@@ -4,7 +4,7 @@ version = "0.4.2"
 description = "Agent-native Excel and CSV operations toolkit"
 readme = "README.md"
 license = "MIT"
-license-files = ["LICENSE"]
+license-files = ["LICENSE", "src/zalos_sheetops/benchmarks/public/READBENCH-LICENSE"]
 authors = [{name = "Zalos"}]
 classifiers = ["Programming Language :: Python :: 3", "Operating System :: OS Independent"]
 requires-python = ">=3.11"
@@ -23,6 +23,13 @@ sheetops = "zalos_sheetops.cli:app"
 dev = [
     "pytest>=8.0.0,<10",
     "ruff>=0.15.0,<0.17",
+]
+
+benchmark = [
+    "XlsxWriter>=3.2,<4",
+    "fastexcel>=0.21,<1",
+    "python-calamine>=0.6,<1",
+    "pyarrow>=25,<26",
 ]
 
 [build-system]
