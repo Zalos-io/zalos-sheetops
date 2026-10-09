@@ -2,14 +2,14 @@
   {
     "file": "baseline.md",
     "originalSha256": "ae0cc1d50f08d3809afbe2ec8a39ad91c59402a5dd6156c85e19d7cc1ff2c9a5",
-    "exportedSha256": "db57abc580443ca2d33ba828a228e35f07744cb94fc79b3a7394dcba3fc70782",
+    "exportedSha256": "01cea500489ec293bbe006b949bb4fab9e16e66feee459d4e19cb512ae03adae",
     "transformation": "local paths replaced by placeholders; session IDs removed; no raw agent logs; interpretation and reproduction instructions added"
   },
   {
     "file": "report.json",
     "originalSha256": "98ef2473ab75e72e115c7cf01f226a92f329024e5ef07c9aeae1bcbb2e850112",
-    "exportedSha256": "e8b328b33091aab6391817ee0195b0dc027be4d0609c4a3b293ae422cc09a438",
-    "transformation": "local paths replaced by placeholders; session IDs removed; no raw agent logs"
+    "exportedSha256": "22ff65394800dc70c3324c97679a07af0989f062d04c6f0d59a278c063c8faee",
+    "transformation": "local paths replaced by placeholders; session IDs removed; no raw agent logs; macro evaluation scope clarified"
   },
   {
     "file": "operations.jsonl",

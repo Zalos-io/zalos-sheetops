@@ -111,6 +111,7 @@ Ranked follow-ups
 
 Measurement limits
 
+- Task scores verify the supplied workbook result; future-sheet macro behavior and VBA execution are not tested
 - Failure groups overlap: one attempt can fail values, styles and preservation
 - Fresh processes, uncontrolled OS file cache; one host; three operation repetitions
 - RSS is maximum for one worker or CLI subprocess, not aggregate memory

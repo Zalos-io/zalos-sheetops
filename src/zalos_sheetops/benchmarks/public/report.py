@@ -442,6 +442,8 @@ def build_report(root: Path, output: Path, agent_records: Path | None = None) ->
             "Observed SheetOps commands are inspection and reads; workbook edits "
             "use agent-authored Python. Output failures do not establish a "
             "SheetOps write API defect",
+            "Task scores verify the supplied workbook result; future-sheet macro "
+            "behavior and VBA execution are not tested",
             "The first 24 agent attempts lack per-attempt execution source hashes; "
             "image, launcher, skill and input hashes remain recorded",
             (
