@@ -2,7 +2,7 @@
   "engine": "Microsoft Excel",
   "excelVersion": "16.113.3",
   "ready": false,
-  "pendingCount": 33,
+  "pendingCount": 3,
   "files": [
     {
       "task": 45300,
@@ -705,12 +705,12 @@
       "copyInitialSha256": "1ce849130389cdd9b93b3cdec3163034134de3bcb6d0570b0a9868bd6ffc4fe4",
       "initialFormulaCells": 4,
       "formulaCells": 4,
-      "missingCaches": 4,
+      "missingCaches": 0,
       "errorCaches": 0,
       "sourceIntact": true,
-      "saved": false,
-      "ready": false,
-      "evaluatedSha256": "1ce849130389cdd9b93b3cdec3163034134de3bcb6d0570b0a9868bd6ffc4fe4"
+      "saved": true,
+      "ready": true,
+      "evaluatedSha256": "a03ffa620f30935575a0eb59b4b23dbd365d7dc1aa5adfa6291d16a4cfabe9c0"
     },
     {
       "task": 45300,
@@ -723,12 +723,12 @@
       "copyInitialSha256": "b80fc4b1e544d9f98d108160d1e37e2ed99453f468a013b6fcb2711abc847304",
       "initialFormulaCells": 4,
       "formulaCells": 4,
-      "missingCaches": 4,
+      "missingCaches": 0,
       "errorCaches": 0,
       "sourceIntact": true,
-      "saved": false,
-      "ready": false,
-      "evaluatedSha256": "b80fc4b1e544d9f98d108160d1e37e2ed99453f468a013b6fcb2711abc847304"
+      "saved": true,
+      "ready": true,
+      "evaluatedSha256": "58b602f386b5544ee662b6eaa2de7b45796f045786a25d38b69bd9a0457b5b76"
     },
     {
       "task": "279-23",
@@ -741,12 +741,12 @@
       "copyInitialSha256": "9da78967a260fb183b7731bf8e40598631a35e60e896e910f0d23825c47a0255",
       "initialFormulaCells": 10,
       "formulaCells": 10,
-      "missingCaches": 10,
+      "missingCaches": 0,
       "errorCaches": 0,
       "sourceIntact": true,
-      "saved": false,
-      "ready": false,
-      "evaluatedSha256": "9da78967a260fb183b7731bf8e40598631a35e60e896e910f0d23825c47a0255"
+      "saved": true,
+      "ready": true,
+      "evaluatedSha256": "a5449bc68836e49d7ea8b502bb36bedfbafe7e69d773bbb14683642cdbd9d694"
     },
     {
       "task": "279-23",
@@ -777,12 +777,12 @@
       "copyInitialSha256": "b305d7df0270bbc52cc369d1db09bf5f2b3c4fc0edebf3d5f65ed6e9c2154cbf",
       "initialFormulaCells": 1,
       "formulaCells": 1,
-      "missingCaches": 1,
+      "missingCaches": 0,
       "errorCaches": 0,
       "sourceIntact": true,
-      "saved": false,
-      "ready": false,
-      "evaluatedSha256": "b305d7df0270bbc52cc369d1db09bf5f2b3c4fc0edebf3d5f65ed6e9c2154cbf"
+      "saved": true,
+      "ready": true,
+      "evaluatedSha256": "e0dc9f1cf466c76575d1f329eb70b3d23f5f114733c4c6c89d9e3e90c75b34ce"
     },
     {
       "task": 57590,
@@ -795,12 +795,12 @@
       "copyInitialSha256": "49cc44ae356c2e987c73aadfc973bd4a2b5bfcdd706f180d0ce6bf8ad42cf570",
       "initialFormulaCells": 1,
       "formulaCells": 1,
-      "missingCaches": 1,
+      "missingCaches": 0,
       "errorCaches": 0,
       "sourceIntact": true,
-      "saved": false,
-      "ready": false,
-      "evaluatedSha256": "49cc44ae356c2e987c73aadfc973bd4a2b5bfcdd706f180d0ce6bf8ad42cf570"
+      "saved": true,
+      "ready": true,
+      "evaluatedSha256": "b1aff19afad7e4537f802024d1d692d7241d6483f755e3a020d32bdf98ba0499"
     },
     {
       "task": "325-44",
@@ -831,12 +831,12 @@
       "copyInitialSha256": "be5e99fdcf25fc4f10ef8fbd505e7ddc4df3830b6fdc019ddb6722956504526a",
       "initialFormulaCells": 2,
       "formulaCells": 2,
-      "missingCaches": 2,
+      "missingCaches": 0,
       "errorCaches": 0,
       "sourceIntact": true,
-      "saved": false,
-      "ready": false,
-      "evaluatedSha256": "be5e99fdcf25fc4f10ef8fbd505e7ddc4df3830b6fdc019ddb6722956504526a"
+      "saved": true,
+      "ready": true,
+      "evaluatedSha256": "e36624b2070930a797a81a6e9c590db464c2eca21cf0f71832b88f861aca66fb"
     },
     {
       "task": 40757,
@@ -849,12 +849,12 @@
       "copyInitialSha256": "33404680b7242e8626eb4003e58cf02aace452833cc6f6d34c59db5d47082a0a",
       "initialFormulaCells": 2,
       "formulaCells": 2,
-      "missingCaches": 2,
+      "missingCaches": 0,
       "errorCaches": 0,
       "sourceIntact": true,
-      "saved": false,
-      "ready": false,
-      "evaluatedSha256": "33404680b7242e8626eb4003e58cf02aace452833cc6f6d34c59db5d47082a0a"
+      "saved": true,
+      "ready": true,
+      "evaluatedSha256": "a2242260905af4cac109ce472934b3054889a7c131cd2294af4700e35eeb1dfd"
     },
     {
       "task": "82-30",
@@ -903,12 +903,12 @@
       "copyInitialSha256": "30f1f7c2b2e0ea82c014a3168f50a3bf6c5dd7c683d8130f9de85ed0875dbacf",
       "initialFormulaCells": 7,
       "formulaCells": 7,
-      "missingCaches": 7,
-      "errorCaches": 0,
+      "missingCaches": 0,
+      "errorCaches": 7,
       "sourceIntact": true,
-      "saved": false,
-      "ready": false,
-      "evaluatedSha256": "30f1f7c2b2e0ea82c014a3168f50a3bf6c5dd7c683d8130f9de85ed0875dbacf"
+      "saved": true,
+      "ready": true,
+      "evaluatedSha256": "19203f25616df85ee14b0d1618253bec787bc598e88dab078b35620b4cd325cb"
     },
     {
       "task": 51680,
@@ -975,12 +975,12 @@
       "copyInitialSha256": "fc1833f706391d8821e11ad3d42bee4bd2f93d75afb478221209651c5a6786c8",
       "initialFormulaCells": 2390,
       "formulaCells": 2390,
-      "missingCaches": 2390,
+      "missingCaches": 0,
       "errorCaches": 0,
       "sourceIntact": true,
-      "saved": false,
-      "ready": false,
-      "evaluatedSha256": "fc1833f706391d8821e11ad3d42bee4bd2f93d75afb478221209651c5a6786c8"
+      "saved": true,
+      "ready": true,
+      "evaluatedSha256": "599f722d4c61f9b4ed9a55398b41648ad8aab139ff0053a04777fc58dabd8faa"
     },
     {
       "task": 35742,
@@ -993,12 +993,12 @@
       "copyInitialSha256": "e7ad7cd3ffef389571fa54ff4094d3296cef3b530ebc3670121f0402f30c775e",
       "initialFormulaCells": 2156,
       "formulaCells": 2156,
-      "missingCaches": 5,
+      "missingCaches": 0,
       "errorCaches": 0,
       "sourceIntact": true,
-      "saved": false,
-      "ready": false,
-      "evaluatedSha256": "e7ad7cd3ffef389571fa54ff4094d3296cef3b530ebc3670121f0402f30c775e"
+      "saved": true,
+      "ready": true,
+      "evaluatedSha256": "3a24c505ca1c4ca73c40278ab8e32f3a5dfe96218ee3d9d946ac2e55c83231dc"
     },
     {
       "task": "51-12",
@@ -1010,6 +1010,10 @@
       "copy": "AFTER_BENCHMARK_ROOT/native-excel/evaluated/51-12/sheetops/0/output.xlsx",
       "copyInitialSha256": "d942c27d19a07f2b9bec947de07c638babcf80064b0941bd5ba91c693373063a",
       "initialFormulaCells": 1,
+      "nativeRejection": {
+        "reason": "Excel displayed content-repair warning on opening; repair declined with No; output was not repaired or saved.",
+        "observedAt": "2026-10-10T10:52:11.903556+00:00"
+      },
       "formulaCells": 1,
       "missingCaches": 1,
       "errorCaches": 0,
@@ -1028,6 +1032,10 @@
       "copy": "AFTER_BENCHMARK_ROOT/native-excel/evaluated/51-12/baseline/0/output.xlsx",
       "copyInitialSha256": "1bc7d309c6b00b5266ee7378090a718e0cc30f3b3a2ac37600ad3df3dbea888b",
       "initialFormulaCells": 1,
+      "nativeRejection": {
+        "reason": "Excel displayed content-repair warning on opening; repair declined with No; output was not repaired or saved.",
+        "observedAt": "2026-10-10T10:53:00.571096+00:00"
+      },
       "formulaCells": 1,
       "missingCaches": 1,
       "errorCaches": 0,
@@ -1047,12 +1055,12 @@
       "copyInitialSha256": "d265dea148eca276a6c4f6613b14a8743e33518fa5f601e893f961bd92b82109",
       "initialFormulaCells": 12,
       "formulaCells": 12,
-      "missingCaches": 6,
-      "errorCaches": 0,
+      "missingCaches": 0,
+      "errorCaches": 6,
       "sourceIntact": true,
-      "saved": false,
-      "ready": false,
-      "evaluatedSha256": "d265dea148eca276a6c4f6613b14a8743e33518fa5f601e893f961bd92b82109"
+      "saved": true,
+      "ready": true,
+      "evaluatedSha256": "9cfc0920ef54921d2379050806f59f4016b11cee12f06b84bbc240ceea0e044e"
     },
     {
       "task": 44389,
@@ -1065,12 +1073,12 @@
       "copyInitialSha256": "f443ad5b2a0ffe5ee4be1f6322b7a4b887fd49726ea973638465d1aa32517b76",
       "initialFormulaCells": 12,
       "formulaCells": 12,
-      "missingCaches": 6,
+      "missingCaches": 0,
       "errorCaches": 0,
       "sourceIntact": true,
-      "saved": false,
-      "ready": false,
-      "evaluatedSha256": "f443ad5b2a0ffe5ee4be1f6322b7a4b887fd49726ea973638465d1aa32517b76"
+      "saved": true,
+      "ready": true,
+      "evaluatedSha256": "a15dc1a735497deaff4449829696572921e493b677ce4a57e47f27c7ebfe1c20"
     },
     {
       "task": "262-17",
@@ -1119,12 +1127,12 @@
       "copyInitialSha256": "0e42c74bef96addc88668a45413bed046de4278c1e2d518f19a3bca0fc14fe18",
       "initialFormulaCells": 1280,
       "formulaCells": 1280,
-      "missingCaches": 1280,
+      "missingCaches": 0,
       "errorCaches": 0,
       "sourceIntact": true,
-      "saved": false,
-      "ready": false,
-      "evaluatedSha256": "0e42c74bef96addc88668a45413bed046de4278c1e2d518f19a3bca0fc14fe18"
+      "saved": true,
+      "ready": true,
+      "evaluatedSha256": "84453a488790d8baf38074b719806bb85c919a1e082209d49493dc162c76522f"
     },
     {
       "task": 9569,
@@ -1137,12 +1145,12 @@
       "copyInitialSha256": "559687bad66ea82a2167886c34f87b547b1343b8aae6e4a7f910ea4f82057901",
       "initialFormulaCells": 1280,
       "formulaCells": 1280,
-      "missingCaches": 1280,
+      "missingCaches": 0,
       "errorCaches": 0,
       "sourceIntact": true,
-      "saved": false,
-      "ready": false,
-      "evaluatedSha256": "559687bad66ea82a2167886c34f87b547b1343b8aae6e4a7f910ea4f82057901"
+      "saved": true,
+      "ready": true,
+      "evaluatedSha256": "1531b7394323847cfc6dd5a88cfe7d41f5077d93cc74c458e4a0cddf8cc443a8"
     },
     {
       "task": "192-22",
@@ -1155,12 +1163,12 @@
       "copyInitialSha256": "25eec8600bd406d33e85fa17d4ce7bcb0b03383ed684940f5f471639d26e99ce",
       "initialFormulaCells": 133,
       "formulaCells": 133,
-      "missingCaches": 70,
+      "missingCaches": 0,
       "errorCaches": 0,
       "sourceIntact": true,
-      "saved": false,
-      "ready": false,
-      "evaluatedSha256": "25eec8600bd406d33e85fa17d4ce7bcb0b03383ed684940f5f471639d26e99ce"
+      "saved": true,
+      "ready": true,
+      "evaluatedSha256": "0e09430c0d72a6ab54f1fa74138bb346fa430b2a4eadbf5abbafc93060004479"
     },
     {
       "task": "192-22",
@@ -1173,12 +1181,12 @@
       "copyInitialSha256": "17e8e64042dcd15b8e6f0deeeb4295e0aacc92ff4087887a2c717351c5155311",
       "initialFormulaCells": 133,
       "formulaCells": 133,
-      "missingCaches": 133,
+      "missingCaches": 0,
       "errorCaches": 0,
       "sourceIntact": true,
-      "saved": false,
-      "ready": false,
-      "evaluatedSha256": "17e8e64042dcd15b8e6f0deeeb4295e0aacc92ff4087887a2c717351c5155311"
+      "saved": true,
+      "ready": true,
+      "evaluatedSha256": "e5bfbac6a16b1b70cbf249911ccecf34693cdc8f6bff91150707f96048bb0794"
     },
     {
       "task": 47827,
@@ -1191,12 +1199,12 @@
       "copyInitialSha256": "8922761602f427cb047a8333dc86789263e724e4cb5af24a8fda6ec127eea9ca",
       "initialFormulaCells": 15,
       "formulaCells": 15,
-      "missingCaches": 15,
+      "missingCaches": 0,
       "errorCaches": 0,
       "sourceIntact": true,
-      "saved": false,
-      "ready": false,
-      "evaluatedSha256": "8922761602f427cb047a8333dc86789263e724e4cb5af24a8fda6ec127eea9ca"
+      "saved": true,
+      "ready": true,
+      "evaluatedSha256": "9f1b37acaca0e25cd7e39e3a3809137e494c883872e89c1ff6d18359ca3b7b54"
     },
     {
       "task": 47827,
@@ -1209,12 +1217,12 @@
       "copyInitialSha256": "658d20d15b2beb43a6cbc0f2ff84e1a3e15f521e5d8d124e5a31e65a640e8dd5",
       "initialFormulaCells": 15,
       "formulaCells": 15,
-      "missingCaches": 15,
+      "missingCaches": 0,
       "errorCaches": 0,
       "sourceIntact": true,
-      "saved": false,
-      "ready": false,
-      "evaluatedSha256": "658d20d15b2beb43a6cbc0f2ff84e1a3e15f521e5d8d124e5a31e65a640e8dd5"
+      "saved": true,
+      "ready": true,
+      "evaluatedSha256": "3a63cce57880aa34218ae9502beca6ca8dbc2d0ba05f0a87aa96352dd6634f87"
     },
     {
       "task": 37086,
@@ -1227,12 +1235,12 @@
       "copyInitialSha256": "8acf0724fc65b07d5a3a4793a4f2aca1c078464fc270d66b2294f8c998a73553",
       "initialFormulaCells": 4,
       "formulaCells": 4,
-      "missingCaches": 4,
+      "missingCaches": 0,
       "errorCaches": 0,
       "sourceIntact": true,
-      "saved": false,
-      "ready": false,
-      "evaluatedSha256": "8acf0724fc65b07d5a3a4793a4f2aca1c078464fc270d66b2294f8c998a73553"
+      "saved": true,
+      "ready": true,
+      "evaluatedSha256": "3d9c4e1957cd628acf5456008b2fcdeac80692baaed60220543874c5ec5b6347"
     },
     {
       "task": 37086,
@@ -1245,12 +1253,12 @@
       "copyInitialSha256": "a8c1ec25f5a447ab616592ae99a02d038c7ba5b6570da4b150e6b7fd1704b1be",
       "initialFormulaCells": 4,
       "formulaCells": 4,
-      "missingCaches": 4,
+      "missingCaches": 0,
       "errorCaches": 0,
       "sourceIntact": true,
-      "saved": false,
-      "ready": false,
-      "evaluatedSha256": "a8c1ec25f5a447ab616592ae99a02d038c7ba5b6570da4b150e6b7fd1704b1be"
+      "saved": true,
+      "ready": true,
+      "evaluatedSha256": "c291f2c01deb407d60900e4383169fd012bf8cb30303e0853fd8f2f361f584b6"
     },
     {
       "task": "531-18",
@@ -1299,12 +1307,12 @@
       "copyInitialSha256": "37d6620fd602103e4732af824c7fef2e905348cf19ce46adf292e722b44a938b",
       "initialFormulaCells": 29,
       "formulaCells": 29,
-      "missingCaches": 29,
+      "missingCaches": 0,
       "errorCaches": 0,
       "sourceIntact": true,
-      "saved": false,
-      "ready": false,
-      "evaluatedSha256": "37d6620fd602103e4732af824c7fef2e905348cf19ce46adf292e722b44a938b"
+      "saved": true,
+      "ready": true,
+      "evaluatedSha256": "7cfb6f6a0fccc0dab545906ba0c60fbfff0a3b79d5c91c8c478334edafdcba30"
     },
     {
       "task": 48969,
@@ -1317,12 +1325,12 @@
       "copyInitialSha256": "46f7a039c202e49e341bec6c7831c0aa0f1cf8158ac0411e7b54acee589e5dd3",
       "initialFormulaCells": 15,
       "formulaCells": 15,
-      "missingCaches": 15,
+      "missingCaches": 0,
       "errorCaches": 0,
       "sourceIntact": true,
-      "saved": false,
-      "ready": false,
-      "evaluatedSha256": "46f7a039c202e49e341bec6c7831c0aa0f1cf8158ac0411e7b54acee589e5dd3"
+      "saved": true,
+      "ready": true,
+      "evaluatedSha256": "036f33865c9e90183df89bd2f88ad3c51173b084c7797b462eb18c06c29ec571"
     },
     {
       "task": 48969,
@@ -1335,12 +1343,12 @@
       "copyInitialSha256": "5f92649ea17fe063ac8d0095fa1410a1bb6f6ac9ccfa879249110b11ccebe2bd",
       "initialFormulaCells": 15,
       "formulaCells": 15,
-      "missingCaches": 15,
+      "missingCaches": 0,
       "errorCaches": 0,
       "sourceIntact": true,
-      "saved": false,
-      "ready": false,
-      "evaluatedSha256": "5f92649ea17fe063ac8d0095fa1410a1bb6f6ac9ccfa879249110b11ccebe2bd"
+      "saved": true,
+      "ready": true,
+      "evaluatedSha256": "d1ff05da328c961c47d9ab47b7fd076e587502c0b4caf62a38ffee627983d89a"
     },
     {
       "task": 48975,
@@ -1353,12 +1361,12 @@
       "copyInitialSha256": "a1e7ff63f6a501c1266c50e1990fe8dafede669a5de82df3d50042e2dfd58805",
       "initialFormulaCells": 77,
       "formulaCells": 77,
-      "missingCaches": 77,
+      "missingCaches": 0,
       "errorCaches": 0,
       "sourceIntact": true,
-      "saved": false,
-      "ready": false,
-      "evaluatedSha256": "a1e7ff63f6a501c1266c50e1990fe8dafede669a5de82df3d50042e2dfd58805"
+      "saved": true,
+      "ready": true,
+      "evaluatedSha256": "f2fffe6a461aaccecd600ec9193ba2b803f68b427e5e4cf1064778bc832f9a8d"
     },
     {
       "task": 48975,
@@ -1370,6 +1378,10 @@
       "copy": "AFTER_BENCHMARK_ROOT/native-excel/evaluated/48975/sheetops/0/output.xlsx",
       "copyInitialSha256": "49af50c0f773bd6ba08d8cd317f3f1b0ef4659d073596fc45fac381366e2d0c2",
       "initialFormulaCells": 77,
+      "nativeRejection": {
+        "reason": "Excel displayed content-repair warning on opening; repair declined with No; output was not repaired or saved.",
+        "observedAt": "2026-10-10T10:56:17.386329+00:00"
+      },
       "formulaCells": 77,
       "missingCaches": 48,
       "errorCaches": 0,
@@ -1425,12 +1437,12 @@
       "copyInitialSha256": "d0b34ed073e89598e0aeb0c420336fde67cef3979482c358bbb5c24ff204e448",
       "initialFormulaCells": 2,
       "formulaCells": 2,
-      "missingCaches": 2,
+      "missingCaches": 0,
       "errorCaches": 0,
       "sourceIntact": true,
-      "saved": false,
-      "ready": false,
-      "evaluatedSha256": "d0b34ed073e89598e0aeb0c420336fde67cef3979482c358bbb5c24ff204e448"
+      "saved": true,
+      "ready": true,
+      "evaluatedSha256": "2051cea02f90d5831572478ce51f986b8bb0663030bdb9f6026c7d7366814146"
     },
     {
       "task": 52220,
@@ -1443,12 +1455,12 @@
       "copyInitialSha256": "730a6edc466fd880dcb8622a4770b01b37bd81baba2a6e8a9de58c0323c9638d",
       "initialFormulaCells": 1,
       "formulaCells": 1,
-      "missingCaches": 1,
+      "missingCaches": 0,
       "errorCaches": 0,
       "sourceIntact": true,
-      "saved": false,
-      "ready": false,
-      "evaluatedSha256": "730a6edc466fd880dcb8622a4770b01b37bd81baba2a6e8a9de58c0323c9638d"
+      "saved": true,
+      "ready": true,
+      "evaluatedSha256": "ca0f6741c3f97c6c1b7d6878d76a051e9463cfe2a2057886ff4a711a1af12f72"
     },
     {
       "task": "230-16",
@@ -1497,12 +1509,12 @@
       "copyInitialSha256": "ca314d86249dccf60ce8d15c2cb0f9668e5e7fc0d25962ee2c32e3c7f5e10839",
       "initialFormulaCells": 2,
       "formulaCells": 2,
-      "missingCaches": 2,
+      "missingCaches": 0,
       "errorCaches": 0,
       "sourceIntact": true,
-      "saved": false,
-      "ready": false,
-      "evaluatedSha256": "ca314d86249dccf60ce8d15c2cb0f9668e5e7fc0d25962ee2c32e3c7f5e10839"
+      "saved": true,
+      "ready": true,
+      "evaluatedSha256": "0d0e399aaac5048a34aeb59db496932e8ba8a6945810dcbfb77f827f4f5b9a62"
     },
     {
       "task": 50682,
@@ -1515,12 +1527,12 @@
       "copyInitialSha256": "7890e3c21671b1b09bc4456e349fb4f2bc0acb9a0209d63af5079fbf7630440e",
       "initialFormulaCells": 2,
       "formulaCells": 2,
-      "missingCaches": 2,
+      "missingCaches": 0,
       "errorCaches": 0,
       "sourceIntact": true,
-      "saved": false,
-      "ready": false,
-      "evaluatedSha256": "7890e3c21671b1b09bc4456e349fb4f2bc0acb9a0209d63af5079fbf7630440e"
+      "saved": true,
+      "ready": true,
+      "evaluatedSha256": "0815878d01c36d81adefade0821bb7b2a92b38424697db7acaef445878e2ddcf"
     },
     {
       "task": "343-20",
@@ -1569,12 +1581,12 @@
       "copyInitialSha256": "bb912dad619f58801d81dae2c7a577cd8b4b7ff8fcc36b04444211e15bb88742",
       "initialFormulaCells": 299,
       "formulaCells": 299,
-      "missingCaches": 299,
+      "missingCaches": 0,
       "errorCaches": 0,
       "sourceIntact": true,
-      "saved": false,
-      "ready": false,
-      "evaluatedSha256": "bb912dad619f58801d81dae2c7a577cd8b4b7ff8fcc36b04444211e15bb88742"
+      "saved": true,
+      "ready": true,
+      "evaluatedSha256": "b1f48ff5ff554a7390a24ae51f8424fcb4e1c2f291003a1d1c7691bd07f61482"
     },
     {
       "task": 54638,
@@ -1587,12 +1599,12 @@
       "copyInitialSha256": "9c18a1e21bfb7a776bb87a4777464b7f126a09224ff13ce1f02c25de899182d6",
       "initialFormulaCells": 299,
       "formulaCells": 299,
-      "missingCaches": 299,
+      "missingCaches": 0,
       "errorCaches": 0,
       "sourceIntact": true,
-      "saved": false,
-      "ready": false,
-      "evaluatedSha256": "9c18a1e21bfb7a776bb87a4777464b7f126a09224ff13ce1f02c25de899182d6"
+      "saved": true,
+      "ready": true,
+      "evaluatedSha256": "66d3ba5af5686a52f6ef454536ca714e96e9e807d43a983ea15ac9428d2be536"
     },
     {
       "task": "120-24",

@@ -115,13 +115,24 @@ cache. Deep bounded reads use 35.3 MiB peak CLI RSS versus 66.9 MiB for OpenPyXL
 full-table reads use 663.0 MiB versus 491.3 MiB. RSS is the maximum for one process,
 not aggregate memory. Calamine and fastexcel remain faster for full-table reads.
 
-**The final native Excel task comparison is pending:** 33 formula-containing
-output copies still require calculation. The separately labelled LibreOffice
-grades are 15/30 for baseline and 14/30 for the candidate; compare neither to
-the earlier native Excel scores. All attempts, controls, hashes and the
-[secondary failure archive](benchmarks/results/2026-10-10/libreoffice-failure-reproductions.zip)
-are retained. Both terminal images lack a calculation engine, and agent timing
-excludes external grading. These results do not establish an overall app win.
+The native Excel task comparison is complete: **15/30 baseline and 14/30
+candidate**, versus 20/30 for each arm in the earlier run. Among the 11 pairs
+where both arms passed, the median baseline/candidate time ratio is 0.849;
+this subset favors baseline and has selection bias. Each run has one agent
+repetition per task; stochastic inference and provider revisions are uncontrolled,
+so these scores do not isolate a regression or establish an overall app win.
+
+Excel calculated and saved 30 formula-containing output copies and rejected
+three with content-repair warnings; repair was declined. All three were from
+timed-out attempts, retained as timeouts with invalid workbook status. The
+native audit's three not-ready copies are these rejections, with zero outstanding
+calculation actions. All 88 input/output sources remain unchanged; 30 golden
+calculations were reused only after hash/version checks and a passing self-check.
+All attempts, controls, hashes, the [native failure archive](benchmarks/results/2026-10-10/failure-reproductions.zip)
+and the [secondary LibreOffice archive](benchmarks/results/2026-10-10/libreoffice-failure-reproductions.zip)
+are retained. LibreOffice secondary scores also total 15/30 and 14/30, but
+individual grades differ. Both terminal images lack a calculation engine, and
+agent timing excludes external grading.
 
 The candidate used `verify-edits` in 21/33 attempts, with 23 rejecting responses
 and eight passing responses. Guard alerts are distinct from invalid command

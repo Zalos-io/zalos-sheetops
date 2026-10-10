@@ -1,7 +1,6 @@
 {
   "schemaVersion": 1,
-  "status": "native_validation_pending",
-  "beforeNative": {
+  "before": {
     "attemptCount": 60,
     "completePairCount": 30,
     "scorablePairCount": 30,
@@ -81,8 +80,86 @@
       "402-43"
     ]
   },
-  "afterNative": null,
-  "afterLibreOffice": {
+  "after": {
+    "attemptCount": 60,
+    "completePairCount": 30,
+    "scorablePairCount": 30,
+    "correctPairCount": 11,
+    "arms": {
+      "baseline": {
+        "attempts": 30,
+        "scorableAttempts": 30,
+        "unscorableAttempts": 0,
+        "statusCounts": {
+          "incorrect": 12,
+          "timeout": 3,
+          "pass": 15
+        },
+        "totalSecondsAllAttempts": 2273.3401260816026,
+        "totalMainTokens": 4104532,
+        "totalObservedToolCalls": 181,
+        "sheetopsAdoption": {
+          "tasksWithResponses": 0,
+          "successfulResponses": 0,
+          "failedResponses": 0,
+          "commandCounts": {},
+          "errorCounts": {},
+          "scope": "observed JSON command responses; Python API use is not counted"
+        },
+        "costAvailable": false,
+        "estimatedCostUsd": null,
+        "tokenRecordsAvailable": 27,
+        "tokenRecordsMissing": 3,
+        "preservationFailedAttempts": 5
+      },
+      "sheetops": {
+        "attempts": 30,
+        "scorableAttempts": 30,
+        "unscorableAttempts": 0,
+        "statusCounts": {
+          "incorrect": 13,
+          "pass": 14,
+          "timeout": 3
+        },
+        "totalSecondsAllAttempts": 2185.245072253747,
+        "totalMainTokens": 5833548,
+        "totalObservedToolCalls": 304,
+        "sheetopsAdoption": {
+          "tasksWithResponses": 30,
+          "successfulResponses": 88,
+          "failedResponses": 27,
+          "commandCounts": {
+            "inspect": 30,
+            "cells read": 49,
+            "verify-edits": 31,
+            "formulas scan": 5
+          },
+          "errorCounts": {
+            "verification_failed": 23,
+            "invalid_sheet": 2,
+            "invalid_field": 1,
+            "file_not_found": 1
+          },
+          "scope": "observed JSON command responses; Python API use is not counted"
+        },
+        "costAvailable": false,
+        "estimatedCostUsd": null,
+        "tokenRecordsAvailable": 27,
+        "tokenRecordsMissing": 3,
+        "preservationFailedAttempts": 4
+      }
+    },
+    "medianPairedSpeedup": 0.8491179828087961,
+    "speedComparisonScope": "only pairs where both arms pass; selection bias remains",
+    "attribution": "package plus skill configuration; not package-only or Electron UI",
+    "allAttemptCount": 66,
+    "predeclaredExcludedTaskIds": [
+      "168-17",
+      "395-36",
+      "402-43"
+    ]
+  },
+  "afterLibreOfficeSecondary": {
     "attemptCount": 60,
     "completePairCount": 30,
     "scorablePairCount": 30,
@@ -160,6 +237,13 @@
       "395-36",
       "402-43"
     ]
+  },
+  "nativeEvaluationCompletion": {
+    "status": "complete",
+    "unprocessedCount": 0,
+    "rejectedOutputCount": 3,
+    "savedActualFormulaOutputs": 30,
+    "auditPendingCountMeaning": "Outputs not ready for value grading; all three have observed native rejections, not pending UI actions."
   },
   "reader": {
     "schemaVersion": 1,
@@ -3443,7 +3527,32 @@
     },
     "scope": "Package plus skill configuration; one repetition per arm; no Electron UI or package-only attribution"
   },
+  "formulaProof": {
+    "fixtureFiles": {
+      "valid.xlsx": "932e04b5d07f31bf9c9826b31e9d24e19bd19cc489ccb5fd94aa6f4f33138202",
+      "valid.evaluated.xlsx": "2faf44ff040014400aa7f8f912be684c3c6b2b541b6014db3cb8c58f6fbdaf09",
+      "invalid.xlsx": "8699d92e044bc16594691d33d0b35e1e7f40c1ea29db1c817f00f46dc34e870b",
+      "native-formula-unprefixed.xlsx": "ba4e1beb9b8c9cf0387fac3ee01bcbc043a229da5f93fcd06616cee0ae5e5819",
+      "native-formula-good.xlsx": "6ebfa7e067311dbc8c109f1f93aafc116b52a72e3d0947c593fff968ce9fcacb",
+      "original.xlsx": "3e478f89f6a223970b9c0dd95401107a0872a29d8e0084dbde60fcb49c3d985b"
+    },
+    "nativeExcel": {
+      "correctlyStoredModernFormula": "opened_calculated_saved; B2/B3 alpha,beta",
+      "unprefixedModernFormula": "Excel content recovery prompt; repair declined; file unchanged"
+    },
+    "libreOffice": {
+      "validFormulaAndEmptyString": "validated true; source unchanged; evaluated sidecar saved",
+      "divideByZero": "validated false; #DIV/0!; exit 1; no evaluated sidecar saved"
+    },
+    "cacheFreshness": "must be established by actual external engine invocation; verifier alone does not establish it"
+  },
+  "nativeAudit": {
+    "engine": "Microsoft Excel",
+    "excelVersion": "16.113.3",
+    "ready": false,
+    "pendingCount": 3
+  },
+  "rawAttemptsSha256": "c3440e6b869106264df867964fdd7028e7e0bcf87a497d61c7b97e0c52eb515b",
   "candidateRuntimeCommit": "b0c996bf247fd61990d74dc51fccb96278bcb72e",
-  "desktopCandidateCommit": "283ba4d27f7137ff06cfa2d1023965a2387dafcc",
-  "rawAttemptsSha256": "c3440e6b869106264df867964fdd7028e7e0bcf87a497d61c7b97e0c52eb515b"
+  "desktopCandidateCommit": "283ba4d27f7137ff06cfa2d1023965a2387dafcc"
 }

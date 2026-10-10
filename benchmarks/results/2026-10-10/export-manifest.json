@@ -1,105 +1,117 @@
 [
   {
+    "file": "report.json",
+    "originalSha256": "92f5d0e309e4883024782771b8710c441c8e1d892f5860cc68ca1fd957a74919",
+    "exportedSha256": "cabbb1d930eeb5a90a43e07bcad7da32dd2b03b3d4aa493fab2df875564f4430",
+    "transformation": "Local paths replaced; session IDs removed. Raw agent logs excluded."
+  },
+  {
     "file": "comparison.json",
-    "originalSha256": "3289bb657af4a52ffba0d9bfe60a8f818863ab615fc905ba37141f4c13e1df1d",
-    "exportedSha256": "546337f030658195c89082f6bafd8e732effc5ef17c2e6ef238df075ed018dc9",
-    "transformation": "Local paths in JSON keys and values replaced; session IDs removed; raw agent logs excluded."
+    "originalSha256": "1fa7fd13c592994f01d857d53dde2e8545890bf1d2e76dd7b51d393305df189e",
+    "exportedSha256": "51740f746aec733053db626c76f4e60bf2d7f34a41046c806d0b7372e0e6ab8d",
+    "transformation": "Local paths replaced; session IDs removed. Raw agent logs excluded."
   },
   {
     "file": "operations.jsonl",
     "originalSha256": "7bddb49b29f60719ea7f8e67d49128490f197237062bdc838e7d370d2ab4d849",
     "exportedSha256": "7bddb49b29f60719ea7f8e67d49128490f197237062bdc838e7d370d2ab4d849",
-    "transformation": "Local paths in JSON keys and values replaced; session IDs removed; raw agent logs excluded."
+    "transformation": "Local paths replaced; session IDs removed. Raw agent logs excluded."
   },
   {
     "file": "operation-metadata.json",
     "originalSha256": "1eb384bd6bbb07dbacbdf72b6b05308bfa044f2c6a78e3896473a0fb84782fc0",
     "exportedSha256": "cd158e96b51ed7c9bff7de104686609fe65cb7671eab8e4d63f1e82816d0874b",
-    "transformation": "Local paths in JSON keys and values replaced; session IDs removed; raw agent logs excluded."
+    "transformation": "Local paths replaced; session IDs removed. Raw agent logs excluded."
   },
   {
     "file": "contracts.jsonl",
     "originalSha256": "d922794b587c1b2fc1257c7fafaf111a6b4cf34834e149df7a3e1511428a57ca",
     "exportedSha256": "da68a5da379d66981ed785c8dc2cd3d5426f018e71dcb428eb263a96c281c4ac",
-    "transformation": "Local paths in JSON keys and values replaced; session IDs removed; raw agent logs excluded."
+    "transformation": "Local paths replaced; session IDs removed. Raw agent logs excluded."
   },
   {
     "file": "agents-raw.jsonl",
     "originalSha256": "c3440e6b869106264df867964fdd7028e7e0bcf87a497d61c7b97e0c52eb515b",
     "exportedSha256": "88a5fa004ade41f1bdcba8616d2189b1c711d425e10d80349259d439cd51d894",
-    "transformation": "Local paths in JSON keys and values replaced; session IDs removed; raw agent logs excluded."
+    "transformation": "Local paths replaced; session IDs removed. Raw agent logs excluded."
+  },
+  {
+    "file": "agents-native-graded.jsonl",
+    "originalSha256": "0241fc8f664be53eee7aaf096ed71cab6220fb6bd3656422207ca50e80e9dcd0",
+    "exportedSha256": "3041c75070dd2430f90156eb596b849a23bea8b42253275af909caeaf9a0cf70",
+    "transformation": "Local paths replaced; session IDs removed. Raw agent logs excluded."
   },
   {
     "file": "agents-libreoffice-graded.jsonl",
     "originalSha256": "7217c27616b7aeff5b1c19d5452f6f76b027a4826e4a86a667180591b990dc5c",
     "exportedSha256": "fceee997cfd7d343d16a458271f9bad9cedbd1ef3631ef8a5b89c02171745f86",
-    "transformation": "Local paths in JSON keys and values replaced; session IDs removed; raw agent logs excluded."
+    "transformation": "Local paths replaced; session IDs removed. Raw agent logs excluded."
   },
   {
     "file": "agent-metadata.json",
     "originalSha256": "ac59aac5083bbd88717903bcee997a498b91269f4c802d1ef677288677bc3c8c",
     "exportedSha256": "b1bd89e0eef2826264adaab888f4eb9fe549eb46d99928d710b9dd58f81d7023",
-    "transformation": "Local paths in JSON keys and values replaced; session IDs removed; raw agent logs excluded."
+    "transformation": "Local paths replaced; session IDs removed. Raw agent logs excluded."
   },
   {
     "file": "build-provenance.json",
     "originalSha256": "a6543f82c06b9ba0fd5d70f1f30859c7d596400ff2e66dde4237c91a19faeb85",
     "exportedSha256": "a6543f82c06b9ba0fd5d70f1f30859c7d596400ff2e66dde4237c91a19faeb85",
-    "transformation": "Local paths in JSON keys and values replaced; session IDs removed; raw agent logs excluded."
+    "transformation": "Local paths replaced; session IDs removed. Raw agent logs excluded."
   },
   {
     "file": "agent-controls-comparison.json",
     "originalSha256": "32d79f6c5a4120d342aec21c631b63b69ee2eaa8b5bf41efb348a4d178a737ae",
     "exportedSha256": "32d79f6c5a4120d342aec21c631b63b69ee2eaa8b5bf41efb348a4d178a737ae",
-    "transformation": "Local paths in JSON keys and values replaced; session IDs removed; raw agent logs excluded."
+    "transformation": "Local paths replaced; session IDs removed. Raw agent logs excluded."
   },
   {
     "file": "guard-diagnostics.json",
     "originalSha256": "de12fd26c23f5c02ff6c695eb99fa71352e1c2f30f70ffb38d7d2b501e787644",
     "exportedSha256": "de12fd26c23f5c02ff6c695eb99fa71352e1c2f30f70ffb38d7d2b501e787644",
-    "transformation": "Local paths in JSON keys and values replaced; session IDs removed; raw agent logs excluded."
+    "transformation": "Local paths replaced; session IDs removed. Raw agent logs excluded."
   },
   {
     "file": "reader-comparison.json",
     "originalSha256": "5c0a625aa98faf8a7f4952a246efbca4a9cfd2c7fd8167ebd9068d3c2e8eb1f8",
     "exportedSha256": "9b13eae373009344be83f3a5e30be2b258974e457ffbd632927f836aad4814e4",
-    "transformation": "Local paths in JSON keys and values replaced; session IDs removed; raw agent logs excluded."
+    "transformation": "Local paths replaced; session IDs removed. Raw agent logs excluded."
   },
   {
     "file": "native-audit.json",
-    "originalSha256": "217016ad1ee4d8b3a9302368f44cd01a663477eeae18b9736c749440dc7c461b",
-    "exportedSha256": "d2d230e91d24e490a348441e27cb92f6008bc29a2994050e7e1d5e7abe1d8831",
-    "transformation": "Local paths in JSON keys and values replaced; session IDs removed; raw agent logs excluded."
+    "originalSha256": "1301b14c0bce44c338cafbb5ec3c0e6fcd37093aea68ca9f6e039c45ad88dc76",
+    "exportedSha256": "063532e999d7b1176dc632d2f87d60d9c87259156f54e46247741450acab0a7d",
+    "transformation": "Local paths replaced; session IDs removed. Raw agent logs excluded."
   },
   {
     "file": "golden-reuse.json",
     "originalSha256": "4d3d674b98ac382cce2670fe46eb1e7ed02af783e283477ba603dbd445d543a6",
     "exportedSha256": "4d3d674b98ac382cce2670fe46eb1e7ed02af783e283477ba603dbd445d543a6",
-    "transformation": "Local paths in JSON keys and values replaced; session IDs removed; raw agent logs excluded."
+    "transformation": "Local paths replaced; session IDs removed. Raw agent logs excluded."
   },
   {
     "file": "golden-self-check.json",
     "originalSha256": "1d9f1fad4acc79cba5637ca8329b109e9d7472cc99cd6b1afd91fefa092898d6",
     "exportedSha256": "1d9f1fad4acc79cba5637ca8329b109e9d7472cc99cd6b1afd91fefa092898d6",
-    "transformation": "Local paths in JSON keys and values replaced; session IDs removed; raw agent logs excluded."
+    "transformation": "Local paths replaced; session IDs removed. Raw agent logs excluded."
   },
   {
     "file": "validation-evidence.json",
     "originalSha256": "3cd36c0bb197e46df6b6ff399718c2388df6322d6c02552b06741f3b07771c09",
     "exportedSha256": "3cd36c0bb197e46df6b6ff399718c2388df6322d6c02552b06741f3b07771c09",
-    "transformation": "Local paths in JSON keys and values replaced; session IDs removed; raw agent logs excluded."
+    "transformation": "Local paths replaced; session IDs removed. Raw agent logs excluded."
   },
   {
     "file": "tasks.json",
     "originalSha256": "ef74fdd3ff776527b53cf8b5d7f05d73f90004158d40c7a4c44bb4c3f9237913",
     "exportedSha256": "90e7208eb442c347dd132519ad97d68ccb89d1b0d39bd51f071b784f12891fad",
-    "transformation": "Local paths in JSON keys and values replaced; session IDs removed; raw agent logs excluded."
+    "transformation": "Local paths replaced; session IDs removed. Raw agent logs excluded."
   },
   {
     "file": "selection.json",
     "originalSha256": "10f498019194ec16a3e0087a5a953771bf1279d0635ca818db6d1b216c5ed360",
     "exportedSha256": "fb3a2b64c62691d3b96f1684136bdfe8b0da6c366927b7cc8582b70d11f6ad0d",
-    "transformation": "Local paths in JSON keys and values replaced; session IDs removed; raw agent logs excluded."
+    "transformation": "Local paths replaced; session IDs removed. Raw agent logs excluded."
   },
   {
     "file": "ATTRIBUTION.txt",
@@ -123,18 +135,18 @@
     "file": "sources.json",
     "originalSha256": "bcc656b8269621a5cfe775bba9fc19fb0c424e7ed790c88fb47e1e3f64965a20",
     "exportedSha256": "f7b7f99609ef400a478cd622fbefc280f49fc2fd8851af4ff3fedc55c1050dbf",
-    "transformation": "Local paths in JSON keys and values replaced; session IDs removed; raw agent logs excluded."
+    "transformation": "Local paths replaced; session IDs removed. Raw agent logs excluded."
+  },
+  {
+    "file": "failure-reproductions.zip",
+    "originalSha256": "0137dcd0a0e5f486eda6b604d8b2b371846c5c56967160690d7f6d6733552e53",
+    "exportedSha256": "0137dcd0a0e5f486eda6b604d8b2b371846c5c56967160690d7f6d6733552e53",
+    "transformation": "Generated from unchanged public task inputs/goldens and hashed raw failed outputs; sanitized records; no agent logs."
   },
   {
     "file": "libreoffice-failure-reproductions.zip",
     "originalSha256": "27c1e1464757efc9049fde174716d9a252b45048927a69c509a1ebc0f91349bc",
     "exportedSha256": "27c1e1464757efc9049fde174716d9a252b45048927a69c509a1ebc0f91349bc",
-    "transformation": "Public raw inputs/goldens and failed raw outputs under the secondary LibreOffice grades; sanitized records; no agent logs or evaluated output copies."
-  },
-  {
-    "file": "report.json",
-    "originalSha256": "7a4c785b9dc2d747d5ad00c00505d8237efb13394a09da81b58594cdd5c59bd3",
-    "exportedSha256": "7a4c785b9dc2d747d5ad00c00505d8237efb13394a09da81b58594cdd5c59bd3",
-    "transformation": "Local paths in JSON keys and values replaced; session IDs removed; raw agent logs excluded."
+    "transformation": "Retained secondary LibreOffice failure archive; public inputs and raw hashed outputs; no agent logs."
   }
 ]
