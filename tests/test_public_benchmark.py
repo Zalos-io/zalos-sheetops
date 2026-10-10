@@ -130,6 +130,7 @@ def test_replay_outputs_json_with_oracle_correctness_result(tmp_path: Path) -> N
     book.active.title = "data"
     book.active["A1"] = "created"
     book.active["A2"] = datetime(2026, 1, 2)
+    book.active["A4"] = "last requested row"
     book.save(root / "generated/readbench-3.xlsx")
     process = subprocess.run(
         [
@@ -154,11 +155,8 @@ def test_replay_outputs_json_with_oracle_correctness_result(tmp_path: Path) -> N
     assert process.returncode == 0, process.stderr
     result = json.loads(process.stdout)
     assert result["case"] == "3-cells-start"
-    assert result["status"] == "incorrect"
-    assert (
-        result["sampleComparison"]["firstDifferences"][0]["expected"]
-        == "2026-01-02T00:00:00"
-    )
+    assert result["status"] == "pass"
+    assert result["sample"][0][0] == "2026-01-02T00:00:00"
     assert len(result["inputSha256"]) == 64
 
 

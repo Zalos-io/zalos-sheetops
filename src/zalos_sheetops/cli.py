@@ -105,6 +105,7 @@ def _run_inspect(json_payload: str | None, pretty: bool) -> int:
 
 def _run_read_table(json_payload: str | None, pretty: bool) -> int:
     from zalos_sheetops.io.read_table import read_table
+    from zalos_sheetops.io.typed_values import validate_value_mode
 
     command = "read-table"
     try:
@@ -148,11 +149,14 @@ def _run_read_table(json_payload: str | None, pretty: bool) -> int:
                 "Field has invalid type",
                 {"field": "maxRows", "expected": "positive integer | null"},
             )
+        value_mode = validate_value_mode(payload.get("valueMode", "raw"))
         path = validate_agent_path(path_value)
         _emit(
             success_response(
                 command,
-                read_table(path, sheet, header_strategy, header_row, max_rows),
+                read_table(
+                    path, sheet, header_strategy, header_row, max_rows, value_mode
+                ),
             ),
             pretty,
         )
@@ -173,6 +177,7 @@ def _run_read_table(json_payload: str | None, pretty: bool) -> int:
 
 def _run_cells_read(json_payload: str | None, pretty: bool) -> int:
     from zalos_sheetops.io.read_cells import read_cells
+    from zalos_sheetops.io.typed_values import validate_value_mode
 
     command = "cells read"
     try:
@@ -188,6 +193,7 @@ def _run_cells_read(json_payload: str | None, pretty: bool) -> int:
         cell_range = _require_string_field(payload, "range")
         include = _optional_include_field(payload)
         engine = _optional_engine_field(payload, default="openpyxl")
+        value_mode = validate_value_mode(payload.get("valueMode", "raw"))
         _emit(
             success_response(
                 command,
@@ -197,10 +203,54 @@ def _run_cells_read(json_payload: str | None, pretty: bool) -> int:
                     cell_range,
                     include,
                     engine=engine,
+                    value_mode=value_mode,
                 ),
             ),
             pretty,
         )
+        return 0
+    except SheetOpsError as error:
+        _emit(
+            error_response(command, error.error_code, error.message, error.details),
+            pretty,
+        )
+        return 1
+
+
+def _run_verify_edits(json_payload: str | None, pretty: bool) -> int:
+    from zalos_sheetops.compare.edits import verify_edits
+
+    command = "verify-edits"
+    try:
+        payload = _parse_json_payload(command, json_payload)
+        original = validate_agent_path(_require_string_field(payload, "originalPath"))
+        actual = validate_agent_path(_require_string_field(payload, "path"))
+        evaluated = payload.get("evaluatedPath")
+        if evaluated is not None and not isinstance(evaluated, str):
+            raise SheetOpsError(
+                "invalid_field", "Invalid evaluatedPath", {"field": "evaluatedPath"}
+            )
+        structural = payload.get("structuralSheets", [])
+        if not isinstance(structural, list) or any(
+            not isinstance(name, str) for name in structural
+        ):
+            raise SheetOpsError(
+                "invalid_field",
+                "Invalid structuralSheets",
+                {"field": "structuralSheets"},
+            )
+        result = verify_edits(
+            original,
+            actual,
+            payload.get("allowedRanges", {}),
+            evaluated_path=validate_agent_path(evaluated) if evaluated else None,
+            structural_sheets=structural,
+        )
+        if not result["verified"]:
+            raise SheetOpsError(
+                "verification_failed", "Workbook edits failed verification", result
+            )
+        _emit(success_response(command, result), pretty)
         return 0
     except SheetOpsError as error:
         _emit(
@@ -1351,6 +1401,11 @@ _COMMANDS: dict[tuple[str, ...], tuple[str, bool, object]] = {
         True,
         _run_read_table,
     ),
+    ("verify-edits",): (
+        "Verify edit scope and formula results against an evaluated copy.",
+        True,
+        _run_verify_edits,
+    ),
     ("validate",): (
         "Validate workbook sheets, columns, keys, and rules.",
         True,
@@ -1434,6 +1489,7 @@ _ROOT_ORDER: list[str] = [
     "inspect",
     "read-table",
     "validate",
+    "verify-edits",
     "recalc",
     "diff",
     "reconcile",

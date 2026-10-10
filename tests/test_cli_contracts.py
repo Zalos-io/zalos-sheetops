@@ -96,6 +96,7 @@ def test_schema_returns_machine_readable_command_manifest() -> None:
         "recalc",
         "diff",
         "reconcile",
+        "verify-edits",
     }
 
 
@@ -121,6 +122,7 @@ def test_schema_includes_json_contract_for_every_command() -> None:
         "headerStrategy": "detect | row",
         "headerRow": "integer | null",
         "maxRows": "positive integer | null",
+        "valueMode": "raw | typed (XML reads; default raw)",
     }
     assert commands["cells read"]["input"] == {
         "path": "string",
@@ -128,6 +130,7 @@ def test_schema_includes_json_contract_for_every_command() -> None:
         "range": "A1-style range",
         "include": "list[values | formulas | cachedValues | numberFormats | dataTypes]",
         "engine": "auto | xml | openpyxl",
+        "valueMode": "raw | typed (XML reads; default raw)",
     }
     assert commands["cells search"]["input"] == {
         "path": "string",

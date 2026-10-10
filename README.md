@@ -46,6 +46,31 @@ stops scanning at `maxRows` under `headerStrategy` `row`, reporting
 `cells read` omits blank cells and null formulas; compare `returnedCellCount`
 with `cellCount` to see how many cells were blank.
 
+For calendar dates and times, opt into `"valueMode": "typed"` on XML cell
+or table reads. It applies Excel's 1900/1904 date system and cell formats;
+cell results are ISO strings, while tables retain string rows. Raw XML
+reads remain the default, including exact stored serials. OpenPyXL reads
+retain their existing typed behavior.
+
+For edits, preserve the original, write a staged output, and declare the
+allowed ranges. `verify-edits` fails on changed cells, styles, comments or
+hyperlinks outside those ranges and on undeclared structure changes. It also
+checks chart/drawing and embedded parts conservatively. New formulas require
+an `evaluatedPath` containing a copy evaluated separately by Excel or
+LibreOffice; missing/error caches, mismatched formulas and unsafe modern
+formula storage fail verification. The command checks the supplied results;
+it cannot establish cache freshness or prove the task's expected answer.
+Independently check expected values and keep the evaluation copy separate
+from the deliverable, since spreadsheet engines may rewrite formatting.
+
+```bash
+sheetops verify-edits --json '{"originalPath":"original.xlsx","path":"output.xlsx","allowedRanges":{"Data":["B2:B20"]},"evaluatedPath":"output.evaluated.xlsx"}'
+```
+
+The edit guard loads both workbooks through OpenPyXL. It supports cell edits
+and explicitly declared structural changes within existing sheets; it does
+not certify workbook renames, VBA execution or every unsupported Excel feature.
+
 ## Verification
 
 Run these before claiming a change is ready:

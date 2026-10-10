@@ -62,6 +62,7 @@ def sheetops_cells(case: dict, cli: bool = False) -> list[list[object]]:
             "range": case["range"],
             "include": include,
             "engine": "xml",
+            "valueMode": "typed",
         }
         result = subprocess.run(
             [
@@ -83,7 +84,12 @@ def sheetops_cells(case: dict, cli: bool = False) -> list[list[object]]:
         from zalos_sheetops.io.read_cells import read_cells
 
         cells = read_cells(
-            Path(case["path"]), case["sheet"], case["range"], include, engine="xml"
+            Path(case["path"]),
+            case["sheet"],
+            case["range"],
+            include,
+            engine="xml",
+            value_mode="typed",
         )["cells"]
     by_address = {c["address"]: c for c in cells}
     left, top, right, bottom = range_boundaries(case["range"])
@@ -121,6 +127,7 @@ def sheetops_table(case: dict, cli: bool = False) -> list[list[object]]:
             "sheet": case["sheet"],
             "headerStrategy": "row",
             "headerRow": 1,
+            "valueMode": "typed",
         }
         process = subprocess.run(
             [
@@ -138,7 +145,9 @@ def sheetops_table(case: dict, cli: bool = False) -> list[list[object]]:
             raise RuntimeError(response)
         result = response["data"]
     else:
-        result = read_table(Path(case["path"]), case["sheet"], "row", 1)
+        result = read_table(
+            Path(case["path"]), case["sheet"], "row", 1, value_mode="typed"
+        )
     if result["truncated"]:
         raise RuntimeError("Full table was truncated")
     return [result["headers"], *result["rows"]]

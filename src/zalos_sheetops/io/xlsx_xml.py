@@ -13,6 +13,7 @@ from zalos_sheetops.io.cellref import (
     get_column_letter,
     range_boundaries,
 )
+from zalos_sheetops.io.typed_values import TypedValues
 
 MAIN_NS = "http://schemas.openxmlformats.org/spreadsheetml/2006/main"
 RELATIONSHIP_NS = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
@@ -107,7 +108,12 @@ class XlsxWorkbook:
     directory and re-parsing the shared strings table for every pass.
     """
 
-    def __init__(self, path: Path) -> None:
+    def __init__(self, path: Path, value_mode: str = "raw") -> None:
+        from zalos_sheetops.io.typed_values import validate_value_mode
+
+        validate_value_mode(value_mode)
+        self._value_mode = value_mode
+        self._typed_values = None
         self.path = path
         try:
             self._archive = ZipFile(path, "r")
@@ -172,7 +178,7 @@ class XlsxWorkbook:
         rows: list[RowData] = []
         parser = xml.parsers.expat.ParserCreate()
         parser.buffer_text = True
-        _RowScanner(parser, shared_strings, rows)
+        _RowScanner(parser, shared_strings, rows, self.typed_values())
         try:
             with self._archive.open(worksheet.path) as handle:
                 while True:
@@ -214,7 +220,37 @@ class XlsxWorkbook:
             columns=columns,
         )
         self._parse_worksheet(worksheet, parser, scanner)
+        converter = self.typed_values()
+        if converter is not None:
+            from zalos_sheetops.io.typed_values import json_typed_value
+
+            # scan_cells already resolves number formats. Convert only numeric
+            # date cells and ISO date storage; formulas keep their original text.
+            styles = self.number_formats()
+            format_styles = {fmt: style for style, fmt in styles.items()}
+            for cell in cells:
+                cell.value = json_typed_value(
+                    converter.convert(
+                        cell.value,
+                        str(format_styles.get(cell.number_format, 0)),
+                        cell.data_type,
+                    )
+                )
+                cell.cached_value = cell.value
         return cells
+
+    def typed_values(self) -> TypedValues | None:
+        if self._value_mode == "raw":
+            return None
+        if self._typed_values is None:
+            root = ET.fromstring(self._archive.read("xl/workbook.xml"))
+            properties = root.find(f"{{{MAIN_NS}}}workbookPr")
+            date_1904 = properties is not None and properties.get("date1904") in (
+                "1",
+                "true",
+            )
+            self._typed_values = TypedValues(self.number_formats(), date_1904)
+        return self._typed_values
 
     def scan_formula_cells(self, sheet_name: str, max_cells: int) -> list[str]:
         worksheet = self.worksheet(sheet_name)
@@ -473,9 +509,11 @@ class _RowScanner(_WorksheetContentScanner):
         parser: xml.parsers.expat.XMLParserType,
         shared_strings: list[str],
         rows_out: list[RowData],
+        typed_values: TypedValues | None = None,
     ) -> None:
         super().__init__(parser, shared_strings)
         self._rows_out = rows_out
+        self._typed_values = typed_values
         self._values: list[object] | None = None
         self._next_column = 1
         self._first_cell_row: int | None = None
@@ -484,6 +522,8 @@ class _RowScanner(_WorksheetContentScanner):
         if name == "c":
             self._coordinate = attrs.get("r")
             self._cell_type = attrs.get("t")
+            if self._typed_values is not None:
+                self._style = attrs.get("s")
             self._value_text = None
             self._inline_parts = None
         elif name == "v":
@@ -539,6 +579,8 @@ class _RowScanner(_WorksheetContentScanner):
                             value = text
             else:
                 value = self._cell_value()
+            if self._typed_values is not None:
+                value = self._typed_values.convert(value, self._style, self._cell_type)
             index = column - 1
             if index == len(values):
                 values.append(value)
@@ -800,9 +842,10 @@ def read_cells_xml(
     sheet_name: str,
     cell_range: str,
     include_fields: list[str],
+    value_mode: str = "raw",
 ) -> dict[str, object]:
     min_col, min_row, max_col, max_row = _parse_cell_range(cell_range)
-    with XlsxWorkbook(path) as workbook:
+    with XlsxWorkbook(path, value_mode=value_mode) as workbook:
         parsed = workbook.scan_cells(
             sheet_name,
             bounds=(min_col, min_row, max_col, max_row),
