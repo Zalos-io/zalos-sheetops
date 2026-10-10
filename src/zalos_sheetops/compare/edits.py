@@ -14,42 +14,168 @@ from openpyxl import load_workbook
 from openpyxl.formula import Tokenizer
 from openpyxl.formula.tokenizer import TokenizerError
 from openpyxl.utils.cell import range_boundaries
-from openpyxl.worksheet.formula import ArrayFormula
+from openpyxl.worksheet.formula import ArrayFormula, DataTableFormula
 
 from zalos_sheetops.errors import SheetOpsError
 from zalos_sheetops.io.xlsx_xml import MAIN_NS, XlsxWorkbook
 
-FUTURE_FUNCTIONS = {
-    "TEXTJOIN",
-    "CONCAT",
-    "FILTER",
-    "UNIQUE",
-    "SORT",
-    "SORTBY",
-    "XLOOKUP",
-    "XMATCH",
-    "LET",
-    "LAMBDA",
-    "SEQUENCE",
-    "TEXTSPLIT",
-    "HSTACK",
-    "VSTACK",
-    "TAKE",
-    "DROP",
-    "CHOOSECOLS",
-    "CHOOSEROWS",
-    "BYROW",
-    "BYCOL",
-    "MAP",
-    "REDUCE",
-    "SCAN",
-    "MAKEARRAY",
-    "RANDARRAY",
-    "TOCOL",
-    "TOROW",
-    "WRAPROWS",
-    "WRAPCOLS",
-    "EXPAND",
+# Excel storage names documented at https://xlsxwriter.readthedocs.io/working_with_formulas.html
+FUNCTION_STORAGE_NAMES = {
+    "ACOT": "_xlfn.ACOT",
+    "ACOTH": "_xlfn.ACOTH",
+    "AGGREGATE": "_xlfn.AGGREGATE",
+    "ANCHORARRAY": "_xlfn.ANCHORARRAY",
+    "ARABIC": "_xlfn.ARABIC",
+    "ARRAYTOTEXT": "_xlfn.ARRAYTOTEXT",
+    "BASE": "_xlfn.BASE",
+    "BETA.DIST": "_xlfn.BETA.DIST",
+    "BETA.INV": "_xlfn.BETA.INV",
+    "BINOM.DIST": "_xlfn.BINOM.DIST",
+    "BINOM.DIST.RANGE": "_xlfn.BINOM.DIST.RANGE",
+    "BINOM.INV": "_xlfn.BINOM.INV",
+    "BITAND": "_xlfn.BITAND",
+    "BITLSHIFT": "_xlfn.BITLSHIFT",
+    "BITOR": "_xlfn.BITOR",
+    "BITRSHIFT": "_xlfn.BITRSHIFT",
+    "BITXOR": "_xlfn.BITXOR",
+    "BYCOL": "_xlfn.BYCOL",
+    "BYROW": "_xlfn.BYROW",
+    "CEILING.MATH": "_xlfn.CEILING.MATH",
+    "CEILING.PRECISE": "_xlfn.CEILING.PRECISE",
+    "CHISQ.DIST": "_xlfn.CHISQ.DIST",
+    "CHISQ.DIST.RT": "_xlfn.CHISQ.DIST.RT",
+    "CHISQ.INV": "_xlfn.CHISQ.INV",
+    "CHISQ.INV.RT": "_xlfn.CHISQ.INV.RT",
+    "CHISQ.TEST": "_xlfn.CHISQ.TEST",
+    "CHOOSECOLS": "_xlfn.CHOOSECOLS",
+    "CHOOSEROWS": "_xlfn.CHOOSEROWS",
+    "COMBINA": "_xlfn.COMBINA",
+    "CONCAT": "_xlfn.CONCAT",
+    "CONFIDENCE.NORM": "_xlfn.CONFIDENCE.NORM",
+    "CONFIDENCE.T": "_xlfn.CONFIDENCE.T",
+    "COT": "_xlfn.COT",
+    "COTH": "_xlfn.COTH",
+    "COVARIANCE.P": "_xlfn.COVARIANCE.P",
+    "COVARIANCE.S": "_xlfn.COVARIANCE.S",
+    "CSC": "_xlfn.CSC",
+    "CSCH": "_xlfn.CSCH",
+    "DAYS": "_xlfn.DAYS",
+    "DECIMAL": "_xlfn.DECIMAL",
+    "DROP": "_xlfn.DROP",
+    "ERF.PRECISE": "_xlfn.ERF.PRECISE",
+    "ERFC.PRECISE": "_xlfn.ERFC.PRECISE",
+    "EXPAND": "_xlfn.EXPAND",
+    "EXPON.DIST": "_xlfn.EXPON.DIST",
+    "F.DIST": "_xlfn.F.DIST",
+    "F.DIST.RT": "_xlfn.F.DIST.RT",
+    "F.INV": "_xlfn.F.INV",
+    "F.INV.RT": "_xlfn.F.INV.RT",
+    "F.TEST": "_xlfn.F.TEST",
+    "FILTERXML": "_xlfn.FILTERXML",
+    "FLOOR.MATH": "_xlfn.FLOOR.MATH",
+    "FLOOR.PRECISE": "_xlfn.FLOOR.PRECISE",
+    "FORECAST.ETS": "_xlfn.FORECAST.ETS",
+    "FORECAST.ETS.CONFINT": "_xlfn.FORECAST.ETS.CONFINT",
+    "FORECAST.ETS.SEASONALITY": "_xlfn.FORECAST.ETS.SEASONALITY",
+    "FORECAST.ETS.STAT": "_xlfn.FORECAST.ETS.STAT",
+    "FORECAST.LINEAR": "_xlfn.FORECAST.LINEAR",
+    "FORMULATEXT": "_xlfn.FORMULATEXT",
+    "GAMMA": "_xlfn.GAMMA",
+    "GAMMA.DIST": "_xlfn.GAMMA.DIST",
+    "GAMMA.INV": "_xlfn.GAMMA.INV",
+    "GAMMALN.PRECISE": "_xlfn.GAMMALN.PRECISE",
+    "GAUSS": "_xlfn.GAUSS",
+    "HSTACK": "_xlfn.HSTACK",
+    "HYPGEOM.DIST": "_xlfn.HYPGEOM.DIST",
+    "IFNA": "_xlfn.IFNA",
+    "IFS": "_xlfn.IFS",
+    "IMAGE": "_xlfn.IMAGE",
+    "IMCOSH": "_xlfn.IMCOSH",
+    "IMCOT": "_xlfn.IMCOT",
+    "IMCSC": "_xlfn.IMCSC",
+    "IMCSCH": "_xlfn.IMCSCH",
+    "IMSEC": "_xlfn.IMSEC",
+    "IMSECH": "_xlfn.IMSECH",
+    "IMSINH": "_xlfn.IMSINH",
+    "IMTAN": "_xlfn.IMTAN",
+    "ISFORMULA": "_xlfn.ISFORMULA",
+    "ISOMITTED": "_xlfn.ISOMITTED",
+    "ISOWEEKNUM": "_xlfn.ISOWEEKNUM",
+    "LAMBDA": "_xlfn.LAMBDA",
+    "LET": "_xlfn.LET",
+    "LOGNORM.DIST": "_xlfn.LOGNORM.DIST",
+    "LOGNORM.INV": "_xlfn.LOGNORM.INV",
+    "MAKEARRAY": "_xlfn.MAKEARRAY",
+    "MAP": "_xlfn.MAP",
+    "MAXIFS": "_xlfn.MAXIFS",
+    "MINIFS": "_xlfn.MINIFS",
+    "MODE.MULT": "_xlfn.MODE.MULT",
+    "MODE.SNGL": "_xlfn.MODE.SNGL",
+    "MUNIT": "_xlfn.MUNIT",
+    "NEGBINOM.DIST": "_xlfn.NEGBINOM.DIST",
+    "NORM.DIST": "_xlfn.NORM.DIST",
+    "NORM.INV": "_xlfn.NORM.INV",
+    "NORM.S.DIST": "_xlfn.NORM.S.DIST",
+    "NORM.S.INV": "_xlfn.NORM.S.INV",
+    "NUMBERVALUE": "_xlfn.NUMBERVALUE",
+    "PDURATION": "_xlfn.PDURATION",
+    "PERCENTILE.EXC": "_xlfn.PERCENTILE.EXC",
+    "PERCENTILE.INC": "_xlfn.PERCENTILE.INC",
+    "PERCENTRANK.EXC": "_xlfn.PERCENTRANK.EXC",
+    "PERCENTRANK.INC": "_xlfn.PERCENTRANK.INC",
+    "PERMUTATIONA": "_xlfn.PERMUTATIONA",
+    "PHI": "_xlfn.PHI",
+    "POISSON.DIST": "_xlfn.POISSON.DIST",
+    "QUARTILE.EXC": "_xlfn.QUARTILE.EXC",
+    "QUARTILE.INC": "_xlfn.QUARTILE.INC",
+    "QUERYSTRING": "_xlfn.QUERYSTRING",
+    "RANDARRAY": "_xlfn.RANDARRAY",
+    "RANK.AVG": "_xlfn.RANK.AVG",
+    "RANK.EQ": "_xlfn.RANK.EQ",
+    "REDUCE": "_xlfn.REDUCE",
+    "RRI": "_xlfn.RRI",
+    "SCAN": "_xlfn.SCAN",
+    "SEC": "_xlfn.SEC",
+    "SECH": "_xlfn.SECH",
+    "SEQUENCE": "_xlfn.SEQUENCE",
+    "SHEET": "_xlfn.SHEET",
+    "SHEETS": "_xlfn.SHEETS",
+    "SINGLE": "_xlfn.SINGLE",
+    "SKEW.P": "_xlfn.SKEW.P",
+    "SORTBY": "_xlfn.SORTBY",
+    "STDEV.P": "_xlfn.STDEV.P",
+    "STDEV.S": "_xlfn.STDEV.S",
+    "SWITCH": "_xlfn.SWITCH",
+    "T.DIST": "_xlfn.T.DIST",
+    "T.DIST.2T": "_xlfn.T.DIST.2T",
+    "T.DIST.RT": "_xlfn.T.DIST.RT",
+    "T.INV": "_xlfn.T.INV",
+    "T.INV.2T": "_xlfn.T.INV.2T",
+    "T.TEST": "_xlfn.T.TEST",
+    "TAKE": "_xlfn.TAKE",
+    "TEXTAFTER": "_xlfn.TEXTAFTER",
+    "TEXTBEFORE": "_xlfn.TEXTBEFORE",
+    "TEXTJOIN": "_xlfn.TEXTJOIN",
+    "TEXTSPLIT": "_xlfn.TEXTSPLIT",
+    "TOCOL": "_xlfn.TOCOL",
+    "TOROW": "_xlfn.TOROW",
+    "UNICHAR": "_xlfn.UNICHAR",
+    "UNICODE": "_xlfn.UNICODE",
+    "UNIQUE": "_xlfn.UNIQUE",
+    "VALUETOTEXT": "_xlfn.VALUETOTEXT",
+    "VAR.P": "_xlfn.VAR.P",
+    "VAR.S": "_xlfn.VAR.S",
+    "VSTACK": "_xlfn.VSTACK",
+    "WEBSERVICE": "_xlfn.WEBSERVICE",
+    "WEIBULL.DIST": "_xlfn.WEIBULL.DIST",
+    "WRAPCOLS": "_xlfn.WRAPCOLS",
+    "WRAPROWS": "_xlfn.WRAPROWS",
+    "XLOOKUP": "_xlfn.XLOOKUP",
+    "XMATCH": "_xlfn.XMATCH",
+    "XOR": "_xlfn.XOR",
+    "Z.TEST": "_xlfn.Z.TEST",
+    "FILTER": "_xlfn._xlws.FILTER",
+    "SORT": "_xlfn._xlws.SORT",
 }
 CELL_STYLE_FIELDS = (
     "font",
@@ -127,15 +253,59 @@ def in_scope(sheet: str, cell: object, scopes: dict) -> bool:
 def formula_text(cell: object) -> str | None:
     if cell is None or cell.data_type != "f":
         return None
-    return cell.value if isinstance(cell.value, str) else cell.value.text
+    if isinstance(cell.value, str):
+        return cell.value
+    return cell.value.text if isinstance(cell.value, ArrayFormula) else None
+
+
+def formula_signature(cell: object) -> tuple | None:
+    if cell is None or cell.data_type != "f":
+        return None
+    if isinstance(cell.value, str):
+        return ("normal", cell.value)
+    return (
+        type(cell.value).__name__,
+        tuple(sorted(dict(cell.value).items())),
+        formula_text(cell),
+    )
+
+
+def dimension_signature(dimension: object) -> tuple:
+    # Style IDs are local to each workbook. Resolve the actual components.
+    attributes = tuple(
+        sorted((key, value) for key, value in dict(dimension).items() if key != "s")
+    )
+    return (
+        attributes,
+        *(copy(getattr(dimension, field)) for field in CELL_STYLE_FIELDS),
+    )
+
+
+def range_in_scope(sheet: str, reference: str, scopes: dict) -> bool:
+    remaining = [parse_ranges({sheet: [reference]})[sheet][0]]
+    for left, top, right, bottom in scopes.get(sheet, []):
+        next_remaining = []
+        for x1, y1, x2, y2 in remaining:
+            a, b, c, d = max(x1, left), max(y1, top), min(x2, right), min(y2, bottom)
+            if a > c or b > d:
+                next_remaining.append((x1, y1, x2, y2))
+                continue
+            if x1 < a:
+                next_remaining.append((x1, y1, a - 1, y2))
+            if c < x2:
+                next_remaining.append((c + 1, y1, x2, y2))
+            if y1 < b:
+                next_remaining.append((a, y1, c, b - 1))
+            if d < y2:
+                next_remaining.append((a, d + 1, c, y2))
+        remaining = next_remaining
+    return not remaining
 
 
 def cell_signature(cell: object) -> tuple:
     if cell is None:
         return (None,)
-    value = formula_text(cell) or cell.value
-    if cell.data_type == "f" and not isinstance(cell.value, str):
-        value = (value, cell.value.ref)
+    value = formula_signature(cell) if cell.data_type == "f" else cell.value
     if value is None and not cell.has_style and not cell.comment and not cell.hyperlink:
         return (None,)
     note = (cell.comment.text, cell.comment.author) if cell.comment else None
@@ -175,17 +345,30 @@ def sheet_structure(sheet: object) -> tuple:
             (
                 str(key.sqref),
                 tuple(
-                    xml_signature(rule) for rule in sheet.conditional_formatting[key]
+                    (
+                        xml_signature(rule),
+                        xml_signature(rule.dxf) if rule.dxf is not None else None,
+                    )
+                    for rule in sheet.conditional_formatting[key]
                 ),
             )
             for key in sheet.conditional_formatting
         ),
         str(sheet.print_area),
+        sheet.print_title_rows,
+        sheet.print_title_cols,
         tuple(
-            (key, xml_signature(value)) for key, value in sheet.row_dimensions.items()
+            sorted(
+                (key, xml_signature(value))
+                for key, value in sheet.defined_names.items()
+            )
         ),
         tuple(
-            (key, xml_signature(value))
+            (key, dimension_signature(value))
+            for key, value in sheet.row_dimensions.items()
+        ),
+        tuple(
+            (key, dimension_signature(value))
             for key, value in sheet.column_dimensions.items()
         ),
         tuple((table.name, xml_signature(table)) for table in sheet.tables.values()),
@@ -233,6 +416,7 @@ def protected_parts(path: Path) -> dict[str, bytes]:
                     "xl/drawings/",
                     "xl/embeddings/",
                     "xl/activeX/",
+                    "xl/theme/",
                     "customXml/",
                 )
             )
@@ -277,7 +461,15 @@ def formula_issues(sheet: str, cell: object, evaluated: object) -> list[dict]:
                 "message": str(error),
             }
         ]
-    if any(name.upper() in FUTURE_FUNCTIONS for name in functions):
+    if any(
+        name.upper().removeprefix("_XLFN.").removeprefix("_XLWS.")
+        in FUNCTION_STORAGE_NAMES
+        and name.upper()
+        != FUNCTION_STORAGE_NAMES[
+            name.upper().removeprefix("_XLFN.").removeprefix("_XLWS.")
+        ].upper()
+        for name in functions
+    ):
         reasons.append("missing_function_prefix")
     if any(
         name.upper().split(".")[-1] in DYNAMIC_FUNCTIONS for name in functions
@@ -290,12 +482,78 @@ def formula_issues(sheet: str, cell: object, evaluated: object) -> list[dict]:
     else:
         evaluated_cell = evaluated[sheet]._cells.get((cell.row, cell.column))
         other_formula = formula_text(evaluated_cell)
+        if (
+            type(cell.value) is not type(evaluated_cell.value)
+            if evaluated_cell is not None
+            else True
+        ) or (
+            isinstance(cell.value, ArrayFormula)
+            and cell.value.ref != evaluated_cell.value.ref
+        ):
+            reasons.append("formula_storage_mismatch")
         if normalized_formula(formula) != normalized_formula(other_formula):
             reasons.append("formula_mismatch")
     return [
         {"sheet": sheet, "cell": cell.coordinate, "reason": reason}
         for reason in reasons
     ]
+
+
+def cached_formula_issues(
+    sheet: str, cell: object, cached: object, blank_results: set, errors: list
+) -> list[dict]:
+    anchor = cached[sheet][cell.coordinate]
+    issues = []
+    if anchor.data_type == "e":
+        issues.append(
+            {
+                "sheet": sheet,
+                "cell": cell.coordinate,
+                "reason": "formula_error",
+                "value": anchor.value,
+            }
+        )
+    elif anchor.value is None and (sheet, cell.coordinate) not in blank_results:
+        issues.append(
+            {"sheet": sheet, "cell": cell.coordinate, "reason": "missing_cached_result"}
+        )
+    if isinstance(cell.value, ArrayFormula):
+        left, top, right, bottom = range_boundaries(cell.value.ref)
+        present = sum(
+            1
+            for result in cached[sheet]._cells.values()
+            if left <= result.column <= right
+            and top <= result.row <= bottom
+            and (
+                result.value is not None or (sheet, result.coordinate) in blank_results
+            )
+        )
+        missing = (right - left + 1) * (bottom - top + 1) - present
+        if missing:
+            issues.append(
+                {
+                    "sheet": sheet,
+                    "cell": cell.coordinate,
+                    "reason": "missing_cached_result",
+                    "range": cell.value.ref,
+                    "missingCount": missing,
+                }
+            )
+        for error in errors:
+            if (
+                error.coordinate != cell.coordinate
+                and left <= error.column <= right
+                and top <= error.row <= bottom
+            ):
+                issues.append(
+                    {
+                        "sheet": sheet,
+                        "cell": error.coordinate,
+                        "reason": "formula_error",
+                        "value": error.value,
+                    }
+                )
+    return issues
 
 
 def verify_edits(
@@ -336,6 +594,16 @@ def verify_edits(
             cached = load_workbook(evaluated_path, data_only=True)
             opened.append(cached)
             blank_results = empty_string_results(evaluated_path)
+        cached_errors = (
+            {
+                sheet.title: [
+                    cell for cell in sheet._cells.values() if cell.data_type == "e"
+                ]
+                for sheet in cached.worksheets
+            }
+            if cached is not None
+            else {}
+        )
         unrelated, structure, issues = [], [], []
         if before.sheetnames != after.sheetnames:
             structure.append("sheet_names_or_order")
@@ -358,33 +626,49 @@ def verify_edits(
                     initial
                 ) != cell_signature(current):
                     unrelated.append({"sheet": name, "cell": representative.coordinate})
-                if formula_text(current) is None or formula_text(
-                    current
-                ) == formula_text(initial):
+                if formula_signature(current) == formula_signature(initial):
                     continue
-                cell_issues = formula_issues(name, current, evaluated)
-                if cached is not None and not cell_issues:
-                    result = cached[name][current.coordinate]
-                    if result.data_type == "e":
-                        cell_issues.append(
+                cell_issues = []
+                if current is not None and current.data_type == "f":
+                    if isinstance(current.value, DataTableFormula):
+                        cell_issues = [
                             {
                                 "sheet": name,
                                 "cell": current.coordinate,
-                                "reason": "formula_error",
-                                "value": result.value,
+                                "reason": "unsupported_data_table_validation",
                             }
-                        )
-                    elif (
-                        result.value is None
-                        and (name, current.coordinate) not in blank_results
+                        ]
+                    else:
+                        cell_issues = formula_issues(name, current, evaluated)
+                for target in (initial, current):
+                    if (
+                        target is not None
+                        and isinstance(target.value, (ArrayFormula, DataTableFormula))
+                        and not range_in_scope(name, target.value.ref, scopes)
                     ):
                         cell_issues.append(
                             {
                                 "sheet": name,
-                                "cell": current.coordinate,
-                                "reason": "missing_cached_result",
+                                "cell": representative.coordinate,
+                                "reason": "formula_range_outside_scope",
+                                "range": target.value.ref,
                             }
                         )
+                if (
+                    cached is not None
+                    and not cell_issues
+                    and current is not None
+                    and current.data_type == "f"
+                ):
+                    cell_issues.extend(
+                        cached_formula_issues(
+                            name,
+                            current,
+                            cached,
+                            blank_results,
+                            cached_errors.get(name, []),
+                        )
+                    )
                 issues.extend(cell_issues)
         return {
             "verified": not (unrelated or structure or issues),

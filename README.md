@@ -55,10 +55,15 @@ retain their existing typed behavior.
 For edits, preserve the original, write a staged output, and declare the
 allowed ranges. `verify-edits` fails on changed cells, styles, comments or
 hyperlinks outside those ranges and on undeclared structure changes. It also
-checks chart/drawing and embedded parts conservatively. New formulas require
+checks chart/drawing, embedded and theme parts conservatively. Local names,
+print titles and resolved dimension/conditional styles are compared as well.
+Array formula footprints must fit the declared ranges, including when removed.
+New formulas require
 an `evaluatedPath` containing a copy evaluated separately by Excel or
 LibreOffice; missing/error caches, mismatched formulas and unsafe modern
-formula storage fail verification. The command checks the supplied results;
+formula storage fail verification. Array output caches must cover the entire
+declared footprint. Changed data-table formulas are rejected as unsupported;
+unchanged data tables are preserved. The command checks the supplied results;
 it cannot establish cache freshness or prove the task's expected answer.
 Independently check expected values and keep the evaluation copy separate
 from the deliverable, since spreadsheet engines may rewrite formatting.
