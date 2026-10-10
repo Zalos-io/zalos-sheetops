@@ -1,0 +1,269 @@
+[
+  {
+    "id": 45300,
+    "instruction": "How can I delete all text from a point where a specific word ('FT') appears within strings in an Excel column? Each row contains a string with the word 'FT' followed by different data, and I want to remove everything starting with 'FT' while keeping the preceding text intact. Please output the answer in Column B.",
+    "spreadsheet_path": "spreadsheet/45300",
+    "instruction_type": "Cell-Level Manipulation",
+    "answer_position": "B1:B4"
+  },
+  {
+    "id": "279-23",
+    "instruction": "Incorporate a formula that deletes everything outside of parentheses into a VBA macro or which iterates over all cells in column B without gaps. Display results in Column B. Leave blank cells blank, especially do not paste 0 into blank cells. If there are no parentheses, leave the cell as is.",
+    "spreadsheet_path": "spreadsheet/279-23",
+    "instruction_type": "Sheet-Level Manipulation",
+    "answer_position": "A3:B26",
+    "answer_sheet": "Sheet1",
+    "data_position": "A3:B26"
+  },
+  {
+    "id": 57590,
+    "instruction": "I need to calculate a sum in cell B26, where the sum is based on the values in Column I but only includes those values where the corresponding date in Column C matches the month in A26.\n\nMy current formula is: SUMIFS(K2:K3,C2:C3,\">=\"&A26,C2:C3,\"<=\"&EOMONTH(A26,0))",
+    "spreadsheet_path": "spreadsheet/57590",
+    "instruction_type": "Cell-Level Manipulation",
+    "answer_position": "B26"
+  },
+  {
+    "id": "325-44",
+    "instruction": "I am working with data at a wtype_id, name, and status level, and I need to split the filter data from a column into specific columns of data. I've attached the input data tab and the output data tab for reference. Leave the cell which does not have any data defined blank and leading zeros can be omitted. Retain the 'Input' data tab and update the 'Output' data tab with the result.",
+    "spreadsheet_path": "spreadsheet/325-44",
+    "instruction_type": "Sheet-Level Manipulation",
+    "answer_position": "'Output'!A1:G10",
+    "answer_sheet": "Output",
+    "data_position": "Input!'A1:D4,'Output!'A1:G6'"
+  },
+  {
+    "id": 40757,
+    "instruction": "How can I use Excel to sum the values in the second column of a spreadsheet when those values correspond to a specific month listed in the first column? Furthermore, how can I manage cases when one of the criteria results in a zero value by ignoring it instead of getting a zero in the sum?",
+    "spreadsheet_path": "spreadsheet/40757",
+    "instruction_type": "Cell-Level Manipulation",
+    "answer_position": "B10:B11"
+  },
+  {
+    "id": "82-30",
+    "instruction": "How can I modify my VBA code to only copy and paste whole numbers from a range of columns (A to F) in the 'Raw Data' sheet, starting from row 1 and continuing across columns A to F in the 'Numbers' sheet, without including numbers with decimal points and ensuring a maximum of 6 numbers per row? You can refer to Manual Result sheet for outcome, and it should be in the exact same sorting order.",
+    "spreadsheet_path": "spreadsheet/82-30",
+    "instruction_type": "Sheet-Level Manipulation",
+    "answer_position": "'Numbers'!A1:F9",
+    "answer_sheet": "Numbers",
+    "data_position": "Raw Data!'A1:F18, 'Manual Result!'A1:F9"
+  },
+  {
+    "id": 51680,
+    "instruction": "How can I identify which areas of business use an item that's in stock by analyzing a spreadsheet with columns (A to F) containing 'Y' or 'N' indications? The output should be in a single cell (G) corresponding to each row and should include the text from the headers where there is a 'Y', separated by commas without a trailing comma at the end, and should follow the order of header colors (A1:F1). Fill out the rest of the table and keep the formatting consistent.",
+    "spreadsheet_path": "spreadsheet/51680",
+    "instruction_type": "Cell-Level Manipulation",
+    "answer_position": "G2:G14"
+  },
+  {
+    "id": "585-41",
+    "instruction": "How can I update my script so that it removes all non-numeric characters from cell values, but still preserves numeric values and decimal points? The current script I'm using successfully removes non-numeric characters but also removes decimal points. The script operates on the range 'a1:h1' on 'Sheet1'. Please execute this task.",
+    "spreadsheet_path": "spreadsheet/585-41",
+    "instruction_type": "Sheet-Level Manipulation",
+    "answer_position": "'Sheet1'!A1:H1",
+    "answer_sheet": "Sheet1",
+    "data_position": "A1:H1"
+  },
+  {
+    "id": 35742,
+    "instruction": "I've created a spreadsheet to record the results of an upcoming horse show, which involves multiple sections and aggregate awards that need to be calculated. My IF functions seem to be working correctly, but I'm struggling to sum the scores at the end of the row. I've tried using the =VALUE, =SUM, and =SUMPRODUCT functions but haven't been successful. In my spreadsheet, I'm trying to add the results shown in the blue cells across to a green cell where I've manually entered the total. How can I correctly sum these values?",
+    "spreadsheet_path": "spreadsheet/35742",
+    "instruction_type": "Cell-Level Manipulation",
+    "answer_position": "O4:O7"
+  },
+  {
+    "id": "51-12",
+    "instruction": "How can I create a VBA code that will count the number of times a value in a range from A1 to M1 on an Excel sheet increases by at least 10% from a reference cell, beginning the count from A1 and restarting the counting process from the cell immediately right of each cell where a 10% increase is found, terminating the count before M1 if there is no further data, and display the count in cell B6? Additionally, I'm looking to include the ability to update the data range in the code, as the actual worksheet data range is L26 to SHA26.",
+    "spreadsheet_path": "spreadsheet/51-12",
+    "instruction_type": "Sheet-Level Manipulation",
+    "answer_position": "B6",
+    "answer_sheet": "Sheet1",
+    "data_position": "A1:M7"
+  },
+  {
+    "id": 44389,
+    "instruction": "How can I create a formula in Excel that returns the column header of the smallest value greater than zero in each row. If there's more than one value that matches the lowest value above zero separate them by commas without spaces?",
+    "spreadsheet_path": "spreadsheet/44389",
+    "instruction_type": "Cell-Level Manipulation",
+    "answer_position": "P2:P7"
+  },
+  {
+    "id": "262-17",
+    "instruction": "How can I create ranges for header values 'Task' and 'Responsibility' without hard coding the range definitions, and then apply a multiple column sort using VBA in Excel? The macro should identify the positions of these headers dynamically and perform the sorting based on the data provided in the first worksheet, with the expected outcome detailed in the second worksheet attached to the thread. The first level sorts the \"Tasks\" column from small to large, and the second level sorts the \"Responsibilities\" column from small to large",
+    "spreadsheet_path": "spreadsheet/262-17",
+    "instruction_type": "Sheet-Level Manipulation",
+    "answer_position": "Sheet1'!A1:F14",
+    "answer_sheet": "'Sheet1','Sheet2'",
+    "data_position": "Sheet1!A1:F14','Sheet2!A1:F14'"
+  },
+  {
+    "id": 9569,
+    "instruction": "I need a formula to identify the earliest non-zero value entered for each row, specifically within column 'AO,' from a range of months (e.g., from Jan 2015 onward). The workbook I'm working on will be updated monthly with new data, and the values are percentages such as 17.07% for contract #10007 in Mar-2015. It is important that the formula avoids using array formulas to prevent the workbook from freezing due to a potentially long list of data.\nI am struggling to find a formula that I could use in order to find the EARLIEST value entered from several months. Attached is a workbook that will be populated each month and will potentially have values from Jan 2015 through whatever the latest month would be........for each row, I need to pick the earliest value entered on column \"AO\". As an example on 1st row, the earliest value for contract # 10007 is 17.07% entered in Mar-2015, contract 10008 would 18.20% entered in Jun 2015, etc..Since this list will be long, it would be preferable to have a formula that does not use array formulas as I find that this type of formula typically freezes the workbook. Need to enter a formula that captures the earliest value entered from any given time period without manually entering value in each row.",
+    "spreadsheet_path": "spreadsheet/9569",
+    "instruction_type": "Cell-Level Manipulation",
+    "answer_position": "AO9:AO1288"
+  },
+  {
+    "id": "192-22",
+    "instruction": "I need a VBA code on Sheet1 that scans every populated cell in column D and checks whether the text contains any of the following keywords (case-insensitive, partial match allowed): ‘Core Activation’, ‘Core Design’, ‘Mobile Terminology’, ‘Mobile Design’, ‘Mobile Integration’, ‘Testing Layer’, ‘Testing Offshore’, ‘Carrier’, and ‘Barrier’. If a match is found, output the text “Billing PO” in the corresponding row of column F; otherwise, leave column F blank. Entries in column D may include numeric or text prefixes/suffixes (for example “123-Core Design”), which must still count as valid matches. The process should handle all rows dynamically without a fixed range, preserve existing data and formatting in all other columns. If you have to, you can solve it without VBA.",
+    "spreadsheet_path": "spreadsheet/192-22",
+    "instruction_type": "Sheet-Level Manipulation",
+    "answer_position": "'Sheet1'!F2:F71",
+    "answer_sheet": "Sheet1",
+    "data_position": "D1:F71"
+  },
+  {
+    "id": 47827,
+    "instruction": "How to assemble three numbers into a three-digit number, with the numbers arranged in order from smallest to largest. Complete column G, bold and fill all boxed values with the color #EBF1DE",
+    "spreadsheet_path": "spreadsheet/47827",
+    "instruction_type": "Cell-Level Manipulation",
+    "answer_position": "'3 straights to 3 boxed'!G2:G16"
+  },
+  {
+    "id": "402-43",
+    "instruction": "How can I duplicate rows in a spreadsheet based on a count specified in column AG, so that if the value in AG is 1, the row remains singular, but if it is 2, an additional duplicate row is created, and so on, until all data in column A has been processed? Additionally, I would like to know whether the duplicated rows can be inserted directly below the existing row or at the bottom of the dataset, and I need a loop that will work until the last row of data. I have attached a sample workbook for reference.",
+    "spreadsheet_path": "spreadsheet/402-43",
+    "instruction_type": "Sheet-Level Manipulation",
+    "answer_position": "'Sheet2'!A1:AG10",
+    "answer_sheet": "Sheet2",
+    "data_position": "A1:AG20"
+  },
+  {
+    "id": 37086,
+    "instruction": "I need a formula for a column named 'Total' where, if a value in column1 is 'A', it should add 10, but if the value is 'B', it should subtract 10. I have included a file that may help illustrate this.",
+    "spreadsheet_path": "spreadsheet/37086",
+    "instruction_type": "Cell-Level Manipulation",
+    "answer_position": "D2:D5"
+  },
+  {
+    "id": "531-18",
+    "instruction": "I need to transpose data from the 'Data' tab into the format shown on the 'Transpose' tab of my Excel file, specifically focusing on the ITEM, DATE, and QTY columns. Could you advise whether a macro or VBA is more appropriate for this task?",
+    "spreadsheet_path": "spreadsheet/531-18",
+    "instruction_type": "Sheet-Level Manipulation",
+    "answer_position": "'Transpose'!A3:C970",
+    "answer_sheet": "Transpose",
+    "data_position": "Data!'A6:AX28,'Transpose!'A2:C134'"
+  },
+  {
+    "id": 7902,
+    "instruction": "I need assistance with constructing a formula in my worksheet. I want to compare two values in a row, and based on that comparison, the formula should either return the equivalent value from the same row if it is present or perform a regular VLOOKUP. The specific use case and data structure are outlined in the attached worksheet.\nVLOOKUP(C3,Grouping!$A$2:$I$7,3,FALSE)",
+    "spreadsheet_path": "spreadsheet/7902",
+    "instruction_type": "Cell-Level Manipulation",
+    "answer_position": "'Formula Required'!D3:J6"
+  },
+  {
+    "id": "395-36",
+    "instruction": "I have three sheets: 'Main unique ID' for manual input of IDs that may change, 'Result what I am getting', and 'Result what I am expecting.' How can I compare the 'Main unique ID' sheet with the 'Result what I am getting' sheet, and if there are any unique IDs missing in the comparison, how do I add those missing unique IDs from the 'Main unique ID' sheet into the 'Result what I am getting' sheet, along with an empty new row for each missing ID, as illustrated in the yellow-highlighted sections on the 'Result what I am expecting' sheet?",
+    "spreadsheet_path": "spreadsheet/395-36",
+    "instruction_type": "Sheet-Level Manipulation",
+    "answer_position": "'MyResult'!A1:O20",
+    "answer_sheet": "MyResult",
+    "data_position": "Main unique ID!'A1:A19,' w!'A1:O15,'Result what i am expecting !'A1:O20'"
+  },
+  {
+    "id": 48969,
+    "instruction": "How can I compare and match the columns and rows of two separate data sources in Excel to get a result, as demonstrated in the attached file?",
+    "spreadsheet_path": "spreadsheet/48969",
+    "instruction_type": "Cell-Level Manipulation",
+    "answer_position": "J3:N5"
+  },
+  {
+    "id": "168-17",
+    "instruction": "How can I write a macro in Excel to locate the first instance of 'Invoice No.' in column A on the 'Statement' sheet and delete all preceding rows, ensuring that the first instance of 'Invoice No.' appears in cell A1 after running the macro?",
+    "spreadsheet_path": "spreadsheet/168-17",
+    "instruction_type": "Sheet-Level Manipulation",
+    "answer_position": "'Statement'!A2:E12",
+    "answer_sheet": "Statement",
+    "data_position": "A2:E12"
+  },
+  {
+    "id": 48975,
+    "instruction": "How can I copy values from columns 'A' and 'B' in one row from the 'Input' worksheet to the 'Output' worksheet if the corresponding 'To Do' cell in column 'E' is marked 'yes', while also skipping any empty rows or cells, without using VBA, as I have tried unsuccessfully for the last three hours?",
+    "spreadsheet_path": "spreadsheet/48975",
+    "instruction_type": "Cell-Level Manipulation",
+    "answer_position": "Output'!B11:B17"
+  },
+  {
+    "id": "577-40",
+    "instruction": "How can I delete entire rows in an Excel worksheet if both Column J and Column K are either blank or contain any of the following specific values: -, 0, $, $0, or $0.0? I need  solution other than formula or a VBA macro that performs this task without deleting rows where only one of the cells in Column J or K meets these criteria, as I need to retain rows where at least one of these columns contains actual data.",
+    "spreadsheet_path": "spreadsheet/577-40",
+    "instruction_type": "Sheet-Level Manipulation",
+    "answer_position": "'Sheet2'!A1:K54",
+    "answer_sheet": "Sheet2",
+    "data_position": "A1:K54"
+  },
+  {
+    "id": 52220,
+    "instruction": "How can I create a formula in Excel that will display the sum of two horizontal cells in a third cell, only if both of the first two cells contain a value? Specifically, if there's a calendar date in cell A1 and a number representing days or hours in cell B1, I want the sum to show in cell C1 but only if both A1 and B1 are not empty.",
+    "spreadsheet_path": "spreadsheet/52220",
+    "instruction_type": "Cell-Level Manipulation",
+    "answer_position": "C2:C3"
+  },
+  {
+    "id": "230-16",
+    "instruction": "How can I create a macro in Excel that copies substrings that start from the first letter in each cell of column A and pastes these substrings into column B and delete these strings in column A?",
+    "spreadsheet_path": "spreadsheet/230-16",
+    "instruction_type": "Sheet-Level Manipulation",
+    "answer_position": "'Before'!A1:A12",
+    "answer_sheet": "Before",
+    "data_position": "Before!'A1:A9,'After!'A2:B10'"
+  },
+  {
+    "id": 50682,
+    "instruction": "I am currently stuck on my spread sheet trying to find the sum of data in multiple columns. I'm working on a spreadsheet and need to create a formula in cell M2 that sums up the quantities of a part number listed in cell A2. This part number can be found multiple times in various columns starting from column O onwards. It appears 4 times with a total quantity of 9,480. I want M2 to contain the formula that gets me to that number. While I can locate the part number in a specific column (e.g., U2) and return its corresponding quantity in the column directly before it (e.g., T2), I'm struggling to compile the quantities from multiple instances where this part number is found, such as in columns S, U, and W. My worksheet includes a very large number of these data columns. In addition, I'd like to understand the logic of the formula for totaling the quantities needed for various raw parts under completed parts listed across the top of row 1 and also account for the quantities of raw parts that are shipping to other facilities listed in cells B2:K2, the total of which is easy to calculate and displayed in cell L2. Combining the totals in cells L2 and M2 should give me the total amount of raw parts needed both for shipping and building completed parts at this location. \nIn case it helps I can explain how the sheet works and its purpose. The number in A2 is a raw part used among others to build completed parts. The bolded numbers at the top of row 1 are completed parts, and the parts under them are the raw parts that make them. The quantities to the right are basically how many completed parts are needed that day, thus how many of each raw part. B2:K2 also contains how many raw parts are shipping for other facilities to make their own completed parts, aside from what will be needed to build completed parts here at this one. That total is in L2, and that was easy. L2 and M2 together will tell me exactly how many raw parts will be needed for both shipping and for building completed parts here.\nIf you come up with a formula, please break it down for me if you can, so that I can actually understand how and why it works, and hopefully learn something.",
+    "spreadsheet_path": "spreadsheet/50682",
+    "instruction_type": "Cell-Level Manipulation",
+    "answer_position": "M2"
+  },
+  {
+    "id": "343-20",
+    "instruction": "I need a macro to select and copy only the duplicated items in column C from the 'Import Data' sheet to the 'Duplicates' sheet. It should copy the entire row where the duplicates are found in column C. I have provided an example on the 'Duplicates' sheet to demonstrate what I require. Attached is the 'Macro to Extract Duplicate Records on Separate Sheet.xlsx' file for reference. The duplicates should be sorted in Ascending order as per the Balance and Invoiced Date, and keep the alignment for Invoice Date same as in Imported Data.",
+    "spreadsheet_path": "spreadsheet/343-20",
+    "instruction_type": "Sheet-Level Manipulation",
+    "answer_position": "'Duplicates'!A1:E5",
+    "answer_sheet": "Duplicates",
+    "data_position": "Imported Data!'A1:E11,'Duplicates!'A1:E3'"
+  },
+  {
+    "id": 54638,
+    "instruction": "Recreate Sheet1 exactly as it is with Calibri font. Recreate all formulas in column A of Sheet1 exactly as they are. Remove gridlines when appropriate. Hide Sheet2. How can I use a non-dynamic array formula to select and list only the unique values from a range of cells, specifically from A2:A150, and have these unique values displayed in an adjacent range, B2:B150, without using a dynamic array formula? A sample Excel file with the desired outcome in part of B2:B150 has been provided for reference.\n\nInsert this new formula into cells B2:B150 and format cells B2:B150 with gridlines and #FFFF00 fill color.  \nColumn A should only have borders up to row 13. There should be formulas all the way down to cell A150.",
+    "spreadsheet_path": "spreadsheet/54638",
+    "instruction_type": "Cell-Level Manipulation",
+    "answer_position": "'Sheet1'!B2:B150"
+  },
+  {
+    "id": "120-24",
+    "instruction": "I need a VBA code or other solution implemented to validate data and replace values in Excel based on multiple conditions.  Specifically, the criteria for data replacement are: First, check if the value in column BL equals 'LAG'.       Second, look for one of two specific text strings in column BG: 'OCOGS - Spares - Transfer Price Overhead' or 'OFSS - ORCL Consulting Prod Cost I/C'.       Third, check if column AY contains either 'BOA_033E' or 'BOA_011G'.       Based on these conditions, if the first and second criteria are met, and column AY is 'BOA_033E' or 'BOA_011G', then the value in the BN column s should be 'OCOGS - Spares - Transfer Price Overhead';       otherwise, if only the first two conditions are met,  change it to 'OFSS - ORCL Consulting Prod Cost I/C' to column BN.  Finally make sure any cell in BL has a fill color hex value of #0070C0, when BL is ‘LAG’ and BN is populated.",
+    "spreadsheet_path": "spreadsheet/120-24",
+    "instruction_type": "Sheet-Level Manipulation",
+    "answer_position": "'Sheet1'!BN2:BN45",
+    "answer_sheet": "Sheet1",
+    "data_position": "AY1:BG45"
+  },
+  {
+    "id": "510-3",
+    "instruction": "How can I calculate the total number of days from a date provided in column D of my 'Data' sheet, where the date is in year/month/day format? I attempted to split the data into columns E, F, and G, but it seems the split data is treated as text rather than numbers, which prevents calculation. Subsequent attempts, including using a VBA macro to perform the calculation, have resulted in '#VALUE!' errors.\n\nRecreate 'Data' sheet. Keep the exact same number formatting for columns D through G. Once finished, hardcode the Year value in column E multiplied by 365 plus the Month value in column F multiplied by 12 plus the Day value in column G into the column titled 'Sum'. Do not bold the titles.",
+    "spreadsheet_path": "spreadsheet/510-3",
+    "instruction_type": "Sheet-Level Manipulation",
+    "answer_position": "'Data'!H2:H78",
+    "answer_sheet": "Data",
+    "data_position": "D1:H78"
+  },
+  {
+    "id": "398-14",
+    "instruction": "I have data across multiple sheets where I need to match and sum values from columns that are repeated across these sheets. To do this, I need to insert a column called 'BALANCE' which subtracts the 'RET' value from the 'SALE' columns. Whenever I add new sheets that have the same structure, the macro should be able to adapt to include them. The results, along with headers, should be compiled in the 'collection' sheet. Reference the values and logic of the existing rows, then complete the table for any missing information from the other sheets by adding it to the bottom of the current table, but do not alter the order of the original rows.  Make sure that rows are aggregated across all sheets where “TY” and “OR” are the same.  Additionally, instead of showing a formula in column G, it should display the calculated value, and any empty cells should show a hyphen instead of a zero, and any negatives should have a text color hex code of #FF0000, and column headers should be un-bolded and left-side aligned.  All other formatting should remain unchanged, and any new data added should match. Columns A, E, F, and G now align right, while columns B, C, and D align left. Make all text unbold, and font Calibri 11pts.",
+    "spreadsheet_path": "spreadsheet/398-14",
+    "instruction_type": "Sheet-Level Manipulation",
+    "answer_position": "'COLLECTION'!A2:G9",
+    "answer_sheet": "COLLECTION",
+    "data_position": "A1:G9"
+  },
+  {
+    "id": "547-18",
+    "instruction": "I need a macro that can identify rows in Column A of the 'Imported Data' sheet where the cell content begins with two asterisks (**). Then, it should copy the entire row, starting from that cell in Column A (with the two asterisks) to the last cell with data in the same row, and paste it into the 'Summary Limits' sheet. For example, if '**BR1_NEW' is in cell A6, the macro should copy from A6 to D6 if D6 is the last cell containing data in that row, and then paste it into the 'Summary Limits' sheet. I have provided sample data with my question. Make sure that the table header is copied and pasted together.",
+    "spreadsheet_path": "spreadsheet/547-18",
+    "instruction_type": "Sheet-Level Manipulation",
+    "answer_position": "summary Limits'!A1:D7",
+    "answer_sheet": "summary Limits",
+    "data_position": "imported Data!A1:D7','summary Limits!A1:D3'"
+  }
+]

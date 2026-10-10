@@ -6,6 +6,9 @@ The project prioritizes precise, deterministic spreadsheet operations for AI
 agents. Features are added test-first and exposed through machine-readable CLI
 contracts before agents are encouraged to rely on them.
 
+Typed XML reads and `verify-edits` are 0.4.3 candidate features on this branch.
+The published PyPI release remains 0.4.2.
+
 ## Agent Examples
 
 Every command prints one line of compact JSON by default. Pass `--pretty` when
@@ -92,8 +95,39 @@ The [October 2026 baseline](benchmarks/results/2026-10-09/baseline.md) includes
 480 reader measurements, 33 paired task attempts with 30 usable pairs, audited
 native Excel grades, and a public archive of failed cases. Both task arms passed
 20/30; this run does not establish an overall app-level speed or accuracy win.
-SheetOps accelerated deep scalar reads, while date-aware extraction, edit scope
-and native formula compatibility remain concrete improvement targets.
+SheetOps accelerated deep scalar reads; that baseline exposed typed-date,
+preservation and native formula validation gaps.
+
+The [October 10 rerun](benchmarks/results/2026-10-10/report.json) completes another
+480 reader measurements and all 66 agent attempts under the same recorded
+controls. Both SheetOps reader interfaces improve from **54/96 to 96/96** checks
+passed, resolving all 42 typed-date failures per interface. The 14 separate
+feature contracts and the 30-task golden self-check also pass.
+
+| 400,000-row workload | OpenPyXL median | SheetOps CLI median |
+| --- | ---: | ---: |
+| Typed bounded read near the end | 11.71 s | 5.08 s |
+| Typed bounded read near the start | 0.068 s | 0.133 s |
+| Full table read | 13.91 s | 8.90 s |
+
+These are three fresh-process repetitions on one host with uncontrolled OS file
+cache. Deep bounded reads use 35.3 MiB peak CLI RSS versus 66.9 MiB for OpenPyXL;
+full-table reads use 663.0 MiB versus 491.3 MiB. RSS is the maximum for one process,
+not aggregate memory. Calamine and fastexcel remain faster for full-table reads.
+
+**The final native Excel task comparison is pending:** 33 formula-containing
+output copies still require calculation. The separately labelled LibreOffice
+grades are 15/30 for baseline and 14/30 for the candidate; compare neither to
+the earlier native Excel scores. All attempts, controls, hashes and the
+[secondary failure archive](benchmarks/results/2026-10-10/libreoffice-failure-reproductions.zip)
+are retained. Both terminal images lack a calculation engine, and agent timing
+excludes external grading. These results do not establish an overall app win.
+
+The candidate used `verify-edits` in 21/33 attempts, with 23 rejecting responses
+and eight passing responses. Guard alerts are distinct from invalid command
+arguments. Its declared edit ranges must match the requested cells and conditions;
+a passing guard does not prove expected answers, requested formula presence or
+the final delivered artifact. Agents can omit the guard or submit after rejection.
 
 The benchmark harness keeps correctness and speed separate. It uses pinned
 public inputs, fresh reader processes, full-output digests, and independent

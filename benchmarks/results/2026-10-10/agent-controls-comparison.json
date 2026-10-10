@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "verifiedUnchangedControls": {
+    "model": true,
+    "provider": true,
+    "reasoning": true,
+    "timeoutSeconds": true,
+    "repeats": true,
+    "launcherSha256": true,
+    "taskIds": true,
+    "approvalWaitSeconds": true,
+    "networkInsideTerminal": true,
+    "baselineImage": true,
+    "baselineSkill": true
+  },
+  "intentionalChanges": {
+    "sheetopsImageBefore": "sha256:fe5babd035190d427b0158bd0b943f28f9eec3146214ccc7b4ba2a973b32460c",
+    "sheetopsImageAfter": "sha256:b380e33942719ae7c97165999bcf30a1e96d635c40276d8310fed48869cf01a0",
+    "sheetopsSkillBefore": "be4fef6fbd5a36dcf7e2054246192a0ceba2de731266345fe473fa38d3919f7e",
+    "sheetopsSkillAfter": "8468dc7d85236bf806998ea725e31ab25b7c1d3bfc720cc784b721a70e1cef4b"
+  },
+  "scope": "Package plus skill configuration; one repetition per arm; no Electron UI or package-only attribution"
+}

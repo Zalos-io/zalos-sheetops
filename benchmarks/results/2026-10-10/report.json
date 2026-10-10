@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "status": "native_validation_pending",
+  "readerMeasurements": 480,
+  "readerStatusCounts": {
+    "openpyxl": {
+      "pass": 96
+    },
+    "sheetops-api": {
+      "pass": 96
+    },
+    "sheetops-cli": {
+      "pass": 96
+    },
+    "calamine": {
+      "pass": 63,
+      "unsupported": 33
+    },
+    "fastexcel": {
+      "pass": 63,
+      "unsupported": 33
+    }
+  },
+  "readerControlsVerified": [
+    "same cases/inputs/source manifest",
+    "same seed/order/repeats/limits",
+    "same runner/worker/scoring/fixtures",
+    "same reader dependency versions except SheetOps"
+  ],
+  "featureContracts": {
+    "attempts": 14,
+    "passes": 14
+  },
+  "agentRecordedAttempts": 66,
+  "eligibleTaskPairs": 30,
+  "predeclaredExcludedTaskIds": [
+    "168-17",
+    "395-36",
+    "402-43"
+  ],
+  "secondaryEvaluationEngine": "LibreOffice 26.2.4.2",
+  "secondaryAgents": {
+    "attemptCount": 60,
+    "completePairCount": 30,
+    "scorablePairCount": 30,
+    "correctPairCount": 10,
+    "arms": {
+      "baseline": {
+        "attempts": 30,
+        "scorableAttempts": 30,
+        "unscorableAttempts": 0,
+        "statusCounts": {
+          "pass": 15,
+          "timeout": 3,
+          "incorrect": 12
+        },
+        "totalSecondsAllAttempts": 2273.3401260816026,
+        "totalMainTokens": 4104532,
+        "totalObservedToolCalls": 181,
+        "sheetopsAdoption": {
+          "tasksWithResponses": 0,
+          "successfulResponses": 0,
+          "failedResponses": 0,
+          "commandCounts": {},
+          "errorCounts": {},
+          "scope": "observed JSON command responses; Python API use is not counted"
+        },
+        "costAvailable": false,
+        "estimatedCostUsd": null,
+        "tokenRecordsAvailable": 27,
+        "tokenRecordsMissing": 3,
+        "preservationFailedAttempts": 5
+      },
+      "sheetops": {
+        "attempts": 30,
+        "scorableAttempts": 30,
+        "unscorableAttempts": 0,
+        "statusCounts": {
+          "pass": 14,
+          "incorrect": 13,
+          "timeout": 3
+        },
+        "totalSecondsAllAttempts": 2185.245072253747,
+        "totalMainTokens": 5833548,
+        "totalObservedToolCalls": 304,
+        "sheetopsAdoption": {
+          "tasksWithResponses": 30,
+          "successfulResponses": 88,
+          "failedResponses": 27,
+          "commandCounts": {
+            "inspect": 30,
+            "cells read": 49,
+            "verify-edits": 31,
+            "formulas scan": 5
+          },
+          "errorCounts": {
+            "verification_failed": 23,
+            "invalid_sheet": 2,
+            "invalid_field": 1,
+            "file_not_found": 1
+          },
+          "scope": "observed JSON command responses; Python API use is not counted"
+        },
+        "costAvailable": false,
+        "estimatedCostUsd": null,
+        "tokenRecordsAvailable": 27,
+        "tokenRecordsMissing": 3,
+        "preservationFailedAttempts": 5
+      }
+    },
+    "medianPairedSpeedup": 0.8797839474048542,
+    "speedComparisonScope": "only pairs where both arms pass; selection bias remains",
+    "attribution": "package plus skill configuration; not package-only or Electron UI",
+    "allAttemptCount": 66,
+    "predeclaredExcludedTaskIds": [
+      "168-17",
+      "395-36",
+      "402-43"
+    ]
+  },
+  "primaryEvaluationEngine": "Microsoft Excel 16.113.3",
+  "primaryAgents": null,
+  "nativeAudit": {
+    "fileCount": 88,
+    "pendingFormulaCopies": 33,
+    "allSourcesIntact": true,
+    "reason": "Native Excel UI unavailable; new formula outputs have not been opened/calculated"
+  },
+  "verification": {
+    "packageTestsPassed": 399,
+    "desktopTargetedTestsPassed": 3,
+    "desktopCheckGroupsPassed": 11,
+    "goldenSelfCheckPassed": 30
+  },
+  "guardDiagnostics": {
+    "schemaVersion": 1,
+    "completedCandidateAttempts": 33,
+    "attemptsWithGuardResponses": 21,
+    "responseCount": 31,
+    "responseStatuses": {
+      "False": 23,
+      "True": 8
+    },
+    "scope": "Observed JSON guard responses; declared ranges must match user intent. A passing response is not bound to the final artifact and does not prove expected answer values."
+  },
+  "limitations": [
+    "Native primary grades and final before/after task comparison are pending. LibreOffice results are secondary and must not be compared directly to the prior native grades.",
+    "All 66 attempts are retained; the same three predeclared reference conflicts are excluded from accuracy scoring.",
+    "One agent repetition per arm, fixed model ID with stochastic inference and uncontrolled provider-side revisions. No stable overall app speed or accuracy improvement established.",
+    "Both terminal images lack a calculation engine; live helper calculation is tested separately on the host. No Electron UI or integrated Docker calculation proof.",
+    "Guard usage is instruction-based; declared scopes must match user intent. Conditional cells within a declared range can still be changed incorrectly. A passing guard does not prove answer values, requested formula presence or the final artifact hash.",
+    "Agent timing includes inference/tools but excludes external benchmark grading. RSS is maximum for a single worker/subprocess; file cache is uncontrolled on one host.",
+    "Provider cost is unavailable. Token totals are available for 27/30 eligible attempts in each arm; missing timeout totals are not zero usage.",
+    "Scores use reviewed answer regions/styles/formulas/structure/preservation, not official leaderboard scores. Failure categories overlap."
+  ]
+}
