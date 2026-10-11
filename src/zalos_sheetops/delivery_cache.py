@@ -90,6 +90,8 @@ def refreshed_formula_bytes(actual: bytes, evaluated: bytes) -> bytes:
     value_book = load_workbook(io.BytesIO(evaluated), data_only=True)
     replacements = {}
     try:
+        if formula_book.epoch != value_book.epoch:
+            raise ValueError("Calculation changed the workbook date system")
         with (
             XlsxWorkbook(io.BytesIO(actual)) as original_xml,
             XlsxWorkbook(io.BytesIO(evaluated)) as evaluated_xml,
@@ -142,6 +144,7 @@ def refreshed_formula_bytes(actual: bytes, evaluated: bytes) -> bytes:
                     )
                 output = io.BytesIO()
                 with ZipFile(output, "w") as destination:
+                    destination.comment = original_zip.comment
                     for item in original_zip.infolist():
                         destination.writestr(
                             item,

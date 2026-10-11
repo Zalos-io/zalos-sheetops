@@ -86,8 +86,12 @@ class SpreadsheetDelivery:
                 self.contract_path, 256 * 1024
             ) is not None:
                 state["error"] = "A delivery contract existed before this turn."
+            hold_text = bool(
+                paths or re.search(r"\b(spreadsheet|workbook|excel)\b", message, re.I)
+            )
             return {
                 "active": True,
+                "holdText": hold_text,
                 "protectedRoots": [str(self.cwd)],
                 "extensions": [".xlsx"],
                 "inputArtifacts": [
@@ -106,7 +110,9 @@ class SpreadsheetDelivery:
                     "before creating output. "
                     "Scope then freezes. Delivery checks unrelated cells and evaluates "
                     "all formulas. Missing calculation engines block formula delivery."
-                ),
+                )
+                if hold_text
+                else "",
             }
 
     def before_tool(self, turn_id: str) -> dict:
@@ -181,6 +187,7 @@ class SpreadsheetDelivery:
             state = self.turns.get(turn_id)
             if (
                 state is not None
+                and not state["error"]
                 and state["contract"] is None
                 and not state["requires_output"]
                 and not state["sources"]
@@ -246,6 +253,12 @@ class SpreadsheetDelivery:
                                 "Output changed while publishing evaluated bytes"
                             )
                 if result["action"] == "block":
+                    if result.get("errorCode") == "calculation_engine_unavailable":
+                        result["publicMessage"] = (
+                            "Delivery blocked: formulas must be evaluated, but no "
+                            "calculation engine is available. "
+                            "No file has been released."
+                        )
                     result["message"] += " " + json.dumps(
                         result.get("details", {}), separators=(",", ":")
                     )
@@ -287,6 +300,9 @@ class SpreadsheetDelivery:
 
 
 def register(ctx: object) -> None:
+    from zalos_sheetops.delivery_classification import classify_delivery
+
+    ctx.register_hook("pre_file_delivery", classify_delivery)
     runtimes: dict[str, SpreadsheetDelivery] = {}
     pending: dict[tuple[str, str], SpreadsheetDelivery] = {}
 
@@ -361,6 +377,7 @@ def register(ctx: object) -> None:
             runtime.turns[turn_id] = next(reversed(runtime.turns.values()))
             result = {
                 "active": True,
+                "holdText": True,
                 "protectedRoots": [str(cwd)],
                 "extensions": [".xlsx"],
                 "inputArtifacts": [],
