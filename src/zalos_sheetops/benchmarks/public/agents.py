@@ -222,6 +222,17 @@ def task_paths(dataset: Path, task: dict) -> tuple[Path, Path]:
     return inputs[0], golden[0]
 
 
+def delivery_status(home: Path, output: Path) -> dict:
+    try:
+        ledger = json.loads(
+            (home / "delivery-receipts.json").read_text(encoding="utf-8")
+        )
+        approved = ledger["receipts"].get(str(output.resolve())) == file_sha256(output)
+    except (OSError, ValueError, KeyError):
+        approved = False
+    return {"status": "approved" if approved else "blocked"}
+
+
 def run_tasks(
     dataset: Path,
     tasks: list[dict],
@@ -234,6 +245,7 @@ def run_tasks(
     soffice: Path,
     repeats: int = 1,
     timeout: float = 180,
+    enforce_delivery: bool = False,
 ) -> list[dict]:
     output.mkdir(parents=True, exist_ok=True)
     credentials = provider_env(env_file)
@@ -263,6 +275,15 @@ def run_tasks(
         "taskIds": [t["id"] for t in tasks],
         "scope": "installed desktop agent core via headless CLI; not Electron UI E2E",
         "approvalWaitSeconds": 0,
+        "deliveryPolicy": {
+            "enforced": enforce_delivery,
+            "arms": ["baseline", "sheetops"] if enforce_delivery else [],
+            "calculationEngine": str(soffice) if enforce_delivery else None,
+            "calculationEngineSha256": file_sha256(soffice)
+            if enforce_delivery
+            else None,
+            "successfulOutputRequiresReceipt": enforce_delivery,
+        },
         "networkInsideTerminal": False,
     }
     metadata_path = output / "agent-metadata.json"
@@ -319,6 +340,19 @@ def run_tasks(
                         "fallback_providers": [],
                         "display": {"resume_session": False},
                     }
+                    if enforce_delivery:
+                        configuration["plugins"] = {
+                            "enabled": ["sheetops-delivery"],
+                            "required_delivery": ["sheetops-delivery"],
+                            "delivery_extensions": [".xlsx"],
+                            "entries": {
+                                "sheetops-delivery": {
+                                    "settings": {
+                                        "calculation_engine": str(soffice),
+                                    }
+                                }
+                            },
+                        }
                     # JSON is valid YAML; no provider secret is persisted here.
                     (home / "config.yaml").write_text(
                         json.dumps(configuration), encoding="utf-8"
@@ -383,6 +417,13 @@ def run_tasks(
                         soffice,
                         root / "evaluation",
                     )
+                    delivery = (
+                        delivery_status(home, workspace / "output.xlsx")
+                        if enforce_delivery
+                        else None
+                    )
+                    if delivery and delivery["status"] != "approved":
+                        grading["status"] = "delivery_blocked"
                     if measured["executionStatus"] != "completed":
                         grading["status"] = measured["executionStatus"]
                     record = {
@@ -394,6 +435,7 @@ def run_tasks(
                         "executionSourceSha256": source_hashes,
                         **measured,
                         "grading": grading,
+                        "delivery": delivery,
                         "usage": extract_usage(home, usage_path),
                         "inputSha256": file_sha256(original),
                         "goldenSha256": file_sha256(golden),
@@ -432,6 +474,7 @@ def main() -> None:
     parser.add_argument("--limit", type=int, default=30)
     parser.add_argument("--repeats", type=int, default=1)
     parser.add_argument("--timeout", type=float, default=180)
+    parser.add_argument("--enforce-delivery", action="store_true")
     args = parser.parse_args()
     if args.action == "build-images":
         prepare_images(args.dockerfile, args.skill_root, args.output)
@@ -450,6 +493,7 @@ def main() -> None:
             args.soffice,
             repeats=args.repeats,
             timeout=args.timeout,
+            enforce_delivery=args.enforce_delivery,
         )
 
 

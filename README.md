@@ -6,7 +6,7 @@ The project prioritizes precise, deterministic spreadsheet operations for AI
 agents. Features are added test-first and exposed through machine-readable CLI
 contracts before agents are encouraged to rely on them.
 
-Typed XML reads and `verify-edits` are 0.4.3 candidate features on this branch.
+Typed XML reads, `verify-edits`, and enforced delivery are 0.4.4 candidate features on this branch.
 The published PyPI release remains 0.4.2.
 
 ## Agent Examples
@@ -289,3 +289,32 @@ The internal repository and its history are not part of this public distribution
 
 MIT. Borrowed test fixtures retain their upstream licenses and attribution in
 `tests/fixtures/manifest.json` and the adjacent upstream license files.
+
+## Runtime delivery policy (candidate)
+
+The `sheetops-delivery` Hermes plugin validates staged exports outside the model
+loop. Enable it with `plugins.enabled` and `plugins.required_delivery` containing
+`sheetops-delivery`, and `plugins.delivery_extensions: [".xlsx"]`. The latter denies
+unapproved exports even when preparation fails. Zalos Desktop applies these
+settings automatically. A matching runtime with delivery hooks and guarded file
+routes is required; installing the package alone cannot enforce downloads.
+
+Before editing, the agent writes the per-turn contract named in runtime context
+in a separate tool call. Its `source`, new `output`, and bounded `allowedRanges`
+freeze before the next file tool runs. The runtime snapshots the input, validates
+the actual output against that scope, evaluates all formulas, and refreshes only
+formula caches in the delivered OOXML package. Missing engines, evaluation errors,
+changed contracts, and unmatched bytes block delivery. The scope declaration does
+not prove that the agent interpreted the user's request correctly.
+
+Set `plugins.entries.sheetops-delivery.settings.calculation_engine` to a trusted
+LibreOffice executable when automatic executable discovery cannot find it.
+Rejected exports remain private staging files; their existence is not approval.
+Runtime receipts bind approved paths to exact bytes and are checked again by file
+preview, download, and native-open routes. This guards omitted validation and
+ignored rejections; it does not sandbox arbitrary host processes.
+
+The public task runner accepts `--enforce-delivery` to apply this same policy to
+both arms. It retains blocked attempts and counts a workbook as delivered only
+when its final bytes match the runtime receipt. Calculation time is included in
+the agent's measured wall time.

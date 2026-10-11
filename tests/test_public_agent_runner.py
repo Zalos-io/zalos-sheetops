@@ -86,3 +86,18 @@ def test_usage_counts_sheetops_responses_without_exporting_payloads(
     assert result["sheetopsErrorCounts"] == {"invalid_field": 1}
     assert result["sheetopsCommandCounts"] == {"inspect": 1, "cells read": 1}
     assert "exclude" not in json.dumps(result)
+
+
+def test_benchmark_counts_only_the_approved_delivered_bytes(tmp_path: Path) -> None:
+    import hashlib
+
+    from zalos_sheetops.benchmarks.public.agents import delivery_status
+
+    output = tmp_path / "output.xlsx"
+    output.write_bytes(b"candidate")
+    assert delivery_status(tmp_path, output)["status"] == "blocked"
+    receipt = {str(output.resolve()): hashlib.sha256(output.read_bytes()).hexdigest()}
+    (tmp_path / "delivery-receipts.json").write_text(json.dumps({"receipts": receipt}))
+    assert delivery_status(tmp_path, output)["status"] == "approved"
+    output.write_bytes(b"changed")
+    assert delivery_status(tmp_path, output)["status"] == "blocked"
