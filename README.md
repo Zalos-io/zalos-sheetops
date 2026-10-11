@@ -333,6 +333,9 @@ loop. Enable it with `plugins.enabled` and `plugins.required_delivery` containin
 unapproved exports even when preparation fails. Zalos Desktop applies these
 settings automatically. A matching runtime with delivery hooks and guarded file
 routes is required; installing the package alone cannot enforce downloads.
+The runtime invokes `finish_delivery` even on cancellation to close prepared
+policy state without validation or approval. The plugin also accepts the older
+`post_llm_call` cleanup callback for compatible hosts.
 
 Before editing, the agent writes the per-turn contract named in runtime context
 in a separate tool call. Its `source`, new `output`, and bounded `allowedRanges`

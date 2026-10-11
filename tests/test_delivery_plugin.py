@@ -6,6 +6,82 @@ from openpyxl import Workbook
 from zalos_sheetops.hermes_plugin import SpreadsheetDelivery
 
 
+def test_cancelled_prepared_policy_is_closed_and_not_resumed(
+    tmp_path: Path,
+    monkeypatch: object,
+) -> None:
+    import sys
+    from types import ModuleType
+
+    from zalos_sheetops.hermes_plugin import register
+
+    config = {"cwd": str(tmp_path), "env_type": "local"}
+    for name, attributes in {
+        "agent": {},
+        "tools": {},
+        "agent.message_content": {"flatten_message_text": str},
+        "tools.terminal_tool": {"_get_env_config": lambda: config},
+        "tools.terminal_tool_lifecycle": {"ensure_task_env": lambda _: None},
+    }.items():
+        module = ModuleType(name)
+        vars(module).update(attributes)
+        monkeypatch.setitem(sys.modules, name, module)
+
+    class Context:
+        def __init__(self) -> None:
+            self.hooks = {}
+
+        def register_hook(self, name: str, callback: object) -> None:
+            self.hooks[name] = callback
+
+        def get_config(self, _name: str) -> str:
+            return "unavailable-test-engine"
+
+    closed = []
+    close = SpreadsheetDelivery.close
+
+    def tracked_close(runtime: SpreadsheetDelivery) -> None:
+        roots = [
+            state["policy"]._root for state in runtime.turns.values() if state["policy"]
+        ]
+        close(runtime)
+        closed.extend(roots)
+        assert all(not root.exists() for root in roots)
+
+    monkeypatch.setattr(SpreadsheetDelivery, "close", tracked_close)
+    context = Context()
+    register(context)
+    source = tmp_path / "input.xlsx"
+    Workbook().save(source)
+    context.hooks["prepare_delivery"](
+        task_id="task", turn_id="one", user_message=str(source), session_id="session"
+    )
+    # The per-turn filename is deterministic and appears in the prepare guidance.
+    import hashlib
+
+    contract = tmp_path / (
+        ".sheetops-delivery-" + hashlib.sha256(b"one").hexdigest()[:20] + ".json"
+    )
+    contract.write_text(
+        json.dumps(
+            {
+                "source": str(source),
+                "output": "output.xlsx",
+                "allowedRanges": {"Sheet": ["A1"]},
+            }
+        )
+    )
+    context.hooks["pre_tool_call"](turn_id="one", tool_name="terminal")
+    context.hooks["finish_delivery"](turn_id="one", interrupted=True)
+    assert len(closed) == 1
+    assert context.hooks["validate_delivery"](turn_id="one")["action"] == "block"
+    prepared = context.hooks["prepare_delivery"](
+        task_id="task", turn_id="two", user_message="continue", session_id="session"
+    )
+    assert prepared["message"] != "Delivery retains the prior frozen contract."
+    context.hooks["finish_delivery"](turn_id="two", interrupted=True)
+
+
 def test_skipped_guard_and_late_scope_cannot_release_output(tmp_path: Path) -> None:
     source = tmp_path / "input.xlsx"
     Workbook().save(source)

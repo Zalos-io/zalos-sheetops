@@ -530,6 +530,7 @@ finally:
             runtime.close()
 
     ctx.register_hook("post_llm_call", finish)
+    ctx.register_hook("finish_delivery", finish)
     ctx.register_hook("prepare_delivery", prepare)
     ctx.register_hook("pre_tool_call", before_tool)
     ctx.register_hook("validate_delivery", validate)
