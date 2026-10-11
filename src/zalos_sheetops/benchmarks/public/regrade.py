@@ -119,6 +119,13 @@ def regrade_records(
                 "workbookStatus": grading["status"],
                 "status": execution_status,
             }
+        elif not mutated and not unavailable and record.get("delivery") is not None:
+            if record["delivery"].get("status") != "approved":
+                grading = {
+                    **grading,
+                    "workbookStatus": grading["status"],
+                    "status": "delivery_blocked",
+                }
         usage = extract_usage(root / "home", root / "usage.json")
         graded.append(
             {

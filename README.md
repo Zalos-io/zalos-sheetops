@@ -138,7 +138,42 @@ The candidate used `verify-edits` in 21/33 attempts, with 23 rejecting responses
 and eight passing responses. Guard alerts are distinct from invalid command
 arguments. Its declared edit ranges must match the requested cells and conditions;
 a passing guard does not prove expected answers, requested formula presence or
-the final delivered artifact. Agents can omit the guard or submit after rejection.
+the final delivered artifact. In that instruction-only cohort, agents could omit
+the guard or submit after rejection.
+
+The [October 11 delivery-enforced rerun](benchmarks/results/2026-10-11/report.json)
+retains all 66 attempts and uses the same 30 eligible task pairs. Both arms share
+the independent parent delivery policy and a trusted host LibreOffice engine;
+the baseline terminal has no SheetOps CLI. Agent timing now includes runtime
+validation and formula calculation. Four pairs run concurrently, whereas the
+earlier cohorts were sequential, so historical wall times are not comparable.
+
+| Native Excel outcome | Baseline | SheetOps candidate |
+| --- | ---: | ---: |
+| Correct, approved deliveries | 6/30 | 9/30 |
+| Approved deliveries, including wrong answers | 10/30 | 12/30 |
+| Blocked deliveries | 20/30 | 18/30 |
+| Correct raw staging files, including failed attempts | 16/30 | 16/30 |
+| Median time, all attempts | 103.9 s | 129.8 s |
+
+Only four pairs delivered correct answers in both arms. Their median
+baseline/candidate time ratio is 0.514, meaning the candidate took about 1.95 times
+as long in that small, selected subset. This single stochastic cohort establishes
+neither a stable speed win nor an overall accuracy improvement. Seven approved
+workbooks still fail the task rubric: frozen declared scope and formula validity
+do not prove that the agent understood the request correctly.
+
+Fresh Excel 16.113.4 references pass the 30/30 self-check. Excel saved 24 actual
+formula output copies and rejected five with content-recovery warnings; recovery
+was declined. Those five are blocked failures, not delivered artifacts. All 87
+sources are unchanged, and no native calculation actions remain outstanding.
+Secondary LibreOffice grades are retained separately. The
+[failure archive](benchmarks/results/2026-10-11/failure-reproductions.zip) contains
+public task inputs and hashed raw failure outputs; blocked workbooks are diagnostic
+copies. The cohort measures frozen Desktop agent core commit `acff34f`, not
+Electron UI end-to-end. Later sparse native-probe and Kanban history fixes have
+separate regression tests and are identified in the report rather than attributed
+to the frozen timing measurements.
 
 The benchmark harness keeps correctness and speed separate. It uses pinned
 public inputs, fresh reader processes, full-output digests, and independent
@@ -313,6 +348,20 @@ Rejected exports remain private staging files; their existence is not approval.
 Runtime receipts bind approved paths to exact bytes and are checked again by file
 preview, download, and native-open routes. This guards omitted validation and
 ignored rejections; it does not sandbox arbitrary host processes.
+
+Delivery checks inspect workbook content as well as its filename, so renaming an
+OOXML workbook does not remove the approval requirement. Protected extensions
+apply across the owning profile's workspaces to prevent relocation bypasses;
+unchanged, explicitly supplied inputs retain their original-byte exemption.
+Malformed archive framing and unavailable required classifiers fail closed.
+Ordinary chat streams normally, and native directory opens remain available.
+
+Native archive inspection transfers at most 4 MiB of metadata in bounded ranges.
+Workbook opens and local workbook downloads use an immutable snapshot capped at
+64 MiB; ordinary native archives are copied from the inspected handle without that
+size cap. Remote exports use a 64 MiB snapshot cap when the required content policy
+is enabled. These are explicit resource limits, not claims that larger files passed
+validation.
 
 The public task runner accepts `--enforce-delivery` to apply this same policy to
 both arms. It retains blocked attempts and counts a workbook as delivered only

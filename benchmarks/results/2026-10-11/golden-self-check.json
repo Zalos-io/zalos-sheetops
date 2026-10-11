@@ -1,0 +1,781 @@
+[
+  {
+    "task": 45300,
+    "grading": {
+      "status": "pass",
+      "valueDifferences": [],
+      "preservationFailures": [],
+      "structureDifferences": [],
+      "failureCounts": {
+        "values": 0,
+        "styles": 0,
+        "formulas": 0,
+        "preservation": 0,
+        "structure": 0
+      },
+      "checks": {
+        "answerValues": true,
+        "explicitStyles": true,
+        "formulaRequirement": true,
+        "preservation": true,
+        "structure": true
+      },
+      "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+      "styleComponents": null
+    }
+  },
+  {
+    "task": "279-23",
+    "grading": {
+      "status": "pass",
+      "valueDifferences": [],
+      "preservationFailures": [],
+      "structureDifferences": [],
+      "failureCounts": {
+        "values": 0,
+        "styles": 0,
+        "formulas": 0,
+        "preservation": 0,
+        "structure": 0
+      },
+      "checks": {
+        "answerValues": true,
+        "explicitStyles": true,
+        "formulaRequirement": true,
+        "preservation": true,
+        "structure": true
+      },
+      "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+      "styleComponents": null
+    }
+  },
+  {
+    "task": 57590,
+    "grading": {
+      "status": "pass",
+      "valueDifferences": [],
+      "preservationFailures": [],
+      "structureDifferences": [],
+      "failureCounts": {
+        "values": 0,
+        "styles": 0,
+        "formulas": 0,
+        "preservation": 0,
+        "structure": 0
+      },
+      "checks": {
+        "answerValues": true,
+        "explicitStyles": true,
+        "formulaRequirement": true,
+        "preservation": true,
+        "structure": true
+      },
+      "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+      "styleComponents": null
+    }
+  },
+  {
+    "task": "325-44",
+    "grading": {
+      "status": "pass",
+      "valueDifferences": [],
+      "preservationFailures": [],
+      "structureDifferences": [],
+      "failureCounts": {
+        "values": 0,
+        "styles": 0,
+        "formulas": 0,
+        "preservation": 0,
+        "structure": 0
+      },
+      "checks": {
+        "answerValues": true,
+        "explicitStyles": true,
+        "formulaRequirement": true,
+        "preservation": true,
+        "structure": true
+      },
+      "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+      "styleComponents": null
+    }
+  },
+  {
+    "task": 40757,
+    "grading": {
+      "status": "pass",
+      "valueDifferences": [],
+      "preservationFailures": [],
+      "structureDifferences": [],
+      "failureCounts": {
+        "values": 0,
+        "styles": 0,
+        "formulas": 0,
+        "preservation": 0,
+        "structure": 0
+      },
+      "checks": {
+        "answerValues": true,
+        "explicitStyles": true,
+        "formulaRequirement": true,
+        "preservation": true,
+        "structure": true
+      },
+      "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+      "styleComponents": null
+    }
+  },
+  {
+    "task": "82-30",
+    "grading": {
+      "status": "pass",
+      "valueDifferences": [],
+      "preservationFailures": [],
+      "structureDifferences": [],
+      "failureCounts": {
+        "values": 0,
+        "styles": 0,
+        "formulas": 0,
+        "preservation": 0,
+        "structure": 0
+      },
+      "checks": {
+        "answerValues": true,
+        "explicitStyles": true,
+        "formulaRequirement": true,
+        "preservation": true,
+        "structure": true
+      },
+      "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+      "styleComponents": null
+    }
+  },
+  {
+    "task": 51680,
+    "grading": {
+      "status": "pass",
+      "valueDifferences": [],
+      "preservationFailures": [],
+      "structureDifferences": [],
+      "failureCounts": {
+        "values": 0,
+        "styles": 0,
+        "formulas": 0,
+        "preservation": 0,
+        "structure": 0
+      },
+      "checks": {
+        "answerValues": true,
+        "explicitStyles": true,
+        "formulaRequirement": true,
+        "preservation": true,
+        "structure": true
+      },
+      "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+      "styleComponents": [
+        "fontName",
+        "fontSize",
+        "bold",
+        "italic",
+        "fill",
+        "numberFormat",
+        "alignment",
+        "border"
+      ]
+    }
+  },
+  {
+    "task": "585-41",
+    "grading": {
+      "status": "pass",
+      "valueDifferences": [],
+      "preservationFailures": [],
+      "structureDifferences": [],
+      "failureCounts": {
+        "values": 0,
+        "styles": 0,
+        "formulas": 0,
+        "preservation": 0,
+        "structure": 0
+      },
+      "checks": {
+        "answerValues": true,
+        "explicitStyles": true,
+        "formulaRequirement": true,
+        "preservation": true,
+        "structure": true
+      },
+      "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+      "styleComponents": null
+    }
+  },
+  {
+    "task": 35742,
+    "grading": {
+      "status": "pass",
+      "valueDifferences": [],
+      "preservationFailures": [],
+      "structureDifferences": [],
+      "failureCounts": {
+        "values": 0,
+        "styles": 0,
+        "formulas": 0,
+        "preservation": 0,
+        "structure": 0
+      },
+      "checks": {
+        "answerValues": true,
+        "explicitStyles": true,
+        "formulaRequirement": true,
+        "preservation": true,
+        "structure": true
+      },
+      "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+      "styleComponents": null
+    }
+  },
+  {
+    "task": "51-12",
+    "grading": {
+      "status": "pass",
+      "valueDifferences": [],
+      "preservationFailures": [],
+      "structureDifferences": [],
+      "failureCounts": {
+        "values": 0,
+        "styles": 0,
+        "formulas": 0,
+        "preservation": 0,
+        "structure": 0
+      },
+      "checks": {
+        "answerValues": true,
+        "explicitStyles": true,
+        "formulaRequirement": true,
+        "preservation": true,
+        "structure": true
+      },
+      "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+      "styleComponents": null
+    }
+  },
+  {
+    "task": 44389,
+    "grading": {
+      "status": "pass",
+      "valueDifferences": [],
+      "preservationFailures": [],
+      "structureDifferences": [],
+      "failureCounts": {
+        "values": 0,
+        "styles": 0,
+        "formulas": 0,
+        "preservation": 0,
+        "structure": 0
+      },
+      "checks": {
+        "answerValues": true,
+        "explicitStyles": true,
+        "formulaRequirement": true,
+        "preservation": true,
+        "structure": true
+      },
+      "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+      "styleComponents": null
+    }
+  },
+  {
+    "task": "262-17",
+    "grading": {
+      "status": "pass",
+      "valueDifferences": [],
+      "preservationFailures": [],
+      "structureDifferences": [],
+      "failureCounts": {
+        "values": 0,
+        "styles": 0,
+        "formulas": 0,
+        "preservation": 0,
+        "structure": 0
+      },
+      "checks": {
+        "answerValues": true,
+        "explicitStyles": true,
+        "formulaRequirement": true,
+        "preservation": true,
+        "structure": true
+      },
+      "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+      "styleComponents": null
+    }
+  },
+  {
+    "task": 9569,
+    "grading": {
+      "status": "pass",
+      "valueDifferences": [],
+      "preservationFailures": [],
+      "structureDifferences": [],
+      "failureCounts": {
+        "values": 0,
+        "styles": 0,
+        "formulas": 0,
+        "preservation": 0,
+        "structure": 0
+      },
+      "checks": {
+        "answerValues": true,
+        "explicitStyles": true,
+        "formulaRequirement": true,
+        "preservation": true,
+        "structure": true
+      },
+      "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+      "styleComponents": null
+    }
+  },
+  {
+    "task": "192-22",
+    "grading": {
+      "status": "pass",
+      "valueDifferences": [],
+      "preservationFailures": [],
+      "structureDifferences": [],
+      "failureCounts": {
+        "values": 0,
+        "styles": 0,
+        "formulas": 0,
+        "preservation": 0,
+        "structure": 0
+      },
+      "checks": {
+        "answerValues": true,
+        "explicitStyles": true,
+        "formulaRequirement": true,
+        "preservation": true,
+        "structure": true
+      },
+      "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+      "styleComponents": []
+    }
+  },
+  {
+    "task": 47827,
+    "grading": {
+      "status": "pass",
+      "valueDifferences": [],
+      "preservationFailures": [],
+      "structureDifferences": [],
+      "failureCounts": {
+        "values": 0,
+        "styles": 0,
+        "formulas": 0,
+        "preservation": 0,
+        "structure": 0
+      },
+      "checks": {
+        "answerValues": true,
+        "explicitStyles": true,
+        "formulaRequirement": true,
+        "preservation": true,
+        "structure": true
+      },
+      "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+      "styleComponents": [
+        "bold",
+        "fill"
+      ]
+    }
+  },
+  {
+    "task": 37086,
+    "grading": {
+      "status": "pass",
+      "valueDifferences": [],
+      "preservationFailures": [],
+      "structureDifferences": [],
+      "failureCounts": {
+        "values": 0,
+        "styles": 0,
+        "formulas": 0,
+        "preservation": 0,
+        "structure": 0
+      },
+      "checks": {
+        "answerValues": true,
+        "explicitStyles": true,
+        "formulaRequirement": true,
+        "preservation": true,
+        "structure": true
+      },
+      "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+      "styleComponents": null
+    }
+  },
+  {
+    "task": "531-18",
+    "grading": {
+      "status": "pass",
+      "valueDifferences": [],
+      "preservationFailures": [],
+      "structureDifferences": [],
+      "failureCounts": {
+        "values": 0,
+        "styles": 0,
+        "formulas": 0,
+        "preservation": 0,
+        "structure": 0
+      },
+      "checks": {
+        "answerValues": true,
+        "explicitStyles": true,
+        "formulaRequirement": true,
+        "preservation": true,
+        "structure": true
+      },
+      "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+      "styleComponents": null
+    }
+  },
+  {
+    "task": 7902,
+    "grading": {
+      "status": "pass",
+      "valueDifferences": [],
+      "preservationFailures": [],
+      "structureDifferences": [],
+      "failureCounts": {
+        "values": 0,
+        "styles": 0,
+        "formulas": 0,
+        "preservation": 0,
+        "structure": 0
+      },
+      "checks": {
+        "answerValues": true,
+        "explicitStyles": true,
+        "formulaRequirement": true,
+        "preservation": true,
+        "structure": true
+      },
+      "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+      "styleComponents": null
+    }
+  },
+  {
+    "task": 48969,
+    "grading": {
+      "status": "pass",
+      "valueDifferences": [],
+      "preservationFailures": [],
+      "structureDifferences": [],
+      "failureCounts": {
+        "values": 0,
+        "styles": 0,
+        "formulas": 0,
+        "preservation": 0,
+        "structure": 0
+      },
+      "checks": {
+        "answerValues": true,
+        "explicitStyles": true,
+        "formulaRequirement": true,
+        "preservation": true,
+        "structure": true
+      },
+      "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+      "styleComponents": null
+    }
+  },
+  {
+    "task": 48975,
+    "grading": {
+      "status": "pass",
+      "valueDifferences": [],
+      "preservationFailures": [],
+      "structureDifferences": [],
+      "failureCounts": {
+        "values": 0,
+        "styles": 0,
+        "formulas": 0,
+        "preservation": 0,
+        "structure": 0
+      },
+      "checks": {
+        "answerValues": true,
+        "explicitStyles": true,
+        "formulaRequirement": true,
+        "preservation": true,
+        "structure": true
+      },
+      "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+      "styleComponents": null
+    }
+  },
+  {
+    "task": "577-40",
+    "grading": {
+      "status": "pass",
+      "valueDifferences": [],
+      "preservationFailures": [],
+      "structureDifferences": [],
+      "failureCounts": {
+        "values": 0,
+        "styles": 0,
+        "formulas": 0,
+        "preservation": 0,
+        "structure": 0
+      },
+      "checks": {
+        "answerValues": true,
+        "explicitStyles": true,
+        "formulaRequirement": true,
+        "preservation": true,
+        "structure": true
+      },
+      "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+      "styleComponents": null
+    }
+  },
+  {
+    "task": 52220,
+    "grading": {
+      "status": "pass",
+      "valueDifferences": [],
+      "preservationFailures": [],
+      "structureDifferences": [],
+      "failureCounts": {
+        "values": 0,
+        "styles": 0,
+        "formulas": 0,
+        "preservation": 0,
+        "structure": 0
+      },
+      "checks": {
+        "answerValues": true,
+        "explicitStyles": true,
+        "formulaRequirement": true,
+        "preservation": true,
+        "structure": true
+      },
+      "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+      "styleComponents": null
+    }
+  },
+  {
+    "task": "230-16",
+    "grading": {
+      "status": "pass",
+      "valueDifferences": [],
+      "preservationFailures": [],
+      "structureDifferences": [],
+      "failureCounts": {
+        "values": 0,
+        "styles": 0,
+        "formulas": 0,
+        "preservation": 0,
+        "structure": 0
+      },
+      "checks": {
+        "answerValues": true,
+        "explicitStyles": true,
+        "formulaRequirement": true,
+        "preservation": true,
+        "structure": true
+      },
+      "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+      "styleComponents": null
+    }
+  },
+  {
+    "task": 50682,
+    "grading": {
+      "status": "pass",
+      "valueDifferences": [],
+      "preservationFailures": [],
+      "structureDifferences": [],
+      "failureCounts": {
+        "values": 0,
+        "styles": 0,
+        "formulas": 0,
+        "preservation": 0,
+        "structure": 0
+      },
+      "checks": {
+        "answerValues": true,
+        "explicitStyles": true,
+        "formulaRequirement": true,
+        "preservation": true,
+        "structure": true
+      },
+      "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+      "styleComponents": []
+    }
+  },
+  {
+    "task": "343-20",
+    "grading": {
+      "status": "pass",
+      "valueDifferences": [],
+      "preservationFailures": [],
+      "structureDifferences": [],
+      "failureCounts": {
+        "values": 0,
+        "styles": 0,
+        "formulas": 0,
+        "preservation": 0,
+        "structure": 0
+      },
+      "checks": {
+        "answerValues": true,
+        "explicitStyles": true,
+        "formulaRequirement": true,
+        "preservation": true,
+        "structure": true
+      },
+      "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+      "styleComponents": [
+        "alignment"
+      ]
+    }
+  },
+  {
+    "task": 54638,
+    "grading": {
+      "status": "pass",
+      "valueDifferences": [],
+      "preservationFailures": [],
+      "structureDifferences": [],
+      "failureCounts": {
+        "values": 0,
+        "styles": 0,
+        "formulas": 0,
+        "preservation": 0,
+        "structure": 0
+      },
+      "checks": {
+        "answerValues": true,
+        "explicitStyles": true,
+        "formulaRequirement": true,
+        "preservation": true,
+        "structure": true
+      },
+      "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+      "styleComponents": [
+        "fontName",
+        "fill",
+        "border"
+      ]
+    }
+  },
+  {
+    "task": "120-24",
+    "grading": {
+      "status": "pass",
+      "valueDifferences": [],
+      "preservationFailures": [],
+      "structureDifferences": [],
+      "failureCounts": {
+        "values": 0,
+        "styles": 0,
+        "formulas": 0,
+        "preservation": 0,
+        "structure": 0
+      },
+      "checks": {
+        "answerValues": true,
+        "explicitStyles": true,
+        "formulaRequirement": true,
+        "preservation": true,
+        "structure": true
+      },
+      "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+      "styleComponents": [
+        "fill"
+      ]
+    }
+  },
+  {
+    "task": "510-3",
+    "grading": {
+      "status": "pass",
+      "valueDifferences": [],
+      "preservationFailures": [],
+      "structureDifferences": [],
+      "failureCounts": {
+        "values": 0,
+        "styles": 0,
+        "formulas": 0,
+        "preservation": 0,
+        "structure": 0
+      },
+      "checks": {
+        "answerValues": true,
+        "explicitStyles": true,
+        "formulaRequirement": true,
+        "preservation": true,
+        "structure": true
+      },
+      "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+      "styleComponents": [
+        "numberFormat",
+        "bold"
+      ]
+    }
+  },
+  {
+    "task": "398-14",
+    "grading": {
+      "status": "pass",
+      "valueDifferences": [],
+      "preservationFailures": [],
+      "structureDifferences": [],
+      "failureCounts": {
+        "values": 0,
+        "styles": 0,
+        "formulas": 0,
+        "preservation": 0,
+        "structure": 0
+      },
+      "checks": {
+        "answerValues": true,
+        "explicitStyles": true,
+        "formulaRequirement": true,
+        "preservation": true,
+        "structure": true
+      },
+      "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+      "styleComponents": [
+        "fontName",
+        "fontSize",
+        "bold",
+        "fontColor",
+        "alignment"
+      ]
+    }
+  },
+  {
+    "task": "547-18",
+    "grading": {
+      "status": "pass",
+      "valueDifferences": [],
+      "preservationFailures": [],
+      "structureDifferences": [],
+      "failureCounts": {
+        "values": 0,
+        "styles": 0,
+        "formulas": 0,
+        "preservation": 0,
+        "structure": 0
+      },
+      "checks": {
+        "answerValues": true,
+        "explicitStyles": true,
+        "formulaRequirement": true,
+        "preservation": true,
+        "structure": true
+      },
+      "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+      "styleComponents": null
+    }
+  }
+]

@@ -1,0 +1,57 @@
+{
+  "seed": 20261009,
+  "baseCount": 30,
+  "taskCount": 33,
+  "baseTaskIds": [
+    45300,
+    "279-23",
+    57590,
+    "325-44",
+    40757,
+    "82-30",
+    51680,
+    "585-41",
+    35742,
+    "51-12",
+    44389,
+    "262-17",
+    9569,
+    "192-22",
+    47827,
+    "402-43",
+    37086,
+    "531-18",
+    7902,
+    "395-36",
+    48969,
+    "168-17",
+    48975,
+    "577-40",
+    52220,
+    "230-16",
+    50682,
+    "343-20",
+    54638,
+    "120-24"
+  ],
+  "supplementalTaskIds": [
+    "510-3",
+    "398-14",
+    "547-18"
+  ],
+  "oracleIssues": {
+    "402-43": {
+      "status": "ambiguous_task_metadata",
+      "reason": "Answer metadata requires new Sheet2, which the task instruction does not name"
+    },
+    "395-36": {
+      "status": "ambiguous_task_metadata",
+      "reason": "Answer metadata requires new MyResult, while the instruction asks to modify Result what I am getting"
+    },
+    "168-17": {
+      "status": "oracle_preservation_conflict",
+      "reason": "Golden workbook deletes unrelated Final result sheet; the instruction only asks to delete preceding rows in Statement"
+    }
+  },
+  "replacementPolicy": "same seed and instruction type; original attempts retained; no selection by model performance"
+}
