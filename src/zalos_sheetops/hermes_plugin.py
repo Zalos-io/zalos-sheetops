@@ -293,6 +293,13 @@ class SpreadsheetDelivery:
                 "message": "This spreadsheet has no approval for its current bytes.",
             }
 
+    def refresh_engine(self, engine: str | None) -> None:
+        with self._lock:
+            self.engine = engine
+            for state in self.turns.values():
+                if state["policy"] is not None:
+                    state["policy"]._engine = engine
+
     def close(self) -> None:
         for state in self.turns.values():
             if state["policy"] is not None:
@@ -374,6 +381,7 @@ def register(ctx: object) -> None:
         if resume:
             runtime = previous
             runtime.reader = read
+            runtime.refresh_engine(engine)
             runtime.turns[turn_id] = next(reversed(runtime.turns.values()))
             result = {
                 "active": True,

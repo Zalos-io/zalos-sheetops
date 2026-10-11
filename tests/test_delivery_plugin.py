@@ -84,3 +84,50 @@ def test_unrelated_workbooks_do_not_block_ordinary_text(tmp_path: Path) -> None:
         runtime.authorize(tmp_path / "unrelated.xlsx", b"anything")["action"] == "block"
     )
     runtime.close()
+
+
+def test_missing_engine_retry_keeps_scope_and_evaluates_when_engine_appears(
+    tmp_path: Path,
+) -> None:
+    import pytest
+    from openpyxl import load_workbook
+
+    engine = Path("/Applications/LibreOffice.app/Contents/MacOS/soffice")
+    if not engine.is_file():
+        pytest.skip("LibreOffice integration requires an installed engine")
+    source = tmp_path / "input.xlsx"
+    book = Workbook()
+    book.active["A1"] = 1
+    book.active["B1"] = "=A1+1"
+    book.save(source)
+    runtime = SpreadsheetDelivery(cwd=tmp_path, engine=None)
+    runtime.prepare("one", f"Edit {source}")
+    (tmp_path / ".sheetops-delivery.json").write_text(
+        json.dumps(
+            {
+                "source": str(source),
+                "output": "output.xlsx",
+                "allowedRanges": {"Sheet": ["A1"]},
+            }
+        )
+    )
+    runtime.before_tool("one")
+    output = tmp_path / "output.xlsx"
+    output.write_bytes(source.read_bytes())
+    rejected = runtime.validate("one", str(output))
+    assert rejected["errorCode"] == "calculation_engine_unavailable"
+    assert "no calculation engine is available" in rejected["publicMessage"]
+    runtime.refresh_engine(str(engine))
+    assert runtime.validate("one", str(output))["action"] == "allow"
+    assert load_workbook(output, data_only=True).active["B1"].value == 2
+    (tmp_path / ".sheetops-delivery.json").write_text(
+        json.dumps(
+            {
+                "source": str(source),
+                "output": "output.xlsx",
+                "allowedRanges": {"Sheet": ["A1:B1"]},
+            }
+        )
+    )
+    assert runtime.validate("one", str(output))["action"] == "block"
+    runtime.close()

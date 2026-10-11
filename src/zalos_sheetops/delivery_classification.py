@@ -24,7 +24,11 @@ def classify_delivery(artifact_path: str, probe: object, **kwargs: object) -> di
     }:
         return {"action": "require_receipt"}
     try:
+        probe.seek(0)
+        header = probe.read(4)
         if not is_zipfile(probe):
+            if header in {b"PK\x03\x04", b"PK\x05\x06", b"PK\x07\x08"}:
+                raise ValueError("Archive framing exists but its directory is invalid")
             return {"action": "allow"}
         with ZipFile(probe) as archive:
             names = archive.namelist()

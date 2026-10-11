@@ -37,3 +37,13 @@ def test_other_files_keep_delivery_and_oversized_metadata_blocks() -> None:
         classify_delivery("archive.bin", io.BytesIO(output.getvalue()))["action"]
         == "block"
     )
+
+
+def test_damaged_archive_is_unknown_and_cannot_skip_validation() -> None:
+    output = io.BytesIO()
+    Workbook().save(output)
+    assert (
+        classify_delivery("output.bin", io.BytesIO(output.getvalue()[:-22]))["action"]
+        == "block"
+    )
+    assert classify_delivery("notes.txt", io.BytesIO(b"PK text"))["action"] == "allow"
