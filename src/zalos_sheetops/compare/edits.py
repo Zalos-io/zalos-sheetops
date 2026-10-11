@@ -14,6 +14,7 @@ from openpyxl import load_workbook
 from openpyxl.formula import Tokenizer
 from openpyxl.formula.tokenizer import TokenizerError
 from openpyxl.utils.cell import range_boundaries
+from openpyxl.utils.exceptions import InvalidFileException
 from openpyxl.worksheet.formula import ArrayFormula, DataTableFormula
 
 from zalos_sheetops.errors import SheetOpsError
@@ -681,7 +682,14 @@ def verify_edits(
             if evaluated_path
             else "not_evaluated",
         }
-    except (OSError, ValueError, KeyError, BadZipFile, ET.ParseError) as error:
+    except (
+        OSError,
+        ValueError,
+        KeyError,
+        BadZipFile,
+        ET.ParseError,
+        InvalidFileException,
+    ) as error:
         raise SheetOpsError(
             "invalid_workbook", "Workbook could not be verified", {"error": str(error)}
         ) from error

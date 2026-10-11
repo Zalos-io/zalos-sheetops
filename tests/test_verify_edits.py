@@ -163,3 +163,29 @@ def test_dynamic_function_prefix_alone_does_not_validate_array_storage(
     assert "array_storage_required" in {
         issue["reason"] for issue in response["details"]["formulaIssues"]
     }
+
+
+@pytest.mark.parametrize("unsupported_field", ["originalPath", "path", "evaluatedPath"])
+def test_verify_edits_returns_json_for_unsupported_workbook_format(
+    tmp_path: Path, unsupported_field: str
+) -> None:
+    supported = tmp_path / "supported.xlsx"
+    unsupported = tmp_path / "legacy.xls"
+    book = Workbook()
+    book.active.title = "Data"
+    book.save(supported)
+    unsupported.write_bytes(supported.read_bytes())
+    request = {
+        "originalPath": str(supported),
+        "path": str(supported),
+        "evaluatedPath": str(supported),
+        "allowedRanges": {},
+        unsupported_field: str(unsupported),
+    }
+    result = CliRunner().invoke(app, ["verify-edits", "--json", json.dumps(request)])
+    assert result.exit_code == 1
+    response = json.loads(result.output)
+    assert response["ok"] is False
+    assert response["command"] == "verify-edits"
+    assert response["errorCode"] == "invalid_workbook"
+    assert "Traceback" not in result.output
