@@ -103,7 +103,9 @@ class SpreadsheetDelivery:
                     f"write {self.contract_path.name} containing "
                     "source (the input path), "
                     "output (a new .xlsx path), and allowedRanges (sheet names mapped "
-                    "to bounded A1 ranges). For creation without an input, "
+                    "to lists of bounded A1 ranges, e.g. "
+                    '"allowedRanges":{"Data":["B2:B20"]}). Use actual sheet names. '
+                    "For creation without an input, "
                     "omit source; "
                     "the runtime supplies an empty workbook with a Sheet worksheet. "
                     "Create the contract in a separate tool call "
