@@ -21,6 +21,42 @@ from .cases import build_cases
 from .grade import grade_case
 
 
+def probe_images(images: dict[str, str]) -> dict:
+    probes = {}
+    script = (
+        "import json, shutil, subprocess, importlib.metadata as m; "
+        "engine=shutil.which('soffice') or shutil.which('libreoffice'); "
+        "print(json.dumps({'engine': engine, "
+        "'engineVersion': subprocess.check_output([engine, '--version'], "
+        "text=True).strip() if engine else None, "
+        "'libraries': {n:m.version(n) for n in "
+        "['openpyxl','polars','fastexcel','xlsxwriter']}}))"
+    )
+    for image in dict.fromkeys(images.values()):
+        probe = json.loads(
+            subprocess.check_output(
+                [
+                    "docker",
+                    "run",
+                    "--rm",
+                    "--network",
+                    "none",
+                    "--entrypoint",
+                    "python",
+                    image,
+                    "-c",
+                    script,
+                ],
+                text=True,
+                timeout=60,
+            )
+        )
+        if not probe.get("engine"):
+            raise ValueError(f"Benchmark image lacks a calculation engine: {image}")
+        probes[image] = probe
+    return probes
+
+
 def container_peak(workspace: Path) -> int | None:
     ids = subprocess.check_output(
         ["docker", "ps", "-aq", "--filter", "label=hermes-agent=1"], text=True
@@ -169,12 +205,14 @@ def run_one(case: dict, arm: str, repeat: int, settings: dict, output: Path) -> 
 def run(
     settings: dict, output: Path, cases: list[dict], repeats: int, workers: int
 ) -> list[dict]:
+    probes = probe_images(settings["images"])
     output.mkdir(parents=True, exist_ok=True)
     safe = {k: v for k, v in settings.items() if k != "envFile"}
     metadata = {
         **safe,
         "repeats": repeats,
         "workers": workers,
+        "imageProbes": probes,
         "scope": "Desktop source agent core via CLI; not Electron UI E2E",
         "skillSha256": {
             name: file_sha256(Path(settings[name]))

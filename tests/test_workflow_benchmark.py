@@ -1,8 +1,10 @@
 import shutil
 from pathlib import Path
 
+import pytest
 from openpyxl import load_workbook
 
+from zalos_sheetops.benchmarks.workflows import runner
 from zalos_sheetops.benchmarks.workflows.cases import build_cases
 from zalos_sheetops.benchmarks.workflows.grade import grade_case
 
@@ -59,3 +61,14 @@ def test_report_rejects_wrong_labels_extra_rows_and_date_display(
     assert "data:Summary!A2" in failures
     assert "dimensions:Data" in failures
     assert "date_format:Data!B2" in failures
+
+
+def test_formula_benchmark_rejects_images_without_calculation_engine(
+    monkeypatch,
+) -> None:
+    def probe(*args, **kwargs) -> str:
+        return '{"engine": null}'
+
+    monkeypatch.setattr(runner.subprocess, "check_output", probe)
+    with pytest.raises(ValueError, match="calculation engine"):
+        runner.probe_images({"baseline": "test-image"})
