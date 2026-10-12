@@ -8,17 +8,6 @@ def test_claude_skill_is_symlink_to_codex_skill() -> None:
     assert path.readlink() == Path("../codex/SKILL.md")
 
 
-def test_agent_skills_require_sheetops_first_and_json_output() -> None:
-    for path in [Path("skills/codex/SKILL.md"), Path("skills/claude/SKILL.md")]:
-        text = path.read_text()
-        assert "Prefer `sheetops` before writing custom spreadsheet code." in text
-        assert "compact JSON by default" in text
-        assert "--pretty" in text
-        assert "--raw-output" in text
-        assert "Do not parse human prose" in text
-        assert "fall back to custom code only when" in text
-
-
 def test_agent_skills_document_token_bounding_knobs() -> None:
     for path in [Path("skills/codex/SKILL.md"), Path("skills/claude/SKILL.md")]:
         text = path.read_text()

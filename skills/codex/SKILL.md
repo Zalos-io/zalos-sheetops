@@ -5,7 +5,10 @@ description: Use when inspecting, validating, extracting, scanning, benchmarking
 
 # SheetOps
 
-Prefer `sheetops` before writing custom spreadsheet code.
+Use `sheetops` for supported inspection, extraction and verification operations.
+Use Polars for bulk business transformations, XlsxWriter for new reports, and
+a compatible editing library for existing workbooks; SheetOps does not replace
+those libraries.
 
 Every command prints one line of compact JSON by default; pass `--pretty` only
 when a human needs to read it (`--raw-output` is a deprecated alias for the
@@ -34,7 +37,7 @@ sheetops formulas scan --json '{"path":"output.xlsx","sheet":"Summary","range":"
 sheetops verify-edits --json '{"originalPath":"original.xlsx","path":"output.xlsx","allowedRanges":{"Data":["B2:B20"]},"evaluatedPath":"output.evaluated.xlsx"}'
 ```
 
-Next milestone commands:
+Other available commands:
 
 ```bash
 sheetops normalize preview --json '{"path":"input.xlsx","sheet":"Data","headerStrategy":"detect","columns":[{"source":"Amount","kind":"amount","name":"amount"}]}'
@@ -76,6 +79,24 @@ elapsed time, peak traced bytes, RSS, and command summaries. Keep generated
 workbooks, JSONL, and `.prof` files under `.benchmarks/` or `/tmp`.
 Do not commit generated benchmark artifacts.
 
-fall back to custom code only when `sheetops schema` shows no supported
-command for the required operation, or when `sheetops` returns a structured
-error that explicitly identifies unsupported behavior.
+## CSV and Python workflows
+
+```bash
+sheetops read-table --json '{"path":"source.csv","encoding":"auto","delimiter":"\t","maxRows":20}'
+```
+
+CSV reads preserve string values and reject extra fields. `auto` detects BOMs
+and otherwise uses UTF-8; legacy encodings require an explicit name. The default
+delimiter is comma, or tab for `.tsv`. `sourceRows` gives physical record start
+lines; `truncated` marks a partial preview and `rowCount` counts returned records
+for CSV. Headers are normalized. CSV sources in `diff` and `reconcile` accept
+`encoding`, `delimiter`, and `headerRow` too. Do not treat a preview as a full
+reconciliation. Preserve long IDs and leading zeros, parse amounts/dates explicitly,
+and reject ambiguous duplicate keys instead of silently choosing a row.
+
+Create and edit in separate paths: stream row-ordered new detail sheets with
+XlsxWriter, use buffered writes for layouts that revisit rows, and never rebuild
+a formatted existing workbook through a DataFrame writer. Verify edits against
+the original with an explicit allowed scope. Evaluate formula outputs in an
+actual calculation engine and check independent expected results; cached values
+and successful serialization do not prove calculation or business correctness.
