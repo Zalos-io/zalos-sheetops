@@ -18,6 +18,7 @@ def test_read_csv_table_reads_utf8_bom_and_records(tmp_path: Path) -> None:
         "headers": ["reference", "amount"],
         "rows": [{"reference": "INV-1", "amount": "10"}],
         "rowCount": 1,
+        "returnedRowCount": 1,
         "sourceRows": [2],
         "encoding": "utf-8-sig",
         "delimiter": ",",

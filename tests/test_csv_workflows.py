@@ -39,6 +39,8 @@ def test_csv_preview_preserves_ids_and_reports_source_rows(tmp_path: Path) -> No
     ]
     assert data["sourceRows"] == [2, 4]
     assert data["truncated"] is True
+    assert data["rowCount"] is None
+    assert data["returnedRowCount"] == 2
     assert data["encoding"] == "utf-16"
 
 

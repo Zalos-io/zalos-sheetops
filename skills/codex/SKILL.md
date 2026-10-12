@@ -88,8 +88,9 @@ sheetops read-table --json '{"path":"source.csv","encoding":"auto","delimiter":"
 CSV reads preserve string values and reject extra fields. `auto` detects BOMs
 and otherwise uses UTF-8; legacy encodings require an explicit name. The default
 delimiter is comma, or tab for `.tsv`. `sourceRows` gives physical record start
-lines; `truncated` marks a partial preview and `rowCount` counts returned records
-for CSV. Headers are normalized. CSV sources in `diff` and `reconcile` accept
+lines; `truncated` marks a partial preview, `returnedRowCount` counts returned
+records, and `rowCount` is null until the full population is read. Headers are
+normalized. CSV sources in `diff` and `reconcile` accept
 `encoding`, `delimiter`, and `headerRow` too. Do not treat a preview as a full
 reconciliation. Preserve long IDs and leading zeros, parse amounts/dates explicitly,
 and reject ambiguous duplicate keys instead of silently choosing a row.

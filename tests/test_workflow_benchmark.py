@@ -72,3 +72,30 @@ def test_formula_benchmark_rejects_images_without_calculation_engine(
     monkeypatch.setattr(runner.subprocess, "check_output", probe)
     with pytest.raises(ValueError, match="calculation engine"):
         runner.probe_images({"baseline": "test-image"})
+
+
+def test_report_rejects_constant_formulas(tmp_path: Path) -> None:
+    cases = build_cases(tmp_path, detail_rows=10)
+    case = next(case for case in cases if case["id"] == "formula_report")
+    workspace = tmp_path / "candidate"
+    shutil.copytree(Path(case["golden"]), workspace)
+    book = load_workbook(workspace / "output.xlsx")
+    book["Data"]["D2"] = "=15"
+    book["Summary"]["B2"] = "=130000"
+    book.save(workspace / "output.xlsx")
+    failures = grade_case(case, workspace)["failures"]
+    assert "formula_relationship:Data!D2" in failures
+    assert "formula_relationship:Summary!B2" in failures
+
+
+def test_edit_rejects_removed_validation_and_layout(tmp_path: Path) -> None:
+    cases = build_cases(tmp_path, detail_rows=10)
+    case = next(case for case in cases if case["id"] == "targeted_edit")
+    workspace = tmp_path / "candidate"
+    shutil.copytree(Path(case["golden"]), workspace)
+    book = load_workbook(workspace / "output.xlsx")
+    book["Inputs"].data_validations.dataValidation.clear()
+    book["Inputs"].freeze_panes = None
+    book["Inputs"].column_dimensions["D"].width = 50
+    book.save(workspace / "output.xlsx")
+    assert "sheet_features:Inputs" in grade_case(case, workspace)["failures"]
