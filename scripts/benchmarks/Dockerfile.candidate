@@ -1,0 +1,8 @@
+# Extend the frozen baseline so dependency and operating-system versions match.
+ARG BASELINE_IMAGE
+FROM ${BASELINE_IMAGE}
+COPY wheels /tmp/sheetops-wheels
+RUN python -m pip install --no-cache-dir --no-deps /tmp/sheetops-wheels/*.whl \
+    && python -c 'import zalos_sheetops; assert zalos_sheetops.__version__ == "0.4.3"' \
+    && rm -rf /tmp/sheetops-wheels
+COPY xlsx-scripts /opt/skills/xlsx/scripts

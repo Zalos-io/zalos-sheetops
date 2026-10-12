@@ -27,6 +27,7 @@ def command_manifest() -> dict[str, object]:
                     "headerStrategy": "detect | row",
                     "headerRow": "integer | null",
                     "maxRows": "positive integer | null",
+                    "valueMode": "raw | typed (XML reads; default raw)",
                 },
             },
             {
@@ -41,6 +42,18 @@ def command_manifest() -> dict[str, object]:
                         "numberFormats | dataTypes]"
                     ),
                     "engine": "auto | xml | openpyxl",
+                    "valueMode": "raw | typed (XML reads; default raw)",
+                },
+            },
+            {
+                "name": "verify-edits",
+                "status": "available",
+                "input": {
+                    "originalPath": "string",
+                    "path": "string",
+                    "allowedRanges": "dict[string, list[bounded A1 range]]",
+                    "structuralSheets": "list[string] (authorized structure edits)",
+                    "evaluatedPath": "string | null (caller evaluated copy)",
                 },
             },
             {

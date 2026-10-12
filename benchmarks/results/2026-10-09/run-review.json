@@ -1,0 +1,32 @@
+{
+  "operationMeasurements": 480,
+  "attemptedPairs": 33,
+  "scorablePairs": 30,
+  "balancedScorableTasks": {
+    "cellLevel": 15,
+    "sheetLevel": 15
+  },
+  "goldenSelfChecksPassed": 30,
+  "nativeAudit": {
+    "copyCount": 87,
+    "savedFormulaFiles": 48,
+    "rejectedFiles": 2,
+    "valueOnlyFiles": 37,
+    "unresolved": 0
+  },
+  "libreOfficeVersion": "26.2.4.2 0229ac93fcf0d7cbc6376066c6f35021cef002dc",
+  "rawAgentRecordsSha256": "9e9ddd8fff8dd957464b4162f545912ee8dd60d1861c6172032face56747dcb7",
+  "executionHashesAvailable": 42,
+  "executionHashesMissing": 24,
+  "localInterruptionExcluded": {
+    "task": "9569",
+    "arm": "baseline",
+    "reason": "incomplete local attempt archived; fresh complete attempt retained"
+  },
+  "supersededOperationsExcluded": [
+    "double-read baseline",
+    "short run overlapping regrading"
+  ],
+  "testsPassed": 370,
+  "packageDistributionBuild": "local verification only; no version 0.4.2 republish"
+}

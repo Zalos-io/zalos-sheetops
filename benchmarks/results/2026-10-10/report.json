@@ -1,0 +1,3443 @@
+{
+  "schemaVersion": 1,
+  "status": "complete",
+  "operationMeasurements": 480,
+  "coverage": {
+    "operations": {
+      "complete": true,
+      "missing": 0,
+      "unexpected": 0,
+      "duplicates": 0
+    },
+    "agents": {
+      "complete": true,
+      "missing": 0,
+      "unexpected": 0,
+      "duplicates": 0
+    }
+  },
+  "expectedOperationMeasurements": 480,
+  "agentRecordSource": "AFTER_BENCHMARK_ROOT/agents/agents-native-graded.jsonl",
+  "operationSummaries": [
+    {
+      "case": "100000-cells-end",
+      "adapter": "calamine",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.5919809581246227,
+      "minSeconds": 0.5709108749870211,
+      "maxSeconds": 0.6060757080558687
+    },
+    {
+      "case": "100000-cells-end",
+      "adapter": "fastexcel",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.36224895901978016,
+      "minSeconds": 0.3608547910116613,
+      "maxSeconds": 0.364689625101164
+    },
+    {
+      "case": "100000-cells-end",
+      "adapter": "openpyxl",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 2.9082413332071155,
+      "minSeconds": 2.9034627499058843,
+      "maxSeconds": 3.0355775419157
+    },
+    {
+      "case": "100000-cells-end",
+      "adapter": "sheetops-api",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 1.306869958061725,
+      "minSeconds": 1.2963949160184711,
+      "maxSeconds": 1.3218751249369234
+    },
+    {
+      "case": "100000-cells-end",
+      "adapter": "sheetops-cli",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 1.3646127921529114,
+      "minSeconds": 1.347206958103925,
+      "maxSeconds": 1.3746504171285778
+    },
+    {
+      "case": "100000-cells-middle",
+      "adapter": "calamine",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.5511089579667896,
+      "minSeconds": 0.549364916048944,
+      "maxSeconds": 0.5537040838971734
+    },
+    {
+      "case": "100000-cells-middle",
+      "adapter": "fastexcel",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.3553715420421213,
+      "minSeconds": 0.35459137498401105,
+      "maxSeconds": 0.3676660000346601
+    },
+    {
+      "case": "100000-cells-middle",
+      "adapter": "openpyxl",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 1.503950374899432,
+      "minSeconds": 1.486056791152805,
+      "maxSeconds": 1.6016331249848008
+    },
+    {
+      "case": "100000-cells-middle",
+      "adapter": "sheetops-api",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.6875004169996828,
+      "minSeconds": 0.6800035419873893,
+      "maxSeconds": 0.7050613749306649
+    },
+    {
+      "case": "100000-cells-middle",
+      "adapter": "sheetops-cli",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.7473274997901171,
+      "minSeconds": 0.7446087501011789,
+      "maxSeconds": 0.7496228339150548
+    },
+    {
+      "case": "100000-cells-start",
+      "adapter": "calamine",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.5525728338398039,
+      "minSeconds": 0.5428732500877231,
+      "maxSeconds": 0.595850583165884
+    },
+    {
+      "case": "100000-cells-start",
+      "adapter": "fastexcel",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.35561566706746817,
+      "minSeconds": 0.3469502499792725,
+      "maxSeconds": 0.3756874999962747
+    },
+    {
+      "case": "100000-cells-start",
+      "adapter": "openpyxl",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.06339191691949964,
+      "minSeconds": 0.0629044168163091,
+      "maxSeconds": 0.06599987484514713
+    },
+    {
+      "case": "100000-cells-start",
+      "adapter": "sheetops-api",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.06983779207803309,
+      "minSeconds": 0.06869137496687472,
+      "maxSeconds": 0.07770529203116894
+    },
+    {
+      "case": "100000-cells-start",
+      "adapter": "sheetops-cli",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.13098562485538423,
+      "minSeconds": 0.1273387090768665,
+      "maxSeconds": 0.13199670799076557
+    },
+    {
+      "case": "100000-scalar-cells-end",
+      "adapter": "calamine",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.560852084076032,
+      "minSeconds": 0.5576242080423981,
+      "maxSeconds": 0.5638999580405653
+    },
+    {
+      "case": "100000-scalar-cells-end",
+      "adapter": "fastexcel",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.3557163749355823,
+      "minSeconds": 0.3527854159474373,
+      "maxSeconds": 0.3736524588894099
+    },
+    {
+      "case": "100000-scalar-cells-end",
+      "adapter": "openpyxl",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 2.9828043750021607,
+      "minSeconds": 2.8954995421227068,
+      "maxSeconds": 2.991634416859597
+    },
+    {
+      "case": "100000-scalar-cells-end",
+      "adapter": "sheetops-api",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 1.322625458939001,
+      "minSeconds": 1.2771535417996347,
+      "maxSeconds": 1.3796919169835746
+    },
+    {
+      "case": "100000-scalar-cells-end",
+      "adapter": "sheetops-cli",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 1.3612809169571847,
+      "minSeconds": 1.3605856248177588,
+      "maxSeconds": 1.3705006251111627
+    },
+    {
+      "case": "100000-scalar-cells-middle",
+      "adapter": "calamine",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.5622297078371048,
+      "minSeconds": 0.5526346249971539,
+      "maxSeconds": 0.5664567081257701
+    },
+    {
+      "case": "100000-scalar-cells-middle",
+      "adapter": "fastexcel",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.3595667500048876,
+      "minSeconds": 0.35628045815974474,
+      "maxSeconds": 0.36543991579674184
+    },
+    {
+      "case": "100000-scalar-cells-middle",
+      "adapter": "openpyxl",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 1.5284928751643747,
+      "minSeconds": 1.477630333043635,
+      "maxSeconds": 1.545530374860391
+    },
+    {
+      "case": "100000-scalar-cells-middle",
+      "adapter": "sheetops-api",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.709836124908179,
+      "minSeconds": 0.6843089589383453,
+      "maxSeconds": 0.7165705000516027
+    },
+    {
+      "case": "100000-scalar-cells-middle",
+      "adapter": "sheetops-cli",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.7563687087967992,
+      "minSeconds": 0.7509756658691913,
+      "maxSeconds": 0.7604021248407662
+    },
+    {
+      "case": "100000-scalar-cells-start",
+      "adapter": "calamine",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.5495827090926468,
+      "minSeconds": 0.5432498331647366,
+      "maxSeconds": 0.5525220830459148
+    },
+    {
+      "case": "100000-scalar-cells-start",
+      "adapter": "fastexcel",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.34807533398270607,
+      "minSeconds": 0.3468975001014769,
+      "maxSeconds": 0.3483287498820573
+    },
+    {
+      "case": "100000-scalar-cells-start",
+      "adapter": "openpyxl",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.06415716698393226,
+      "minSeconds": 0.06318975007161498,
+      "maxSeconds": 0.06502049998380244
+    },
+    {
+      "case": "100000-scalar-cells-start",
+      "adapter": "sheetops-api",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.07249595900066197,
+      "minSeconds": 0.07134249992668629,
+      "maxSeconds": 0.07403008290566504
+    },
+    {
+      "case": "100000-scalar-cells-start",
+      "adapter": "sheetops-cli",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.12963599991053343,
+      "minSeconds": 0.12641829089261591,
+      "maxSeconds": 0.14155254093930125
+    },
+    {
+      "case": "100000-table",
+      "adapter": "calamine",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 1.194085791008547,
+      "minSeconds": 1.157445624936372,
+      "maxSeconds": 1.2135048750787973
+    },
+    {
+      "case": "100000-table",
+      "adapter": "fastexcel",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 1.1452732500620186,
+      "minSeconds": 1.131742750061676,
+      "maxSeconds": 1.168652166146785
+    },
+    {
+      "case": "100000-table",
+      "adapter": "openpyxl",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 3.5484872919041663,
+      "minSeconds": 3.5098343330901116,
+      "maxSeconds": 3.8482643328607082
+    },
+    {
+      "case": "100000-table",
+      "adapter": "sheetops-api",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 2.128730708034709,
+      "minSeconds": 2.0538522091228515,
+      "maxSeconds": 2.143943666946143
+    },
+    {
+      "case": "100000-table",
+      "adapter": "sheetops-cli",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 2.2864345000125468,
+      "minSeconds": 2.221131958067417,
+      "maxSeconds": 2.3075742500368506
+    },
+    {
+      "case": "25000-cells-end",
+      "adapter": "calamine",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.18090416700579226,
+      "minSeconds": 0.18072958290576935,
+      "maxSeconds": 0.1854138330090791
+    },
+    {
+      "case": "25000-cells-end",
+      "adapter": "fastexcel",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.1538369581103325,
+      "minSeconds": 0.15342795802280307,
+      "maxSeconds": 0.15566870896145701
+    },
+    {
+      "case": "25000-cells-end",
+      "adapter": "openpyxl",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.7626879590097815,
+      "minSeconds": 0.7597095840610564,
+      "maxSeconds": 0.7674192080739886
+    },
+    {
+      "case": "25000-cells-end",
+      "adapter": "sheetops-api",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.3756464999169111,
+      "minSeconds": 0.37041824986226857,
+      "maxSeconds": 0.3773906249552965
+    },
+    {
+      "case": "25000-cells-end",
+      "adapter": "sheetops-cli",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.4367005000822246,
+      "minSeconds": 0.4228615830652416,
+      "maxSeconds": 0.482174624921754
+    },
+    {
+      "case": "25000-cells-middle",
+      "adapter": "calamine",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.1759011670947075,
+      "minSeconds": 0.1757393330335617,
+      "maxSeconds": 0.17949100001715124
+    },
+    {
+      "case": "25000-cells-middle",
+      "adapter": "fastexcel",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.15132054197601974,
+      "minSeconds": 0.15086333407089114,
+      "maxSeconds": 0.1573720418382436
+    },
+    {
+      "case": "25000-cells-middle",
+      "adapter": "openpyxl",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.41318925004452467,
+      "minSeconds": 0.41180449980311096,
+      "maxSeconds": 0.4134453749284148
+    },
+    {
+      "case": "25000-cells-middle",
+      "adapter": "sheetops-api",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.21694966708309948,
+      "minSeconds": 0.21655275020748377,
+      "maxSeconds": 0.21978620789013803
+    },
+    {
+      "case": "25000-cells-middle",
+      "adapter": "sheetops-cli",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.27742079086601734,
+      "minSeconds": 0.2752414159476757,
+      "maxSeconds": 0.27754150005057454
+    },
+    {
+      "case": "25000-cells-start",
+      "adapter": "calamine",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.17827991698868573,
+      "minSeconds": 0.1777335829101503,
+      "maxSeconds": 0.18858941714279354
+    },
+    {
+      "case": "25000-cells-start",
+      "adapter": "fastexcel",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.15206616697832942,
+      "minSeconds": 0.14950387505814433,
+      "maxSeconds": 0.2848712080158293
+    },
+    {
+      "case": "25000-cells-start",
+      "adapter": "openpyxl",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.061319290893152356,
+      "minSeconds": 0.06106329197064042,
+      "maxSeconds": 0.06219154177233577
+    },
+    {
+      "case": "25000-cells-start",
+      "adapter": "sheetops-api",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.06716575007885695,
+      "minSeconds": 0.06681508384644985,
+      "maxSeconds": 0.06806304189376533
+    },
+    {
+      "case": "25000-cells-start",
+      "adapter": "sheetops-cli",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.126697292085737,
+      "minSeconds": 0.12479549995623529,
+      "maxSeconds": 0.36903749988414347
+    },
+    {
+      "case": "25000-scalar-cells-end",
+      "adapter": "calamine",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.1810414579231292,
+      "minSeconds": 0.18020874983631074,
+      "maxSeconds": 0.18678908399306238
+    },
+    {
+      "case": "25000-scalar-cells-end",
+      "adapter": "fastexcel",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.16016479209065437,
+      "minSeconds": 0.15161691699177027,
+      "maxSeconds": 0.16421041707508266
+    },
+    {
+      "case": "25000-scalar-cells-end",
+      "adapter": "openpyxl",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.7627035421319306,
+      "minSeconds": 0.7534271250478923,
+      "maxSeconds": 0.7820938748773187
+    },
+    {
+      "case": "25000-scalar-cells-end",
+      "adapter": "sheetops-api",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.37132612499408424,
+      "minSeconds": 0.3696135829668492,
+      "maxSeconds": 0.423642709152773
+    },
+    {
+      "case": "25000-scalar-cells-end",
+      "adapter": "sheetops-cli",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.43160612508654594,
+      "minSeconds": 0.43052670801989734,
+      "maxSeconds": 0.4333115420304239
+    },
+    {
+      "case": "25000-scalar-cells-middle",
+      "adapter": "calamine",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.18089233385398984,
+      "minSeconds": 0.1782288330141455,
+      "maxSeconds": 0.18105987505987287
+    },
+    {
+      "case": "25000-scalar-cells-middle",
+      "adapter": "fastexcel",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.15145966690033674,
+      "minSeconds": 0.1508496250025928,
+      "maxSeconds": 0.15319029102101922
+    },
+    {
+      "case": "25000-scalar-cells-middle",
+      "adapter": "openpyxl",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.41480091703124344,
+      "minSeconds": 0.4099671251606196,
+      "maxSeconds": 0.4294587499462068
+    },
+    {
+      "case": "25000-scalar-cells-middle",
+      "adapter": "sheetops-api",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.22081537498161197,
+      "minSeconds": 0.21959945792332292,
+      "maxSeconds": 0.221079875016585
+    },
+    {
+      "case": "25000-scalar-cells-middle",
+      "adapter": "sheetops-cli",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.27797866705805063,
+      "minSeconds": 0.2755785828921944,
+      "maxSeconds": 0.2798739999998361
+    },
+    {
+      "case": "25000-scalar-cells-start",
+      "adapter": "calamine",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.18030133401043713,
+      "minSeconds": 0.17471804190427065,
+      "maxSeconds": 0.19143312494270504
+    },
+    {
+      "case": "25000-scalar-cells-start",
+      "adapter": "fastexcel",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.15123433293774724,
+      "minSeconds": 0.1493978751823306,
+      "maxSeconds": 0.15657283295877278
+    },
+    {
+      "case": "25000-scalar-cells-start",
+      "adapter": "openpyxl",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.06372291687875986,
+      "minSeconds": 0.06092154188081622,
+      "maxSeconds": 0.08225245797075331
+    },
+    {
+      "case": "25000-scalar-cells-start",
+      "adapter": "sheetops-api",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.0689612498972565,
+      "minSeconds": 0.06788545800372958,
+      "maxSeconds": 0.07337962510064244
+    },
+    {
+      "case": "25000-scalar-cells-start",
+      "adapter": "sheetops-cli",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.1270504998974502,
+      "minSeconds": 0.12397304107435048,
+      "maxSeconds": 0.13969062501564622
+    },
+    {
+      "case": "25000-table",
+      "adapter": "calamine",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.30088095902465284,
+      "minSeconds": 0.3005582499317825,
+      "maxSeconds": 0.3018388750497252
+    },
+    {
+      "case": "25000-table",
+      "adapter": "fastexcel",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.31535604200325906,
+      "minSeconds": 0.31256854184903204,
+      "maxSeconds": 0.32091787504032254
+    },
+    {
+      "case": "25000-table",
+      "adapter": "openpyxl",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.918672125088051,
+      "minSeconds": 0.9170596250332892,
+      "maxSeconds": 0.9208038751967251
+    },
+    {
+      "case": "25000-table",
+      "adapter": "sheetops-api",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.5607707088347524,
+      "minSeconds": 0.5599947080481797,
+      "maxSeconds": 0.5638010001275688
+    },
+    {
+      "case": "25000-table",
+      "adapter": "sheetops-cli",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.6126497921068221,
+      "minSeconds": 0.6117894591297954,
+      "maxSeconds": 0.6143769160844386
+    },
+    {
+      "case": "400000-cells-end",
+      "adapter": "calamine",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 2.0697023749817163,
+      "minSeconds": 2.058508292073384,
+      "maxSeconds": 2.083159500034526
+    },
+    {
+      "case": "400000-cells-end",
+      "adapter": "fastexcel",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 1.2856390830129385,
+      "minSeconds": 1.2502560829743743,
+      "maxSeconds": 1.293307000072673
+    },
+    {
+      "case": "400000-cells-end",
+      "adapter": "openpyxl",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 11.709316000109538,
+      "minSeconds": 11.56358337495476,
+      "maxSeconds": 11.778256125049666
+    },
+    {
+      "case": "400000-cells-end",
+      "adapter": "sheetops-api",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 5.064143416006118,
+      "minSeconds": 5.002132542198524,
+      "maxSeconds": 5.18914358294569
+    },
+    {
+      "case": "400000-cells-end",
+      "adapter": "sheetops-cli",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 5.082777875009924,
+      "minSeconds": 5.076318916864693,
+      "maxSeconds": 5.134106166893616
+    },
+    {
+      "case": "400000-cells-middle",
+      "adapter": "calamine",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 2.034735499881208,
+      "minSeconds": 2.033874500077218,
+      "maxSeconds": 2.0904477909207344
+    },
+    {
+      "case": "400000-cells-middle",
+      "adapter": "fastexcel",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 1.1474075829610229,
+      "minSeconds": 1.1459796249400824,
+      "maxSeconds": 1.1959669168572873
+    },
+    {
+      "case": "400000-cells-middle",
+      "adapter": "openpyxl",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 5.842939208028838,
+      "minSeconds": 5.7148059161845595,
+      "maxSeconds": 5.880880333017558
+    },
+    {
+      "case": "400000-cells-middle",
+      "adapter": "sheetops-api",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 2.5595246250741184,
+      "minSeconds": 2.5221931249834597,
+      "maxSeconds": 2.6628441251814365
+    },
+    {
+      "case": "400000-cells-middle",
+      "adapter": "sheetops-cli",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 2.6152173748705536,
+      "minSeconds": 2.5979623331222683,
+      "maxSeconds": 2.692408625036478
+    },
+    {
+      "case": "400000-cells-start",
+      "adapter": "calamine",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 2.072365874890238,
+      "minSeconds": 2.030810583848506,
+      "maxSeconds": 2.0723928748629987
+    },
+    {
+      "case": "400000-cells-start",
+      "adapter": "fastexcel",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 1.1464020831044763,
+      "minSeconds": 1.1307305830996484,
+      "maxSeconds": 1.1638499170076102
+    },
+    {
+      "case": "400000-cells-start",
+      "adapter": "openpyxl",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.06782987504266202,
+      "minSeconds": 0.06472845887765288,
+      "maxSeconds": 0.0684257501270622
+    },
+    {
+      "case": "400000-cells-start",
+      "adapter": "sheetops-api",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.07479574996978045,
+      "minSeconds": 0.07027149992063642,
+      "maxSeconds": 0.07483983412384987
+    },
+    {
+      "case": "400000-cells-start",
+      "adapter": "sheetops-cli",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.13296104199253023,
+      "minSeconds": 0.13134945882484317,
+      "maxSeconds": 0.13586324988864362
+    },
+    {
+      "case": "400000-scalar-cells-end",
+      "adapter": "calamine",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 2.0491142498794943,
+      "minSeconds": 2.033390332944691,
+      "maxSeconds": 2.1338464999571443
+    },
+    {
+      "case": "400000-scalar-cells-end",
+      "adapter": "fastexcel",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 1.2172487920615822,
+      "minSeconds": 1.1486952919512987,
+      "maxSeconds": 1.2323057500179857
+    },
+    {
+      "case": "400000-scalar-cells-end",
+      "adapter": "openpyxl",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 11.575360249960795,
+      "minSeconds": 11.402581207919866,
+      "maxSeconds": 11.636452917009592
+    },
+    {
+      "case": "400000-scalar-cells-end",
+      "adapter": "sheetops-api",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 5.0843744170852005,
+      "minSeconds": 5.0679787918925285,
+      "maxSeconds": 5.127082207938656
+    },
+    {
+      "case": "400000-scalar-cells-end",
+      "adapter": "sheetops-cli",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 5.117714042076841,
+      "minSeconds": 5.096525292145088,
+      "maxSeconds": 5.152088207891211
+    },
+    {
+      "case": "400000-scalar-cells-middle",
+      "adapter": "calamine",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 2.0525219158735126,
+      "minSeconds": 2.052191416034475,
+      "maxSeconds": 2.061020417138934
+    },
+    {
+      "case": "400000-scalar-cells-middle",
+      "adapter": "fastexcel",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 1.2494977498427033,
+      "minSeconds": 1.152555082924664,
+      "maxSeconds": 1.2813267500605434
+    },
+    {
+      "case": "400000-scalar-cells-middle",
+      "adapter": "openpyxl",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 5.790206250036135,
+      "minSeconds": 5.779288791120052,
+      "maxSeconds": 5.869133417028934
+    },
+    {
+      "case": "400000-scalar-cells-middle",
+      "adapter": "sheetops-api",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 2.577222540974617,
+      "minSeconds": 2.505602875025943,
+      "maxSeconds": 2.5869652500841767
+    },
+    {
+      "case": "400000-scalar-cells-middle",
+      "adapter": "sheetops-cli",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 2.6117258749436587,
+      "minSeconds": 2.6075711669400334,
+      "maxSeconds": 2.6159615840297192
+    },
+    {
+      "case": "400000-scalar-cells-start",
+      "adapter": "calamine",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 2.0939450829755515,
+      "minSeconds": 2.0436375001445413,
+      "maxSeconds": 2.100358583033085
+    },
+    {
+      "case": "400000-scalar-cells-start",
+      "adapter": "fastexcel",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 1.1698922079522163,
+      "minSeconds": 1.1558847078122199,
+      "maxSeconds": 1.1743494579568505
+    },
+    {
+      "case": "400000-scalar-cells-start",
+      "adapter": "openpyxl",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.06963970907963812,
+      "minSeconds": 0.06565483310259879,
+      "maxSeconds": 0.07355016702786088
+    },
+    {
+      "case": "400000-scalar-cells-start",
+      "adapter": "sheetops-api",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.09169987519271672,
+      "minSeconds": 0.07453908398747444,
+      "maxSeconds": 0.10140520799905062
+    },
+    {
+      "case": "400000-scalar-cells-start",
+      "adapter": "sheetops-cli",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.134765625,
+      "minSeconds": 0.1334907088894397,
+      "maxSeconds": 0.1351360830012709
+    },
+    {
+      "case": "400000-table",
+      "adapter": "calamine",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 4.639114791993052,
+      "minSeconds": 4.6291089579463005,
+      "maxSeconds": 4.664975583087653
+    },
+    {
+      "case": "400000-table",
+      "adapter": "fastexcel",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 4.5284924590960145,
+      "minSeconds": 4.485297665931284,
+      "maxSeconds": 4.540574207901955
+    },
+    {
+      "case": "400000-table",
+      "adapter": "openpyxl",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 13.907582957996055,
+      "minSeconds": 13.88920445786789,
+      "maxSeconds": 13.918908917112276
+    },
+    {
+      "case": "400000-table",
+      "adapter": "sheetops-api",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 8.313835749868304,
+      "minSeconds": 8.309171375120059,
+      "maxSeconds": 8.337089292006567
+    },
+    {
+      "case": "400000-table",
+      "adapter": "sheetops-cli",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 8.90253445878625,
+      "minSeconds": 8.892224333016202,
+      "maxSeconds": 8.9718847500626
+    },
+    {
+      "case": "fidelity-cell_values-cell_values",
+      "adapter": "calamine",
+      "attempts": 3,
+      "passes": 0,
+      "passRate": 0.0,
+      "medianSeconds": null,
+      "minSeconds": null,
+      "maxSeconds": null
+    },
+    {
+      "case": "fidelity-cell_values-cell_values",
+      "adapter": "fastexcel",
+      "attempts": 3,
+      "passes": 0,
+      "passRate": 0.0,
+      "medianSeconds": null,
+      "minSeconds": null,
+      "maxSeconds": null
+    },
+    {
+      "case": "fidelity-cell_values-cell_values",
+      "adapter": "openpyxl",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.06392766605131328,
+      "minSeconds": 0.06348224985413253,
+      "maxSeconds": 0.06446558306924999
+    },
+    {
+      "case": "fidelity-cell_values-cell_values",
+      "adapter": "sheetops-api",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.06369945895858109,
+      "minSeconds": 0.06353145814500749,
+      "maxSeconds": 0.06398058403283358
+    },
+    {
+      "case": "fidelity-cell_values-cell_values",
+      "adapter": "sheetops-cli",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.12255075015127659,
+      "minSeconds": 0.12125387508422136,
+      "maxSeconds": 0.12449037516489625
+    },
+    {
+      "case": "fidelity-formulas-References",
+      "adapter": "calamine",
+      "attempts": 3,
+      "passes": 0,
+      "passRate": 0.0,
+      "medianSeconds": null,
+      "minSeconds": null,
+      "maxSeconds": null
+    },
+    {
+      "case": "fidelity-formulas-References",
+      "adapter": "fastexcel",
+      "attempts": 3,
+      "passes": 0,
+      "passRate": 0.0,
+      "medianSeconds": null,
+      "minSeconds": null,
+      "maxSeconds": null
+    },
+    {
+      "case": "fidelity-formulas-References",
+      "adapter": "openpyxl",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.06363620795309544,
+      "minSeconds": 0.06250029196962714,
+      "maxSeconds": 0.06394749996252358
+    },
+    {
+      "case": "fidelity-formulas-References",
+      "adapter": "sheetops-api",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.06371858296915889,
+      "minSeconds": 0.06326362490653992,
+      "maxSeconds": 0.0637433750089258
+    },
+    {
+      "case": "fidelity-formulas-References",
+      "adapter": "sheetops-cli",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.12379791704006493,
+      "minSeconds": 0.1219363750424236,
+      "maxSeconds": 0.12465345789678395
+    },
+    {
+      "case": "fidelity-formulas-formulas",
+      "adapter": "calamine",
+      "attempts": 3,
+      "passes": 0,
+      "passRate": 0.0,
+      "medianSeconds": null,
+      "minSeconds": null,
+      "maxSeconds": null
+    },
+    {
+      "case": "fidelity-formulas-formulas",
+      "adapter": "fastexcel",
+      "attempts": 3,
+      "passes": 0,
+      "passRate": 0.0,
+      "medianSeconds": null,
+      "minSeconds": null,
+      "maxSeconds": null
+    },
+    {
+      "case": "fidelity-formulas-formulas",
+      "adapter": "openpyxl",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.06783229182474315,
+      "minSeconds": 0.06430325005203485,
+      "maxSeconds": 0.11947379191406071
+    },
+    {
+      "case": "fidelity-formulas-formulas",
+      "adapter": "sheetops-api",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.06668337504379451,
+      "minSeconds": 0.066512499935925,
+      "maxSeconds": 0.08862391719594598
+    },
+    {
+      "case": "fidelity-formulas-formulas",
+      "adapter": "sheetops-cli",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.12463608291000128,
+      "minSeconds": 0.12273125001229346,
+      "maxSeconds": 0.12498708418570459
+    },
+    {
+      "case": "fidelity-hyperlinks-Targets",
+      "adapter": "calamine",
+      "attempts": 3,
+      "passes": 0,
+      "passRate": 0.0,
+      "medianSeconds": null,
+      "minSeconds": null,
+      "maxSeconds": null
+    },
+    {
+      "case": "fidelity-hyperlinks-Targets",
+      "adapter": "fastexcel",
+      "attempts": 3,
+      "passes": 0,
+      "passRate": 0.0,
+      "medianSeconds": null,
+      "minSeconds": null,
+      "maxSeconds": null
+    },
+    {
+      "case": "fidelity-hyperlinks-Targets",
+      "adapter": "openpyxl",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.06501529202796519,
+      "minSeconds": 0.06373216700740159,
+      "maxSeconds": 0.06501562520861626
+    },
+    {
+      "case": "fidelity-hyperlinks-Targets",
+      "adapter": "sheetops-api",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.06449599983170629,
+      "minSeconds": 0.06358820805326104,
+      "maxSeconds": 0.06484766583889723
+    },
+    {
+      "case": "fidelity-hyperlinks-Targets",
+      "adapter": "sheetops-cli",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.12323904200457036,
+      "minSeconds": 0.12114462512545288,
+      "maxSeconds": 0.12563583301380277
+    },
+    {
+      "case": "fidelity-hyperlinks-hyperlinks",
+      "adapter": "calamine",
+      "attempts": 3,
+      "passes": 0,
+      "passRate": 0.0,
+      "medianSeconds": null,
+      "minSeconds": null,
+      "maxSeconds": null
+    },
+    {
+      "case": "fidelity-hyperlinks-hyperlinks",
+      "adapter": "fastexcel",
+      "attempts": 3,
+      "passes": 0,
+      "passRate": 0.0,
+      "medianSeconds": null,
+      "minSeconds": null,
+      "maxSeconds": null
+    },
+    {
+      "case": "fidelity-hyperlinks-hyperlinks",
+      "adapter": "openpyxl",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.06370604201219976,
+      "minSeconds": 0.06324587506242096,
+      "maxSeconds": 0.06803158298134804
+    },
+    {
+      "case": "fidelity-hyperlinks-hyperlinks",
+      "adapter": "sheetops-api",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.06342412484809756,
+      "minSeconds": 0.06255366606637836,
+      "maxSeconds": 0.06541758310049772
+    },
+    {
+      "case": "fidelity-hyperlinks-hyperlinks",
+      "adapter": "sheetops-cli",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.12195358285680413,
+      "minSeconds": 0.12088091601617634,
+      "maxSeconds": 0.12261837511323392
+    },
+    {
+      "case": "fidelity-merged_cells-merged_cells",
+      "adapter": "calamine",
+      "attempts": 3,
+      "passes": 0,
+      "passRate": 0.0,
+      "medianSeconds": null,
+      "minSeconds": null,
+      "maxSeconds": null
+    },
+    {
+      "case": "fidelity-merged_cells-merged_cells",
+      "adapter": "fastexcel",
+      "attempts": 3,
+      "passes": 0,
+      "passRate": 0.0,
+      "medianSeconds": null,
+      "minSeconds": null,
+      "maxSeconds": null
+    },
+    {
+      "case": "fidelity-merged_cells-merged_cells",
+      "adapter": "openpyxl",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.0663608331233263,
+      "minSeconds": 0.0637803329154849,
+      "maxSeconds": 0.07627066690474749
+    },
+    {
+      "case": "fidelity-merged_cells-merged_cells",
+      "adapter": "sheetops-api",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.0663381670601666,
+      "minSeconds": 0.06397233298048377,
+      "maxSeconds": 0.06870920886285603
+    },
+    {
+      "case": "fidelity-merged_cells-merged_cells",
+      "adapter": "sheetops-cli",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.12849624990485609,
+      "minSeconds": 0.12060599983669817,
+      "maxSeconds": 0.13098799996078014
+    },
+    {
+      "case": "fidelity-multiple_sheets-Alpha",
+      "adapter": "calamine",
+      "attempts": 3,
+      "passes": 0,
+      "passRate": 0.0,
+      "medianSeconds": null,
+      "minSeconds": null,
+      "maxSeconds": null
+    },
+    {
+      "case": "fidelity-multiple_sheets-Alpha",
+      "adapter": "fastexcel",
+      "attempts": 3,
+      "passes": 0,
+      "passRate": 0.0,
+      "medianSeconds": null,
+      "minSeconds": null,
+      "maxSeconds": null
+    },
+    {
+      "case": "fidelity-multiple_sheets-Alpha",
+      "adapter": "openpyxl",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.0643804999999702,
+      "minSeconds": 0.06329229101538658,
+      "maxSeconds": 0.06495491601526737
+    },
+    {
+      "case": "fidelity-multiple_sheets-Alpha",
+      "adapter": "sheetops-api",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.0629403330385685,
+      "minSeconds": 0.06270345905795693,
+      "maxSeconds": 0.06845983304083347
+    },
+    {
+      "case": "fidelity-multiple_sheets-Alpha",
+      "adapter": "sheetops-cli",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.12222745805047452,
+      "minSeconds": 0.12191133294254541,
+      "maxSeconds": 0.12378904200159013
+    },
+    {
+      "case": "fidelity-multiple_sheets-Beta",
+      "adapter": "calamine",
+      "attempts": 3,
+      "passes": 0,
+      "passRate": 0.0,
+      "medianSeconds": null,
+      "minSeconds": null,
+      "maxSeconds": null
+    },
+    {
+      "case": "fidelity-multiple_sheets-Beta",
+      "adapter": "fastexcel",
+      "attempts": 3,
+      "passes": 0,
+      "passRate": 0.0,
+      "medianSeconds": null,
+      "minSeconds": null,
+      "maxSeconds": null
+    },
+    {
+      "case": "fidelity-multiple_sheets-Beta",
+      "adapter": "openpyxl",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.0630333749577403,
+      "minSeconds": 0.062327542109414935,
+      "maxSeconds": 0.0632878749165684
+    },
+    {
+      "case": "fidelity-multiple_sheets-Beta",
+      "adapter": "sheetops-api",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.06298799999058247,
+      "minSeconds": 0.06276175007224083,
+      "maxSeconds": 0.06324279098771513
+    },
+    {
+      "case": "fidelity-multiple_sheets-Beta",
+      "adapter": "sheetops-cli",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.1223413331899792,
+      "minSeconds": 0.12104604090563953,
+      "maxSeconds": 0.1235537501052022
+    },
+    {
+      "case": "fidelity-multiple_sheets-Gamma",
+      "adapter": "calamine",
+      "attempts": 3,
+      "passes": 0,
+      "passRate": 0.0,
+      "medianSeconds": null,
+      "minSeconds": null,
+      "maxSeconds": null
+    },
+    {
+      "case": "fidelity-multiple_sheets-Gamma",
+      "adapter": "fastexcel",
+      "attempts": 3,
+      "passes": 0,
+      "passRate": 0.0,
+      "medianSeconds": null,
+      "minSeconds": null,
+      "maxSeconds": null
+    },
+    {
+      "case": "fidelity-multiple_sheets-Gamma",
+      "adapter": "openpyxl",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.06414187490008771,
+      "minSeconds": 0.06406879192218184,
+      "maxSeconds": 0.06440258398652077
+    },
+    {
+      "case": "fidelity-multiple_sheets-Gamma",
+      "adapter": "sheetops-api",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.06369004212319851,
+      "minSeconds": 0.06365825003013015,
+      "maxSeconds": 0.06426687515340745
+    },
+    {
+      "case": "fidelity-multiple_sheets-Gamma",
+      "adapter": "sheetops-cli",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.12530658394098282,
+      "minSeconds": 0.12200045795179904,
+      "maxSeconds": 0.12534395908005536
+    },
+    {
+      "case": "fidelity-number_formats-number_formats",
+      "adapter": "calamine",
+      "attempts": 3,
+      "passes": 0,
+      "passRate": 0.0,
+      "medianSeconds": null,
+      "minSeconds": null,
+      "maxSeconds": null
+    },
+    {
+      "case": "fidelity-number_formats-number_formats",
+      "adapter": "fastexcel",
+      "attempts": 3,
+      "passes": 0,
+      "passRate": 0.0,
+      "medianSeconds": null,
+      "minSeconds": null,
+      "maxSeconds": null
+    },
+    {
+      "case": "fidelity-number_formats-number_formats",
+      "adapter": "openpyxl",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.06457250006496906,
+      "minSeconds": 0.06296412483789027,
+      "maxSeconds": 0.06491308403201401
+    },
+    {
+      "case": "fidelity-number_formats-number_formats",
+      "adapter": "sheetops-api",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.0638807499781251,
+      "minSeconds": 0.06267254194244742,
+      "maxSeconds": 0.06467674998566508
+    },
+    {
+      "case": "fidelity-number_formats-number_formats",
+      "adapter": "sheetops-cli",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.12216220912523568,
+      "minSeconds": 0.12184829218313098,
+      "maxSeconds": 0.12402625009417534
+    },
+    {
+      "case": "fidelity-tables-tables",
+      "adapter": "calamine",
+      "attempts": 3,
+      "passes": 0,
+      "passRate": 0.0,
+      "medianSeconds": null,
+      "minSeconds": null,
+      "maxSeconds": null
+    },
+    {
+      "case": "fidelity-tables-tables",
+      "adapter": "fastexcel",
+      "attempts": 3,
+      "passes": 0,
+      "passRate": 0.0,
+      "medianSeconds": null,
+      "minSeconds": null,
+      "maxSeconds": null
+    },
+    {
+      "case": "fidelity-tables-tables",
+      "adapter": "openpyxl",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.0650698330719024,
+      "minSeconds": 0.06437641708180308,
+      "maxSeconds": 0.07015604199841619
+    },
+    {
+      "case": "fidelity-tables-tables",
+      "adapter": "sheetops-api",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.06436595879495144,
+      "minSeconds": 0.06409195810556412,
+      "maxSeconds": 0.06482979189604521
+    },
+    {
+      "case": "fidelity-tables-tables",
+      "adapter": "sheetops-cli",
+      "attempts": 3,
+      "passes": 3,
+      "passRate": 1.0,
+      "medianSeconds": 0.12352941697463393,
+      "minSeconds": 0.12266162480227649,
+      "maxSeconds": 0.12721324991434813
+    }
+  ],
+  "operationStatusCounts": {
+    "calamine": {
+      "pass": 63,
+      "unsupported": 33
+    },
+    "fastexcel": {
+      "pass": 63,
+      "unsupported": 33
+    },
+    "openpyxl": {
+      "pass": 96
+    },
+    "sheetops-api": {
+      "pass": 96
+    },
+    "sheetops-cli": {
+      "pass": 96
+    }
+  },
+  "featureContracts": {
+    "attempts": 14,
+    "statusCounts": {
+      "pass": 14
+    },
+    "fixtureManifestDifferences": 3
+  },
+  "agents": {
+    "attemptCount": 60,
+    "completePairCount": 30,
+    "scorablePairCount": 30,
+    "correctPairCount": 11,
+    "arms": {
+      "baseline": {
+        "attempts": 30,
+        "scorableAttempts": 30,
+        "unscorableAttempts": 0,
+        "statusCounts": {
+          "incorrect": 12,
+          "timeout": 3,
+          "pass": 15
+        },
+        "totalSecondsAllAttempts": 2273.3401260816026,
+        "totalMainTokens": 4104532,
+        "totalObservedToolCalls": 181,
+        "sheetopsAdoption": {
+          "tasksWithResponses": 0,
+          "successfulResponses": 0,
+          "failedResponses": 0,
+          "commandCounts": {},
+          "errorCounts": {},
+          "scope": "observed JSON command responses; Python API use is not counted"
+        },
+        "costAvailable": false,
+        "estimatedCostUsd": null,
+        "tokenRecordsAvailable": 27,
+        "tokenRecordsMissing": 3,
+        "preservationFailedAttempts": 5
+      },
+      "sheetops": {
+        "attempts": 30,
+        "scorableAttempts": 30,
+        "unscorableAttempts": 0,
+        "statusCounts": {
+          "incorrect": 13,
+          "pass": 14,
+          "timeout": 3
+        },
+        "totalSecondsAllAttempts": 2185.245072253747,
+        "totalMainTokens": 5833548,
+        "totalObservedToolCalls": 304,
+        "sheetopsAdoption": {
+          "tasksWithResponses": 30,
+          "successfulResponses": 88,
+          "failedResponses": 27,
+          "commandCounts": {
+            "inspect": 30,
+            "cells read": 49,
+            "verify-edits": 31,
+            "formulas scan": 5
+          },
+          "errorCounts": {
+            "verification_failed": 23,
+            "invalid_sheet": 2,
+            "invalid_field": 1,
+            "file_not_found": 1
+          },
+          "scope": "observed JSON command responses; Python API use is not counted"
+        },
+        "costAvailable": false,
+        "estimatedCostUsd": null,
+        "tokenRecordsAvailable": 27,
+        "tokenRecordsMissing": 3,
+        "preservationFailedAttempts": 4
+      }
+    },
+    "medianPairedSpeedup": 0.8491179828087961,
+    "speedComparisonScope": "only pairs where both arms pass; selection bias remains",
+    "attribution": "package plus skill configuration; not package-only or Electron UI",
+    "allAttemptCount": 66,
+    "predeclaredExcludedTaskIds": [
+      "168-17",
+      "395-36",
+      "402-43"
+    ]
+  },
+  "expectedAgentPairs": 33,
+  "evaluationEngines": [
+    "{\"name\": \"Microsoft Excel\", \"version\": \"16.113.3\"}"
+  ],
+  "rankedFailures": [
+    {
+      "priority": 1,
+      "id": "workbook-preservation",
+      "kind": "agent task failure",
+      "title": "Restrict writes and preserve unrelated cells",
+      "failedAttempts": 9,
+      "taskIds": [
+        "120-24",
+        "35742",
+        "47827",
+        "48975",
+        "54638"
+      ],
+      "arms": {
+        "baseline": 5,
+        "sheetops": 4
+      },
+      "examples": [
+        {
+          "task": "35742",
+          "arm": "baseline",
+          "repeat": 0,
+          "grading": {
+            "status": "incorrect",
+            "valueDifferences": [],
+            "preservationFailures": [
+              {
+                "sheet": "SANDBOX ",
+                "cell": "S4"
+              },
+              {
+                "sheet": "SANDBOX ",
+                "cell": "U4"
+              },
+              {
+                "sheet": "SANDBOX ",
+                "cell": "W4"
+              },
+              {
+                "sheet": "SANDBOX ",
+                "cell": "Y4"
+              },
+              {
+                "sheet": "SANDBOX ",
+                "cell": "S5"
+              },
+              {
+                "sheet": "SANDBOX ",
+                "cell": "U5"
+              },
+              {
+                "sheet": "SANDBOX ",
+                "cell": "W5"
+              },
+              {
+                "sheet": "SANDBOX ",
+                "cell": "Y5"
+              },
+              {
+                "sheet": "SANDBOX ",
+                "cell": "S6"
+              },
+              {
+                "sheet": "SANDBOX ",
+                "cell": "U6"
+              },
+              {
+                "sheet": "SANDBOX ",
+                "cell": "W6"
+              },
+              {
+                "sheet": "SANDBOX ",
+                "cell": "Y6"
+              },
+              {
+                "sheet": "SANDBOX ",
+                "cell": "S7"
+              },
+              {
+                "sheet": "SANDBOX ",
+                "cell": "U7"
+              },
+              {
+                "sheet": "SANDBOX ",
+                "cell": "W7"
+              },
+              {
+                "sheet": "SANDBOX ",
+                "cell": "Y7"
+              },
+              {
+                "sheet": "SANDBOX ",
+                "cell": "O8"
+              },
+              {
+                "sheet": "SANDBOX ",
+                "cell": "S8"
+              },
+              {
+                "sheet": "SANDBOX ",
+                "cell": "U8"
+              },
+              {
+                "sheet": "SANDBOX ",
+                "cell": "W8"
+              }
+            ],
+            "structureDifferences": [],
+            "failureCounts": {
+              "values": 0,
+              "styles": 0,
+              "formulas": 0,
+              "preservation": 1191,
+              "structure": 0
+            },
+            "checks": {
+              "answerValues": true,
+              "explicitStyles": true,
+              "formulaRequirement": true,
+              "preservation": false,
+              "structure": true
+            },
+            "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+            "styleComponents": null
+          }
+        },
+        {
+          "task": "35742",
+          "arm": "sheetops",
+          "repeat": 0,
+          "grading": {
+            "status": "incorrect",
+            "valueDifferences": [
+              {
+                "sheet": "SANDBOX ",
+                "cell": "O4",
+                "expected": 17,
+                "actual": 0,
+                "actualFormula": "=SUM(N(F4),N(H4),N(J4),N(L4),N(N4),N(S4),N(U4),N(W4),N(Y4))"
+              },
+              {
+                "sheet": "SANDBOX ",
+                "cell": "O5",
+                "expected": 7,
+                "actual": 0,
+                "actualFormula": "=SUM(N(F5),N(H5),N(J5),N(L5),N(N5),N(S5),N(U5),N(W5),N(Y5))"
+              },
+              {
+                "sheet": "SANDBOX ",
+                "cell": "O6",
+                "expected": 9,
+                "actual": 0,
+                "actualFormula": "=SUM(N(F6),N(H6),N(J6),N(L6),N(N6),N(S6),N(U6),N(W6),N(Y6))"
+              },
+              {
+                "sheet": "SANDBOX ",
+                "cell": "O7",
+                "expected": 6,
+                "actual": 0,
+                "actualFormula": "=SUM(N(F7),N(H7),N(J7),N(L7),N(N7),N(S7),N(U7),N(W7),N(Y7))"
+              }
+            ],
+            "preservationFailures": [
+              {
+                "sheet": "SANDBOX ",
+                "cell": "O194"
+              }
+            ],
+            "structureDifferences": [],
+            "failureCounts": {
+              "values": 4,
+              "styles": 0,
+              "formulas": 0,
+              "preservation": 1,
+              "structure": 0
+            },
+            "checks": {
+              "answerValues": false,
+              "explicitStyles": true,
+              "formulaRequirement": true,
+              "preservation": false,
+              "structure": true
+            },
+            "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+            "styleComponents": null
+          }
+        },
+        {
+          "task": "47827",
+          "arm": "baseline",
+          "repeat": 0,
+          "grading": {
+            "status": "incorrect",
+            "valueDifferences": [],
+            "preservationFailures": [
+              {
+                "sheet": "3 straights to 3 boxed",
+                "cell": "G1"
+              }
+            ],
+            "structureDifferences": [],
+            "failureCounts": {
+              "values": 0,
+              "styles": 0,
+              "formulas": 0,
+              "preservation": 1,
+              "structure": 0
+            },
+            "checks": {
+              "answerValues": true,
+              "explicitStyles": true,
+              "formulaRequirement": true,
+              "preservation": false,
+              "structure": true
+            },
+            "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+            "styleComponents": [
+              "bold",
+              "fill"
+            ]
+          }
+        }
+      ],
+      "reproduce": "Run agents.py with the recorded task, model, skill hashes and images",
+      "scope": "recorded task rubric"
+    },
+    {
+      "priority": 2,
+      "id": "answer-values",
+      "kind": "agent task failure",
+      "title": "Validate answer values and string boundaries",
+      "failedAttempts": 13,
+      "taskIds": [
+        "230-16",
+        "35742",
+        "398-14",
+        "45300",
+        "48975",
+        "51680",
+        "585-41",
+        "9569"
+      ],
+      "arms": {
+        "baseline": 6,
+        "sheetops": 7
+      },
+      "examples": [
+        {
+          "task": "45300",
+          "arm": "baseline",
+          "repeat": 0,
+          "grading": {
+            "status": "incorrect",
+            "valueDifferences": [
+              {
+                "sheet": "Sheet1",
+                "cell": "B1",
+                "expected": "Transfer 27976614 KHALIL MORTEZA BAGHESTANI TAJALI",
+                "actual": "Transfer 27976614 KHALIL MORTEZA BAGHESTANI TAJALI ",
+                "actualFormula": "=IF(ISNUMBER(FIND(\"FT\",A1)),LEFT(A1,FIND(\"FT\",A1)-1),A1)"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B2",
+                "expected": "Transfer 29419550 HAMED ABBASI POUR SHAMSOLLAH",
+                "actual": "Transfer 29419550 HAMED ABBASI POUR SHAMSOLLAH ",
+                "actualFormula": "=IF(ISNUMBER(FIND(\"FT\",A2)),LEFT(A2,FIND(\"FT\",A2)-1),A2)"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B3",
+                "expected": "Transfer 27575850 HAITHAM AL RAWA",
+                "actual": "Transfer 27575850 HAITHAM AL RAWA ",
+                "actualFormula": "=IF(ISNUMBER(FIND(\"FT\",A3)),LEFT(A3,FIND(\"FT\",A3)-1),A3)"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B4",
+                "expected": "Transfer 29935127 SREELATHA RAMACHANDRAN",
+                "actual": "Transfer 29935127 SREELATHA RAMACHANDRAN ",
+                "actualFormula": "=IF(ISNUMBER(FIND(\"FT\",A4)),LEFT(A4,FIND(\"FT\",A4)-1),A4)"
+              }
+            ],
+            "preservationFailures": [],
+            "structureDifferences": [],
+            "failureCounts": {
+              "values": 4,
+              "styles": 0,
+              "formulas": 0,
+              "preservation": 0,
+              "structure": 0
+            },
+            "checks": {
+              "answerValues": false,
+              "explicitStyles": true,
+              "formulaRequirement": true,
+              "preservation": true,
+              "structure": true
+            },
+            "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+            "styleComponents": null
+          }
+        },
+        {
+          "task": "45300",
+          "arm": "sheetops",
+          "repeat": 0,
+          "grading": {
+            "status": "incorrect",
+            "valueDifferences": [
+              {
+                "sheet": "Sheet1",
+                "cell": "B1",
+                "expected": "Transfer 27976614 KHALIL MORTEZA BAGHESTANI TAJALI",
+                "actual": "Transfer 27976614 KHALIL MORTEZA BAGHESTANI TAJALI ",
+                "actualFormula": "=LEFT(A1,FIND(\"FT\",A1)-1)"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B2",
+                "expected": "Transfer 29419550 HAMED ABBASI POUR SHAMSOLLAH",
+                "actual": "Transfer 29419550 HAMED ABBASI POUR SHAMSOLLAH ",
+                "actualFormula": "=LEFT(A2,FIND(\"FT\",A2)-1)"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B3",
+                "expected": "Transfer 27575850 HAITHAM AL RAWA",
+                "actual": "Transfer 27575850 HAITHAM AL RAWA ",
+                "actualFormula": "=LEFT(A3,FIND(\"FT\",A3)-1)"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B4",
+                "expected": "Transfer 29935127 SREELATHA RAMACHANDRAN",
+                "actual": "Transfer 29935127 SREELATHA RAMACHANDRAN ",
+                "actualFormula": "=LEFT(A4,FIND(\"FT\",A4)-1)"
+              }
+            ],
+            "preservationFailures": [],
+            "structureDifferences": [],
+            "failureCounts": {
+              "values": 4,
+              "styles": 0,
+              "formulas": 0,
+              "preservation": 0,
+              "structure": 0
+            },
+            "checks": {
+              "answerValues": false,
+              "explicitStyles": true,
+              "formulaRequirement": true,
+              "preservation": true,
+              "structure": true
+            },
+            "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+            "styleComponents": null
+          }
+        },
+        {
+          "task": "51680",
+          "arm": "baseline",
+          "repeat": 0,
+          "grading": {
+            "status": "incorrect",
+            "valueDifferences": [
+              {
+                "sheet": "Sheet1",
+                "cell": "A1",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B1",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "C1",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "D1",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "E1",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "F1",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "G1",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "A2",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B2",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "C2",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "D2",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "E2",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "F2",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "G2",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "A3",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B3",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "C3",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "D3",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "E3",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "F3",
+                "kind": "required_style"
+              }
+            ],
+            "preservationFailures": [],
+            "structureDifferences": [],
+            "failureCounts": {
+              "values": 10,
+              "styles": 98,
+              "formulas": 0,
+              "preservation": 0,
+              "structure": 0
+            },
+            "checks": {
+              "answerValues": false,
+              "explicitStyles": false,
+              "formulaRequirement": true,
+              "preservation": true,
+              "structure": true
+            },
+            "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+            "styleComponents": [
+              "fontName",
+              "fontSize",
+              "bold",
+              "italic",
+              "fill",
+              "numberFormat",
+              "alignment",
+              "border"
+            ]
+          }
+        }
+      ],
+      "reproduce": "Run agents.py with the recorded task, model, skill hashes and images",
+      "scope": "recorded task rubric"
+    },
+    {
+      "priority": 2,
+      "id": "explicit-styles",
+      "kind": "agent task failure",
+      "title": "Apply the requested visible formatting",
+      "failedAttempts": 7,
+      "taskIds": [
+        "343-20",
+        "398-14",
+        "51680",
+        "54638"
+      ],
+      "arms": {
+        "baseline": 3,
+        "sheetops": 4
+      },
+      "examples": [
+        {
+          "task": "51680",
+          "arm": "baseline",
+          "repeat": 0,
+          "grading": {
+            "status": "incorrect",
+            "valueDifferences": [
+              {
+                "sheet": "Sheet1",
+                "cell": "A1",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B1",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "C1",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "D1",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "E1",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "F1",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "G1",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "A2",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B2",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "C2",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "D2",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "E2",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "F2",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "G2",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "A3",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B3",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "C3",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "D3",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "E3",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "F3",
+                "kind": "required_style"
+              }
+            ],
+            "preservationFailures": [],
+            "structureDifferences": [],
+            "failureCounts": {
+              "values": 10,
+              "styles": 98,
+              "formulas": 0,
+              "preservation": 0,
+              "structure": 0
+            },
+            "checks": {
+              "answerValues": false,
+              "explicitStyles": false,
+              "formulaRequirement": true,
+              "preservation": true,
+              "structure": true
+            },
+            "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+            "styleComponents": [
+              "fontName",
+              "fontSize",
+              "bold",
+              "italic",
+              "fill",
+              "numberFormat",
+              "alignment",
+              "border"
+            ]
+          }
+        },
+        {
+          "task": "51680",
+          "arm": "sheetops",
+          "repeat": 0,
+          "grading": {
+            "status": "incorrect",
+            "valueDifferences": [
+              {
+                "sheet": "Sheet1",
+                "cell": "A1",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B1",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "C1",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "D1",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "E1",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "F1",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "G1",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "A2",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B2",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "C2",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "D2",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "E2",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "F2",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "G2",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "A3",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B3",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "C3",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "D3",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "E3",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "F3",
+                "kind": "required_style"
+              }
+            ],
+            "preservationFailures": [],
+            "structureDifferences": [],
+            "failureCounts": {
+              "values": 5,
+              "styles": 98,
+              "formulas": 0,
+              "preservation": 0,
+              "structure": 0
+            },
+            "checks": {
+              "answerValues": false,
+              "explicitStyles": false,
+              "formulaRequirement": true,
+              "preservation": true,
+              "structure": true
+            },
+            "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+            "styleComponents": [
+              "fontName",
+              "fontSize",
+              "bold",
+              "italic",
+              "fill",
+              "numberFormat",
+              "alignment",
+              "border"
+            ]
+          }
+        },
+        {
+          "task": "343-20",
+          "arm": "sheetops",
+          "repeat": 0,
+          "grading": {
+            "status": "incorrect",
+            "valueDifferences": [
+              {
+                "sheet": "Duplicates",
+                "cell": "D2",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Duplicates",
+                "cell": "D3",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Duplicates",
+                "cell": "D4",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Duplicates",
+                "cell": "D5",
+                "kind": "required_style"
+              }
+            ],
+            "preservationFailures": [],
+            "structureDifferences": [],
+            "failureCounts": {
+              "values": 0,
+              "styles": 4,
+              "formulas": 0,
+              "preservation": 0,
+              "structure": 0
+            },
+            "checks": {
+              "answerValues": true,
+              "explicitStyles": false,
+              "formulaRequirement": true,
+              "preservation": true,
+              "structure": true
+            },
+            "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+            "styleComponents": [
+              "alignment"
+            ]
+          }
+        }
+      ],
+      "reproduce": "Run agents.py with the recorded task, model, skill hashes and images",
+      "scope": "recorded task rubric"
+    },
+    {
+      "priority": 2,
+      "id": "timeout",
+      "kind": "agent task failure",
+      "title": "Bound workbook work and surface incomplete results",
+      "failedAttempts": 6,
+      "taskIds": [
+        "279-23",
+        "325-44",
+        "48975",
+        "51-12",
+        "7902"
+      ],
+      "arms": {
+        "baseline": 3,
+        "sheetops": 3
+      },
+      "examples": [
+        {
+          "task": "279-23",
+          "arm": "baseline",
+          "repeat": 0,
+          "grading": {
+            "status": "timeout",
+            "valueDifferences": [
+              {
+                "sheet": "Sheet1",
+                "cell": "B3",
+                "expected": "tig",
+                "actual": "(tig) this is good",
+                "actualFormula": null
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B4",
+                "expected": "tig",
+                "actual": "(tig) this is good",
+                "actualFormula": null
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B5",
+                "expected": "tib",
+                "actual": "(tib) this is bad",
+                "actualFormula": null
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B6",
+                "expected": "tig",
+                "actual": "(tig) this is good",
+                "actualFormula": null
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B7",
+                "expected": "tig",
+                "actual": "(tig) this is good",
+                "actualFormula": null
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B8",
+                "expected": "tib",
+                "actual": "(tib) this is bad",
+                "actualFormula": null
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B9",
+                "expected": "tig",
+                "actual": "(tig) this is good",
+                "actualFormula": null
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B10",
+                "expected": "tig",
+                "actual": "(tig) this is good",
+                "actualFormula": null
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B11",
+                "expected": "tib",
+                "actual": "(tib) this is bad",
+                "actualFormula": null
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B12",
+                "expected": "tig",
+                "actual": "(tig) this is good",
+                "actualFormula": null
+              }
+            ],
+            "preservationFailures": [],
+            "structureDifferences": [],
+            "failureCounts": {
+              "values": 10,
+              "styles": 0,
+              "formulas": 0,
+              "preservation": 0,
+              "structure": 0
+            },
+            "checks": {
+              "answerValues": false,
+              "explicitStyles": true,
+              "formulaRequirement": true,
+              "preservation": true,
+              "structure": true
+            },
+            "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+            "styleComponents": null,
+            "workbookStatus": "incorrect"
+          }
+        },
+        {
+          "task": "325-44",
+          "arm": "baseline",
+          "repeat": 0,
+          "grading": {
+            "status": "timeout",
+            "workbookStatus": "missing_output"
+          }
+        },
+        {
+          "task": "51-12",
+          "arm": "sheetops",
+          "repeat": 0,
+          "grading": {
+            "status": "timeout",
+            "nativeRejection": {
+              "reason": "Excel displayed content-repair warning on opening; repair declined with No; output was not repaired or saved.",
+              "observedAt": "2026-10-10T10:52:11.903556+00:00"
+            },
+            "workbookStatus": "invalid_output"
+          }
+        }
+      ],
+      "reproduce": "Run agents.py with the recorded task, model, skill hashes and images",
+      "scope": "recorded task rubric"
+    },
+    {
+      "priority": 2,
+      "id": "workbook-structure",
+      "kind": "agent task failure",
+      "title": "Preserve workbook structure",
+      "failedAttempts": 5,
+      "taskIds": [
+        "44389",
+        "510-3",
+        "54638"
+      ],
+      "arms": {
+        "baseline": 3,
+        "sheetops": 2
+      },
+      "examples": [
+        {
+          "task": "44389",
+          "arm": "baseline",
+          "repeat": 0,
+          "grading": {
+            "status": "incorrect",
+            "valueDifferences": [
+              {
+                "sheet": "Sheet1",
+                "cell": "P2",
+                "expected": "MMX",
+                "actual": "#NAME?",
+                "actualFormula": {
+                  "type": "ArrayFormula",
+                  "attributes": {
+                    "t": "array",
+                    "ref": "P2"
+                  },
+                  "text": "=TEXTJOIN(\",\",TRUE,IF(B2:N2=O2,IF(B2:N2>0,$B$1:$N$1,\"\"),\"\"))"
+                }
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "P3",
+                "expected": "Catch",
+                "actual": "#NAME?",
+                "actualFormula": {
+                  "type": "ArrayFormula",
+                  "attributes": {
+                    "t": "array",
+                    "ref": "P3"
+                  },
+                  "text": "=TEXTJOIN(\",\",TRUE,IF(B3:N3=O3,IF(B3:N3>0,$B$1:$N$1,\"\"),\"\"))"
+                }
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "P4",
+                "expected": "KWH,VB",
+                "actual": "#NAME?",
+                "actualFormula": {
+                  "type": "ArrayFormula",
+                  "attributes": {
+                    "t": "array",
+                    "ref": "P4"
+                  },
+                  "text": "=TEXTJOIN(\",\",TRUE,IF(B4:N4=O4,IF(B4:N4>0,$B$1:$N$1,\"\"),\"\"))"
+                }
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "P5",
+                "expected": "Amazon",
+                "actual": "#NAME?",
+                "actualFormula": {
+                  "type": "ArrayFormula",
+                  "attributes": {
+                    "t": "array",
+                    "ref": "P5"
+                  },
+                  "text": "=TEXTJOIN(\",\",TRUE,IF(B5:N5=O5,IF(B5:N5>0,$B$1:$N$1,\"\"),\"\"))"
+                }
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "P6",
+                "expected": "KWH",
+                "actual": "#NAME?",
+                "actualFormula": {
+                  "type": "ArrayFormula",
+                  "attributes": {
+                    "t": "array",
+                    "ref": "P6"
+                  },
+                  "text": "=TEXTJOIN(\",\",TRUE,IF(B6:N6=O6,IF(B6:N6>0,$B$1:$N$1,\"\"),\"\"))"
+                }
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "P7",
+                "expected": "MMX,POK",
+                "actual": "#NAME?",
+                "actualFormula": {
+                  "type": "ArrayFormula",
+                  "attributes": {
+                    "t": "array",
+                    "ref": "P7"
+                  },
+                  "text": "=TEXTJOIN(\",\",TRUE,IF(B7:N7=O7,IF(B7:N7>0,$B$1:$N$1,\"\"),\"\"))"
+                }
+              }
+            ],
+            "preservationFailures": [],
+            "structureDifferences": [
+              {
+                "sheet": "Sheet1",
+                "kind": "tables"
+              }
+            ],
+            "failureCounts": {
+              "values": 6,
+              "styles": 0,
+              "formulas": 0,
+              "preservation": 0,
+              "structure": 1
+            },
+            "checks": {
+              "answerValues": false,
+              "explicitStyles": true,
+              "formulaRequirement": true,
+              "preservation": true,
+              "structure": false
+            },
+            "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+            "styleComponents": null
+          }
+        },
+        {
+          "task": "44389",
+          "arm": "sheetops",
+          "repeat": 0,
+          "grading": {
+            "status": "incorrect",
+            "valueDifferences": [],
+            "preservationFailures": [],
+            "structureDifferences": [
+              {
+                "sheet": "Sheet1",
+                "kind": "tables"
+              }
+            ],
+            "failureCounts": {
+              "values": 0,
+              "styles": 0,
+              "formulas": 0,
+              "preservation": 0,
+              "structure": 1
+            },
+            "checks": {
+              "answerValues": true,
+              "explicitStyles": true,
+              "formulaRequirement": true,
+              "preservation": true,
+              "structure": false
+            },
+            "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+            "styleComponents": null
+          }
+        },
+        {
+          "task": "54638",
+          "arm": "baseline",
+          "repeat": 0,
+          "grading": {
+            "status": "incorrect",
+            "valueDifferences": [
+              {
+                "sheet": "Sheet1",
+                "cell": "B2",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B3",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B4",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B5",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B6",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B7",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B8",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B9",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B10",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B11",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B12",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B13",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B14",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B15",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B16",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B17",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B18",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B19",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B20",
+                "kind": "required_style"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B21",
+                "kind": "required_style"
+              }
+            ],
+            "preservationFailures": [
+              {
+                "sheet": "Sheet1",
+                "cell": "A1"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "B1"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "A2"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "A3"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "A4"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "A5"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "A6"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "A7"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "A8"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "A9"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "A10"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "A11"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "A12"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "A13"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "A14"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "A15"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "A16"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "A17"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "A18"
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "A19"
+              }
+            ],
+            "structureDifferences": [
+              {
+                "sheet": "Sheet1",
+                "kind": "sheet_view"
+              }
+            ],
+            "failureCounts": {
+              "values": 0,
+              "styles": 312,
+              "formulas": 0,
+              "preservation": 166,
+              "structure": 1
+            },
+            "checks": {
+              "answerValues": true,
+              "explicitStyles": false,
+              "formulaRequirement": true,
+              "preservation": false,
+              "structure": false
+            },
+            "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+            "styleComponents": [
+              "fontName",
+              "fill",
+              "border"
+            ]
+          }
+        }
+      ],
+      "reproduce": "Run agents.py with the recorded task, model, skill hashes and images",
+      "scope": "recorded task rubric"
+    },
+    {
+      "priority": 2,
+      "id": "formula-evaluation",
+      "kind": "agent task failure",
+      "title": "Validate formulas with the target Excel engine",
+      "failedAttempts": 1,
+      "taskIds": [
+        "44389"
+      ],
+      "arms": {
+        "baseline": 1
+      },
+      "examples": [
+        {
+          "task": "44389",
+          "arm": "baseline",
+          "repeat": 0,
+          "grading": {
+            "status": "incorrect",
+            "valueDifferences": [
+              {
+                "sheet": "Sheet1",
+                "cell": "P2",
+                "expected": "MMX",
+                "actual": "#NAME?",
+                "actualFormula": {
+                  "type": "ArrayFormula",
+                  "attributes": {
+                    "t": "array",
+                    "ref": "P2"
+                  },
+                  "text": "=TEXTJOIN(\",\",TRUE,IF(B2:N2=O2,IF(B2:N2>0,$B$1:$N$1,\"\"),\"\"))"
+                }
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "P3",
+                "expected": "Catch",
+                "actual": "#NAME?",
+                "actualFormula": {
+                  "type": "ArrayFormula",
+                  "attributes": {
+                    "t": "array",
+                    "ref": "P3"
+                  },
+                  "text": "=TEXTJOIN(\",\",TRUE,IF(B3:N3=O3,IF(B3:N3>0,$B$1:$N$1,\"\"),\"\"))"
+                }
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "P4",
+                "expected": "KWH,VB",
+                "actual": "#NAME?",
+                "actualFormula": {
+                  "type": "ArrayFormula",
+                  "attributes": {
+                    "t": "array",
+                    "ref": "P4"
+                  },
+                  "text": "=TEXTJOIN(\",\",TRUE,IF(B4:N4=O4,IF(B4:N4>0,$B$1:$N$1,\"\"),\"\"))"
+                }
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "P5",
+                "expected": "Amazon",
+                "actual": "#NAME?",
+                "actualFormula": {
+                  "type": "ArrayFormula",
+                  "attributes": {
+                    "t": "array",
+                    "ref": "P5"
+                  },
+                  "text": "=TEXTJOIN(\",\",TRUE,IF(B5:N5=O5,IF(B5:N5>0,$B$1:$N$1,\"\"),\"\"))"
+                }
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "P6",
+                "expected": "KWH",
+                "actual": "#NAME?",
+                "actualFormula": {
+                  "type": "ArrayFormula",
+                  "attributes": {
+                    "t": "array",
+                    "ref": "P6"
+                  },
+                  "text": "=TEXTJOIN(\",\",TRUE,IF(B6:N6=O6,IF(B6:N6>0,$B$1:$N$1,\"\"),\"\"))"
+                }
+              },
+              {
+                "sheet": "Sheet1",
+                "cell": "P7",
+                "expected": "MMX,POK",
+                "actual": "#NAME?",
+                "actualFormula": {
+                  "type": "ArrayFormula",
+                  "attributes": {
+                    "t": "array",
+                    "ref": "P7"
+                  },
+                  "text": "=TEXTJOIN(\",\",TRUE,IF(B7:N7=O7,IF(B7:N7>0,$B$1:$N$1,\"\"),\"\"))"
+                }
+              }
+            ],
+            "preservationFailures": [],
+            "structureDifferences": [
+              {
+                "sheet": "Sheet1",
+                "kind": "tables"
+              }
+            ],
+            "failureCounts": {
+              "values": 6,
+              "styles": 0,
+              "formulas": 0,
+              "preservation": 0,
+              "structure": 1
+            },
+            "checks": {
+              "answerValues": false,
+              "explicitStyles": true,
+              "formulaRequirement": true,
+              "preservation": true,
+              "structure": false
+            },
+            "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+            "styleComponents": null
+          }
+        }
+      ],
+      "reproduce": "Run agents.py with the recorded task, model, skill hashes and images",
+      "scope": "Formula errors use each record's evaluation engine; native Excel and LibreOffice outcomes are reported separately"
+    },
+    {
+      "priority": 2,
+      "id": "formula-requirement",
+      "kind": "agent task failure",
+      "title": "formula requirement",
+      "failedAttempts": 1,
+      "taskIds": [
+        "52220"
+      ],
+      "arms": {
+        "sheetops": 1
+      },
+      "examples": [
+        {
+          "task": "52220",
+          "arm": "sheetops",
+          "repeat": 0,
+          "grading": {
+            "status": "incorrect",
+            "valueDifferences": [
+              {
+                "sheet": "Sheet1",
+                "cell": "C3",
+                "kind": "missing_formula"
+              }
+            ],
+            "preservationFailures": [],
+            "structureDifferences": [],
+            "failureCounts": {
+              "values": 0,
+              "styles": 0,
+              "formulas": 1,
+              "preservation": 0,
+              "structure": 0
+            },
+            "checks": {
+              "answerValues": true,
+              "explicitStyles": true,
+              "formulaRequirement": false,
+              "preservation": true,
+              "structure": true
+            },
+            "rubric": "golden answer-region values at Excel float precision; reviewed requested style components where supplied; names, merges, tables, visibility and unchanged cells preserved",
+            "styleComponents": null
+          }
+        }
+      ],
+      "reproduce": "Run agents.py with the recorded task, model, skill hashes and images",
+      "scope": "recorded task rubric"
+    },
+    {
+      "priority": 3,
+      "id": "tool-contract-misuse",
+      "kind": "observed tool errors; task may still pass",
+      "title": "Reduce invalid SheetOps calls in the spreadsheet skill",
+      "failedAttempts": 4,
+      "errorCounts": {
+        "invalid_sheet": 2,
+        "invalid_field": 1,
+        "file_not_found": 1
+      },
+      "taskIds": [
+        "47827",
+        "51680",
+        "52220",
+        "57590"
+      ],
+      "evidence": "Command JSON returned a stable error; inspect the task transcript before attributing a package defect",
+      "examples": [
+        {
+          "task": "57590",
+          "arm": "sheetops",
+          "repeat": 0,
+          "errors": {
+            "invalid_sheet": 1
+          }
+        },
+        {
+          "task": "51680",
+          "arm": "sheetops",
+          "repeat": 0,
+          "errors": {
+            "invalid_field": 1
+          }
+        },
+        {
+          "task": "47827",
+          "arm": "sheetops",
+          "repeat": 0,
+          "errors": {
+            "invalid_sheet": 1
+          }
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "One repetition per agent arm in each run; fixed model ID, stochastic inference and provider-side revisions uncontrolled. No stable overall app speed or quality improvement established.",
+    "Same predeclared 30 eligible tasks in both runs; all 66 attempts retained, including the three excluded reference-conflict tasks.",
+    "Fresh reader processes, one host, three operation repetitions, uncontrolled OS file cache; RSS is peak for one worker or subprocess, not aggregate memory.",
+    "Agent timing includes inference and agent tools but excludes external benchmark grading and native Excel evaluation.",
+    "Both terminal images lack a formula engine. Updated helper engine invocation is tested separately on the host; this is not integrated Docker calculation or Electron UI proof.",
+    "Package plus skill and helper changes are measured together; no package-only attribution.",
+    "Guard use is instruction-based. Declared ranges must match user intent; agents can omit the guard or deliver after rejection. A passing guard does not prove expected values or that a requested formula is present, and is not bound to the final output hash.",
+    "Raw outputs are graded for preservation and formatting; independently evaluated Excel copies provide formula values. Formula-containing output copies are opened in native Excel; value-only outputs are parsed without a native UI open check.",
+    "Thirty unchanged golden evaluations are reused only after source and evaluated hashes and Excel version were verified; golden self-check is rerun.",
+    "Native content-recovery prompts are declined and counted as invalid outputs. LibreOffice grades are a separate interoperability comparison.",
+    "Provider cost is unavailable. Token sums include only records with reported totals; missing timeout totals are not zero usage.",
+    "Scores use reviewed answer regions, explicitly requested styles, formulas, structure and preservation; they are not official leaderboard scores. Failure groups overlap.",
+    "Observed SheetOps commands include reads and verify-edits; edits use agent-authored Python. Task failures do not establish a SheetOps write API defect. Future-sheet macro behavior, VBA execution and every unsupported workbook feature are not certified."
+  ],
+  "nativeEvaluationCompletion": {
+    "status": "complete",
+    "unprocessedCount": 0,
+    "rejectedOutputCount": 3,
+    "savedActualFormulaOutputs": 30,
+    "auditPendingCountMeaning": "Outputs not ready for value grading; all three have observed native rejections, not pending UI actions."
+  },
+  "allAttempts": {
+    "attemptCount": 66,
+    "completePairCount": 33,
+    "scorablePairCount": 30,
+    "correctPairCount": 11,
+    "arms": {
+      "baseline": {
+        "attempts": 33,
+        "scorableAttempts": 30,
+        "unscorableAttempts": 3,
+        "statusCounts": {
+          "incorrect": 12,
+          "timeout": 3,
+          "pass": 15,
+          "ambiguous_task_metadata": 2,
+          "oracle_preservation_conflict": 1
+        },
+        "totalSecondsAllAttempts": 2408.698875123635,
+        "totalMainTokens": 4435733,
+        "totalObservedToolCalls": 197,
+        "sheetopsAdoption": {
+          "tasksWithResponses": 0,
+          "successfulResponses": 0,
+          "failedResponses": 0,
+          "commandCounts": {},
+          "errorCounts": {},
+          "scope": "observed JSON command responses; Python API use is not counted"
+        },
+        "costAvailable": false,
+        "estimatedCostUsd": null
+      },
+      "sheetops": {
+        "attempts": 33,
+        "scorableAttempts": 30,
+        "unscorableAttempts": 3,
+        "statusCounts": {
+          "incorrect": 13,
+          "pass": 14,
+          "timeout": 3,
+          "ambiguous_task_metadata": 2,
+          "oracle_preservation_conflict": 1
+        },
+        "totalSecondsAllAttempts": 2358.9726501698606,
+        "totalMainTokens": 6356381,
+        "totalObservedToolCalls": 329,
+        "sheetopsAdoption": {
+          "tasksWithResponses": 33,
+          "successfulResponses": 97,
+          "failedResponses": 27,
+          "commandCounts": {
+            "inspect": 34,
+            "cells read": 54,
+            "verify-edits": 31,
+            "formulas scan": 5
+          },
+          "errorCounts": {
+            "verification_failed": 23,
+            "invalid_sheet": 2,
+            "invalid_field": 1,
+            "file_not_found": 1
+          },
+          "scope": "observed JSON command responses; Python API use is not counted"
+        },
+        "costAvailable": false,
+        "estimatedCostUsd": null
+      }
+    },
+    "medianPairedSpeedup": 0.8491179828087961,
+    "speedComparisonScope": "only pairs where both arms pass; selection bias remains",
+    "attribution": "package plus skill configuration; not package-only or Electron UI"
+  },
+  "guardDiagnostics": {
+    "schemaVersion": 1,
+    "completedCandidateAttempts": 33,
+    "attemptsWithGuardResponses": 21,
+    "responseCount": 31,
+    "responseStatuses": {
+      "False": 23,
+      "True": 8
+    },
+    "scope": "Observed JSON guard responses; declared ranges must match user intent. A passing response is not bound to the final artifact and does not prove expected answer values."
+  },
+  "artifactInterpretation": "Postprocessing changes eligibility summaries, guard-alert categorization and explanatory text only. Raw attempts and the frozen rubric/grader remain unchanged."
+}

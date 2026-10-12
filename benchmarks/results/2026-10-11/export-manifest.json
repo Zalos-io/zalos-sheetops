@@ -1,0 +1,92 @@
+[
+  {
+    "file": "report.json",
+    "originalSha256": "a7a0bbaeac35167f1dd3b7ecc23f36f14bd6c9b6a1ec74e0d401b366287224ce",
+    "exportedSha256": "f4fc0cf6bc3d9a68f50cc34dc9a64cb9b1c797cdf238358dfaab6b42e2d48408",
+    "transformation": "Local paths replaced and session IDs removed; raw model logs excluded."
+  },
+  {
+    "file": "agents-raw.jsonl",
+    "originalSha256": "ece82f27b201898dba4bd2bc886881b3bf5ebcceae995bae4cd3d5a93ef964b6",
+    "exportedSha256": "9c375e0eb7c72889974a1f0d54ab26590988b87cc9f03e84e12f94143d0b6a7c",
+    "transformation": "Local paths replaced and session IDs removed; raw model logs excluded."
+  },
+  {
+    "file": "agents-native-graded.jsonl",
+    "originalSha256": "779d80f42ef484e2652c4b83d60719918f7d95d93aa54456061ef706ec9fa5ec",
+    "exportedSha256": "a4434ae2785bcb5016a3a5e53e860e5ed995dec67a1a5485fc8346a43e909b40",
+    "transformation": "Local paths replaced and session IDs removed; raw model logs excluded."
+  },
+  {
+    "file": "agents-libreoffice-graded.jsonl",
+    "originalSha256": "14b29b3bd56f8a73ac45d67a486be802aa53bfa8b5b2bf08db4ef6d8225b62b8",
+    "exportedSha256": "cfa2dfe786953f0cbdb68569a53de03b13fcb2cb72c08dce29dfdd6a9684f209",
+    "transformation": "Local paths replaced and session IDs removed; raw model logs excluded."
+  },
+  {
+    "file": "agent-metadata.json",
+    "originalSha256": "d7489f60b2f77864bc23be6df69c90ad7d42fc4bca80b4f25bd6d84d7cb93f09",
+    "exportedSha256": "83c5e2e1e81bdd9d3d2d09fec071a3ab5020fd3829f30034a4a9b305361eeb02",
+    "transformation": "Local paths replaced and session IDs removed; raw model logs excluded."
+  },
+  {
+    "file": "build-provenance.json",
+    "originalSha256": "f97be14ba37a13909760dfc41b78c45656955edb88e83bead8a6f45aeb838a53",
+    "exportedSha256": "ad85637083fbd3cf7f56f8eaeb7a9e2528d972d3f193cbbb08fc51a9b29e1399",
+    "transformation": "Local paths replaced and session IDs removed; raw model logs excluded."
+  },
+  {
+    "file": "native-audit.json",
+    "originalSha256": "a346d5caa8a4cd154a2765eff53731e137f7dd3c7b40847bbafb17593308f3bf",
+    "exportedSha256": "a5faf2949717d15ca6317a1d1b9abc4414008429efab8955a4bc9120f24c2c46",
+    "transformation": "Local paths replaced and session IDs removed; raw model logs excluded."
+  },
+  {
+    "file": "golden-self-check.json",
+    "originalSha256": "4c43dd3a60fbf9a8000827f56ae8d72eb3c8db8992f15ed234fc2b53abbd6758",
+    "exportedSha256": "f72d98b5c6f2fc5900f197184c76dcdf1ebb82e6147b0186f24306a9adaa2953",
+    "transformation": "Local paths replaced and session IDs removed; raw model logs excluded."
+  },
+  {
+    "file": "tasks.json",
+    "originalSha256": "ef74fdd3ff776527b53cf8b5d7f05d73f90004158d40c7a4c44bb4c3f9237913",
+    "exportedSha256": "90e7208eb442c347dd132519ad97d68ccb89d1b0d39bd51f071b784f12891fad",
+    "transformation": "Local paths replaced and session IDs removed; raw model logs excluded."
+  },
+  {
+    "file": "selection.json",
+    "originalSha256": "10f498019194ec16a3e0087a5a953771bf1279d0635ca818db6d1b216c5ed360",
+    "exportedSha256": "fb3a2b64c62691d3b96f1684136bdfe8b0da6c366927b7cc8582b70d11f6ad0d",
+    "transformation": "Local paths replaced and session IDs removed; raw model logs excluded."
+  },
+  {
+    "file": "ATTRIBUTION.txt",
+    "originalSha256": "aad17261a227a47f668786287775df5a6885d8e3ac9ba9c9f29fad3006a229a7",
+    "exportedSha256": "aad17261a227a47f668786287775df5a6885d8e3ac9ba9c9f29fad3006a229a7",
+    "transformation": "Local paths replaced and session IDs removed; raw model logs excluded."
+  },
+  {
+    "file": "ExcelBench-LICENSE",
+    "originalSha256": "24accf5eaddfee8d5ee2b5ff2dd212d62cd29a62d194fb0c5bc681b2c7a79730",
+    "exportedSha256": "24accf5eaddfee8d5ee2b5ff2dd212d62cd29a62d194fb0c5bc681b2c7a79730",
+    "transformation": "Local paths replaced and session IDs removed; raw model logs excluded."
+  },
+  {
+    "file": "ReadBench-LICENSE",
+    "originalSha256": "04e5aca4388c61c401539ded90b6370134f77490aadd2dc160001297cc86da1c",
+    "exportedSha256": "04e5aca4388c61c401539ded90b6370134f77490aadd2dc160001297cc86da1c",
+    "transformation": "Local paths replaced and session IDs removed; raw model logs excluded."
+  },
+  {
+    "file": "sources.json",
+    "originalSha256": "f7b7f99609ef400a478cd622fbefc280f49fc2fd8851af4ff3fedc55c1050dbf",
+    "exportedSha256": "f7b7f99609ef400a478cd622fbefc280f49fc2fd8851af4ff3fedc55c1050dbf",
+    "transformation": "Local paths replaced and session IDs removed; raw model logs excluded."
+  },
+  {
+    "file": "failure-reproductions.zip",
+    "originalSha256": "29cc03188d2d527dfcd1b0fce609c1af2265519f677ea40dd9baff249a7e22d0",
+    "exportedSha256": "29cc03188d2d527dfcd1b0fce609c1af2265519f677ea40dd9baff249a7e22d0",
+    "transformation": "Public task inputs and hashed raw failure outputs; blocked workbooks are diagnostics, not deliverable artifacts."
+  }
+]

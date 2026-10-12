@@ -1,0 +1,242 @@
+[
+  {
+    "task": 45300,
+    "previousEvaluatedSha256": "71eed10b826aee78aaeaaada4ba0f203fc69772521de3b393fc8949d6145cb5d",
+    "previousSourceSha256": "1de1c6237664cf2ac2707dcb1ec03fa68525376c618c7f6d80a2a8ace9e7bdd3",
+    "engine": "Microsoft Excel",
+    "version": "16.113.3",
+    "reason": "unchanged public golden source; already calculated/saved or value-only parsed in original audited baseline"
+  },
+  {
+    "task": "279-23",
+    "previousEvaluatedSha256": "eea580684be9582e345c39a62c56df59073c0c0cb5389c8a5874e13a8558bc84",
+    "previousSourceSha256": "eea580684be9582e345c39a62c56df59073c0c0cb5389c8a5874e13a8558bc84",
+    "engine": "Microsoft Excel",
+    "version": "16.113.3",
+    "reason": "unchanged public golden source; already calculated/saved or value-only parsed in original audited baseline"
+  },
+  {
+    "task": 57590,
+    "previousEvaluatedSha256": "99e966c6a964ad0cd201810366b03c067f07d11aaa990d64d806b257ea1a6991",
+    "previousSourceSha256": "b40bd288af2c2fbb9d8a3af9d27cfcf5c4d4696ded690febd17cbb242d0475df",
+    "engine": "Microsoft Excel",
+    "version": "16.113.3",
+    "reason": "unchanged public golden source; already calculated/saved or value-only parsed in original audited baseline"
+  },
+  {
+    "task": "325-44",
+    "previousEvaluatedSha256": "1737e80e05196f0ad56d68e9be7611fb08538fde5a2f7b67c84aa9ca809d4849",
+    "previousSourceSha256": "1737e80e05196f0ad56d68e9be7611fb08538fde5a2f7b67c84aa9ca809d4849",
+    "engine": "Microsoft Excel",
+    "version": "16.113.3",
+    "reason": "unchanged public golden source; already calculated/saved or value-only parsed in original audited baseline"
+  },
+  {
+    "task": 40757,
+    "previousEvaluatedSha256": "e3e4f2050dc2921addeadb8c33a10912cd704dea708a808659df33180c0cc959",
+    "previousSourceSha256": "c533511bfce2d5160c8f32ab2d6d730740fe3e7279cbfcfcf9ef458c4a6da11f",
+    "engine": "Microsoft Excel",
+    "version": "16.113.3",
+    "reason": "unchanged public golden source; already calculated/saved or value-only parsed in original audited baseline"
+  },
+  {
+    "task": "82-30",
+    "previousEvaluatedSha256": "9f33abdffccfbe080785fd8ff86d174f0a665a3f90bb51fe56469fd25782a84c",
+    "previousSourceSha256": "9f33abdffccfbe080785fd8ff86d174f0a665a3f90bb51fe56469fd25782a84c",
+    "engine": "Microsoft Excel",
+    "version": "16.113.3",
+    "reason": "unchanged public golden source; already calculated/saved or value-only parsed in original audited baseline"
+  },
+  {
+    "task": 51680,
+    "previousEvaluatedSha256": "dabfa2cdc3e3804fa3f162ebd785a46c5fc5e5e1f1fe542fc437d8349fd0a503",
+    "previousSourceSha256": "221b49c9ae85381a3f20cb7ce89d68ee424ee0c1f5554b0939988872776225ae",
+    "engine": "Microsoft Excel",
+    "version": "16.113.3",
+    "reason": "unchanged public golden source; already calculated/saved or value-only parsed in original audited baseline"
+  },
+  {
+    "task": "585-41",
+    "previousEvaluatedSha256": "fca0bf76c1abfb4a16f7053aa00bca01a2f0c22c759fc5c0e8ae6aa4badb10e7",
+    "previousSourceSha256": "fca0bf76c1abfb4a16f7053aa00bca01a2f0c22c759fc5c0e8ae6aa4badb10e7",
+    "engine": "Microsoft Excel",
+    "version": "16.113.3",
+    "reason": "unchanged public golden source; already calculated/saved or value-only parsed in original audited baseline"
+  },
+  {
+    "task": 35742,
+    "previousEvaluatedSha256": "8103d23c6b9cc147ae71d80948c5ce826f844c921a214a6d4f4806edeabe4091",
+    "previousSourceSha256": "2f53976e35ae6325bf77ebf0f4ef16533b6273633e081e0a17b826b6a8622457",
+    "engine": "Microsoft Excel",
+    "version": "16.113.3",
+    "reason": "unchanged public golden source; already calculated/saved or value-only parsed in original audited baseline"
+  },
+  {
+    "task": "51-12",
+    "previousEvaluatedSha256": "21540e241e6a9e09c68767582a33ac77217d60426f32966c62e7add6e01d834a",
+    "previousSourceSha256": "21540e241e6a9e09c68767582a33ac77217d60426f32966c62e7add6e01d834a",
+    "engine": "Microsoft Excel",
+    "version": "16.113.3",
+    "reason": "unchanged public golden source; already calculated/saved or value-only parsed in original audited baseline"
+  },
+  {
+    "task": 44389,
+    "previousEvaluatedSha256": "bf0f99771f165cc957f74786ca5b58b4a567c1a2ed79a1805f0bc25d59470437",
+    "previousSourceSha256": "fa9af6b91c7e3728e8cda284e10bb4f36941c99014b9583c7c239b14d3e44678",
+    "engine": "Microsoft Excel",
+    "version": "16.113.3",
+    "reason": "unchanged public golden source; already calculated/saved or value-only parsed in original audited baseline"
+  },
+  {
+    "task": "262-17",
+    "previousEvaluatedSha256": "daf67c3d12d2c98a68050723395793111c2c681966731b5c9ef26813c5b4e86f",
+    "previousSourceSha256": "daf67c3d12d2c98a68050723395793111c2c681966731b5c9ef26813c5b4e86f",
+    "engine": "Microsoft Excel",
+    "version": "16.113.3",
+    "reason": "unchanged public golden source; already calculated/saved or value-only parsed in original audited baseline"
+  },
+  {
+    "task": 9569,
+    "previousEvaluatedSha256": "7b4c9d6225ab492b79836a1a0875a8f271bac206b70d0d92c4134043845f62c0",
+    "previousSourceSha256": "a8a6273a70491657979389a9bfe3985218fed344a8637fe9d81bda4fa486374b",
+    "engine": "Microsoft Excel",
+    "version": "16.113.3",
+    "reason": "unchanged public golden source; already calculated/saved or value-only parsed in original audited baseline"
+  },
+  {
+    "task": "192-22",
+    "previousEvaluatedSha256": "9091af299b03a50ea7d56671b9c68f27240c320924945e7de3fb12e7b16c2099",
+    "previousSourceSha256": "116b7398709de55d7335492573a26a0e40f79fda0e24b7e0124a8f39fe6cef3b",
+    "engine": "Microsoft Excel",
+    "version": "16.113.3",
+    "reason": "unchanged public golden source; already calculated/saved or value-only parsed in original audited baseline"
+  },
+  {
+    "task": 47827,
+    "previousEvaluatedSha256": "c4adbe4207f6d225410ae0f705b0ee5f5baaafd9a69acc802fd5f38499e04e7c",
+    "previousSourceSha256": "8fcb2ee0c028b12250d9e69de641b5df6e3864223256519ebf4a06f89ea8905a",
+    "engine": "Microsoft Excel",
+    "version": "16.113.3",
+    "reason": "unchanged public golden source; already calculated/saved or value-only parsed in original audited baseline"
+  },
+  {
+    "task": 37086,
+    "previousEvaluatedSha256": "85b53c17fe2ec5c915d78e8ed16b3c7494c1ed8b796d88d297e0ccd42752acb3",
+    "previousSourceSha256": "dc10723eee16d9311d5c4121e0e2200b1411bfa0add72c28be3d2ea317371eb9",
+    "engine": "Microsoft Excel",
+    "version": "16.113.3",
+    "reason": "unchanged public golden source; already calculated/saved or value-only parsed in original audited baseline"
+  },
+  {
+    "task": "531-18",
+    "previousEvaluatedSha256": "5a054fa2da4ef16e98d4fba7c10d14955b9f02f38912292c6aa0fcbafeb3e769",
+    "previousSourceSha256": "5a054fa2da4ef16e98d4fba7c10d14955b9f02f38912292c6aa0fcbafeb3e769",
+    "engine": "Microsoft Excel",
+    "version": "16.113.3",
+    "reason": "unchanged public golden source; already calculated/saved or value-only parsed in original audited baseline"
+  },
+  {
+    "task": 7902,
+    "previousEvaluatedSha256": "64ebdcd4984ca979779f6e3439c43d71249c561f1e5b2a4637eaf96637e75288",
+    "previousSourceSha256": "22ed6c87f75e8418cd5191fcfcc70c63e9ab40a6f79e206293c362487a0a4885",
+    "engine": "Microsoft Excel",
+    "version": "16.113.3",
+    "reason": "unchanged public golden source; already calculated/saved or value-only parsed in original audited baseline"
+  },
+  {
+    "task": 48969,
+    "previousEvaluatedSha256": "50a48b4bd3068e6f299fc3d27dc103395ac6504005ce59af35dc7c5cecc2af6e",
+    "previousSourceSha256": "b1cf587777668062559e0d739cdaa8741fd21130528b493a05a07e8016e93686",
+    "engine": "Microsoft Excel",
+    "version": "16.113.3",
+    "reason": "unchanged public golden source; already calculated/saved or value-only parsed in original audited baseline"
+  },
+  {
+    "task": 48975,
+    "previousEvaluatedSha256": "727602c4a49560774e3d6a18016856eab2e3c489cce3900a8963861345d1bd79",
+    "previousSourceSha256": "07ffac472757f5715c4e2478f9bf934c81348374cb2734ee06822920a3c69364",
+    "engine": "Microsoft Excel",
+    "version": "16.113.3",
+    "reason": "unchanged public golden source; already calculated/saved or value-only parsed in original audited baseline"
+  },
+  {
+    "task": "577-40",
+    "previousEvaluatedSha256": "7bd94cefd82f8801a04e0ab02f6ef8c31636a4a095cb7cf4591e83773f52e4d2",
+    "previousSourceSha256": "7bd94cefd82f8801a04e0ab02f6ef8c31636a4a095cb7cf4591e83773f52e4d2",
+    "engine": "Microsoft Excel",
+    "version": "16.113.3",
+    "reason": "unchanged public golden source; already calculated/saved or value-only parsed in original audited baseline"
+  },
+  {
+    "task": 52220,
+    "previousEvaluatedSha256": "49d0fec10be44ca5f6ee4e235d7e4ff0f21014e8f57c2106ee0ee75ca2394a8d",
+    "previousSourceSha256": "d904c4327e3cd4d15480651f93a2b1856bfcd77d177feb0109e5dae08717ae9b",
+    "engine": "Microsoft Excel",
+    "version": "16.113.3",
+    "reason": "unchanged public golden source; already calculated/saved or value-only parsed in original audited baseline"
+  },
+  {
+    "task": "230-16",
+    "previousEvaluatedSha256": "a796ad1ab4b19834579dd0d01716aa187c433a8e023b9e0bf0262ecf23081f90",
+    "previousSourceSha256": "a796ad1ab4b19834579dd0d01716aa187c433a8e023b9e0bf0262ecf23081f90",
+    "engine": "Microsoft Excel",
+    "version": "16.113.3",
+    "reason": "unchanged public golden source; already calculated/saved or value-only parsed in original audited baseline"
+  },
+  {
+    "task": 50682,
+    "previousEvaluatedSha256": "88acf478763d4c846defde082e620476e686367b0200b640bd583b535d2a23cc",
+    "previousSourceSha256": "5f13f58296f7d761f6da8f750cdc04c9f7dab1305557d3dd785d0244883a48ca",
+    "engine": "Microsoft Excel",
+    "version": "16.113.3",
+    "reason": "unchanged public golden source; already calculated/saved or value-only parsed in original audited baseline"
+  },
+  {
+    "task": "343-20",
+    "previousEvaluatedSha256": "c2dea869c1c2cca916fe08f05598786b58525114bac6b2d91d4ce402f104cbff",
+    "previousSourceSha256": "c2dea869c1c2cca916fe08f05598786b58525114bac6b2d91d4ce402f104cbff",
+    "engine": "Microsoft Excel",
+    "version": "16.113.3",
+    "reason": "unchanged public golden source; already calculated/saved or value-only parsed in original audited baseline"
+  },
+  {
+    "task": 54638,
+    "previousEvaluatedSha256": "d4b58d6057964a994a0989f22d74ecb63ae4a72bcfedb1f3f53bdafa03e3ed82",
+    "previousSourceSha256": "32482d15652af472e571e85b92e07c2d22eab4145196fcee8fce7608a72a3bf8",
+    "engine": "Microsoft Excel",
+    "version": "16.113.3",
+    "reason": "unchanged public golden source; already calculated/saved or value-only parsed in original audited baseline"
+  },
+  {
+    "task": "120-24",
+    "previousEvaluatedSha256": "0b8d29a3780075e551c3c039bab149b3bd61406aef1c96ea56ae685a0100d5b0",
+    "previousSourceSha256": "0b8d29a3780075e551c3c039bab149b3bd61406aef1c96ea56ae685a0100d5b0",
+    "engine": "Microsoft Excel",
+    "version": "16.113.3",
+    "reason": "unchanged public golden source; already calculated/saved or value-only parsed in original audited baseline"
+  },
+  {
+    "task": "510-3",
+    "previousEvaluatedSha256": "93e2ca53724eb243470235648c61ffe8bcb5c8232a5e8538616811833d4ffbb5",
+    "previousSourceSha256": "93e2ca53724eb243470235648c61ffe8bcb5c8232a5e8538616811833d4ffbb5",
+    "engine": "Microsoft Excel",
+    "version": "16.113.3",
+    "reason": "unchanged public golden source; already calculated/saved or value-only parsed in original audited baseline"
+  },
+  {
+    "task": "398-14",
+    "previousEvaluatedSha256": "b99b3e35398024208fdcba3f6d62a83a9bc14bece210dbde6323fb31d781512d",
+    "previousSourceSha256": "b99b3e35398024208fdcba3f6d62a83a9bc14bece210dbde6323fb31d781512d",
+    "engine": "Microsoft Excel",
+    "version": "16.113.3",
+    "reason": "unchanged public golden source; already calculated/saved or value-only parsed in original audited baseline"
+  },
+  {
+    "task": "547-18",
+    "previousEvaluatedSha256": "1f11add2737a56c81838db7e990c3f9584b515cbcfd5a3166193f07ffe5d140b",
+    "previousSourceSha256": "1f11add2737a56c81838db7e990c3f9584b515cbcfd5a3166193f07ffe5d140b",
+    "engine": "Microsoft Excel",
+    "version": "16.113.3",
+    "reason": "unchanged public golden source; already calculated/saved or value-only parsed in original audited baseline"
+  }
+]

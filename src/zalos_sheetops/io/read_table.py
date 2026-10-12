@@ -11,8 +11,12 @@ def read_table(
     header_strategy: str,
     header_row: int | None,
     max_rows: int | None = None,
+    value_mode: str = "raw",
 ) -> dict[str, object]:
-    with XlsxWorkbook(path) as workbook:
+    from zalos_sheetops.io.typed_values import validate_value_mode
+
+    validate_value_mode(value_mode)
+    with XlsxWorkbook(path, value_mode=value_mode) as workbook:
         resolved_sheet = _resolve_sheet(workbook, sheet_name)
         scan = _scan_table_rows(
             workbook,

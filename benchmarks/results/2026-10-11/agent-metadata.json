@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "model": "spacexai/grok-4.7",
+  "provider": "ai-gateway",
+  "reasoning": "medium",
+  "timeoutSeconds": 180,
+  "repeats": 1,
+  "images": {
+    "baseline": "sha256:ec976c01c332fd687a9227e665f87d8207e4d34526599dcf7c04e9e48b771ea9",
+    "sheetops": "sha256:a926830aeab01f2fced5b50c6ac3e1611d37f7fdcc91130e04dbda289d4de9d5"
+  },
+  "launcher": "BENCHMARK_ROOT/desktop-benchmark-env/bin/hermes",
+  "launcherSha256": "8a84b0263b6cbfaf04e08c39279173247c74dce5461b62ae54bcfa3de7873b48",
+  "skillSha256": {
+    "baseline": "b302d7ac997843a757ab3c11513ea012889ebdae32f842edb44faa9a4485f19b",
+    "sheetops": "f8bd5b798ee667ba5a578363edfd6190f2cd947acd627271682724406a543aa2"
+  },
+  "taskIds": [
+    45300,
+    "279-23",
+    57590,
+    "325-44",
+    40757,
+    "82-30",
+    51680,
+    "585-41",
+    35742,
+    "51-12",
+    44389,
+    "262-17",
+    9569,
+    "192-22",
+    47827,
+    "402-43",
+    37086,
+    "531-18",
+    7902,
+    "395-36",
+    48969,
+    "168-17",
+    48975,
+    "577-40",
+    52220,
+    "230-16",
+    50682,
+    "343-20",
+    54638,
+    "120-24",
+    "510-3",
+    "398-14",
+    "547-18"
+  ],
+  "scope": "fresh PM-built desktop source core via CLI; not Electron UI E2E",
+  "approvalWaitSeconds": 0,
+  "deliveryPolicy": {
+    "enforced": true,
+    "arms": [
+      "baseline",
+      "sheetops"
+    ],
+    "calculationEngine": "/Applications/LibreOffice.app/Contents/MacOS/soffice",
+    "calculationEngineSha256": "407fa38798973075956ed8ce10b2953a1d4661956289bc47d32bf9afbb6ddadd",
+    "successfulOutputRequiresReceipt": true
+  },
+  "networkInsideTerminal": false,
+  "concurrentPairs": 4,
+  "desktopCommit": "acff34f3ae962207b867f58b4df5e24b035e1605",
+  "packageCommit": "730ff8e1bfbbb414c98556e2c0f9dca7e5709fbc"
+}

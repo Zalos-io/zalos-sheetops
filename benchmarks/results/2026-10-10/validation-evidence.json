@@ -1,0 +1,19 @@
+{
+  "fixtureFiles": {
+    "valid.xlsx": "932e04b5d07f31bf9c9826b31e9d24e19bd19cc489ccb5fd94aa6f4f33138202",
+    "valid.evaluated.xlsx": "2faf44ff040014400aa7f8f912be684c3c6b2b541b6014db3cb8c58f6fbdaf09",
+    "invalid.xlsx": "8699d92e044bc16594691d33d0b35e1e7f40c1ea29db1c817f00f46dc34e870b",
+    "native-formula-unprefixed.xlsx": "ba4e1beb9b8c9cf0387fac3ee01bcbc043a229da5f93fcd06616cee0ae5e5819",
+    "native-formula-good.xlsx": "6ebfa7e067311dbc8c109f1f93aafc116b52a72e3d0947c593fff968ce9fcacb",
+    "original.xlsx": "3e478f89f6a223970b9c0dd95401107a0872a29d8e0084dbde60fcb49c3d985b"
+  },
+  "nativeExcel": {
+    "correctlyStoredModernFormula": "opened_calculated_saved; B2/B3 alpha,beta",
+    "unprefixedModernFormula": "Excel content recovery prompt; repair declined; file unchanged"
+  },
+  "libreOffice": {
+    "validFormulaAndEmptyString": "validated true; source unchanged; evaluated sidecar saved",
+    "divideByZero": "validated false; #DIV/0!; exit 1; no evaluated sidecar saved"
+  },
+  "cacheFreshness": "must be established by actual external engine invocation; verifier alone does not establish it"
+}

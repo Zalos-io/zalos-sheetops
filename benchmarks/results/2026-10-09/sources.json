@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "excelbenchRevision": "5f71713413c43f3733e303ba8a4eed6a756760cd",
+  "readbenchRevision": "d8ddc2b5cfab51d53e196015d7037b1d5f463a8a",
+  "verifiedRevision": "ab0b742b0fc95b946f212d80ac7771b5531272e4",
+  "inputs": [
+    {
+      "path": "BENCHMARK_ROOT/data/excelbench/manifest.json",
+      "url": "https://raw.githubusercontent.com/SynthGL/ExcelBench/5f71713413c43f3733e303ba8a4eed6a756760cd/fixtures/excel/manifest.json",
+      "sha256": "984073b67669fb0566b55e35a05447fbaaeb9f0da2d6de1a335baf61de9b382f"
+    },
+    {
+      "path": "BENCHMARK_ROOT/data/excelbench/LICENSE",
+      "url": "https://raw.githubusercontent.com/SynthGL/ExcelBench/5f71713413c43f3733e303ba8a4eed6a756760cd/LICENSE",
+      "sha256": "24accf5eaddfee8d5ee2b5ff2dd212d62cd29a62d194fb0c5bc681b2c7a79730"
+    },
+    {
+      "path": "BENCHMARK_ROOT/data/excelbench/tier1/01_cell_values.xlsx",
+      "url": "https://raw.githubusercontent.com/SynthGL/ExcelBench/5f71713413c43f3733e303ba8a4eed6a756760cd/fixtures/excel/tier1/01_cell_values.xlsx",
+      "sha256": "7be7af2cef08d1dc7dcec997c85d259d30e08ea3bb2ed2adf09c11e0186aa112"
+    },
+    {
+      "path": "BENCHMARK_ROOT/data/excelbench/tier1/02_formulas.xlsx",
+      "url": "https://raw.githubusercontent.com/SynthGL/ExcelBench/5f71713413c43f3733e303ba8a4eed6a756760cd/fixtures/excel/tier1/02_formulas.xlsx",
+      "sha256": "a1ff1800d1a0e5bd5aeb3320e69a1251b7caa687965f7af28a080fb089b009b8"
+    },
+    {
+      "path": "BENCHMARK_ROOT/data/excelbench/tier1/05_number_formats.xlsx",
+      "url": "https://raw.githubusercontent.com/SynthGL/ExcelBench/5f71713413c43f3733e303ba8a4eed6a756760cd/fixtures/excel/tier1/05_number_formats.xlsx",
+      "sha256": "62ef153992ab5377eb9617bba503da90cfff41073666c295b4ec9a21b60315ed"
+    },
+    {
+      "path": "BENCHMARK_ROOT/data/excelbench/tier1/09_multiple_sheets.xlsx",
+      "url": "https://raw.githubusercontent.com/SynthGL/ExcelBench/5f71713413c43f3733e303ba8a4eed6a756760cd/fixtures/excel/tier1/09_multiple_sheets.xlsx",
+      "sha256": "30671691d23d24623ec92606926478370823b54df517adcc20e6e42271ded6d6"
+    },
+    {
+      "path": "BENCHMARK_ROOT/data/excelbench/tier2/10_merged_cells.xlsx",
+      "url": "https://raw.githubusercontent.com/SynthGL/ExcelBench/5f71713413c43f3733e303ba8a4eed6a756760cd/fixtures/excel/tier2/10_merged_cells.xlsx",
+      "sha256": "16125122d12ac8789f9f40c73cfa4efe6cf1cc89706e75fcd34eb4a2664f7214"
+    },
+    {
+      "path": "BENCHMARK_ROOT/data/excelbench/tier2/13_hyperlinks.xlsx",
+      "url": "https://raw.githubusercontent.com/SynthGL/ExcelBench/5f71713413c43f3733e303ba8a4eed6a756760cd/fixtures/excel/tier2/13_hyperlinks.xlsx",
+      "sha256": "7e7d75d38230bea5d27571a62bcba423ea241dbbff4208b410d792907df4ad66"
+    },
+    {
+      "path": "BENCHMARK_ROOT/data/excelbench/tier3/19_tables.xlsx",
+      "url": "https://raw.githubusercontent.com/SynthGL/ExcelBench/5f71713413c43f3733e303ba8a4eed6a756760cd/fixtures/excel/tier3/19_tables.xlsx",
+      "sha256": "6d8ba8fd4151582f7ef02a4f623ead2fab74e95a0c470c8febdc119400faeee6"
+    },
+    {
+      "path": "BENCHMARK_ROOT/data/readbench/make_files.py",
+      "url": "https://raw.githubusercontent.com/nazmul284/excel-read-benchmark/d8ddc2b5cfab51d53e196015d7037b1d5f463a8a/bench/make_files.py",
+      "sha256": "a2bba026a023c7cc79fb7ea07a563e28ec28cf424ac54ccb9275eb977bf7c05c"
+    },
+    {
+      "path": "BENCHMARK_ROOT/data/readbench/LICENSE",
+      "url": "https://raw.githubusercontent.com/nazmul284/excel-read-benchmark/d8ddc2b5cfab51d53e196015d7037b1d5f463a8a/LICENSE",
+      "sha256": "04e5aca4388c61c401539ded90b6370134f77490aadd2dc160001297cc86da1c"
+    },
+    {
+      "path": "DOWNLOAD_CACHE/verified400.tar.gz",
+      "sha256": "10ef893dd29cb13ab97143ea787e68cdc9574a13873ab9a54e50b31dc03fc949",
+      "source": "KAKA22/SpreadsheetBench",
+      "revision": "ab0b742b0fc95b946f212d80ac7771b5531272e4"
+    }
+  ]
+}

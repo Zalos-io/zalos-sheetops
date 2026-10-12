@@ -1,0 +1,21 @@
+{
+  "baselineImage": "sha256:ec976c01c332fd687a9227e665f87d8207e4d34526599dcf7c04e9e48b771ea9",
+  "packageCommit": "b0c996bf247fd61990d74dc51fccb96278bcb72e",
+  "typedReaderMode": "typed",
+  "formulaEngineInsideTerminal": null,
+  "inputHashes": {
+    "Dockerfile": "4dcaf41d48a32074ff505eb97526337e6bafa36baed775e21187aa6931a1e152",
+    "wheels/.gitignore": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1",
+    "wheels/zalos_sheetops-0.4.3-py3-none-any.whl": "d3cfb70c84a30abba19c20f2d524e359969c394d5a1e38c41bad8ff2dbf52dd2",
+    "xlsx-scripts/csv_to_xlsx.py": "c92331ed358a8ba762a67b408c594d4c12f19f571087a3605203fb68d8c8ca70",
+    "xlsx-scripts/xlsx_create.py": "29d797b1cdb6a51ed72e13aca5e891fc4d281825344f895719136ab360a4e92f",
+    "xlsx-scripts/xlsx_edit.py": "05e9c12fa66610bf53909691c6852a7ee38216a6ffd018c0e4ac2da173ae6bd4",
+    "xlsx-scripts/xlsx_read.py": "5f8dc99437e4b65d72cac4f99ef25d383b477926d5ae31e0e8aae6fa3266d935",
+    "xlsx-scripts/xlsx_recalc.py": "3080d6c227d8c00e9c2c51329f91e7a4387bc185946ae5d82d52557c059f02dd",
+    "xlsx-scripts/xlsx_restructure.py": "062871f70d1c09d105f4aa4b1d3b420238b2997c8d52d1cfaa8e8cacdb1756db",
+    "xlsx-scripts/xlsx_to_csv.py": "1be6a866b20199e2b42e8937ad2ecfa2055c9877a34dac1b597bfa1d930720ea"
+  },
+  "candidateImage": "sha256:b380e33942719ae7c97165999bcf30a1e96d635c40276d8310fed48869cf01a0",
+  "baselineBuildTag": "zalos-sheetops-benchmark:frozen-baseline-20261009",
+  "candidateSkillSha256": "8468dc7d85236bf806998ea725e31ab25b7c1d3bfc720cc784b721a70e1cef4b"
+}

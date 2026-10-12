@@ -29,7 +29,11 @@ def read_cells(
     include: list[str] | None = None,
     max_cells: int = MAX_CELLS,
     engine: str = "openpyxl",
+    value_mode: str = "raw",
 ) -> dict[str, object]:
+    from zalos_sheetops.io.typed_values import validate_value_mode
+
+    validate_value_mode(value_mode)
     include_fields = _normalize_include(include)
     min_col, min_row, max_col, max_row = _parse_cell_range(cell_range)
     cell_count = (max_row - min_row + 1) * (max_col - min_col + 1)
@@ -46,7 +50,7 @@ def read_cells(
             {"field": "engine", "expected": "auto | xml | openpyxl"},
         )
     if engine in {"auto", "xml"}:
-        return read_cells_xml(path, sheet_name, cell_range, include_fields)
+        return read_cells_xml(path, sheet_name, cell_range, include_fields, value_mode)
 
     formula_workbook = _load_workbook(path, data_only=False)
     value_workbook = None

@@ -1,0 +1,466 @@
+{
+  "schemaVersion": 1,
+  "completedCandidateAttempts": 33,
+  "attemptsWithGuardResponses": 21,
+  "responseCount": 31,
+  "responseStatuses": {
+    "False": 23,
+    "True": 8
+  },
+  "events": [
+    {
+      "task": 45300,
+      "arm": "sheetops",
+      "repeat": 0,
+      "ok": false,
+      "errorCode": "verification_failed",
+      "unrelatedChangeCount": 0,
+      "structureChanges": [
+        "embedded_or_drawing_parts"
+      ],
+      "formulaIssueCount": 4,
+      "formulaReasons": {
+        "evaluation_required": 4
+      },
+      "formulaValidation": "not_evaluated"
+    },
+    {
+      "task": "279-23",
+      "arm": "sheetops",
+      "repeat": 0,
+      "ok": false,
+      "errorCode": "verification_failed",
+      "unrelatedChangeCount": 0,
+      "structureChanges": [
+        "embedded_or_drawing_parts"
+      ],
+      "formulaIssueCount": 10,
+      "formulaReasons": {
+        "evaluation_required": 10
+      },
+      "formulaValidation": "not_evaluated"
+    },
+    {
+      "task": 57590,
+      "arm": "sheetops",
+      "repeat": 0,
+      "ok": false,
+      "errorCode": "verification_failed",
+      "unrelatedChangeCount": 0,
+      "structureChanges": [],
+      "formulaIssueCount": 1,
+      "formulaReasons": {
+        "evaluation_required": 1
+      },
+      "formulaValidation": "not_evaluated"
+    },
+    {
+      "task": "325-44",
+      "arm": "sheetops",
+      "repeat": 0,
+      "ok": false,
+      "errorCode": "verification_failed",
+      "unrelatedChangeCount": 0,
+      "structureChanges": [
+        "embedded_or_drawing_parts",
+        "sheet_structure:Input",
+        "sheet_structure:Output"
+      ],
+      "formulaIssueCount": 0,
+      "formulaReasons": {},
+      "formulaValidation": "not_evaluated"
+    },
+    {
+      "task": "325-44",
+      "arm": "sheetops",
+      "repeat": 0,
+      "ok": true,
+      "errorCode": null,
+      "unrelatedChangeCount": 0,
+      "structureChanges": [],
+      "formulaIssueCount": 0,
+      "formulaReasons": {},
+      "formulaValidation": "not_evaluated"
+    },
+    {
+      "task": 40757,
+      "arm": "sheetops",
+      "repeat": 0,
+      "ok": false,
+      "errorCode": "verification_failed",
+      "unrelatedChangeCount": 0,
+      "structureChanges": [
+        "embedded_or_drawing_parts",
+        "sheet_structure:Sheet1"
+      ],
+      "formulaIssueCount": 2,
+      "formulaReasons": {
+        "evaluation_required": 2
+      },
+      "formulaValidation": "not_evaluated"
+    },
+    {
+      "task": 51680,
+      "arm": "sheetops",
+      "repeat": 0,
+      "ok": false,
+      "errorCode": "verification_failed",
+      "unrelatedChangeCount": 0,
+      "structureChanges": [
+        "embedded_or_drawing_parts",
+        "sheet_structure:Sheet1"
+      ],
+      "formulaIssueCount": 0,
+      "formulaReasons": {},
+      "formulaValidation": "not_evaluated"
+    },
+    {
+      "task": 51680,
+      "arm": "sheetops",
+      "repeat": 0,
+      "ok": true,
+      "errorCode": null,
+      "unrelatedChangeCount": 0,
+      "structureChanges": [],
+      "formulaIssueCount": 0,
+      "formulaReasons": {},
+      "formulaValidation": "not_evaluated"
+    },
+    {
+      "task": "585-41",
+      "arm": "sheetops",
+      "repeat": 0,
+      "ok": true,
+      "errorCode": null,
+      "unrelatedChangeCount": 0,
+      "structureChanges": [],
+      "formulaIssueCount": 0,
+      "formulaReasons": {},
+      "formulaValidation": "not_evaluated"
+    },
+    {
+      "task": 35742,
+      "arm": "sheetops",
+      "repeat": 0,
+      "ok": false,
+      "errorCode": "verification_failed",
+      "unrelatedChangeCount": 0,
+      "structureChanges": [
+        "embedded_or_drawing_parts"
+      ],
+      "formulaIssueCount": 5,
+      "formulaReasons": {
+        "evaluation_required": 5
+      },
+      "formulaValidation": "not_evaluated"
+    },
+    {
+      "task": 35742,
+      "arm": "sheetops",
+      "repeat": 0,
+      "ok": false,
+      "errorCode": "verification_failed",
+      "unrelatedChangeCount": 0,
+      "structureChanges": [],
+      "formulaIssueCount": 5,
+      "formulaReasons": {
+        "evaluation_required": 5
+      },
+      "formulaValidation": "not_evaluated"
+    },
+    {
+      "task": "51-12",
+      "arm": "sheetops",
+      "repeat": 0,
+      "ok": false,
+      "errorCode": "verification_failed",
+      "unrelatedChangeCount": 0,
+      "structureChanges": [
+        "embedded_or_drawing_parts"
+      ],
+      "formulaIssueCount": 3,
+      "formulaReasons": {
+        "missing_function_prefix": 1,
+        "array_storage_required": 1,
+        "evaluation_required": 1
+      },
+      "formulaValidation": "not_evaluated"
+    },
+    {
+      "task": "51-12",
+      "arm": "sheetops",
+      "repeat": 0,
+      "ok": false,
+      "errorCode": "verification_failed",
+      "unrelatedChangeCount": 0,
+      "structureChanges": [],
+      "formulaIssueCount": 2,
+      "formulaReasons": {
+        "missing_function_prefix": 1,
+        "evaluation_required": 1
+      },
+      "formulaValidation": "not_evaluated"
+    },
+    {
+      "task": "262-17",
+      "arm": "sheetops",
+      "repeat": 0,
+      "ok": false,
+      "errorCode": "verification_failed",
+      "unrelatedChangeCount": 0,
+      "structureChanges": [
+        "embedded_or_drawing_parts"
+      ],
+      "formulaIssueCount": 0,
+      "formulaReasons": {},
+      "formulaValidation": "not_evaluated"
+    },
+    {
+      "task": "262-17",
+      "arm": "sheetops",
+      "repeat": 0,
+      "ok": true,
+      "errorCode": null,
+      "unrelatedChangeCount": 0,
+      "structureChanges": [],
+      "formulaIssueCount": 0,
+      "formulaReasons": {},
+      "formulaValidation": "not_evaluated"
+    },
+    {
+      "task": "192-22",
+      "arm": "sheetops",
+      "repeat": 0,
+      "ok": false,
+      "errorCode": "verification_failed",
+      "unrelatedChangeCount": 0,
+      "structureChanges": [
+        "embedded_or_drawing_parts"
+      ],
+      "formulaIssueCount": 70,
+      "formulaReasons": {
+        "evaluation_required": 50
+      },
+      "formulaValidation": "not_evaluated"
+    },
+    {
+      "task": "192-22",
+      "arm": "sheetops",
+      "repeat": 0,
+      "ok": false,
+      "errorCode": "verification_failed",
+      "unrelatedChangeCount": 0,
+      "structureChanges": [],
+      "formulaIssueCount": 70,
+      "formulaReasons": {
+        "evaluation_required": 50
+      },
+      "formulaValidation": "not_evaluated"
+    },
+    {
+      "task": 47827,
+      "arm": "sheetops",
+      "repeat": 0,
+      "ok": false,
+      "errorCode": "verification_failed",
+      "unrelatedChangeCount": 0,
+      "structureChanges": [
+        "sheet_structure:3 straights to 3 boxed"
+      ],
+      "formulaIssueCount": 15,
+      "formulaReasons": {
+        "evaluation_required": 15
+      },
+      "formulaValidation": "not_evaluated"
+    },
+    {
+      "task": 37086,
+      "arm": "sheetops",
+      "repeat": 0,
+      "ok": false,
+      "errorCode": "verification_failed",
+      "unrelatedChangeCount": 0,
+      "structureChanges": [],
+      "formulaIssueCount": 4,
+      "formulaReasons": {
+        "evaluation_required": 4
+      },
+      "formulaValidation": "not_evaluated"
+    },
+    {
+      "task": "531-18",
+      "arm": "sheetops",
+      "repeat": 0,
+      "ok": true,
+      "errorCode": null,
+      "unrelatedChangeCount": 0,
+      "structureChanges": [],
+      "formulaIssueCount": 0,
+      "formulaReasons": {},
+      "formulaValidation": "not_evaluated"
+    },
+    {
+      "task": 48969,
+      "arm": "sheetops",
+      "repeat": 0,
+      "ok": false,
+      "errorCode": "verification_failed",
+      "unrelatedChangeCount": 0,
+      "structureChanges": [
+        "embedded_or_drawing_parts"
+      ],
+      "formulaIssueCount": 15,
+      "formulaReasons": {
+        "evaluation_required": 15
+      },
+      "formulaValidation": "not_evaluated"
+    },
+    {
+      "task": 48975,
+      "arm": "sheetops",
+      "repeat": 0,
+      "ok": false,
+      "errorCode": "verification_failed",
+      "unrelatedChangeCount": 0,
+      "structureChanges": [],
+      "formulaIssueCount": 144,
+      "formulaReasons": {
+        "missing_function_prefix": 17,
+        "array_storage_required": 17,
+        "evaluation_required": 16
+      },
+      "formulaValidation": "not_evaluated"
+    },
+    {
+      "task": 52220,
+      "arm": "sheetops",
+      "repeat": 0,
+      "ok": false,
+      "errorCode": "verification_failed",
+      "unrelatedChangeCount": 0,
+      "structureChanges": [
+        "embedded_or_drawing_parts",
+        "sheet_structure:Sheet1"
+      ],
+      "formulaIssueCount": 1,
+      "formulaReasons": {
+        "evaluation_required": 1
+      },
+      "formulaValidation": "not_evaluated"
+    },
+    {
+      "task": 52220,
+      "arm": "sheetops",
+      "repeat": 0,
+      "ok": false,
+      "errorCode": "verification_failed",
+      "unrelatedChangeCount": 0,
+      "structureChanges": [
+        "embedded_or_drawing_parts",
+        "sheet_structure:Sheet1"
+      ],
+      "formulaIssueCount": 1,
+      "formulaReasons": {
+        "evaluation_required": 1
+      },
+      "formulaValidation": "not_evaluated"
+    },
+    {
+      "task": "230-16",
+      "arm": "sheetops",
+      "repeat": 0,
+      "ok": true,
+      "errorCode": null,
+      "unrelatedChangeCount": 0,
+      "structureChanges": [],
+      "formulaIssueCount": 0,
+      "formulaReasons": {},
+      "formulaValidation": "not_evaluated"
+    },
+    {
+      "task": 50682,
+      "arm": "sheetops",
+      "repeat": 0,
+      "ok": false,
+      "errorCode": "verification_failed",
+      "unrelatedChangeCount": 0,
+      "structureChanges": [
+        "sheet_structure:PART LIST (2)"
+      ],
+      "formulaIssueCount": 1,
+      "formulaReasons": {
+        "evaluation_required": 1
+      },
+      "formulaValidation": "not_evaluated"
+    },
+    {
+      "task": 50682,
+      "arm": "sheetops",
+      "repeat": 0,
+      "ok": false,
+      "errorCode": "verification_failed",
+      "unrelatedChangeCount": 0,
+      "structureChanges": [
+        "sheet_structure:PART LIST (2)"
+      ],
+      "formulaIssueCount": 1,
+      "formulaReasons": {
+        "evaluation_required": 1
+      },
+      "formulaValidation": "not_evaluated"
+    },
+    {
+      "task": "120-24",
+      "arm": "sheetops",
+      "repeat": 0,
+      "ok": true,
+      "errorCode": null,
+      "unrelatedChangeCount": 0,
+      "structureChanges": [],
+      "formulaIssueCount": 0,
+      "formulaReasons": {},
+      "formulaValidation": "not_evaluated"
+    },
+    {
+      "task": "547-18",
+      "arm": "sheetops",
+      "repeat": 0,
+      "ok": false,
+      "errorCode": "verification_failed",
+      "unrelatedChangeCount": 2,
+      "structureChanges": [
+        "sheet_structure:summary Limits"
+      ],
+      "formulaIssueCount": 0,
+      "formulaReasons": {},
+      "formulaValidation": "not_evaluated"
+    },
+    {
+      "task": "547-18",
+      "arm": "sheetops",
+      "repeat": 0,
+      "ok": false,
+      "errorCode": "verification_failed",
+      "unrelatedChangeCount": 0,
+      "structureChanges": [
+        "sheet_structure:summary Limits"
+      ],
+      "formulaIssueCount": 0,
+      "formulaReasons": {},
+      "formulaValidation": "not_evaluated"
+    },
+    {
+      "task": "547-18",
+      "arm": "sheetops",
+      "repeat": 0,
+      "ok": true,
+      "errorCode": null,
+      "unrelatedChangeCount": 0,
+      "structureChanges": [],
+      "formulaIssueCount": 0,
+      "formulaReasons": {},
+      "formulaValidation": "not_evaluated"
+    }
+  ],
+  "scope": "Observed JSON guard responses; declared ranges must match user intent. A passing response is not bound to the final artifact and does not prove expected answer values."
+}

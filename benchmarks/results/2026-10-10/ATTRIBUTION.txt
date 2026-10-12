@@ -1,0 +1,7 @@
+Benchmark code is licensed under the repository MIT license. Tasks, task-derived workbooks, and this results directory are shared under CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/ .
+
+KAKA22/SpreadsheetBench Verified-400 dataset, revision ab0b742b0fc95b946f212d80ac7771b5531272e4. https://huggingface.co/datasets/KAKA22/SpreadsheetBench/tree/ab0b742b0fc95b946f212d80ac7771b5531272e4 . Original tasks and golden workbooks are attributed to this public dataset. Zalos agents modified the public inputs; task paths in the failure archive were adjusted for reproduction. New grading rubrics and measurements are Zalos's, not official leaderboard results.
+
+Selected SynthGL/ExcelBench workbooks, MIT, revision 5f71713413c43f3733e303ba8a4eed6a756760cd. https://github.com/SynthGL/ExcelBench/tree/5f71713413c43f3733e303ba8a4eed6a756760cd . The mixed-column generator is adapted from nazmul284/excel-read-benchmark, MIT, revision d8ddc2b5cfab51d53e196015d7037b1d5f463a8a. https://github.com/nazmul284/excel-read-benchmark/tree/d8ddc2b5cfab51d53e196015d7037b1d5f463a8a . Their MIT license texts accompany this directory.
+
+Local filesystem prefixes in metadata were replaced with placeholders and account/session IDs were removed. Private finance workbooks and raw model logs are not included.

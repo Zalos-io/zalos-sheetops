@@ -1,0 +1,3558 @@
+{
+  "schemaVersion": 1,
+  "before": {
+    "attemptCount": 60,
+    "completePairCount": 30,
+    "scorablePairCount": 30,
+    "correctPairCount": 17,
+    "arms": {
+      "baseline": {
+        "attempts": 30,
+        "scorableAttempts": 30,
+        "unscorableAttempts": 0,
+        "statusCounts": {
+          "pass": 20,
+          "timeout": 3,
+          "invalid_output": 1,
+          "incorrect": 6
+        },
+        "totalSecondsAllAttempts": 1986.0052944207564,
+        "totalMainTokens": 3807264,
+        "totalObservedToolCalls": 178,
+        "sheetopsAdoption": {
+          "tasksWithResponses": 0,
+          "successfulResponses": 0,
+          "failedResponses": 0,
+          "commandCounts": {},
+          "errorCounts": {},
+          "scope": "observed JSON command responses; Python API use is not counted"
+        },
+        "costAvailable": false,
+        "estimatedCostUsd": null,
+        "tokenRecordsAvailable": 27,
+        "tokenRecordsMissing": 3,
+        "preservationFailedAttempts": 2
+      },
+      "sheetops": {
+        "attempts": 30,
+        "scorableAttempts": 30,
+        "unscorableAttempts": 0,
+        "statusCounts": {
+          "incorrect": 8,
+          "pass": 20,
+          "timeout": 1,
+          "invalid_output": 1
+        },
+        "totalSecondsAllAttempts": 1710.9231230851728,
+        "totalMainTokens": 3901148,
+        "totalObservedToolCalls": 193,
+        "sheetopsAdoption": {
+          "tasksWithResponses": 30,
+          "successfulResponses": 53,
+          "failedResponses": 4,
+          "commandCounts": {
+            "inspect": 30,
+            "cells read": 25,
+            "read-table": 1,
+            "formulas scan": 1
+          },
+          "errorCounts": {
+            "invalid_field": 2,
+            "invalid_sheet": 1,
+            "invalid_header_strategy": 1
+          },
+          "scope": "observed JSON command responses; Python API use is not counted"
+        },
+        "costAvailable": false,
+        "estimatedCostUsd": null,
+        "tokenRecordsAvailable": 29,
+        "tokenRecordsMissing": 1,
+        "preservationFailedAttempts": 4
+      }
+    },
+    "medianPairedSpeedup": 1.0120468782449978,
+    "speedComparisonScope": "only pairs where both arms pass; selection bias remains",
+    "attribution": "package plus skill configuration; not package-only or Electron UI",
+    "allAttemptCount": 66,
+    "predeclaredExcludedTaskIds": [
+      "168-17",
+      "395-36",
+      "402-43"
+    ]
+  },
+  "after": {
+    "attemptCount": 60,
+    "completePairCount": 30,
+    "scorablePairCount": 30,
+    "correctPairCount": 11,
+    "arms": {
+      "baseline": {
+        "attempts": 30,
+        "scorableAttempts": 30,
+        "unscorableAttempts": 0,
+        "statusCounts": {
+          "incorrect": 12,
+          "timeout": 3,
+          "pass": 15
+        },
+        "totalSecondsAllAttempts": 2273.3401260816026,
+        "totalMainTokens": 4104532,
+        "totalObservedToolCalls": 181,
+        "sheetopsAdoption": {
+          "tasksWithResponses": 0,
+          "successfulResponses": 0,
+          "failedResponses": 0,
+          "commandCounts": {},
+          "errorCounts": {},
+          "scope": "observed JSON command responses; Python API use is not counted"
+        },
+        "costAvailable": false,
+        "estimatedCostUsd": null,
+        "tokenRecordsAvailable": 27,
+        "tokenRecordsMissing": 3,
+        "preservationFailedAttempts": 5
+      },
+      "sheetops": {
+        "attempts": 30,
+        "scorableAttempts": 30,
+        "unscorableAttempts": 0,
+        "statusCounts": {
+          "incorrect": 13,
+          "pass": 14,
+          "timeout": 3
+        },
+        "totalSecondsAllAttempts": 2185.245072253747,
+        "totalMainTokens": 5833548,
+        "totalObservedToolCalls": 304,
+        "sheetopsAdoption": {
+          "tasksWithResponses": 30,
+          "successfulResponses": 88,
+          "failedResponses": 27,
+          "commandCounts": {
+            "inspect": 30,
+            "cells read": 49,
+            "verify-edits": 31,
+            "formulas scan": 5
+          },
+          "errorCounts": {
+            "verification_failed": 23,
+            "invalid_sheet": 2,
+            "invalid_field": 1,
+            "file_not_found": 1
+          },
+          "scope": "observed JSON command responses; Python API use is not counted"
+        },
+        "costAvailable": false,
+        "estimatedCostUsd": null,
+        "tokenRecordsAvailable": 27,
+        "tokenRecordsMissing": 3,
+        "preservationFailedAttempts": 4
+      }
+    },
+    "medianPairedSpeedup": 0.8491179828087961,
+    "speedComparisonScope": "only pairs where both arms pass; selection bias remains",
+    "attribution": "package plus skill configuration; not package-only or Electron UI",
+    "allAttemptCount": 66,
+    "predeclaredExcludedTaskIds": [
+      "168-17",
+      "395-36",
+      "402-43"
+    ]
+  },
+  "afterLibreOfficeSecondary": {
+    "attemptCount": 60,
+    "completePairCount": 30,
+    "scorablePairCount": 30,
+    "correctPairCount": 10,
+    "arms": {
+      "baseline": {
+        "attempts": 30,
+        "scorableAttempts": 30,
+        "unscorableAttempts": 0,
+        "statusCounts": {
+          "pass": 15,
+          "timeout": 3,
+          "incorrect": 12
+        },
+        "totalSecondsAllAttempts": 2273.3401260816026,
+        "totalMainTokens": 4104532,
+        "totalObservedToolCalls": 181,
+        "sheetopsAdoption": {
+          "tasksWithResponses": 0,
+          "successfulResponses": 0,
+          "failedResponses": 0,
+          "commandCounts": {},
+          "errorCounts": {},
+          "scope": "observed JSON command responses; Python API use is not counted"
+        },
+        "costAvailable": false,
+        "estimatedCostUsd": null,
+        "tokenRecordsAvailable": 27,
+        "tokenRecordsMissing": 3,
+        "preservationFailedAttempts": 5
+      },
+      "sheetops": {
+        "attempts": 30,
+        "scorableAttempts": 30,
+        "unscorableAttempts": 0,
+        "statusCounts": {
+          "pass": 14,
+          "incorrect": 13,
+          "timeout": 3
+        },
+        "totalSecondsAllAttempts": 2185.245072253747,
+        "totalMainTokens": 5833548,
+        "totalObservedToolCalls": 304,
+        "sheetopsAdoption": {
+          "tasksWithResponses": 30,
+          "successfulResponses": 88,
+          "failedResponses": 27,
+          "commandCounts": {
+            "inspect": 30,
+            "cells read": 49,
+            "verify-edits": 31,
+            "formulas scan": 5
+          },
+          "errorCounts": {
+            "verification_failed": 23,
+            "invalid_sheet": 2,
+            "invalid_field": 1,
+            "file_not_found": 1
+          },
+          "scope": "observed JSON command responses; Python API use is not counted"
+        },
+        "costAvailable": false,
+        "estimatedCostUsd": null,
+        "tokenRecordsAvailable": 27,
+        "tokenRecordsMissing": 3,
+        "preservationFailedAttempts": 5
+      }
+    },
+    "medianPairedSpeedup": 0.8797839474048542,
+    "speedComparisonScope": "only pairs where both arms pass; selection bias remains",
+    "attribution": "package plus skill configuration; not package-only or Electron UI",
+    "allAttemptCount": 66,
+    "predeclaredExcludedTaskIds": [
+      "168-17",
+      "395-36",
+      "402-43"
+    ]
+  },
+  "nativeEvaluationCompletion": {
+    "status": "complete",
+    "unprocessedCount": 0,
+    "rejectedOutputCount": 3,
+    "savedActualFormulaOutputs": 30,
+    "auditPendingCountMeaning": "Outputs not ready for value grading; all three have observed native rejections, not pending UI actions."
+  },
+  "reader": {
+    "schemaVersion": 1,
+    "measurementCountBefore": 480,
+    "measurementCountAfter": 480,
+    "controlsVerified": [
+      "same cases/inputs/source manifest",
+      "same seed/order/repeats/limits",
+      "same runner/worker/scoring/fixtures",
+      "same reader dependency versions except SheetOps"
+    ],
+    "intentionalChanges": [
+      "SheetOps 0.4.2 → 0.4.3",
+      "SheetOps API/CLI adapters explicitly request typed values; raw mode remains supported"
+    ],
+    "statusBefore": {
+      "openpyxl": {
+        "pass": 96
+      },
+      "sheetops-api": {
+        "incorrect": 42,
+        "pass": 54
+      },
+      "sheetops-cli": {
+        "incorrect": 42,
+        "pass": 54
+      },
+      "calamine": {
+        "pass": 63,
+        "unsupported": 33
+      },
+      "fastexcel": {
+        "pass": 63,
+        "unsupported": 33
+      }
+    },
+    "statusAfter": {
+      "openpyxl": {
+        "pass": 96
+      },
+      "sheetops-api": {
+        "pass": 96
+      },
+      "sheetops-cli": {
+        "pass": 96
+      },
+      "calamine": {
+        "pass": 63,
+        "unsupported": 33
+      },
+      "fastexcel": {
+        "pass": 63,
+        "unsupported": 33
+      }
+    },
+    "summariesBefore": [
+      {
+        "case": "100000-cells-end",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.5568682081066072,
+        "minSeconds": 0.5548985830973834,
+        "maxSeconds": 0.5718121251557022
+      },
+      {
+        "case": "100000-cells-end",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.3676868339534849,
+        "minSeconds": 0.35572045808658004,
+        "maxSeconds": 0.373122249962762
+      },
+      {
+        "case": "100000-cells-end",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 3.0005215839482844,
+        "minSeconds": 2.958886417094618,
+        "maxSeconds": 3.079823666019365
+      },
+      {
+        "case": "100000-cells-end",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "100000-cells-end",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "100000-cells-middle",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.552823208970949,
+        "minSeconds": 0.5517637499142438,
+        "maxSeconds": 0.5559962501283735
+      },
+      {
+        "case": "100000-cells-middle",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.3559733750298619,
+        "minSeconds": 0.3497706667985767,
+        "maxSeconds": 0.36175420810468495
+      },
+      {
+        "case": "100000-cells-middle",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 1.5061357500962913,
+        "minSeconds": 1.4930822500027716,
+        "maxSeconds": 1.5315603748895228
+      },
+      {
+        "case": "100000-cells-middle",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "100000-cells-middle",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "100000-cells-start",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.5526387910358608,
+        "minSeconds": 0.5494504580274224,
+        "maxSeconds": 0.5544094999786466
+      },
+      {
+        "case": "100000-cells-start",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.36050487495958805,
+        "minSeconds": 0.35684770811349154,
+        "maxSeconds": 0.36178287491202354
+      },
+      {
+        "case": "100000-cells-start",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.0655475000385195,
+        "minSeconds": 0.06486487505026162,
+        "maxSeconds": 0.06933224992826581
+      },
+      {
+        "case": "100000-cells-start",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "100000-cells-start",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "100000-scalar-cells-end",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.5692149579990655,
+        "minSeconds": 0.5647891249973327,
+        "maxSeconds": 0.5694248341023922
+      },
+      {
+        "case": "100000-scalar-cells-end",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.3622732921503484,
+        "minSeconds": 0.3620315419975668,
+        "maxSeconds": 0.36990870791487396
+      },
+      {
+        "case": "100000-scalar-cells-end",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 2.9872443340718746,
+        "minSeconds": 2.9751047908794135,
+        "maxSeconds": 3.0038615420926362
+      },
+      {
+        "case": "100000-scalar-cells-end",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 1.3268294169101864,
+        "minSeconds": 1.32418187498115,
+        "maxSeconds": 1.353516667149961
+      },
+      {
+        "case": "100000-scalar-cells-end",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 1.3473984580487013,
+        "minSeconds": 1.3422883751336485,
+        "maxSeconds": 1.4043729580007493
+      },
+      {
+        "case": "100000-scalar-cells-middle",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.5504383330699056,
+        "minSeconds": 0.5493521669413894,
+        "maxSeconds": 0.5528980419039726
+      },
+      {
+        "case": "100000-scalar-cells-middle",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.36745137511752546,
+        "minSeconds": 0.35617429087869823,
+        "maxSeconds": 0.3714922908693552
+      },
+      {
+        "case": "100000-scalar-cells-middle",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 1.5019249999895692,
+        "minSeconds": 1.4974893750622869,
+        "maxSeconds": 1.5156253341119736
+      },
+      {
+        "case": "100000-scalar-cells-middle",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.7039241248276085,
+        "minSeconds": 0.695930290967226,
+        "maxSeconds": 0.7103182079736143
+      },
+      {
+        "case": "100000-scalar-cells-middle",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.7228554170578718,
+        "minSeconds": 0.7199325000401586,
+        "maxSeconds": 0.7235003339592367
+      },
+      {
+        "case": "100000-scalar-cells-start",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.5499147921800613,
+        "minSeconds": 0.5495711250696331,
+        "maxSeconds": 0.5547414999455214
+      },
+      {
+        "case": "100000-scalar-cells-start",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.3548485829960555,
+        "minSeconds": 0.35271558398380876,
+        "maxSeconds": 0.35897812503390014
+      },
+      {
+        "case": "100000-scalar-cells-start",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06591808400116861,
+        "minSeconds": 0.06588141620159149,
+        "maxSeconds": 0.0683610001578927
+      },
+      {
+        "case": "100000-scalar-cells-start",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.07056466699577868,
+        "minSeconds": 0.07022137497551739,
+        "maxSeconds": 0.07159437495283782
+      },
+      {
+        "case": "100000-scalar-cells-start",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.09619358298368752,
+        "minSeconds": 0.093706666957587,
+        "maxSeconds": 0.09669212508015335
+      },
+      {
+        "case": "100000-table",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 1.1719531249254942,
+        "minSeconds": 1.166105458047241,
+        "maxSeconds": 1.1973882089369
+      },
+      {
+        "case": "100000-table",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 1.1320416668895632,
+        "minSeconds": 1.1255507920868695,
+        "maxSeconds": 1.1389502910897136
+      },
+      {
+        "case": "100000-table",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 3.601233416935429,
+        "minSeconds": 3.547456042142585,
+        "maxSeconds": 3.6961572079453617
+      },
+      {
+        "case": "100000-table",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "100000-table",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "25000-cells-end",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.18709854199551046,
+        "minSeconds": 0.1852127080783248,
+        "maxSeconds": 0.1919520830269903
+      },
+      {
+        "case": "25000-cells-end",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.16082045808434486,
+        "minSeconds": 0.15909795905463398,
+        "maxSeconds": 0.16653379192575812
+      },
+      {
+        "case": "25000-cells-end",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.7893256670795381,
+        "minSeconds": 0.7815375828649849,
+        "maxSeconds": 0.792885374976322
+      },
+      {
+        "case": "25000-cells-end",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "25000-cells-end",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "25000-cells-middle",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.18483283300884068,
+        "minSeconds": 0.1840960830450058,
+        "maxSeconds": 0.1924128329847008
+      },
+      {
+        "case": "25000-cells-middle",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.16001729108393192,
+        "minSeconds": 0.1576352920383215,
+        "maxSeconds": 0.1638233750127256
+      },
+      {
+        "case": "25000-cells-middle",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.42886275006458163,
+        "minSeconds": 0.42196883307769895,
+        "maxSeconds": 0.4327442089561373
+      },
+      {
+        "case": "25000-cells-middle",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "25000-cells-middle",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "25000-cells-start",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.18437841697596014,
+        "minSeconds": 0.1841860411223024,
+        "maxSeconds": 0.18549662502482533
+      },
+      {
+        "case": "25000-cells-start",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.1607791248243302,
+        "minSeconds": 0.15648687491193414,
+        "maxSeconds": 0.16082499991171062
+      },
+      {
+        "case": "25000-cells-start",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06655320804566145,
+        "minSeconds": 0.06445674994029105,
+        "maxSeconds": 0.06983095803298056
+      },
+      {
+        "case": "25000-cells-start",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "25000-cells-start",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "25000-scalar-cells-end",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.18673595902509987,
+        "minSeconds": 0.18511316692456603,
+        "maxSeconds": 0.1870810000691563
+      },
+      {
+        "case": "25000-scalar-cells-end",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.15935804205946624,
+        "minSeconds": 0.15886566694825888,
+        "maxSeconds": 0.15937074995599687
+      },
+      {
+        "case": "25000-scalar-cells-end",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.7909844589885324,
+        "minSeconds": 0.7876983750611544,
+        "maxSeconds": 0.7990286250133067
+      },
+      {
+        "case": "25000-scalar-cells-end",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.38346699997782707,
+        "minSeconds": 0.3742996249347925,
+        "maxSeconds": 0.38774212496355176
+      },
+      {
+        "case": "25000-scalar-cells-end",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.40613549994304776,
+        "minSeconds": 0.40410795784555376,
+        "maxSeconds": 0.41439412510953844
+      },
+      {
+        "case": "25000-scalar-cells-middle",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.1838152501732111,
+        "minSeconds": 0.18342220783233643,
+        "maxSeconds": 0.1860651250462979
+      },
+      {
+        "case": "25000-scalar-cells-middle",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.15792187512852252,
+        "minSeconds": 0.15690979082137346,
+        "maxSeconds": 0.16090020909905434
+      },
+      {
+        "case": "25000-scalar-cells-middle",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.42230558302253485,
+        "minSeconds": 0.41846612514927983,
+        "maxSeconds": 0.4293882080819458
+      },
+      {
+        "case": "25000-scalar-cells-middle",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.22407112503424287,
+        "minSeconds": 0.2223657921422273,
+        "maxSeconds": 0.22616754216142
+      },
+      {
+        "case": "25000-scalar-cells-middle",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.25110900006257,
+        "minSeconds": 0.24861208396032453,
+        "maxSeconds": 0.25536491721868515
+      },
+      {
+        "case": "25000-scalar-cells-start",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.18574362504296005,
+        "minSeconds": 0.18486045789904892,
+        "maxSeconds": 0.18692741612903774
+      },
+      {
+        "case": "25000-scalar-cells-start",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.1596915409900248,
+        "minSeconds": 0.15898970910347998,
+        "maxSeconds": 0.16170029086060822
+      },
+      {
+        "case": "25000-scalar-cells-start",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06484437501057982,
+        "minSeconds": 0.06430066702887416,
+        "maxSeconds": 0.06527762510813773
+      },
+      {
+        "case": "25000-scalar-cells-start",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.07133525004610419,
+        "minSeconds": 0.07078220881521702,
+        "maxSeconds": 0.07186783314682543
+      },
+      {
+        "case": "25000-scalar-cells-start",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.09774758410640061,
+        "minSeconds": 0.09643166605383158,
+        "maxSeconds": 0.0999295839574188
+      },
+      {
+        "case": "25000-table",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.3080917908810079,
+        "minSeconds": 0.30618579196743667,
+        "maxSeconds": 0.30960020795464516
+      },
+      {
+        "case": "25000-table",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.31808470794931054,
+        "minSeconds": 0.31744270911440253,
+        "maxSeconds": 0.3238187918905169
+      },
+      {
+        "case": "25000-table",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.9407905419357121,
+        "minSeconds": 0.9312926658894867,
+        "maxSeconds": 0.98316670791246
+      },
+      {
+        "case": "25000-table",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "25000-table",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "400000-cells-end",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 2.0745767077896744,
+        "minSeconds": 2.062670457875356,
+        "maxSeconds": 2.0860602918546647
+      },
+      {
+        "case": "400000-cells-end",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 1.1780063749756664,
+        "minSeconds": 1.168915665941313,
+        "maxSeconds": 1.1782563750166446
+      },
+      {
+        "case": "400000-cells-end",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 11.980314749991521,
+        "minSeconds": 11.810795292025432,
+        "maxSeconds": 12.138723667012528
+      },
+      {
+        "case": "400000-cells-end",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "400000-cells-end",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "400000-cells-middle",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 2.0898768750485033,
+        "minSeconds": 2.077041083946824,
+        "maxSeconds": 2.2478697921615094
+      },
+      {
+        "case": "400000-cells-middle",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 1.2010087920352817,
+        "minSeconds": 1.173064332921058,
+        "maxSeconds": 1.3106737909838557
+      },
+      {
+        "case": "400000-cells-middle",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 6.128354208078235,
+        "minSeconds": 6.111620167037472,
+        "maxSeconds": 6.190991583047435
+      },
+      {
+        "case": "400000-cells-middle",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "400000-cells-middle",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "400000-cells-start",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 2.0677059169393033,
+        "minSeconds": 2.06485941587016,
+        "maxSeconds": 2.0893128749448806
+      },
+      {
+        "case": "400000-cells-start",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 1.1764569159131497,
+        "minSeconds": 1.1633075829595327,
+        "maxSeconds": 1.180749624967575
+      },
+      {
+        "case": "400000-cells-start",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06714816694147885,
+        "minSeconds": 0.06663466710597277,
+        "maxSeconds": 0.06888995901681483
+      },
+      {
+        "case": "400000-cells-start",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "400000-cells-start",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "400000-scalar-cells-end",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 2.0785960420034826,
+        "minSeconds": 2.0751405840273947,
+        "maxSeconds": 2.1554102499503642
+      },
+      {
+        "case": "400000-scalar-cells-end",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 1.2559388331137598,
+        "minSeconds": 1.2534211250022054,
+        "maxSeconds": 1.286056499928236
+      },
+      {
+        "case": "400000-scalar-cells-end",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 12.060093458043411,
+        "minSeconds": 12.003331917105243,
+        "maxSeconds": 12.152913917088881
+      },
+      {
+        "case": "400000-scalar-cells-end",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 5.200270917033777,
+        "minSeconds": 5.155995916109532,
+        "maxSeconds": 5.208501874934882
+      },
+      {
+        "case": "400000-scalar-cells-end",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 5.111597458133474,
+        "minSeconds": 5.103318584151566,
+        "maxSeconds": 5.1478209579363465
+      },
+      {
+        "case": "400000-scalar-cells-middle",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 2.0832417921628803,
+        "minSeconds": 2.067774875089526,
+        "maxSeconds": 2.0865965420380235
+      },
+      {
+        "case": "400000-scalar-cells-middle",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 1.1693482911214232,
+        "minSeconds": 1.1667921668849885,
+        "maxSeconds": 1.192058457992971
+      },
+      {
+        "case": "400000-scalar-cells-middle",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 5.923112165881321,
+        "minSeconds": 5.9153162920847535,
+        "maxSeconds": 5.987119125202298
+      },
+      {
+        "case": "400000-scalar-cells-middle",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 2.60634604212828,
+        "minSeconds": 2.571269833948463,
+        "maxSeconds": 2.6192747079767287
+      },
+      {
+        "case": "400000-scalar-cells-middle",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 2.646778916940093,
+        "minSeconds": 2.611562249949202,
+        "maxSeconds": 2.6681737911421806
+      },
+      {
+        "case": "400000-scalar-cells-start",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 2.103787041036412,
+        "minSeconds": 2.085837292019278,
+        "maxSeconds": 2.109826917061582
+      },
+      {
+        "case": "400000-scalar-cells-start",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 1.1677583330310881,
+        "minSeconds": 1.166569875087589,
+        "maxSeconds": 1.1770719999913126
+      },
+      {
+        "case": "400000-scalar-cells-start",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06766808405518532,
+        "minSeconds": 0.06613983307033777,
+        "maxSeconds": 0.06896237493492663
+      },
+      {
+        "case": "400000-scalar-cells-start",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.07506529102101922,
+        "minSeconds": 0.07235495815984905,
+        "maxSeconds": 0.07723620813339949
+      },
+      {
+        "case": "400000-scalar-cells-start",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.10215741698630154,
+        "minSeconds": 0.10085166594944894,
+        "maxSeconds": 0.10473966691643
+      },
+      {
+        "case": "400000-table",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 4.651321709156036,
+        "minSeconds": 4.63842595811002,
+        "maxSeconds": 4.674973041983321
+      },
+      {
+        "case": "400000-table",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 4.662282916950062,
+        "minSeconds": 4.639103458030149,
+        "maxSeconds": 4.797913833055645
+      },
+      {
+        "case": "400000-table",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 14.36098475009203,
+        "minSeconds": 14.250799250090495,
+        "maxSeconds": 14.941256874939427
+      },
+      {
+        "case": "400000-table",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "400000-table",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-cell_values-cell_values",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-cell_values-cell_values",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-cell_values-cell_values",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06492070900276303,
+        "minSeconds": 0.06472791614942253,
+        "maxSeconds": 0.07443408318795264
+      },
+      {
+        "case": "fidelity-cell_values-cell_values",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-cell_values-cell_values",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-formulas-References",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-formulas-References",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-formulas-References",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06665024999529123,
+        "minSeconds": 0.06372904195450246,
+        "maxSeconds": 0.07123612496070564
+      },
+      {
+        "case": "fidelity-formulas-References",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.0649930420331657,
+        "minSeconds": 0.06334599992260337,
+        "maxSeconds": 0.07059079105965793
+      },
+      {
+        "case": "fidelity-formulas-References",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.09128945786505938,
+        "minSeconds": 0.08821487496607006,
+        "maxSeconds": 0.09712783410213888
+      },
+      {
+        "case": "fidelity-formulas-formulas",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-formulas-formulas",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-formulas-formulas",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06842741696164012,
+        "minSeconds": 0.0655598328448832,
+        "maxSeconds": 0.07145945890806615
+      },
+      {
+        "case": "fidelity-formulas-formulas",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06766308308579028,
+        "minSeconds": 0.06507008383050561,
+        "maxSeconds": 0.07130966591648757
+      },
+      {
+        "case": "fidelity-formulas-formulas",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.09226654097437859,
+        "minSeconds": 0.08823945792391896,
+        "maxSeconds": 0.09976270818151534
+      },
+      {
+        "case": "fidelity-hyperlinks-Targets",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-hyperlinks-Targets",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-hyperlinks-Targets",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06396179087460041,
+        "minSeconds": 0.0631581658963114,
+        "maxSeconds": 0.08691704110242426
+      },
+      {
+        "case": "fidelity-hyperlinks-Targets",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06442595785483718,
+        "minSeconds": 0.06428858288563788,
+        "maxSeconds": 0.072126290993765
+      },
+      {
+        "case": "fidelity-hyperlinks-Targets",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.08741345792077482,
+        "minSeconds": 0.08719783299602568,
+        "maxSeconds": 0.09820024995133281
+      },
+      {
+        "case": "fidelity-hyperlinks-hyperlinks",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-hyperlinks-hyperlinks",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-hyperlinks-hyperlinks",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06890195794403553,
+        "minSeconds": 0.06291891704313457,
+        "maxSeconds": 0.07562212483026087
+      },
+      {
+        "case": "fidelity-hyperlinks-hyperlinks",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06304808310233057,
+        "minSeconds": 0.06223370786756277,
+        "maxSeconds": 0.07765695918351412
+      },
+      {
+        "case": "fidelity-hyperlinks-hyperlinks",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.09381712507456541,
+        "minSeconds": 0.09255645796656609,
+        "maxSeconds": 0.10297795780934393
+      },
+      {
+        "case": "fidelity-merged_cells-merged_cells",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-merged_cells-merged_cells",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-merged_cells-merged_cells",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06400600005872548,
+        "minSeconds": 0.06296550016850233,
+        "maxSeconds": 0.11730000004172325
+      },
+      {
+        "case": "fidelity-merged_cells-merged_cells",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06309516704641283,
+        "minSeconds": 0.06305891601368785,
+        "maxSeconds": 0.07713100011460483
+      },
+      {
+        "case": "fidelity-merged_cells-merged_cells",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.10117487516254187,
+        "minSeconds": 0.08539675013162196,
+        "maxSeconds": 0.13617233303375542
+      },
+      {
+        "case": "fidelity-multiple_sheets-Alpha",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-multiple_sheets-Alpha",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-multiple_sheets-Alpha",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.07194745913147926,
+        "minSeconds": 0.07141662482172251,
+        "maxSeconds": 0.07631345791742206
+      },
+      {
+        "case": "fidelity-multiple_sheets-Alpha",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06870437506586313,
+        "minSeconds": 0.06754387496039271,
+        "maxSeconds": 0.07744375010952353
+      },
+      {
+        "case": "fidelity-multiple_sheets-Alpha",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.09753083321265876,
+        "minSeconds": 0.09059612499549985,
+        "maxSeconds": 0.0980352908372879
+      },
+      {
+        "case": "fidelity-multiple_sheets-Beta",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-multiple_sheets-Beta",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-multiple_sheets-Beta",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06670083291828632,
+        "minSeconds": 0.06341295805759728,
+        "maxSeconds": 0.06848750007338822
+      },
+      {
+        "case": "fidelity-multiple_sheets-Beta",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06666937517002225,
+        "minSeconds": 0.0665981660131365,
+        "maxSeconds": 0.0684724161401391
+      },
+      {
+        "case": "fidelity-multiple_sheets-Beta",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.08948812494054437,
+        "minSeconds": 0.08710637502372265,
+        "maxSeconds": 0.09082383406348526
+      },
+      {
+        "case": "fidelity-multiple_sheets-Gamma",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-multiple_sheets-Gamma",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-multiple_sheets-Gamma",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06334620900452137,
+        "minSeconds": 0.0625830830540508,
+        "maxSeconds": 0.06452624988742173
+      },
+      {
+        "case": "fidelity-multiple_sheets-Gamma",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.0622191249858588,
+        "minSeconds": 0.06174787483178079,
+        "maxSeconds": 0.062474041944369674
+      },
+      {
+        "case": "fidelity-multiple_sheets-Gamma",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.08649387490004301,
+        "minSeconds": 0.08601216692477465,
+        "maxSeconds": 0.08749391697347164
+      },
+      {
+        "case": "fidelity-number_formats-number_formats",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-number_formats-number_formats",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-number_formats-number_formats",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.0742819169536233,
+        "minSeconds": 0.07016354193910956,
+        "maxSeconds": 0.08720774995163083
+      },
+      {
+        "case": "fidelity-number_formats-number_formats",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-number_formats-number_formats",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-tables-tables",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-tables-tables",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-tables-tables",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.0632255410309881,
+        "minSeconds": 0.06311700004152954,
+        "maxSeconds": 0.06420024996623397
+      },
+      {
+        "case": "fidelity-tables-tables",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06564845819957554,
+        "minSeconds": 0.06323750014416873,
+        "maxSeconds": 0.07046629185788333
+      },
+      {
+        "case": "fidelity-tables-tables",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.08927166601642966,
+        "minSeconds": 0.08908962504938245,
+        "maxSeconds": 0.1008578750770539
+      }
+    ],
+    "summariesAfter": [
+      {
+        "case": "100000-cells-end",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.5919809581246227,
+        "minSeconds": 0.5709108749870211,
+        "maxSeconds": 0.6060757080558687
+      },
+      {
+        "case": "100000-cells-end",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.36224895901978016,
+        "minSeconds": 0.3608547910116613,
+        "maxSeconds": 0.364689625101164
+      },
+      {
+        "case": "100000-cells-end",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 2.9082413332071155,
+        "minSeconds": 2.9034627499058843,
+        "maxSeconds": 3.0355775419157
+      },
+      {
+        "case": "100000-cells-end",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 1.306869958061725,
+        "minSeconds": 1.2963949160184711,
+        "maxSeconds": 1.3218751249369234
+      },
+      {
+        "case": "100000-cells-end",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 1.3646127921529114,
+        "minSeconds": 1.347206958103925,
+        "maxSeconds": 1.3746504171285778
+      },
+      {
+        "case": "100000-cells-middle",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.5511089579667896,
+        "minSeconds": 0.549364916048944,
+        "maxSeconds": 0.5537040838971734
+      },
+      {
+        "case": "100000-cells-middle",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.3553715420421213,
+        "minSeconds": 0.35459137498401105,
+        "maxSeconds": 0.3676660000346601
+      },
+      {
+        "case": "100000-cells-middle",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 1.503950374899432,
+        "minSeconds": 1.486056791152805,
+        "maxSeconds": 1.6016331249848008
+      },
+      {
+        "case": "100000-cells-middle",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.6875004169996828,
+        "minSeconds": 0.6800035419873893,
+        "maxSeconds": 0.7050613749306649
+      },
+      {
+        "case": "100000-cells-middle",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.7473274997901171,
+        "minSeconds": 0.7446087501011789,
+        "maxSeconds": 0.7496228339150548
+      },
+      {
+        "case": "100000-cells-start",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.5525728338398039,
+        "minSeconds": 0.5428732500877231,
+        "maxSeconds": 0.595850583165884
+      },
+      {
+        "case": "100000-cells-start",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.35561566706746817,
+        "minSeconds": 0.3469502499792725,
+        "maxSeconds": 0.3756874999962747
+      },
+      {
+        "case": "100000-cells-start",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06339191691949964,
+        "minSeconds": 0.0629044168163091,
+        "maxSeconds": 0.06599987484514713
+      },
+      {
+        "case": "100000-cells-start",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06983779207803309,
+        "minSeconds": 0.06869137496687472,
+        "maxSeconds": 0.07770529203116894
+      },
+      {
+        "case": "100000-cells-start",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.13098562485538423,
+        "minSeconds": 0.1273387090768665,
+        "maxSeconds": 0.13199670799076557
+      },
+      {
+        "case": "100000-scalar-cells-end",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.560852084076032,
+        "minSeconds": 0.5576242080423981,
+        "maxSeconds": 0.5638999580405653
+      },
+      {
+        "case": "100000-scalar-cells-end",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.3557163749355823,
+        "minSeconds": 0.3527854159474373,
+        "maxSeconds": 0.3736524588894099
+      },
+      {
+        "case": "100000-scalar-cells-end",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 2.9828043750021607,
+        "minSeconds": 2.8954995421227068,
+        "maxSeconds": 2.991634416859597
+      },
+      {
+        "case": "100000-scalar-cells-end",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 1.322625458939001,
+        "minSeconds": 1.2771535417996347,
+        "maxSeconds": 1.3796919169835746
+      },
+      {
+        "case": "100000-scalar-cells-end",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 1.3612809169571847,
+        "minSeconds": 1.3605856248177588,
+        "maxSeconds": 1.3705006251111627
+      },
+      {
+        "case": "100000-scalar-cells-middle",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.5622297078371048,
+        "minSeconds": 0.5526346249971539,
+        "maxSeconds": 0.5664567081257701
+      },
+      {
+        "case": "100000-scalar-cells-middle",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.3595667500048876,
+        "minSeconds": 0.35628045815974474,
+        "maxSeconds": 0.36543991579674184
+      },
+      {
+        "case": "100000-scalar-cells-middle",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 1.5284928751643747,
+        "minSeconds": 1.477630333043635,
+        "maxSeconds": 1.545530374860391
+      },
+      {
+        "case": "100000-scalar-cells-middle",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.709836124908179,
+        "minSeconds": 0.6843089589383453,
+        "maxSeconds": 0.7165705000516027
+      },
+      {
+        "case": "100000-scalar-cells-middle",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.7563687087967992,
+        "minSeconds": 0.7509756658691913,
+        "maxSeconds": 0.7604021248407662
+      },
+      {
+        "case": "100000-scalar-cells-start",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.5495827090926468,
+        "minSeconds": 0.5432498331647366,
+        "maxSeconds": 0.5525220830459148
+      },
+      {
+        "case": "100000-scalar-cells-start",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.34807533398270607,
+        "minSeconds": 0.3468975001014769,
+        "maxSeconds": 0.3483287498820573
+      },
+      {
+        "case": "100000-scalar-cells-start",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06415716698393226,
+        "minSeconds": 0.06318975007161498,
+        "maxSeconds": 0.06502049998380244
+      },
+      {
+        "case": "100000-scalar-cells-start",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.07249595900066197,
+        "minSeconds": 0.07134249992668629,
+        "maxSeconds": 0.07403008290566504
+      },
+      {
+        "case": "100000-scalar-cells-start",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.12963599991053343,
+        "minSeconds": 0.12641829089261591,
+        "maxSeconds": 0.14155254093930125
+      },
+      {
+        "case": "100000-table",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 1.194085791008547,
+        "minSeconds": 1.157445624936372,
+        "maxSeconds": 1.2135048750787973
+      },
+      {
+        "case": "100000-table",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 1.1452732500620186,
+        "minSeconds": 1.131742750061676,
+        "maxSeconds": 1.168652166146785
+      },
+      {
+        "case": "100000-table",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 3.5484872919041663,
+        "minSeconds": 3.5098343330901116,
+        "maxSeconds": 3.8482643328607082
+      },
+      {
+        "case": "100000-table",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 2.128730708034709,
+        "minSeconds": 2.0538522091228515,
+        "maxSeconds": 2.143943666946143
+      },
+      {
+        "case": "100000-table",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 2.2864345000125468,
+        "minSeconds": 2.221131958067417,
+        "maxSeconds": 2.3075742500368506
+      },
+      {
+        "case": "25000-cells-end",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.18090416700579226,
+        "minSeconds": 0.18072958290576935,
+        "maxSeconds": 0.1854138330090791
+      },
+      {
+        "case": "25000-cells-end",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.1538369581103325,
+        "minSeconds": 0.15342795802280307,
+        "maxSeconds": 0.15566870896145701
+      },
+      {
+        "case": "25000-cells-end",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.7626879590097815,
+        "minSeconds": 0.7597095840610564,
+        "maxSeconds": 0.7674192080739886
+      },
+      {
+        "case": "25000-cells-end",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.3756464999169111,
+        "minSeconds": 0.37041824986226857,
+        "maxSeconds": 0.3773906249552965
+      },
+      {
+        "case": "25000-cells-end",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.4367005000822246,
+        "minSeconds": 0.4228615830652416,
+        "maxSeconds": 0.482174624921754
+      },
+      {
+        "case": "25000-cells-middle",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.1759011670947075,
+        "minSeconds": 0.1757393330335617,
+        "maxSeconds": 0.17949100001715124
+      },
+      {
+        "case": "25000-cells-middle",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.15132054197601974,
+        "minSeconds": 0.15086333407089114,
+        "maxSeconds": 0.1573720418382436
+      },
+      {
+        "case": "25000-cells-middle",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.41318925004452467,
+        "minSeconds": 0.41180449980311096,
+        "maxSeconds": 0.4134453749284148
+      },
+      {
+        "case": "25000-cells-middle",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.21694966708309948,
+        "minSeconds": 0.21655275020748377,
+        "maxSeconds": 0.21978620789013803
+      },
+      {
+        "case": "25000-cells-middle",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.27742079086601734,
+        "minSeconds": 0.2752414159476757,
+        "maxSeconds": 0.27754150005057454
+      },
+      {
+        "case": "25000-cells-start",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.17827991698868573,
+        "minSeconds": 0.1777335829101503,
+        "maxSeconds": 0.18858941714279354
+      },
+      {
+        "case": "25000-cells-start",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.15206616697832942,
+        "minSeconds": 0.14950387505814433,
+        "maxSeconds": 0.2848712080158293
+      },
+      {
+        "case": "25000-cells-start",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.061319290893152356,
+        "minSeconds": 0.06106329197064042,
+        "maxSeconds": 0.06219154177233577
+      },
+      {
+        "case": "25000-cells-start",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06716575007885695,
+        "minSeconds": 0.06681508384644985,
+        "maxSeconds": 0.06806304189376533
+      },
+      {
+        "case": "25000-cells-start",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.126697292085737,
+        "minSeconds": 0.12479549995623529,
+        "maxSeconds": 0.36903749988414347
+      },
+      {
+        "case": "25000-scalar-cells-end",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.1810414579231292,
+        "minSeconds": 0.18020874983631074,
+        "maxSeconds": 0.18678908399306238
+      },
+      {
+        "case": "25000-scalar-cells-end",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.16016479209065437,
+        "minSeconds": 0.15161691699177027,
+        "maxSeconds": 0.16421041707508266
+      },
+      {
+        "case": "25000-scalar-cells-end",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.7627035421319306,
+        "minSeconds": 0.7534271250478923,
+        "maxSeconds": 0.7820938748773187
+      },
+      {
+        "case": "25000-scalar-cells-end",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.37132612499408424,
+        "minSeconds": 0.3696135829668492,
+        "maxSeconds": 0.423642709152773
+      },
+      {
+        "case": "25000-scalar-cells-end",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.43160612508654594,
+        "minSeconds": 0.43052670801989734,
+        "maxSeconds": 0.4333115420304239
+      },
+      {
+        "case": "25000-scalar-cells-middle",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.18089233385398984,
+        "minSeconds": 0.1782288330141455,
+        "maxSeconds": 0.18105987505987287
+      },
+      {
+        "case": "25000-scalar-cells-middle",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.15145966690033674,
+        "minSeconds": 0.1508496250025928,
+        "maxSeconds": 0.15319029102101922
+      },
+      {
+        "case": "25000-scalar-cells-middle",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.41480091703124344,
+        "minSeconds": 0.4099671251606196,
+        "maxSeconds": 0.4294587499462068
+      },
+      {
+        "case": "25000-scalar-cells-middle",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.22081537498161197,
+        "minSeconds": 0.21959945792332292,
+        "maxSeconds": 0.221079875016585
+      },
+      {
+        "case": "25000-scalar-cells-middle",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.27797866705805063,
+        "minSeconds": 0.2755785828921944,
+        "maxSeconds": 0.2798739999998361
+      },
+      {
+        "case": "25000-scalar-cells-start",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.18030133401043713,
+        "minSeconds": 0.17471804190427065,
+        "maxSeconds": 0.19143312494270504
+      },
+      {
+        "case": "25000-scalar-cells-start",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.15123433293774724,
+        "minSeconds": 0.1493978751823306,
+        "maxSeconds": 0.15657283295877278
+      },
+      {
+        "case": "25000-scalar-cells-start",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06372291687875986,
+        "minSeconds": 0.06092154188081622,
+        "maxSeconds": 0.08225245797075331
+      },
+      {
+        "case": "25000-scalar-cells-start",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.0689612498972565,
+        "minSeconds": 0.06788545800372958,
+        "maxSeconds": 0.07337962510064244
+      },
+      {
+        "case": "25000-scalar-cells-start",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.1270504998974502,
+        "minSeconds": 0.12397304107435048,
+        "maxSeconds": 0.13969062501564622
+      },
+      {
+        "case": "25000-table",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.30088095902465284,
+        "minSeconds": 0.3005582499317825,
+        "maxSeconds": 0.3018388750497252
+      },
+      {
+        "case": "25000-table",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.31535604200325906,
+        "minSeconds": 0.31256854184903204,
+        "maxSeconds": 0.32091787504032254
+      },
+      {
+        "case": "25000-table",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.918672125088051,
+        "minSeconds": 0.9170596250332892,
+        "maxSeconds": 0.9208038751967251
+      },
+      {
+        "case": "25000-table",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.5607707088347524,
+        "minSeconds": 0.5599947080481797,
+        "maxSeconds": 0.5638010001275688
+      },
+      {
+        "case": "25000-table",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.6126497921068221,
+        "minSeconds": 0.6117894591297954,
+        "maxSeconds": 0.6143769160844386
+      },
+      {
+        "case": "400000-cells-end",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 2.0697023749817163,
+        "minSeconds": 2.058508292073384,
+        "maxSeconds": 2.083159500034526
+      },
+      {
+        "case": "400000-cells-end",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 1.2856390830129385,
+        "minSeconds": 1.2502560829743743,
+        "maxSeconds": 1.293307000072673
+      },
+      {
+        "case": "400000-cells-end",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 11.709316000109538,
+        "minSeconds": 11.56358337495476,
+        "maxSeconds": 11.778256125049666
+      },
+      {
+        "case": "400000-cells-end",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 5.064143416006118,
+        "minSeconds": 5.002132542198524,
+        "maxSeconds": 5.18914358294569
+      },
+      {
+        "case": "400000-cells-end",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 5.082777875009924,
+        "minSeconds": 5.076318916864693,
+        "maxSeconds": 5.134106166893616
+      },
+      {
+        "case": "400000-cells-middle",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 2.034735499881208,
+        "minSeconds": 2.033874500077218,
+        "maxSeconds": 2.0904477909207344
+      },
+      {
+        "case": "400000-cells-middle",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 1.1474075829610229,
+        "minSeconds": 1.1459796249400824,
+        "maxSeconds": 1.1959669168572873
+      },
+      {
+        "case": "400000-cells-middle",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 5.842939208028838,
+        "minSeconds": 5.7148059161845595,
+        "maxSeconds": 5.880880333017558
+      },
+      {
+        "case": "400000-cells-middle",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 2.5595246250741184,
+        "minSeconds": 2.5221931249834597,
+        "maxSeconds": 2.6628441251814365
+      },
+      {
+        "case": "400000-cells-middle",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 2.6152173748705536,
+        "minSeconds": 2.5979623331222683,
+        "maxSeconds": 2.692408625036478
+      },
+      {
+        "case": "400000-cells-start",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 2.072365874890238,
+        "minSeconds": 2.030810583848506,
+        "maxSeconds": 2.0723928748629987
+      },
+      {
+        "case": "400000-cells-start",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 1.1464020831044763,
+        "minSeconds": 1.1307305830996484,
+        "maxSeconds": 1.1638499170076102
+      },
+      {
+        "case": "400000-cells-start",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06782987504266202,
+        "minSeconds": 0.06472845887765288,
+        "maxSeconds": 0.0684257501270622
+      },
+      {
+        "case": "400000-cells-start",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.07479574996978045,
+        "minSeconds": 0.07027149992063642,
+        "maxSeconds": 0.07483983412384987
+      },
+      {
+        "case": "400000-cells-start",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.13296104199253023,
+        "minSeconds": 0.13134945882484317,
+        "maxSeconds": 0.13586324988864362
+      },
+      {
+        "case": "400000-scalar-cells-end",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 2.0491142498794943,
+        "minSeconds": 2.033390332944691,
+        "maxSeconds": 2.1338464999571443
+      },
+      {
+        "case": "400000-scalar-cells-end",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 1.2172487920615822,
+        "minSeconds": 1.1486952919512987,
+        "maxSeconds": 1.2323057500179857
+      },
+      {
+        "case": "400000-scalar-cells-end",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 11.575360249960795,
+        "minSeconds": 11.402581207919866,
+        "maxSeconds": 11.636452917009592
+      },
+      {
+        "case": "400000-scalar-cells-end",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 5.0843744170852005,
+        "minSeconds": 5.0679787918925285,
+        "maxSeconds": 5.127082207938656
+      },
+      {
+        "case": "400000-scalar-cells-end",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 5.117714042076841,
+        "minSeconds": 5.096525292145088,
+        "maxSeconds": 5.152088207891211
+      },
+      {
+        "case": "400000-scalar-cells-middle",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 2.0525219158735126,
+        "minSeconds": 2.052191416034475,
+        "maxSeconds": 2.061020417138934
+      },
+      {
+        "case": "400000-scalar-cells-middle",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 1.2494977498427033,
+        "minSeconds": 1.152555082924664,
+        "maxSeconds": 1.2813267500605434
+      },
+      {
+        "case": "400000-scalar-cells-middle",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 5.790206250036135,
+        "minSeconds": 5.779288791120052,
+        "maxSeconds": 5.869133417028934
+      },
+      {
+        "case": "400000-scalar-cells-middle",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 2.577222540974617,
+        "minSeconds": 2.505602875025943,
+        "maxSeconds": 2.5869652500841767
+      },
+      {
+        "case": "400000-scalar-cells-middle",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 2.6117258749436587,
+        "minSeconds": 2.6075711669400334,
+        "maxSeconds": 2.6159615840297192
+      },
+      {
+        "case": "400000-scalar-cells-start",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 2.0939450829755515,
+        "minSeconds": 2.0436375001445413,
+        "maxSeconds": 2.100358583033085
+      },
+      {
+        "case": "400000-scalar-cells-start",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 1.1698922079522163,
+        "minSeconds": 1.1558847078122199,
+        "maxSeconds": 1.1743494579568505
+      },
+      {
+        "case": "400000-scalar-cells-start",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06963970907963812,
+        "minSeconds": 0.06565483310259879,
+        "maxSeconds": 0.07355016702786088
+      },
+      {
+        "case": "400000-scalar-cells-start",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.09169987519271672,
+        "minSeconds": 0.07453908398747444,
+        "maxSeconds": 0.10140520799905062
+      },
+      {
+        "case": "400000-scalar-cells-start",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.134765625,
+        "minSeconds": 0.1334907088894397,
+        "maxSeconds": 0.1351360830012709
+      },
+      {
+        "case": "400000-table",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 4.639114791993052,
+        "minSeconds": 4.6291089579463005,
+        "maxSeconds": 4.664975583087653
+      },
+      {
+        "case": "400000-table",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 4.5284924590960145,
+        "minSeconds": 4.485297665931284,
+        "maxSeconds": 4.540574207901955
+      },
+      {
+        "case": "400000-table",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 13.907582957996055,
+        "minSeconds": 13.88920445786789,
+        "maxSeconds": 13.918908917112276
+      },
+      {
+        "case": "400000-table",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 8.313835749868304,
+        "minSeconds": 8.309171375120059,
+        "maxSeconds": 8.337089292006567
+      },
+      {
+        "case": "400000-table",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 8.90253445878625,
+        "minSeconds": 8.892224333016202,
+        "maxSeconds": 8.9718847500626
+      },
+      {
+        "case": "fidelity-cell_values-cell_values",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-cell_values-cell_values",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-cell_values-cell_values",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06392766605131328,
+        "minSeconds": 0.06348224985413253,
+        "maxSeconds": 0.06446558306924999
+      },
+      {
+        "case": "fidelity-cell_values-cell_values",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06369945895858109,
+        "minSeconds": 0.06353145814500749,
+        "maxSeconds": 0.06398058403283358
+      },
+      {
+        "case": "fidelity-cell_values-cell_values",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.12255075015127659,
+        "minSeconds": 0.12125387508422136,
+        "maxSeconds": 0.12449037516489625
+      },
+      {
+        "case": "fidelity-formulas-References",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-formulas-References",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-formulas-References",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06363620795309544,
+        "minSeconds": 0.06250029196962714,
+        "maxSeconds": 0.06394749996252358
+      },
+      {
+        "case": "fidelity-formulas-References",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06371858296915889,
+        "minSeconds": 0.06326362490653992,
+        "maxSeconds": 0.0637433750089258
+      },
+      {
+        "case": "fidelity-formulas-References",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.12379791704006493,
+        "minSeconds": 0.1219363750424236,
+        "maxSeconds": 0.12465345789678395
+      },
+      {
+        "case": "fidelity-formulas-formulas",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-formulas-formulas",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-formulas-formulas",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06783229182474315,
+        "minSeconds": 0.06430325005203485,
+        "maxSeconds": 0.11947379191406071
+      },
+      {
+        "case": "fidelity-formulas-formulas",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06668337504379451,
+        "minSeconds": 0.066512499935925,
+        "maxSeconds": 0.08862391719594598
+      },
+      {
+        "case": "fidelity-formulas-formulas",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.12463608291000128,
+        "minSeconds": 0.12273125001229346,
+        "maxSeconds": 0.12498708418570459
+      },
+      {
+        "case": "fidelity-hyperlinks-Targets",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-hyperlinks-Targets",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-hyperlinks-Targets",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06501529202796519,
+        "minSeconds": 0.06373216700740159,
+        "maxSeconds": 0.06501562520861626
+      },
+      {
+        "case": "fidelity-hyperlinks-Targets",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06449599983170629,
+        "minSeconds": 0.06358820805326104,
+        "maxSeconds": 0.06484766583889723
+      },
+      {
+        "case": "fidelity-hyperlinks-Targets",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.12323904200457036,
+        "minSeconds": 0.12114462512545288,
+        "maxSeconds": 0.12563583301380277
+      },
+      {
+        "case": "fidelity-hyperlinks-hyperlinks",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-hyperlinks-hyperlinks",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-hyperlinks-hyperlinks",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06370604201219976,
+        "minSeconds": 0.06324587506242096,
+        "maxSeconds": 0.06803158298134804
+      },
+      {
+        "case": "fidelity-hyperlinks-hyperlinks",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06342412484809756,
+        "minSeconds": 0.06255366606637836,
+        "maxSeconds": 0.06541758310049772
+      },
+      {
+        "case": "fidelity-hyperlinks-hyperlinks",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.12195358285680413,
+        "minSeconds": 0.12088091601617634,
+        "maxSeconds": 0.12261837511323392
+      },
+      {
+        "case": "fidelity-merged_cells-merged_cells",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-merged_cells-merged_cells",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-merged_cells-merged_cells",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.0663608331233263,
+        "minSeconds": 0.0637803329154849,
+        "maxSeconds": 0.07627066690474749
+      },
+      {
+        "case": "fidelity-merged_cells-merged_cells",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.0663381670601666,
+        "minSeconds": 0.06397233298048377,
+        "maxSeconds": 0.06870920886285603
+      },
+      {
+        "case": "fidelity-merged_cells-merged_cells",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.12849624990485609,
+        "minSeconds": 0.12060599983669817,
+        "maxSeconds": 0.13098799996078014
+      },
+      {
+        "case": "fidelity-multiple_sheets-Alpha",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-multiple_sheets-Alpha",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-multiple_sheets-Alpha",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.0643804999999702,
+        "minSeconds": 0.06329229101538658,
+        "maxSeconds": 0.06495491601526737
+      },
+      {
+        "case": "fidelity-multiple_sheets-Alpha",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.0629403330385685,
+        "minSeconds": 0.06270345905795693,
+        "maxSeconds": 0.06845983304083347
+      },
+      {
+        "case": "fidelity-multiple_sheets-Alpha",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.12222745805047452,
+        "minSeconds": 0.12191133294254541,
+        "maxSeconds": 0.12378904200159013
+      },
+      {
+        "case": "fidelity-multiple_sheets-Beta",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-multiple_sheets-Beta",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-multiple_sheets-Beta",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.0630333749577403,
+        "minSeconds": 0.062327542109414935,
+        "maxSeconds": 0.0632878749165684
+      },
+      {
+        "case": "fidelity-multiple_sheets-Beta",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06298799999058247,
+        "minSeconds": 0.06276175007224083,
+        "maxSeconds": 0.06324279098771513
+      },
+      {
+        "case": "fidelity-multiple_sheets-Beta",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.1223413331899792,
+        "minSeconds": 0.12104604090563953,
+        "maxSeconds": 0.1235537501052022
+      },
+      {
+        "case": "fidelity-multiple_sheets-Gamma",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-multiple_sheets-Gamma",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-multiple_sheets-Gamma",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06414187490008771,
+        "minSeconds": 0.06406879192218184,
+        "maxSeconds": 0.06440258398652077
+      },
+      {
+        "case": "fidelity-multiple_sheets-Gamma",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06369004212319851,
+        "minSeconds": 0.06365825003013015,
+        "maxSeconds": 0.06426687515340745
+      },
+      {
+        "case": "fidelity-multiple_sheets-Gamma",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.12530658394098282,
+        "minSeconds": 0.12200045795179904,
+        "maxSeconds": 0.12534395908005536
+      },
+      {
+        "case": "fidelity-number_formats-number_formats",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-number_formats-number_formats",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-number_formats-number_formats",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06457250006496906,
+        "minSeconds": 0.06296412483789027,
+        "maxSeconds": 0.06491308403201401
+      },
+      {
+        "case": "fidelity-number_formats-number_formats",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.0638807499781251,
+        "minSeconds": 0.06267254194244742,
+        "maxSeconds": 0.06467674998566508
+      },
+      {
+        "case": "fidelity-number_formats-number_formats",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.12216220912523568,
+        "minSeconds": 0.12184829218313098,
+        "maxSeconds": 0.12402625009417534
+      },
+      {
+        "case": "fidelity-tables-tables",
+        "adapter": "calamine",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-tables-tables",
+        "adapter": "fastexcel",
+        "attempts": 3,
+        "passes": 0,
+        "passRate": 0.0,
+        "medianSeconds": null,
+        "minSeconds": null,
+        "maxSeconds": null
+      },
+      {
+        "case": "fidelity-tables-tables",
+        "adapter": "openpyxl",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.0650698330719024,
+        "minSeconds": 0.06437641708180308,
+        "maxSeconds": 0.07015604199841619
+      },
+      {
+        "case": "fidelity-tables-tables",
+        "adapter": "sheetops-api",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.06436595879495144,
+        "minSeconds": 0.06409195810556412,
+        "maxSeconds": 0.06482979189604521
+      },
+      {
+        "case": "fidelity-tables-tables",
+        "adapter": "sheetops-cli",
+        "attempts": 3,
+        "passes": 3,
+        "passRate": 1.0,
+        "medianSeconds": 0.12352941697463393,
+        "minSeconds": 0.12266162480227649,
+        "maxSeconds": 0.12721324991434813
+      }
+    ]
+  },
+  "agentControls": {
+    "schemaVersion": 1,
+    "verifiedUnchangedControls": {
+      "model": true,
+      "provider": true,
+      "reasoning": true,
+      "timeoutSeconds": true,
+      "repeats": true,
+      "launcherSha256": true,
+      "taskIds": true,
+      "approvalWaitSeconds": true,
+      "networkInsideTerminal": true,
+      "baselineImage": true,
+      "baselineSkill": true
+    },
+    "intentionalChanges": {
+      "sheetopsImageBefore": "sha256:fe5babd035190d427b0158bd0b943f28f9eec3146214ccc7b4ba2a973b32460c",
+      "sheetopsImageAfter": "sha256:b380e33942719ae7c97165999bcf30a1e96d635c40276d8310fed48869cf01a0",
+      "sheetopsSkillBefore": "be4fef6fbd5a36dcf7e2054246192a0ceba2de731266345fe473fa38d3919f7e",
+      "sheetopsSkillAfter": "8468dc7d85236bf806998ea725e31ab25b7c1d3bfc720cc784b721a70e1cef4b"
+    },
+    "scope": "Package plus skill configuration; one repetition per arm; no Electron UI or package-only attribution"
+  },
+  "formulaProof": {
+    "fixtureFiles": {
+      "valid.xlsx": "932e04b5d07f31bf9c9826b31e9d24e19bd19cc489ccb5fd94aa6f4f33138202",
+      "valid.evaluated.xlsx": "2faf44ff040014400aa7f8f912be684c3c6b2b541b6014db3cb8c58f6fbdaf09",
+      "invalid.xlsx": "8699d92e044bc16594691d33d0b35e1e7f40c1ea29db1c817f00f46dc34e870b",
+      "native-formula-unprefixed.xlsx": "ba4e1beb9b8c9cf0387fac3ee01bcbc043a229da5f93fcd06616cee0ae5e5819",
+      "native-formula-good.xlsx": "6ebfa7e067311dbc8c109f1f93aafc116b52a72e3d0947c593fff968ce9fcacb",
+      "original.xlsx": "3e478f89f6a223970b9c0dd95401107a0872a29d8e0084dbde60fcb49c3d985b"
+    },
+    "nativeExcel": {
+      "correctlyStoredModernFormula": "opened_calculated_saved; B2/B3 alpha,beta",
+      "unprefixedModernFormula": "Excel content recovery prompt; repair declined; file unchanged"
+    },
+    "libreOffice": {
+      "validFormulaAndEmptyString": "validated true; source unchanged; evaluated sidecar saved",
+      "divideByZero": "validated false; #DIV/0!; exit 1; no evaluated sidecar saved"
+    },
+    "cacheFreshness": "must be established by actual external engine invocation; verifier alone does not establish it"
+  },
+  "nativeAudit": {
+    "engine": "Microsoft Excel",
+    "excelVersion": "16.113.3",
+    "ready": false,
+    "pendingCount": 3
+  },
+  "rawAttemptsSha256": "c3440e6b869106264df867964fdd7028e7e0bcf87a497d61c7b97e0c52eb515b",
+  "candidateRuntimeCommit": "b0c996bf247fd61990d74dc51fccb96278bcb72e",
+  "desktopCandidateCommit": "283ba4d27f7137ff06cfa2d1023965a2387dafcc"
+}
