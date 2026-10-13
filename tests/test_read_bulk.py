@@ -1,5 +1,6 @@
 from datetime import datetime
 from pathlib import Path
+from zipfile import ZipFile
 
 import pytest
 from openpyxl import Workbook
@@ -163,3 +164,49 @@ def test_bulk_rejects_invalid_schema(tmp_path: Path, schema: object) -> None:
             book(tmp_path, [["id"], ["001"]]), "Data", 1, column_types=schema
         )
     assert exc.value.error_code == "invalid_bulk_schema"
+
+
+def test_bulk_header_only_table_is_empty_with_named_columns(tmp_path: Path) -> None:
+    from zalos_sheetops.io.read_bulk import read_bulk_table
+
+    table = read_bulk_table(book(tmp_path, [["id", "amount"]]), "Data", 1)
+    assert table.column_names == ["id", "amount"]
+    assert table.num_rows == 0
+
+
+def test_bulk_rejects_literal_int64_minimum(tmp_path: Path) -> None:
+    from zalos_sheetops.io.read_bulk import read_bulk_table
+
+    path = book(tmp_path, [["id", "amount"], ["001", -123]])
+    with ZipFile(path) as source:
+        entries = {name: source.read(name) for name in source.namelist()}
+    entries["xl/worksheets/sheet1.xml"] = entries["xl/worksheets/sheet1.xml"].replace(
+        b"<v>-123</v>", b"<v>-9223372036854775808</v>"
+    )
+    with ZipFile(path, "w") as target:
+        for name, data in entries.items():
+            target.writestr(name, data)
+    with pytest.raises(SheetOpsError) as exc:
+        read_bulk_table(path, "Data", 1)
+    assert exc.value.error_code == "bulk_precision_risk"
+
+
+def test_bulk_precision_guard_handles_arrow_signed_minimum(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    import fastexcel
+    import pyarrow as pa
+
+    from zalos_sheetops.io.read_bulk import read_bulk_table
+
+    # fastexcel currently infers floats; its supported Arrow integer output
+    # must obey the same guard without signed abs() overflow.
+    def integer_batch(self: object) -> tuple[pa.RecordBatch, None]:
+        return pa.record_batch(
+            [pa.array([-(2**63)], type=pa.int64())], names=["id"]
+        ), None
+
+    monkeypatch.setattr(fastexcel.ExcelSheet, "to_arrow_with_errors", integer_batch)
+    with pytest.raises(SheetOpsError) as exc:
+        read_bulk_table(book(tmp_path, [["id"], [1]]), "Data", 1)
+    assert exc.value.error_code == "bulk_precision_risk"

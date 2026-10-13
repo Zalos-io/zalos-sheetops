@@ -82,7 +82,10 @@ def read_bulk_table(
         )
     for column in batch.columns:
         if pa.types.is_integer(column.type) or pa.types.is_floating(column.type):
-            if pc.any(pc.greater_equal(pc.abs(column), 2**53)).as_py():
+            unsafe = pc.or_(
+                pc.greater_equal(column, 2**53), pc.less_equal(column, -(2**53))
+            )
+            if pc.any(unsafe).as_py():
                 raise SheetOpsError(
                     "bulk_precision_risk",
                     "Large numeric values require exact XML reads; store IDs as text",

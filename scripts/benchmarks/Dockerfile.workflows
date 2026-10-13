@@ -1,4 +1,4 @@
-# Pass the frozen baseline image ID built with scripts/benchmarks/Dockerfile.
+# Pass a local tag for the frozen baseline; record its image ID in run settings.
 # Context contains Desktop's scripts/, references/, and a candidate wheels/ directory.
 ARG BASELINE_IMAGE
 FROM ${BASELINE_IMAGE} AS base
