@@ -305,6 +305,12 @@ dependencies = [
     { name = "openpyxl" },
 ]
 
+[package.optional-dependencies]
+bulk = [
+    { name = "fastexcel" },
+    { name = "pyarrow" },
+]
+
 [package.dev-dependencies]
 benchmark = [
     { name = "fastexcel" },
@@ -314,12 +320,18 @@ benchmark = [
     { name = "xlsxwriter" },
 ]
 dev = [
+    { name = "fastexcel" },
+    { name = "pyarrow" },
     { name = "pytest" },
     { name = "ruff" },
 ]
 
 [package.metadata]
-requires-dist = [{ name = "openpyxl", specifier = ">=3.1.0,<4" }]
+requires-dist = [
+    { name = "fastexcel", marker = "extra == 'bulk'", specifier = ">=0.21,<1" },
+    { name = "openpyxl", specifier = ">=3.1.0,<4" },
+    { name = "pyarrow", marker = "extra == 'bulk'", specifier = ">=25,<26" },
+]
 
 [package.metadata.requires-dev]
 benchmark = [
@@ -330,6 +342,8 @@ benchmark = [
     { name = "xlsxwriter", specifier = ">=3.2,<4" },
 ]
 dev = [
+    { name = "fastexcel", specifier = ">=0.21,<1" },
+    { name = "pyarrow", specifier = ">=25,<26" },
     { name = "pytest", specifier = ">=8.0.0,<10" },
     { name = "ruff", specifier = ">=0.15.0,<0.17" },
 ]

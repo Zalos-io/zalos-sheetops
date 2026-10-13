@@ -26,6 +26,7 @@ def build_cases(root: Path, detail_rows: int = 100_000) -> list[dict]:
         ("formula_report", _report),
         ("targeted_edit", _edit),
         ("je_extraction", _je),
+        ("bulk_analysis", _bulk),
     ]:
         folder = root / name
         inputs, golden = folder / "inputs", folder / "golden"
@@ -35,6 +36,49 @@ def build_cases(root: Path, detail_rows: int = 100_000) -> list[dict]:
         cases.append({"id": name, "inputs": str(inputs), "golden": str(golden), **case})
     (root / "cases.json").write_text(json.dumps(cases, indent=2), encoding="utf-8")
     return cases
+
+
+def _bulk(inputs: Path, golden: Path, detail_rows: int) -> dict:
+    workbook = Workbook(write_only=True)
+    sheet = workbook.create_sheet("Transactions")
+    sheet.append(["identifier", "region", "amount", "date", "active"])
+    totals: dict[str, list[int | str]] = {}
+    for index in range(1, detail_rows + 1):
+        region = ("east", "north", "west")[index % 3]
+        identifier = f"{index:018d}"
+        cents = index % 1000
+        active = index % 2 == 0
+        date = datetime(2026, 6, 30) if active else datetime(2026, 7, 1)
+        sheet.append([identifier, region, cents / 100, date, active])
+        if active:
+            total = totals.setdefault(region, [0, 0, identifier])
+            total[0] += 1
+            total[1] += cents
+    workbook.save(inputs / "transactions.xlsx")
+    write_csv(
+        golden / "output.csv",
+        [
+            ["region", "count", "total", "first_id"],
+            *[
+                [region, count, f"{cents / 100:.2f}", first]
+                for region, (count, cents, first) in sorted(totals.items())
+            ],
+        ],
+    )
+    return {
+        "output": "output.csv",
+        "kind": "csv",
+        "detailRows": detail_rows,
+        "instruction": (
+            "Analyze the complete Transactions table in transactions.xlsx. "
+            "Select active=true rows dated 30 June 2026. Group by region and write "
+            "UTF-8 output.csv sorted by region, columns exactly region,count,total,"
+            "first_id. Count selected rows, sum amounts with two decimals, and "
+            "use the smallest identifier string per region, preserving leading zeros. "
+            "Verify total input and selected row counts and total amount. "
+            "Keep the source unchanged; do not dump all input rows into chat."
+        ),
+    }
 
 
 def _csv(inputs: Path, golden: Path, _: int) -> dict:
