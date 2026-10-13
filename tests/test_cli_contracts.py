@@ -123,6 +123,8 @@ def test_schema_includes_json_contract_for_every_command() -> None:
         "headerRow": "integer | null",
         "maxRows": "positive integer | null",
         "valueMode": "raw | typed (XML reads; default raw)",
+        "encoding": "CSV encoding | auto (BOM, otherwise UTF-8)",
+        "delimiter": "CSV single-character delimiter",
     }
     assert commands["cells read"]["input"] == {
         "path": "string",

@@ -151,15 +151,32 @@ def _run_read_table(json_payload: str | None, pretty: bool) -> int:
             )
         value_mode = validate_value_mode(payload.get("valueMode", "raw"))
         path = validate_agent_path(path_value)
-        _emit(
-            success_response(
-                command,
-                read_table(
-                    path, sheet, header_strategy, header_row, max_rows, value_mode
+        if path.suffix.lower() in {".csv", ".tsv"}:
+            from zalos_sheetops.io.read_csv_table import read_csv_table
+
+            if sheet is not None or header_strategy not in {"row", "detect"}:
+                raise SheetOpsError(
+                    "invalid_field",
+                    "CSV has no worksheets",
+                    {"field": "sheet/headerStrategy"},
+                )
+            data = read_csv_table(
+                path,
+                encoding=payload.get("encoding", "utf-8-sig"),
+                delimiter=payload.get(
+                    "delimiter", "\t" if path.suffix.lower() == ".tsv" else ","
                 ),
-            ),
-            pretty,
-        )
+                max_rows=max_rows,
+                header_row=header_row if header_row is not None else 1,
+            )
+            data["rows"] = [
+                [row[name] for name in data["headers"]] for row in data["rows"]
+            ]
+        else:
+            data = read_table(
+                path, sheet, header_strategy, header_row, max_rows, value_mode
+            )
+        _emit(success_response(command, data), pretty)
         return 0
     except (SheetOpsError, ValueError) as error:
         if isinstance(error, SheetOpsError):
@@ -1285,8 +1302,17 @@ def _load_table_source(source: dict[str, object]) -> dict[str, object]:
     from zalos_sheetops.io.read_table import read_table
 
     path = validate_agent_path(str(source["path"]))
-    if path.suffix.lower() == ".csv":
-        return read_csv_table(path)
+    if path.suffix.lower() in {".csv", ".tsv"}:
+        return read_csv_table(
+            path,
+            encoding=source.get("encoding", "utf-8-sig"),
+            delimiter=source.get(
+                "delimiter", "\t" if path.suffix.lower() == ".tsv" else ","
+            ),
+            header_row=source.get("headerRow")
+            if source.get("headerRow") is not None
+            else 1,
+        )
     sheet = source.get("sheet")
     header_strategy = source.get("headerStrategy", "detect")
     header_row = source.get("headerRow")

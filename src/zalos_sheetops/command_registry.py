@@ -28,6 +28,8 @@ def command_manifest() -> dict[str, object]:
                     "headerRow": "integer | null",
                     "maxRows": "positive integer | null",
                     "valueMode": "raw | typed (XML reads; default raw)",
+                    "encoding": "CSV encoding | auto (BOM, otherwise UTF-8)",
+                    "delimiter": "CSV single-character delimiter",
                 },
             },
             {

@@ -29,6 +29,7 @@ dev = [
 ]
 
 benchmark = [
+    "polars>=1.38.1,<2",
     "XlsxWriter>=3.2,<4",
     "fastexcel>=0.21,<1",
     "python-calamine>=0.6,<1",
