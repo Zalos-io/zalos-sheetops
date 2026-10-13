@@ -222,3 +222,63 @@ def test_oracle_coverage_is_separate_from_scored_attempts_and_formula_errors() -
     assert summary["arms"]["baseline"]["unscorableAttempts"] == 1
     failures = failure_catalog([], records)
     assert {r["id"] for r in failures} == {"oracle-coverage", "formula-evaluation"}
+
+
+def test_report_counts_all_configured_adapters(tmp_path) -> None:
+    import json
+
+    from zalos_sheetops.benchmarks.public.report import build_report
+
+    adapters = [
+        "openpyxl",
+        "sheetops-api",
+        "sheetops-cli",
+        "calamine",
+        "fastexcel",
+        "sheetops-hybrid",
+    ]
+    for folder in ["baseline", "agents", "contracts"]:
+        (tmp_path / folder).mkdir()
+    (tmp_path / "baseline/metadata.json").write_text(
+        json.dumps({"cases": [{"id": "a"}], "repeats": 1, "adapters": adapters})
+    )
+    (tmp_path / "baseline/operations.jsonl").write_text(
+        "".join(
+            json.dumps(
+                {
+                    "case": "a",
+                    "adapter": adapter,
+                    "repeat": 0,
+                    "status": "pass",
+                    "seconds": 1,
+                }
+            )
+            + "\n"
+            for adapter in adapters
+        )
+    )
+    (tmp_path / "contracts/contracts.jsonl").write_text(
+        json.dumps({"status": "pass"}) + "\n"
+    )
+    (tmp_path / "agents/agent-metadata.json").write_text(
+        json.dumps({"taskIds": [1], "repeats": 1})
+    )
+    (tmp_path / "agents/agents.jsonl").write_text(
+        "".join(
+            json.dumps(
+                {
+                    "task": 1,
+                    "arm": arm,
+                    "repeat": 0,
+                    "seconds": 1,
+                    "grading": {"status": "pass"},
+                    "usage": {},
+                }
+            )
+            + "\n"
+            for arm in ["baseline", "sheetops"]
+        )
+    )
+    result = build_report(tmp_path, tmp_path / "report")
+    assert result["expectedOperationMeasurements"] == 6
+    assert result["status"] == "complete"

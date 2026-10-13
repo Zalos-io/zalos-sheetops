@@ -12,6 +12,9 @@ dependencies = [
     "openpyxl>=3.1.0,<4",
 ]
 
+[project.optional-dependencies]
+bulk = ["fastexcel>=0.21,<1", "pyarrow>=25,<26"]
+
 [project.urls]
 Repository = "https://github.com/Zalos-io/zalos-sheetops"
 Issues = "https://github.com/Zalos-io/zalos-sheetops/issues"
@@ -26,6 +29,8 @@ sheetops-delivery = "zalos_sheetops.hermes_plugin:register"
 dev = [
     "pytest>=8.0.0,<10",
     "ruff>=0.15.0,<0.17",
+    "fastexcel>=0.21,<1",
+    "pyarrow>=25,<26",
 ]
 
 benchmark = [

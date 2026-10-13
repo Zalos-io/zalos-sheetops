@@ -30,7 +30,7 @@ def probe_images(images: dict[str, str]) -> dict:
         "'engineVersion': subprocess.check_output([engine, '--version'], "
         "text=True).strip() if engine else None, "
         "'libraries': {n:m.version(n) for n in "
-        "['openpyxl','polars','fastexcel','xlsxwriter']}}))"
+        "['openpyxl','polars','fastexcel','pyarrow','xlsxwriter']}}))"
     )
     for image in dict.fromkeys(images.values()):
         probe = json.loads(

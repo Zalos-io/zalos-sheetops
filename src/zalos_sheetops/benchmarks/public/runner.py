@@ -153,7 +153,14 @@ def run_suite(
         raise ValueError("repeats must be positive")
     output.mkdir(parents=True, exist_ok=True)
     cases = build_cases(root, sizes)
-    adapters = ["openpyxl", "sheetops-api", "sheetops-cli", "calamine", "fastexcel"]
+    adapters = [
+        "openpyxl",
+        "sheetops-api",
+        "sheetops-cli",
+        "calamine",
+        "fastexcel",
+        "sheetops-hybrid",
+    ]
     inputs = {}
     for case in cases:
         path = Path(case["path"])
@@ -257,7 +264,14 @@ def main() -> None:
     parser.add_argument("--case")
     parser.add_argument(
         "--adapter",
-        choices=["openpyxl", "sheetops-api", "sheetops-cli", "calamine", "fastexcel"],
+        choices=[
+            "openpyxl",
+            "sheetops-api",
+            "sheetops-cli",
+            "calamine",
+            "fastexcel",
+            "sheetops-hybrid",
+        ],
         default="sheetops-cli",
     )
     args = parser.parse_args()

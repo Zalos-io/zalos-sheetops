@@ -342,10 +342,14 @@ def build_report(root: Path, output: Path, agent_records: Path | None = None) ->
         if operation_metadata_path.exists()
         else {}
     )
+    adapters = operation_metadata.get(
+        "adapters",
+        ["openpyxl", "sheetops-api", "sheetops-cli", "calamine", "fastexcel"],
+    )
     expected_operations = (
         len(operation_metadata.get("cases", []))
         * operation_metadata.get("repeats", 1)
-        * 5
+        * len(adapters)
     )
     metadata_path = root / "agents/agent-metadata.json"
     metadata = json.loads(metadata_path.read_text()) if metadata_path.exists() else {}
@@ -355,10 +359,7 @@ def build_report(root: Path, output: Path, agent_records: Path | None = None) ->
         {
             (case["id"], adapter, repeat)
             for case in operation_metadata.get("cases", [])
-            for adapter in operation_metadata.get(
-                "adapters",
-                ["openpyxl", "sheetops-api", "sheetops-cli", "calamine", "fastexcel"],
-            )
+            for adapter in adapters
             for repeat in range(operation_metadata.get("repeats", 1))
         },
         ("case", "adapter", "repeat"),

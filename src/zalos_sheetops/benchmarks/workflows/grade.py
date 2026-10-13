@@ -16,6 +16,12 @@ from zalos_sheetops.benchmarks.public.native import formula_caches
 from zalos_sheetops.compare.edits import sheet_structure
 
 
+def _date_display(number_format: str) -> str:
+    # LibreOffice escapes literal hyphens when saving an equivalent ISO date
+    # format. Keep other tokens/sections intact so different displays fail.
+    return number_format.lower().replace(r"\-", "-").replace('"-"', "-")
+
+
 def grade_case(case: dict, workspace: Path, soffice: Path | None = None) -> dict:
     path = workspace / case["output"]
     expected = Path(case["golden"]) / case["output"]
@@ -77,7 +83,9 @@ def grade_case(case: dict, workspace: Path, soffice: Path | None = None) -> dict
                         if isinstance(cell.value, datetime):
                             if not candidate.is_date:
                                 failures.append(f"date_type:{location}")
-                            if candidate.number_format != cell.number_format:
+                            if _date_display(candidate.number_format) != _date_display(
+                                cell.number_format
+                            ):
                                 failures.append(f"date_format:{location}")
         for location in case["formulaChecks"]:
             sheet, address = location.split("!")

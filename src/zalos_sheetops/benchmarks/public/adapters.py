@@ -229,6 +229,17 @@ def external_cells(case: dict, adapter: str) -> list[list[object]]:
 
 def read_case(case: dict, adapter: str) -> list[list[object]]:
     if case["operation"] == "table":
+        if adapter == "sheetops-hybrid":
+            from zalos_sheetops.io.read_bulk import read_bulk_table
+
+            batch = read_bulk_table(Path(case["path"]), case["sheet"], 1)
+            return [
+                batch.column_names,
+                *[
+                    [table_text(value) for value in row.values()]
+                    for row in batch.to_pylist()
+                ],
+            ]
         if adapter == "openpyxl":
             return openpyxl_table(case)
         if adapter in {"sheetops-api", "sheetops-cli"}:
@@ -238,7 +249,7 @@ def read_case(case: dict, adapter: str) -> list[list[object]]:
         raise NotImplementedError("No equivalent full-table adapter")
     if adapter == "openpyxl":
         return openpyxl_cells(case)
-    if adapter in {"sheetops-api", "sheetops-cli"}:
+    if adapter in {"sheetops-api", "sheetops-cli", "sheetops-hybrid"}:
         return sheetops_cells(case, cli=adapter == "sheetops-cli")
     if adapter in {"calamine", "fastexcel"}:
         return external_cells(case, adapter)

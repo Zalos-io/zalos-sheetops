@@ -1,4 +1,4 @@
-# Pass the frozen baseline image ID built with scripts/benchmarks/Dockerfile.
+# Pass a local tag for the frozen baseline; record its image ID in run settings.
 # Context contains Desktop's scripts/, references/, and a candidate wheels/ directory.
 ARG BASELINE_IMAGE
 FROM ${BASELINE_IMAGE} AS base
@@ -6,7 +6,7 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends libreoffice-calc \
     && rm -rf /var/lib/apt/lists/*
 RUN python -m pip install --no-cache-dir \
-    'polars==1.38.1' 'fastexcel==0.20.2' 'XlsxWriter==3.2.9'
+    'polars==1.38.1' 'fastexcel==0.21.0' 'pyarrow==25.0.0' 'XlsxWriter==3.2.9'
 COPY scripts /opt/skills/xlsx/scripts
 COPY references /opt/skills/xlsx/references
 FROM base AS candidate
