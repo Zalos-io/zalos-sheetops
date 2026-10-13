@@ -96,6 +96,7 @@ def test_schema_returns_machine_readable_command_manifest() -> None:
         "recalc",
         "diff",
         "reconcile",
+        "check-totals",
         "verify-edits",
     }
 

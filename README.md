@@ -370,3 +370,45 @@ The public task runner accepts `--enforce-delivery` to apply this same policy to
 both arms. It retains blocked attempts and counts a workbook as delivered only
 when its final bytes match the runtime receipt. Calculation time is included in
 the agent's measured wall time.
+
+## Totals at output precision
+
+Before claiming that totals reconcile, compare the complete populations in the
+same units, separately for each group or currency. Use `check-totals` for invoice
+lines versus totals, allocations, reconciliations, report subtotals, or any other
+additive equality. It checks source sums and **sums of individually rounded
+values**, not just rounded grand totals.
+
+```bash
+sheetops check-totals --json '{"left":["0.104","0.104"],"right":["0.208"],"decimalPlaces":2,"rounding":"half_up"}'
+```
+
+This returns `ok: false`, `errorCode: "totals_mismatch"`, and exit code 1:
+`details.source.matches` is true but `details.output.difference` is `"-0.01"`.
+Successful checks put the same report in `data`, with `validated: true`.
+Both comparisons must pass. `sourceTolerance` defaults to `"0"`; a justified
+source tolerance never permits an output difference. Missing or invalid inputs
+are errors, not zero or a pass. Empty lists are rejected; explicit `"0"` is valid.
+
+Pass decimal **strings**, not JSON floats or already rounded display strings.
+Each side accepts 1–100,000 values, up to 128 digits and exponent magnitude 128.
+Choose `decimalPlaces` (required, 0–12) and `rounding` (`half_up` by default,
+`half_even` when the output uses it) from the requested output convention.
+Convert scaled displays such as percentages to the same units before checking.
+Do not mix units, currencies, unrelated groups, or subtotal rows with their detail.
+Do not use a truncated preview as a complete population.
+
+Report source and output differences separately. Never silently change amounts,
+add balancing rows, or loosen tolerance to make a check pass. Preserve source
+precision and explain any unresolved rounding difference. The check is read-only
+arithmetic over supplied values: it does not prove population completeness,
+correct grouping, or fresh formula evaluation.
+
+For Python workflows, use the same calculation directly:
+
+```python
+from zalos_sheetops.validation.totals import check_totals
+
+report = check_totals(["0.104", "0.104"], ["0.208"], decimal_places=2)
+assert report["validated"], report
+```

@@ -5,6 +5,19 @@ from zalos_sheetops.contracts import success_response as _success_response
 def command_manifest() -> dict[str, object]:
     return {
         "commands": [
+            {
+                "name": "check-totals",
+                "status": "available",
+                "input": {
+                    "left": "non-empty list[decimal string]",
+                    "right": "non-empty list[decimal string]",
+                    "decimalPlaces": "required integer 0..12",
+                    "rounding": "half_up (default) | half_even",
+                    "sourceTolerance": (
+                        "non-negative decimal string (source only; default 0)"
+                    ),
+                },
+            },
             {"name": "schema", "status": "available", "input": {}},
             {
                 "name": "inspect",
