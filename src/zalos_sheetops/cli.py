@@ -893,6 +893,26 @@ def _run_diff(json_payload: str | None, pretty: bool) -> int:
         return 1
 
 
+def _run_check_totals(json_payload: str | None, pretty: bool) -> int:
+    from zalos_sheetops.validation.totals import check_totals_request
+
+    command = "check-totals"
+    try:
+        result = check_totals_request(_parse_json_payload(command, json_payload))
+        if not result["validated"]:
+            raise SheetOpsError(
+                "totals_mismatch", "Totals differ at source or output precision", result
+            )
+        _emit(success_response(command, result), pretty)
+        return 0
+    except SheetOpsError as error:
+        _emit(
+            error_response(command, error.error_code, error.message, error.details),
+            pretty,
+        )
+        return 1
+
+
 def _run_reconcile(json_payload: str | None, pretty: bool) -> int:
     from zalos_sheetops.reconcile.exact import reconcile_exact
 
@@ -1447,6 +1467,11 @@ _COMMANDS: dict[tuple[str, ...], tuple[str, bool, object]] = {
         True,
         _run_diff,
     ),
+    ("check-totals",): (
+        "Check source totals and sums of individually rounded amounts.",
+        True,
+        _run_check_totals,
+    ),
     ("reconcile",): (
         "Reconcile two tabular sources by keys and amounts.",
         True,
@@ -1519,6 +1544,7 @@ _ROOT_ORDER: list[str] = [
     "recalc",
     "diff",
     "reconcile",
+    "check-totals",
     "formulas",
     "cells",
     "hyperlinks",
