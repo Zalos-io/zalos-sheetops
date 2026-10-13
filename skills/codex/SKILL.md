@@ -103,6 +103,8 @@ an XML precision check and may be slower. Never coerce away an error to get a
 result. Use XML to investigate rejected inputs. Formula evaluation and output
 verification remain separate requirements. Bulk reads materialize the sheet;
 use XML for bounded reads or when memory is constrained.
+Text IDs already remain strings without overrides. Read the table once and
+reuse the frame for inspection, transformation and control totals.
 
 ```bash
 sheetops read-table --json '{"path":"source.csv","encoding":"auto","delimiter":"\t","maxRows":20}'
