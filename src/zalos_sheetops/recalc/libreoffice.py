@@ -2,7 +2,10 @@ import shutil
 import subprocess
 import tempfile
 from pathlib import Path
+from xml.parsers.expat import ExpatError
+from zipfile import BadZipFile
 
+from zalos_sheetops.delivery_cache import fresh_calculation_input
 from zalos_sheetops.errors import SheetOpsError
 from zalos_sheetops.formulas.scan import scan_formulas
 from zalos_sheetops.runtime.libreoffice import detect_libreoffice
@@ -50,12 +53,23 @@ def recalc_workbook(
 
     with tempfile.TemporaryDirectory() as staging_dir_name:
         staging_dir = Path(staging_dir_name)
+        inputs = staging_dir / "input"
+        inputs.mkdir()
+        calculation_input = inputs / path.name
+        try:
+            fresh_calculation_input(path, calculation_input)
+        except (BadZipFile, ExpatError, ValueError, OSError) as error:
+            raise SheetOpsError(
+                "invalid_workbook",
+                "Workbook calculation input is invalid",
+                {"path": str(path)},
+            ) from error
         command = [
             office,
             "--headless",
             "--convert-to",
             "xlsx",
-            str(path),
+            str(calculation_input),
             "--outdir",
             str(staging_dir),
         ]
@@ -95,6 +109,7 @@ def recalc_workbook(
 
     scan = scan_formulas(output_path)
     return {
+        "formulaEvaluation": "fresh",
         "sourcePath": str(path),
         "recalculatedPath": str(output_path),
         "formulaCount": scan["formulaCount"],

@@ -1,6 +1,6 @@
 [project]
 name = "zalos-sheetops"
-version = "0.4.5"
+version = "0.4.6"
 description = "Agent-native Excel and CSV operations toolkit"
 readme = "README.md"
 license = "MIT"
