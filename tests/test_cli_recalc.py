@@ -178,6 +178,7 @@ def test_recalc_command_returns_success_with_artifact(
     payload = _parse_output(result.output)
     assert payload["ok"] is True
     assert payload["command"] == "recalc"
+    assert payload["data"]["formulaEvaluation"] == "fresh"
     assert payload["data"]["recalculatedPath"] == str(
         tmp_path / "out" / "source-recalculated.xlsx"
     )

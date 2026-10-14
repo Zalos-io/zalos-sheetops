@@ -2,6 +2,7 @@
 
 import io
 import re
+from pathlib import Path
 from xml.etree import ElementTree as ET
 from xml.sax.saxutils import escape
 from zipfile import ZipFile
@@ -11,6 +12,7 @@ from openpyxl.utils.cell import range_boundaries
 from openpyxl.worksheet.formula import ArrayFormula
 
 from zalos_sheetops.io.xlsx_xml import MAIN_NS, XlsxWorkbook
+from zalos_sheetops.recalc.fresh_input import without_formula_caches
 
 _CELL = re.compile(rb"<(?P<p>[\w.-]+:)?c\b[^>]*(?:/>|>.*?</(?:[\w.-]+:)?c>)", re.S)
 _REF = re.compile(rb'\br=["\']([^"\']+)["\']')
@@ -18,6 +20,20 @@ _TYPE = re.compile(rb'\s+t=["\'][^"\']*["\']')
 _VALUE = re.compile(
     rb"<(?:[\w.-]+:)?(?:v|is)\b[^>]*(?:/>|>.*?</(?:[\w.-]+:)?(?:v|is)>)", re.S
 )
+
+
+def fresh_calculation_input(source: Path, destination: Path) -> None:
+    """Clear only formula caches in a disposable copy before calculation."""
+
+    with ZipFile(source) as original, ZipFile(destination, "w") as staged:
+        staged.comment = original.comment
+        for item in original.infolist():
+            data = original.read(item.filename)
+            if item.filename.startswith("xl/worksheets/") and item.filename.endswith(
+                ".xml"
+            ):
+                data = without_formula_caches(data)
+            staged.writestr(item, data)
 
 
 def _result_cell(original: bytes, value: str, kind: str) -> bytes:
