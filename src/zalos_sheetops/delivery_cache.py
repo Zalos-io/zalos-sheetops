@@ -25,13 +25,13 @@ _VALUE = re.compile(
 def fresh_calculation_input(source: Path, destination: Path) -> None:
     """Clear only formula caches in a disposable copy before calculation."""
 
+    with XlsxWorkbook(source) as workbook:
+        worksheet_parts = {sheet.path for sheet in workbook.worksheets}
     with ZipFile(source) as original, ZipFile(destination, "w") as staged:
         staged.comment = original.comment
         for item in original.infolist():
             data = original.read(item.filename)
-            if item.filename.startswith("xl/worksheets/") and item.filename.endswith(
-                ".xml"
-            ):
+            if item.filename in worksheet_parts:
                 data = without_formula_caches(data)
             staged.writestr(item, data)
 
