@@ -131,13 +131,35 @@ def _column_overrides(
 
 def _check_values_only(path: Path, sheet_name: str) -> None:
     with XlsxWorkbook(path) as workbook:
-        xml = workbook.archive.read(workbook.worksheet(sheet_name).path)
+        with workbook.archive.open(workbook.worksheet(sheet_name).path) as stream:
+            overlap = b""
+            first = True
+            while chunk := stream.read(1024 * 1024):
+                if first:
+                    _check_xml_encoding(chunk)
+                    first = False
+                xml = overlap + chunk
+                _check_xml_markers(xml, sheet_name)
+                # Retain an unfinished tag, including arbitrarily long namespace
+                # prefixes, so a chunk boundary cannot hide a formula marker.
+                start = xml.rfind(b"<")
+                overlap = (
+                    xml[start:]
+                    if start >= 0 and xml.find(b">", start) < 0
+                    else xml[-16:]
+                )
+
+
+def _check_xml_encoding(xml: bytes) -> None:
     # This conservative scan is not an XML parser. Native parsing still
     # validates the sheet; unsupported encodings/DTD cannot bypass the check.
     if b"\x00" in xml[:256] or xml.startswith((b"\xff\xfe", b"\xfe\xff")):
         raise SheetOpsError(
             "bulk_encoding_unsupported", "Use XML reads for this XML encoding", {}
         )
+
+
+def _check_xml_markers(xml: bytes, sheet_name: str) -> None:
     if b"<!DOCTYPE" in xml or b"<!ENTITY" in xml:
         raise SheetOpsError(
             "bulk_encoding_unsupported", "Use XML reads for XML with declarations", {}

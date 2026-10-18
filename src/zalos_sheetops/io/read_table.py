@@ -108,6 +108,8 @@ def _scan_explicit_header_table(
             row_count += 1
             continue
         row_count += 1
+        if header_data is not None:
+            _check_row_width(row, header_data, sheet_name)
         rows.append(row.values)
 
     if header_data is None:
@@ -133,6 +135,7 @@ def _scan_detect_header_table(
     best_row: RowData | None = None
     best_score = -1
     selected_row: RowData | None = None
+    first_unheaded_row: RowData | None = None
     rows: list[list[object]] = []
     row_count = 0
 
@@ -148,6 +151,10 @@ def _scan_detect_header_table(
             if nonblank:
                 row_count += 1
                 if max_rows is None or len(rows) < max_rows:
+                    if first_unheaded_row is None and _exceeds_header(
+                        row, selected_row
+                    ):
+                        first_unheaded_row = row
                     rows.append(row.values)
             continue
 
@@ -172,6 +179,9 @@ def _scan_detect_header_table(
             },
         )
     if selected_row is not None:
+        # A width error must not hide another plausible header found later.
+        if first_unheaded_row is not None:
+            _check_row_width(first_unheaded_row, selected_row, sheet_name)
         return {
             "headerRow": selected_row,
             "rows": rows,
@@ -195,6 +205,23 @@ def _resolve_sheet(
         return workbook.worksheets[0].name
     workbook.worksheet(sheet_name)
     return sheet_name
+
+
+def _exceeds_header(row: RowData, header: RowData) -> bool:
+    return any(not _is_blank_value(value) for value in row.values[len(header.values) :])
+
+
+def _check_row_width(row: RowData, header: RowData, sheet_name: str) -> None:
+    if _exceeds_header(row, header):
+        raise SheetOpsError(
+            "table_width_mismatch",
+            "Data extends beyond the declared headers",
+            {
+                "sheet": sheet_name,
+                "row": row.number,
+                "headerColumns": len(header.values),
+            },
+        )
 
 
 def _sheet_max_row(workbook: XlsxWorkbook, sheet_name: str) -> int:
