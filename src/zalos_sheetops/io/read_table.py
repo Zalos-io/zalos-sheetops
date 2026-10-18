@@ -135,6 +135,7 @@ def _scan_detect_header_table(
     best_row: RowData | None = None
     best_score = -1
     selected_row: RowData | None = None
+    first_unheaded_row: RowData | None = None
     rows: list[list[object]] = []
     row_count = 0
 
@@ -150,7 +151,10 @@ def _scan_detect_header_table(
             if nonblank:
                 row_count += 1
                 if max_rows is None or len(rows) < max_rows:
-                    _check_row_width(row, selected_row, sheet_name)
+                    if first_unheaded_row is None and _exceeds_header(
+                        row, selected_row
+                    ):
+                        first_unheaded_row = row
                     rows.append(row.values)
             continue
 
@@ -175,6 +179,9 @@ def _scan_detect_header_table(
             },
         )
     if selected_row is not None:
+        # A width error must not hide another plausible header found later.
+        if first_unheaded_row is not None:
+            _check_row_width(first_unheaded_row, selected_row, sheet_name)
         return {
             "headerRow": selected_row,
             "rows": rows,
@@ -200,8 +207,12 @@ def _resolve_sheet(
     return sheet_name
 
 
+def _exceeds_header(row: RowData, header: RowData) -> bool:
+    return any(not _is_blank_value(value) for value in row.values[len(header.values) :])
+
+
 def _check_row_width(row: RowData, header: RowData, sheet_name: str) -> None:
-    if any(not _is_blank_value(value) for value in row.values[len(header.values) :]):
+    if _exceeds_header(row, header):
         raise SheetOpsError(
             "table_width_mismatch",
             "Data extends beyond the declared headers",

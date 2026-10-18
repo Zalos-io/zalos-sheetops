@@ -137,3 +137,38 @@ def test_reconcile_rejects_nonfinite_numeric_reference(key: float | Decimal) -> 
     with pytest.raises(SheetOpsError) as error:
         reconcile(table, table)
     assert error.value.error_code == "invalid_key_value"
+
+
+@pytest.mark.parametrize("extra_data", [False, True])
+def test_detect_reports_ambiguous_headers_before_width_mismatch(
+    tmp_path: Path,
+    extra_data: bool,
+) -> None:
+    path = tmp_path / "ambiguous.xlsx"
+    workbook = Workbook()
+    sheet = workbook.active
+    sheet.title = "Ledger"
+    sheet.append(["reference", "amount"])
+    sheet.append(["0001", "10.00", *(["extra"] if extra_data else [])])
+    sheet.append(["reference", "amount", "note"])
+    workbook.save(path)
+
+    with pytest.raises(SheetOpsError) as error:
+        read_table(path, "Ledger", "detect", None)
+    assert error.value.error_code == "ambiguous_header_row"
+    assert error.value.details["headerRows"] == [1, 3]
+
+
+def test_detect_still_rejects_unheaded_zero_with_physical_row(tmp_path: Path) -> None:
+    path = tmp_path / "unheaded.xlsx"
+    workbook = Workbook()
+    sheet = workbook.active
+    sheet.title = "Ledger"
+    sheet.append(["reference", "amount"])
+    sheet.append(["0001", "10.00", 0])
+    workbook.save(path)
+
+    with pytest.raises(SheetOpsError) as error:
+        read_table(path, "Ledger", "detect", None)
+    assert error.value.error_code == "table_width_mismatch"
+    assert error.value.details == {"sheet": "Ledger", "row": 2, "headerColumns": 2}
