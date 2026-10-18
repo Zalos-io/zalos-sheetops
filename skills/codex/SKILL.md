@@ -9,6 +9,7 @@ Use `sheetops` for supported inspection, extraction and verification operations.
 Use Polars for bulk business transformations, XlsxWriter for new reports, and
 a compatible editing library for existing workbooks; SheetOps does not replace
 those libraries.
+The Python import is `zalos_sheetops`; `sheetops` is the CLI executable.
 
 Every command prints one line of compact JSON by default; pass `--pretty` only
 when a human needs to read it (`--raw-output` is a deprecated alias for the
@@ -84,7 +85,9 @@ precision and explain any unresolved rounding difference. The check is read-only
 arithmetic over supplied values: it does not prove population completeness,
 correct grouping, or fresh formula evaluation.
 
-For Python workflows, use the same calculation directly:
+For Python workflows, use the same calculation directly in the process that
+already holds the source amounts. A large CLI `--json` argument can exceed OS
+argument limits; keep the population in Python for bulk checks:
 
 ```python
 from zalos_sheetops.validation.totals import check_totals
@@ -120,6 +123,32 @@ Do not claim a performance improvement without before/after evidence. Compare
 elapsed time, peak traced bytes, RSS, and command summaries. Keep generated
 workbooks, JSONL, and `.prof` files under `.benchmarks/` or `/tmp`.
 Do not commit generated benchmark artifacts.
+
+## Compact complete-table evidence
+
+For read-only financial summaries, read once in Python and validate the loaded
+string table. Known sheet/header coordinates can be used directly:
+
+```python
+from pathlib import Path
+from zalos_sheetops.io.read_table import read_table
+from zalos_sheetops.validation.table_profile import profile_table
+
+table = read_table(Path("source.xlsx"), "Data", "row", 1, max_rows=None)
+receipt = profile_table(table, key_columns=["reference"], amount_columns=["amount"])
+```
+
+`read_csv_table` results work with the same profiler. The receipt has `rowCount`,
+exact decimal-string `totals`, and per-column `first`/`last` in source order,
+lexical `min`/`max` and `blankCount`. It checks full counts and row widths, plus
+all requested keys and amounts. Preview/unknown counts fail closed. All invalid
+records are counted; `invalid_table_values` details include `invalidRecordCount`,
+`issueCount` and up to 20 issue examples with record/source-row references.
+No uniqueness, cross-source balance, rounding or formula evaluation is implied;
+those retain their separate checks. Floats are not exact amount inputs.
+Reuse the loaded population for analysis and checks, and print only requested
+results and compact evidence. Use documented imports directly; investigate help
+or source only when a specific API or coverage gap requires it.
 
 ## CSV and Python workflows
 
@@ -161,6 +190,18 @@ normalized. CSV sources in `diff` and `reconcile` accept
 `encoding`, `delimiter`, and `headerRow` too. Do not treat a preview as a full
 reconciliation. Preserve long IDs and leading zeros, parse amounts/dates explicitly,
 and reject ambiguous duplicate keys instead of silently choosing a row.
+
+Before reconciling, require complete populations, nonblank keys and finite
+amounts on every row, including unmatched rows. Numeric NaN/infinity keys are
+invalid references; text IDs remain unchanged. Preserve key whitespace; a
+blank-key check does not authorize trimming IDs. `reconcile_exact` rejects
+preview metadata (`truncated` or a mismatched/unknown `rowCount`) with
+`incomplete_population`, and blank keys with `invalid_key_value`. Decimal
+amounts/tolerances accept at most 128 digits and exponent magnitude 128;
+differences use an isolated decimal context. An invalid unmatched amount is
+an input error, not a valid exclusion. `read-table` rejects populated XLSX
+cells beyond the declared header width with `table_width_mismatch`; resolve
+the schema rather than discarding those values.
 
 Create and edit in separate paths: stream row-ordered new detail sheets with
 XlsxWriter, use buffered writes for layouts that revisit rows, and never rebuild

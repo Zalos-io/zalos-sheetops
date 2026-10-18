@@ -108,6 +108,8 @@ def _scan_explicit_header_table(
             row_count += 1
             continue
         row_count += 1
+        if header_data is not None:
+            _check_row_width(row, header_data, sheet_name)
         rows.append(row.values)
 
     if header_data is None:
@@ -148,6 +150,7 @@ def _scan_detect_header_table(
             if nonblank:
                 row_count += 1
                 if max_rows is None or len(rows) < max_rows:
+                    _check_row_width(row, selected_row, sheet_name)
                     rows.append(row.values)
             continue
 
@@ -195,6 +198,19 @@ def _resolve_sheet(
         return workbook.worksheets[0].name
     workbook.worksheet(sheet_name)
     return sheet_name
+
+
+def _check_row_width(row: RowData, header: RowData, sheet_name: str) -> None:
+    if any(not _is_blank_value(value) for value in row.values[len(header.values) :]):
+        raise SheetOpsError(
+            "table_width_mismatch",
+            "Data extends beyond the declared headers",
+            {
+                "sheet": sheet_name,
+                "row": row.number,
+                "headerColumns": len(header.values),
+            },
+        )
 
 
 def _sheet_max_row(workbook: XlsxWorkbook, sheet_name: str) -> int:
