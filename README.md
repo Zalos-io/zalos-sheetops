@@ -200,7 +200,9 @@ Task selection keeps the initial seeded 30 tasks and records three reviewed
 reference conflicts. It adds three tasks of the same type from the same seeded
 stream, producing 33 attempted pairs and 30 usable pairs. Pass `--limit 33` to
 the agent runner; its default is 30. The selection manifest explains exclusions
-without removing their original attempts.
+without removing their original attempts. Three reference conflicts reviewed
+later (54638, 398-14 and 48975) get an `oracleIssue` from `reviewed_task`, so
+they grade as unscorable without changing the selection.
 
 Paired Zalos tasks use the installed desktop agent through its headless CLI.
 Build the two images with `agents build-images --dockerfile
