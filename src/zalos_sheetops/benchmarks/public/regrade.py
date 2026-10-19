@@ -19,7 +19,10 @@ def regrade_records(
     destination: Path,
     soffice: Path | None = None,
     native_evaluation_root: Path | None = None,
+    fresh_formula_results: bool = False,
 ) -> dict:
+    if fresh_formula_results and native_evaluation_root:
+        raise ValueError("fresh_formula_results needs LibreOffice, not native copies")
     raw_path = runs / "agents.jsonl"
     if destination.resolve() == raw_path.resolve():
         raise ValueError("Regrading must preserve the original records")
@@ -58,14 +61,20 @@ def regrade_records(
             for key, value in hashes.items()
             if key in record and record[key] != value
         ]
+        # Fresh grades get their own copies; saved-result copies are not reused.
+        evaluation = root / (
+            "evaluation-fresh" if fresh_formula_results else "evaluation"
+        )
         cached = (
-            root / "evaluation/golden" / golden.name,
-            root / "evaluation/actual/output.xlsx",
+            evaluation / "golden" / golden.name,
+            evaluation / "actual/output.xlsx",
         )
         evaluation_engine = {
             "name": "LibreOffice",
             "version": "recorded in run metadata",
         }
+        if fresh_formula_results:
+            evaluation_engine["formulaEvaluation"] = "fresh"
         unavailable = False
         rejection = None
         if native_evaluation_root:
@@ -108,8 +117,9 @@ def regrade_records(
                 output,
                 task,
                 soffice,
-                root / "evaluation",
+                evaluation,
                 evaluated=evaluated,
+                fresh_formula_results=fresh_formula_results,
             )
         )
         execution_status = record.get("executionStatus", "completed")
@@ -163,6 +173,7 @@ def main() -> None:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--soffice", type=Path)
     parser.add_argument("--native-evaluation-root", type=Path)
+    parser.add_argument("--fresh-formula-results", action="store_true")
     args = parser.parse_args()
     result = regrade_records(
         args.dataset,
@@ -171,6 +182,7 @@ def main() -> None:
         args.output,
         args.soffice,
         args.native_evaluation_root,
+        args.fresh_formula_results,
     )
     print(json.dumps(result))
 

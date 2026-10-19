@@ -4,11 +4,15 @@ import subprocess
 import xml.etree.ElementTree as ET
 from pathlib import Path
 from xml.etree.ElementTree import ParseError
+from xml.parsers.expat import ExpatError
 from zipfile import BadZipFile, ZipFile
 
 from openpyxl import load_workbook
 from openpyxl.utils.cell import range_boundaries
 from openpyxl.utils.exceptions import InvalidFileException
+
+from zalos_sheetops.delivery_cache import fresh_calculation_input
+from zalos_sheetops.errors import SheetOpsError
 
 from .rubric import style_matches, values_equal
 from .scoring import scalar
@@ -46,9 +50,25 @@ def evaluated_blank_caches(path: Path) -> set[tuple[str, str]]:
     return blanks
 
 
-def recalculate(source: Path, destination: Path, soffice: Path) -> Path:
+def recalculate(
+    source: Path,
+    destination: Path,
+    soffice: Path,
+    fresh_formula_results: bool = False,
+) -> Path:
     destination.mkdir(parents=True, exist_ok=True)
     profile = destination / "lo-profile"
+    calculation_input = source
+    if fresh_formula_results:
+        # By default LibreOffice keeps saved results of plain formulas on load.
+        # Clear them in a staged copy, as `sheetops recalc` does, so every
+        # formula is computed from its inputs.
+        calculation_input = destination / "fresh-input" / source.name
+        calculation_input.parent.mkdir(exist_ok=True)
+        try:
+            fresh_calculation_input(source, calculation_input)
+        except (BadZipFile, ExpatError, ValueError, OSError, SheetOpsError) as error:
+            raise RuntimeError("Formula results could not be cleared") from error
     process = subprocess.run(
         [
             str(soffice),
@@ -58,7 +78,7 @@ def recalculate(source: Path, destination: Path, soffice: Path) -> Path:
             "xlsx",
             "--outdir",
             str(destination),
-            str(source),
+            str(calculation_input),
         ],
         capture_output=True,
         text=True,
@@ -173,6 +193,7 @@ def grade_workbook(
     soffice: Path | None = None,
     evaluation_dir: Path | None = None,
     evaluated: tuple[Path, Path] | None = None,
+    fresh_formula_results: bool = False,
 ) -> dict:
     if task.get("oracleIssue"):
         return task["oracleIssue"].copy()
@@ -181,12 +202,18 @@ def grade_workbook(
     cached_golden, cached_actual = (
         evaluated if evaluated is not None else (golden, actual)
     )
+    if fresh_formula_results and soffice is None and evaluated is None:
+        raise ValueError("soffice is required for fresh formula results")
     if soffice is not None and evaluated is None:
         if evaluation_dir is None:
             raise ValueError("evaluation_dir is required for recalculation")
         try:
-            cached_golden = recalculate(golden, evaluation_dir / "golden", soffice)
-            cached_actual = recalculate(actual, evaluation_dir / "actual", soffice)
+            cached_golden = recalculate(
+                golden, evaluation_dir / "golden", soffice, fresh_formula_results
+            )
+            cached_actual = recalculate(
+                actual, evaluation_dir / "actual", soffice, fresh_formula_results
+            )
         except (RuntimeError, subprocess.TimeoutExpired):
             return {"status": "recalculation_failure"}
     books = []

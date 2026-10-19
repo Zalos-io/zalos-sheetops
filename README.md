@@ -228,7 +228,10 @@ rtk proxy uv run python -m zalos_sheetops.benchmarks.public.report --root /tmp/s
 
 Regrading verifies recorded input/output hashes and preserves raw records.
 Pass `--soffice PATH_TO_LIBREOFFICE` if evaluation copies are not already
-available. For native Excel validation, run the `native` module's `prepare`
+available. Add `--fresh-formula-results` to clear saved formula results in
+staged copies before LibreOffice calculates them. Those copies go to
+`evaluation-fresh/`, and each record's `evaluationEngine` notes the mode.
+For native Excel validation, run the `native` module's `prepare`
 action with `--dataset`, `--tasks`, `--runs`, `--output` and `--excel-version`.
 Open each queued copy in Excel, recalculate, save, then close it. Decline any
 content repair and record that rejection in the copy's manifest entry as
