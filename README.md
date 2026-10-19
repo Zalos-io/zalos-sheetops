@@ -215,9 +215,10 @@ AI Gateway credential only to inference, never to the Docker terminal.
 
 The runner fixes model, provider, reasoning, task order and sandbox limits;
 records image IDs, input and skill hashes; alternates arm order; and resumes
-only matching configurations. Each arm gets a new workspace and home. Only
-the input workbook is mounted, and golden workbooks stay outside the agent's
-sandbox. A timeout is retained as a measured outcome.
+only matching configurations. Each arm gets a new workspace and home, and the
+agent process starts in a new empty directory. Only the input workbook is
+mounted, and golden workbooks stay outside the agent's sandbox. A timeout is
+retained as a measured outcome.
 
 Regrade saved outputs without another model run:
 

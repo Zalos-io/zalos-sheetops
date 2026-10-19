@@ -7,6 +7,7 @@ import shutil
 import signal
 import sqlite3
 import subprocess
+import tempfile
 import time
 from collections import Counter
 from datetime import datetime, timezone
@@ -52,10 +53,13 @@ def cleanup_workspace(workspace: Path) -> list[str]:
     return matching
 
 
-def call_agent(command: list[str], env: dict[str, str], timeout: float) -> dict:
+def call_agent(
+    command: list[str], env: dict[str, str], timeout: float, cwd: Path | None = None
+) -> dict:
     start = time.perf_counter()
     process = subprocess.Popen(
         command,
+        cwd=cwd,
         env=env,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
@@ -247,6 +251,8 @@ def run_tasks(
     timeout: float = 180,
     enforce_delivery: bool = False,
 ) -> list[dict]:
+    # The agent starts outside the runner's directory, so it gets absolute paths.
+    output = output.absolute()
     output.mkdir(parents=True, exist_ok=True)
     credentials = provider_env(env_file)
     records = []
@@ -348,7 +354,7 @@ def run_tasks(
                             "entries": {
                                 "sheetops-delivery": {
                                     "settings": {
-                                        "calculation_engine": str(soffice),
+                                        "calculation_engine": str(soffice.absolute()),
                                     }
                                 }
                             },
@@ -385,7 +391,7 @@ def run_tasks(
                         }:
                             env.pop(key)
                     command = [
-                        str(launcher),
+                        str(launcher.absolute()),
                         "-z",
                         prompt,
                         "--model",
@@ -404,7 +410,13 @@ def run_tasks(
                         name: file_sha256(Path(__file__).with_name(name))
                         for name in ["agents.py", "grading.py", "scoring.py"]
                     }
-                    measured = call_agent(command, env, timeout)
+                    # A new empty directory per attempt, outside the checkout and
+                    # the run folder, so the agent's start directory no longer
+                    # depends on where the runner was started.
+                    with tempfile.TemporaryDirectory(
+                        prefix="sheetops-agent-", ignore_cleanup_errors=True
+                    ) as launch:
+                        measured = call_agent(command, env, timeout, cwd=Path(launch))
                     cleanup_workspace(workspace)
                     (root / "response.txt").write_text(
                         measured.pop("response"), encoding="utf-8"
