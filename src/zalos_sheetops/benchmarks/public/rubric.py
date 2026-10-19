@@ -50,6 +50,26 @@ ORACLE_ISSUES = {
     },
 }
 
+# Reviewed after the 2026-10 cohorts. Graded as unscorable, but kept out of
+# ORACLE_ISSUES so seeded selection still reproduces the published 33 tasks.
+REFERENCE_CONFLICTS = {
+    "54638": {
+        "status": "oracle_style_conflict",
+        "reason": "Golden keeps font 等线 on every cell, while the instruction asks "
+        "to recreate Sheet1 with Calibri font; fontName enforces the golden font",
+    },
+    "398-14": {
+        "status": "oracle_style_conflict",
+        "reason": "Golden sets font 等线 on every cell of all five sheets, while the "
+        "instruction asks for font Calibri 11pts; fontName enforces the golden font",
+    },
+    "48975": {
+        "status": "oracle_preservation_conflict",
+        "reason": "Golden filters Output column B only and keeps A11:A17 as "
+        "unfiltered Input links; the instruction asks to copy columns A and B",
+    },
+}
+
 
 def reviewed_task(task: dict) -> dict:
     key = str(task["id"])
@@ -59,8 +79,9 @@ def reviewed_task(task: dict) -> dict:
             styleComponents=STYLE_REQUIREMENTS[key],
             styleRubric="reviewed-public-sample-v1",
         )
-    if key in ORACLE_ISSUES:
-        result["oracleIssue"] = ORACLE_ISSUES[key].copy()
+    issue = ORACLE_ISSUES.get(key) or REFERENCE_CONFLICTS.get(key)
+    if issue:
+        result["oracleIssue"] = issue.copy()
     return result
 
 

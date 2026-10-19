@@ -15,6 +15,7 @@ UNSCORABLE = {
     "ambiguous_task_metadata",
     "oracle_failure",
     "oracle_preservation_conflict",
+    "oracle_style_conflict",
     "recalculation_failure",
     "source_mutated",
     "evaluation_unavailable",

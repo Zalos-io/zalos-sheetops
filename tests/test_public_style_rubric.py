@@ -96,6 +96,35 @@ def test_reviewed_oracle_issues_are_not_product_failures() -> None:
         reviewed_task({"id": "168-17"})["oracleIssue"]["status"]
         == "oracle_preservation_conflict"
     )
+    assert (
+        reviewed_task({"id": 54638})["oracleIssue"]["status"] == "oracle_style_conflict"
+    )
+    assert (
+        reviewed_task({"id": "398-14"})["oracleIssue"]["status"]
+        == "oracle_style_conflict"
+    )
+    assert (
+        reviewed_task({"id": 48975})["oracleIssue"]["status"]
+        == "oracle_preservation_conflict"
+    )
+
+
+def test_reference_conflicts_are_unscorable_without_changing_selection() -> None:
+    from zalos_sheetops.benchmarks.public.report import UNSCORABLE
+    from zalos_sheetops.benchmarks.public.rubric import (
+        ORACLE_ISSUES,
+        REFERENCE_CONFLICTS,
+    )
+    from zalos_sheetops.benchmarks.public.tasks import reviewed_selection
+
+    issues = [*ORACLE_ISSUES.values(), *REFERENCE_CONFLICTS.values()]
+    assert {issue["status"] for issue in issues} <= UNSCORABLE
+    assert not set(ORACLE_ISSUES) & set(REFERENCE_CONFLICTS)
+    pool = [
+        {"id": 54638, "instruction_type": "Cell-Level Manipulation"},
+        {"id": "a", "instruction_type": "Cell-Level Manipulation"},
+    ]
+    assert reviewed_selection(pool, pool[:1]) == pool[:1]
 
 
 def test_reviewed_selection_keeps_unscorable_cases_and_balances_replacements() -> None:
