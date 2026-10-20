@@ -13,6 +13,18 @@ def read_table(
     max_rows: int | None = None,
     value_mode: str = "raw",
 ) -> dict[str, object]:
+    """Read an XLSX table with normalized headers and positional string rows.
+
+    Headers are stripped, lowercased and whitespace-collapsed; use the returned
+    headers as column names. max_rows=None scans the complete table. Results
+    contain headers, rows, rowCount, returnedRowCount and truncated; previews
+    have unknown rowCount when truncated and cannot validate totals. A populated
+    unheaded cell (including zero) raises table_width_mismatch with sheet/row.
+    value_mode='typed' resolves date styles and the workbook epoch, adding
+    valueMode/dateSystem evidence; raw mode retains serials and its old shape.
+    IDs and exact amount strings are preserved. Profile the returned table with
+    profile_table before filtering. Cached formulas are not freshly evaluated.
+    """
     from zalos_sheetops.io.typed_values import validate_value_mode
 
     validate_value_mode(value_mode)
@@ -25,6 +37,7 @@ def read_table(
             header_row,
             max_rows,
         )
+        value_metadata = workbook.value_metadata()
     headers = _normalize_headers(scan["headerRow"].values)
     width = len(headers)
     rows: list[list[str]] = []
@@ -42,6 +55,7 @@ def read_table(
         "rowCount": scan["rowCount"],
         "returnedRowCount": len(rows),
         "truncated": scan["truncated"],
+        **value_metadata,
     }
 
 

@@ -16,6 +16,17 @@ def read_csv_table(
     max_rows: int | None = None,
     header_row: int = 1,
 ) -> dict[str, object]:
+    """Read CSV with exact string values, multiline records and dict rows.
+
+    encoding='auto' detects a BOM, otherwise UTF-8; delimiter is explicit.
+    Headers are stripped, lowercased and whitespace-collapsed. Results contain
+    headers, rows (dicts keyed by those headers), rowCount, returnedRowCount,
+    sourceRows (physical starting lines), encoding, delimiter and truncated.
+    max_rows=None scans all records. A truncated preview has rowCount=None;
+    profile_table requires the complete population. Extra fields, malformed CSV,
+    null bytes and decoding failures reject with SheetOpsError. Amounts and IDs
+    remain strings; a read alone does not validate their financial meaning.
+    """
     encoding = _encoding(path, encoding)
     if not isinstance(delimiter, str) or len(delimiter) != 1 or delimiter in "\r\n\0":
         raise SheetOpsError(

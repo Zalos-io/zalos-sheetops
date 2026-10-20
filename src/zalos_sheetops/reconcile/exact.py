@@ -13,6 +13,20 @@ def reconcile_exact(
     right_amount_column: str,
     amount_tolerance: str,
 ) -> dict[str, object]:
+    """Reconcile complete table dicts whose rows are dictionaries, not row lists.
+
+    Keep population metadata; convert XLSX positional rows with dict(zip(headers,
+    row)) before calling. Both entire sides, including unmatched records, are
+    checked for duplicate/blank keys, finite bounded amounts and complete counts.
+    Keys and amounts retain source strings; the caller supplies a nonnegative
+    decimal-string tolerance. Decimal arithmetic uses an isolated context.
+    Returns matched, leftUnmatched, rightUnmatched and variance lists plus summary
+    counts. A variance has key (dict[column, str]), leftAmount, rightAmount and
+    exact difference. Matched/variance/leftUnmatched keys use left column names;
+    rightUnmatched keys use right column names. This does not check
+    per-line rounding or recalculate workbook formulas. Invalid input raises
+    SheetOpsError with error_code, message and details.
+    """
     _require_non_empty_columns(
         left_key_columns,
         "left_key_columns",

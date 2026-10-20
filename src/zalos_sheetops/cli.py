@@ -103,13 +103,52 @@ def _run_inspect(json_payload: str | None, pretty: bool) -> int:
         return 1
 
 
-def _run_read_table(json_payload: str | None, pretty: bool) -> int:
+def _run_profile_table(json_payload: str | None, pretty: bool) -> int:
+    return _run_read_table(json_payload, pretty, profile=True)
+
+
+def _profile_read_data(data: dict, payload: dict) -> dict[str, object]:
+    from zalos_sheetops.validation.table_profile import profile_table
+
+    try:
+        receipt = profile_table(
+            data,
+            key_columns=payload.get("keyColumns"),
+            amount_columns=payload.get("amountColumns"),
+        )
+    except SheetOpsError as error:
+        if error.error_code == "missing_column":
+            raise SheetOpsError(
+                error.error_code,
+                error.message,
+                {**error.details, "availableColumns": data["headers"]},
+            ) from error
+        raise
+    return {
+        "source": {
+            key: value
+            for key, value in data.items()
+            if key not in {"rows", "sourceRows"}
+        },
+        "profile": receipt,
+    }
+
+
+def _run_read_table(
+    json_payload: str | None, pretty: bool, *, profile: bool = False
+) -> int:
     from zalos_sheetops.io.read_table import read_table
     from zalos_sheetops.io.typed_values import validate_value_mode
 
-    command = "read-table"
+    command = "profile-table" if profile else "read-table"
     try:
         payload = _parse_json_payload(command, json_payload)
+        if profile and payload.get("maxRows") is not None:
+            raise SheetOpsError(
+                "incomplete_population",
+                "A profile requires the complete population; omit maxRows",
+                {"field": "maxRows"},
+            )
         path_value = payload.get("path")
         if not isinstance(path_value, str):
             raise SheetOpsError(
@@ -176,6 +215,8 @@ def _run_read_table(json_payload: str | None, pretty: bool) -> int:
             data = read_table(
                 path, sheet, header_strategy, header_row, max_rows, value_mode
             )
+        if profile:
+            data = _profile_read_data(data, payload)
         _emit(success_response(command, data), pretty)
         return 0
     except (SheetOpsError, ValueError) as error:
@@ -1447,6 +1488,11 @@ _COMMANDS: dict[tuple[str, ...], tuple[str, bool, object]] = {
         True,
         _run_read_table,
     ),
+    ("profile-table",): (
+        "Read and validate a complete table; return compact statistics and totals.",
+        True,
+        _run_profile_table,
+    ),
     ("verify-edits",): (
         "Verify edit scope and formula results against an evaluated copy.",
         True,
@@ -1539,6 +1585,7 @@ _ROOT_ORDER: list[str] = [
     "schema",
     "inspect",
     "read-table",
+    "profile-table",
     "validate",
     "verify-edits",
     "recalc",
@@ -1593,6 +1640,10 @@ def _help_text(node: tuple[str, ...]) -> str:
         entries.append(("--raw-output", RAW_OUTPUT_OPTION_HELP))
         entries.append(("--help", "Show this message and exit."))
         lines.extend(_columns(entries))
+        for contract in command_manifest()["commands"]:
+            if contract["name"] == " ".join(node):
+                lines.extend(["", "JSON contract:", json.dumps(contract)])
+                break
     else:
         group = node[0]
         lines.append(f"Usage: sheetops {group} [OPTIONS] COMMAND [ARGS]...")

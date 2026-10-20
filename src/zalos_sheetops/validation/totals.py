@@ -69,7 +69,19 @@ def check_totals(
 
     Pass complete populations of comparable units, and run separately per group.
     This is arithmetic validation, not formula evaluation or completeness proof.
-    A source tolerance never permits a mismatch at output precision.
+    Inputs are non-empty lists of finite decimal strings (including signs and
+    exponents), not floats. decimal_places is an integer 0..12; rounding is
+    half_up (ties away from zero) or half_even (ties to the even digit).
+
+    Returns a dict: validated (bool), decimalPlaces (int), rounding (str),
+    sourceTolerance (the supplied string), leftCount/rightCount (input lengths),
+    source/output (dicts with leftTotal, rightTotal, difference as decimal strings
+    and matches as bool). Differences are left minus right. Source comparison
+    uses inclusive absolute source_tolerance (default "0"). Output sums each
+    individually rounded line, then compares at zero tolerance. validated is
+    source.matches AND output.matches; a mismatch returns False, not an error.
+    A source tolerance never permits a mismatch at output precision. Arithmetic
+    uses an isolated 400-digit context; caller values/context are unchanged.
     """
     if type(decimal_places) is not int or not 0 <= decimal_places <= 12:
         raise _invalid("decimalPlaces", "integer from 0 to 12")

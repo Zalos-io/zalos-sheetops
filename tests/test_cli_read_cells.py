@@ -149,7 +149,8 @@ def test_cells_read_command_rejects_unknown_include_fields(tmp_path: Path) -> No
         "details": {
             "field": "include",
             "expected": (
-                "list[values | formulas | cachedValues | numberFormats | dataTypes]"
+                "list[values | formulas | cachedValues | numberFormats | "
+                "dataTypes | sourceValues]"
             ),
             "invalid": ["styles"],
         },
