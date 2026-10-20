@@ -70,6 +70,7 @@ class CellData:
         "cached_value",
         "data_type",
         "number_format",
+        "source_value",
     )
 
     def __init__(
@@ -82,6 +83,7 @@ class CellData:
         cached_value: object,
         data_type: str,
         number_format: str | None,
+        source_value: object = None,
     ) -> None:
         self.address = address
         self.row = row
@@ -91,6 +93,7 @@ class CellData:
         self.cached_value = cached_value
         self.data_type = data_type
         self.number_format = number_format
+        self.source_value = source_value
 
 
 class RowData:
@@ -251,6 +254,12 @@ class XlsxWorkbook:
             )
             self._typed_values = TypedValues(self.number_formats(), date_1904)
         return self._typed_values
+
+    def value_metadata(self) -> dict[str, str]:
+        converter = self.typed_values()
+        if converter is None:
+            return {}
+        return {"valueMode": "typed", "dateSystem": converter.date_system}
 
     def scan_formula_cells(self, sheet_name: str, max_cells: int) -> list[str]:
         worksheet = self.worksheet(sheet_name)
@@ -730,6 +739,11 @@ class _CellScanner(_WorksheetContentScanner):
                 cached_value=value,
                 data_type=self._cell_type or "n",
                 number_format=self._number_formats.get(style_id, "General"),
+                source_value=(
+                    self._value_text
+                    if self._cell_type in {None, "n", "str", "d", "e"}
+                    else value
+                ),
             )
         )
 
@@ -850,6 +864,7 @@ def read_cells_xml(
             sheet_name,
             bounds=(min_col, min_row, max_col, max_row),
         )
+        value_metadata = workbook.value_metadata()
 
     # Last write wins for duplicate addresses, matching the previous
     # grid-lookup behavior.
@@ -869,6 +884,7 @@ def read_cells_xml(
         "cellCount": (max_row - min_row + 1) * (max_col - min_col + 1),
         "returnedCellCount": len(cells),
         "cells": cells,
+        **value_metadata,
     }
 
 
@@ -1413,6 +1429,8 @@ def _cell_payload(cell: CellData, include_fields: list[str]) -> dict[str, object
         payload["numberFormat"] = cell.number_format
     if "dataTypes" in include_fields:
         payload["dataType"] = cell.data_type
+    if "sourceValues" in include_fields:
+        payload["sourceValue"] = cell.source_value
     return payload
 
 

@@ -17,8 +17,11 @@ INCLUDE_FIELDS = {
     "cachedValues",
     "numberFormats",
     "dataTypes",
+    "sourceValues",
 }
-INCLUDE_EXPECTED = "list[values | formulas | cachedValues | numberFormats | dataTypes]"
+INCLUDE_EXPECTED = (
+    "list[values | formulas | cachedValues | numberFormats | dataTypes | sourceValues]"
+)
 MAX_CELLS = 10000
 
 
@@ -31,6 +34,26 @@ def read_cells(
     engine: str = "openpyxl",
     value_mode: str = "raw",
 ) -> dict[str, object]:
+    """Read a bounded range, with opt-in exact source strings for XML reads.
+
+    include=["values", "sourceValues", "formulas", "numberFormats"] combines
+    interpreted values with original numeric strings / decoded text. Typed XML
+    mode emits ISO dates and dateSystem metadata. Formula sourceValue is a saved
+    cache, never proof of recalculation. Blank cells are omitted.
+
+    Returns a data dict directly: sheet, range, rowCount, columnCount, cellCount,
+    returnedCellCount, cells. rowCount/columnCount span the whole requested grid,
+    including headers and blank rows. cellCount = rowCount * columnCount;
+    returnedCellCount = len(cells) counts only stored populated cells, including
+    headers, zero/False and formulas. Neither count is a data-record count.
+    E.g. A1:C7 has cellCount=21; a header plus three complete data rows returns
+    12 cells even when those data rows are nonconsecutive. Iterate every physical
+    row: skip only wholly empty rows, reject partially missing required fields.
+    Typed XML adds engine="xml", valueMode="typed", dateSystem="1900"|"1904".
+    Each cell has address and requested fields: value, sourceValue, formula
+    (when present), cachedValue, numberFormat, dataType. No truncation field is
+    needed: an oversized request fails rather than returning a partial range.
+    """
     from zalos_sheetops.io.typed_values import validate_value_mode
 
     validate_value_mode(value_mode)
@@ -51,6 +74,12 @@ def read_cells(
         )
     if engine in {"auto", "xml"}:
         return read_cells_xml(path, sheet_name, cell_range, include_fields, value_mode)
+    if "sourceValues" in include_fields:
+        raise SheetOpsError(
+            "invalid_field",
+            "Original source values require the XML reader",
+            {"field": "engine", "expected": "xml | auto for sourceValues"},
+        )
 
     formula_workbook = _load_workbook(path, data_only=False)
     value_workbook = None

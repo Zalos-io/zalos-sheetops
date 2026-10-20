@@ -219,7 +219,8 @@ def test_read_cells_rejects_unknown_include_fields(tmp_path: Path) -> None:
     assert error.details == {
         "field": "include",
         "expected": (
-            "list[values | formulas | cachedValues | numberFormats | dataTypes]"
+            "list[values | formulas | cachedValues | numberFormats | "
+            "dataTypes | sourceValues]"
         ),
         "invalid": ["styles"],
     }

@@ -81,6 +81,7 @@ def test_schema_returns_machine_readable_command_manifest() -> None:
         "schema",
         "inspect",
         "read-table",
+        "profile-table",
         "cells read",
         "cells search",
         "hyperlinks assert",
@@ -131,7 +132,10 @@ def test_schema_includes_json_contract_for_every_command() -> None:
         "path": "string",
         "sheet": "string",
         "range": "A1-style range",
-        "include": "list[values | formulas | cachedValues | numberFormats | dataTypes]",
+        "include": (
+            "list[values | formulas | cachedValues | numberFormats | "
+            "dataTypes | sourceValues]"
+        ),
         "engine": "auto | xml | openpyxl",
         "valueMode": "raw | typed (XML reads; default raw)",
     }

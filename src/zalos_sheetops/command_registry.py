@@ -46,6 +46,26 @@ def command_manifest() -> dict[str, object]:
                 },
             },
             {
+                "name": "profile-table",
+                "status": "available",
+                "input": {
+                    "path": "string",
+                    "sheet": "string | null (XLSX only)",
+                    "headerStrategy": "detect | row",
+                    "headerRow": "integer | null",
+                    "valueMode": "raw | typed (XML reads; default raw)",
+                    "encoding": "CSV encoding | auto (BOM, otherwise UTF-8)",
+                    "delimiter": "CSV single-character delimiter",
+                    "keyColumns": "list[string] of normalized headers | null",
+                    "amountColumns": "list[string] of normalized headers | null",
+                    "maxRows": "must be omitted or null; complete population only",
+                },
+                "output": (
+                    "source metadata and profile: counts, column statistics, "
+                    "exact totals, checks; no source rows"
+                ),
+            },
+            {
                 "name": "cells read",
                 "status": "available",
                 "input": {
@@ -54,7 +74,7 @@ def command_manifest() -> dict[str, object]:
                     "range": "A1-style range",
                     "include": (
                         "list[values | formulas | cachedValues | "
-                        "numberFormats | dataTypes]"
+                        "numberFormats | dataTypes | sourceValues]"
                     ),
                     "engine": "auto | xml | openpyxl",
                     "valueMode": "raw | typed (XML reads; default raw)",

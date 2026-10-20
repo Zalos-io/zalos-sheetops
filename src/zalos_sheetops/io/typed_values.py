@@ -29,6 +29,7 @@ class TypedValues:
         )
 
         self.epoch = CALENDAR_MAC_1904 if date_1904 else CALENDAR_WINDOWS_1900
+        self.date_system = "1904" if date_1904 else "1900"
         self._from_excel = from_excel
         self._from_iso = from_ISO8601
         self.date_styles = {

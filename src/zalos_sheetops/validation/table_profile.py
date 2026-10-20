@@ -5,6 +5,8 @@ from decimal import Context, Decimal, localcontext
 from zalos_sheetops.errors import SheetOpsError
 from zalos_sheetops.validation.totals import _decimal
 
+_VALUE_PREVIEW_LIMIT = 80
+
 
 def profile_table(
     table: dict[str, object],
@@ -17,6 +19,8 @@ def profile_table(
     Every row must match the declared headers. Keys must be nonblank text;
     amounts must be bounded finite decimal strings, retaining source precision.
     All invalid records are counted; at most 20 issue examples are returned.
+    Issues include valueType and, for strings, an original valuePreview capped at
+    80 characters with valueTruncated. Non-string values are never stringified.
     Column min/max are lexical; first/last retain source order. No uniqueness,
     cross-source balance, rounding, or fresh formula evaluation is implied.
     """
@@ -51,6 +55,7 @@ def profile_table(
                                     else {}
                                 ),
                                 **issue,
+                                **_value_evidence(values[issue["column"]]),
                             }
                         )
             for name, value in values.items():
@@ -179,3 +184,13 @@ def _value_issues(
             except SheetOpsError:
                 issues.append({"column": name, "errorCode": "invalid_amount_value"})
     return issues
+
+
+def _value_evidence(value: object) -> dict[str, object]:
+    evidence: dict[str, object] = {"valueType": type(value).__name__}
+    if isinstance(value, str):
+        evidence.update(
+            valuePreview=value[:_VALUE_PREVIEW_LIMIT],
+            valueTruncated=len(value) > _VALUE_PREVIEW_LIMIT,
+        )
+    return evidence
